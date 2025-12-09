@@ -42,10 +42,13 @@
               v-show="index === currentSlideIndex"
               :key="slide.id"
               :title="slide.computedTitle"
-              :content="slide.computedContent"
+              :computed-sequence="slide.computedSequence"
+              :computed-reveal="slide.computedReveal"
+              :data="slide.data"
               :background="slide.background"
               :emoji="slide.emoji"
               :type="slide.type"
+              :layout="slide.layout"
             />
           </TransitionGroup>
         </div>

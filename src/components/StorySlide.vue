@@ -2,32 +2,160 @@
   <div 
     class="story-slide texture-overlay"
     :style="{ background: background }"
-    :class="`slide-type-${type}`"
+    :class="[`slide-type-${type}`, `layout-${layout}`]"
+    @click="handleTap"
   >
-    <div class="slide-content">
-      <div v-if="emoji" class="slide-emoji animate-bounce">{{ emoji }}</div>
-      <h1 class="slide-title">{{ title }}</h1>
-      <p class="slide-text" v-html="formattedContent"></p>
+    <!-- Hero Layout (Special Case) -->
+    <AthleteHero
+      v-if="layout === 'hero'"
+      :first-name="data?.firstName || ''"
+      :last-name="data?.lastName || ''"
+      :discipline-category="data?.stats?.disciplineCategory || 'sprint'"
+      :total-competitions="data?.stats?.totalCompetitions || 0"
+      :years-active="data?.stats?.yearsActive || 0"
+    />
+
+    <!-- Narrative Flow Layout -->
+    <div v-else class="slide-content">
+      
+      <!-- Phase 1: Buildup (Story Lines) -->
+      <div v-if="phase === 'buildup'" class="buildup-container">
+        <div 
+          v-for="(line, index) in sequence" 
+          :key="index"
+          class="story-line"
+          :class="{ 'visible': index <= currentLineIndex }"
+        >
+          {{ line }}
+        </div>
+      </div>
+
+      <!-- Phase 2: Reveal (Massive Stat) -->
+      <div v-else class="reveal-container text-slam">
+        <div v-if="emoji" class="slide-emoji animate-bounce">{{ emoji }}</div>
+        
+        <h1 class="slide-title">{{ title }}</h1>
+        
+        <!-- Visual Components based on type -->
+        <div v-if="type === 'victoryrate'" class="visual-container">
+          <StatGauge 
+            :value="data?.stats?.victoryRate || 0" 
+            label="Podium Finishes"
+          />
+        </div>
+
+        <div v-else-if="type === 'worldrecord'" class="visual-container">
+          <ComparisonBar
+            :user-mark="data?.stats?.bestPerformance?.mark || '0'"
+            :wr-mark="wrMark" 
+            :discipline="data?.stats?.mainDiscipline || ''"
+          />
+        </div>
+
+        <div v-else-if="type === 'nemesis'" class="visual-container">
+          <RivalCard
+            :name="data?.stats?.nemesis?.name || 'Unknown'"
+            :losses="data?.stats?.nemesis?.losses || 0"
+            :meetings="0" 
+          />
+        </div>
+
+        <!-- Default Massive Stat Display -->
+        <div v-else class="massive-stat">
+          <div class="stat-value-massive">{{ reveal?.value }}</div>
+          <div class="stat-label-massive">{{ reveal?.label }}</div>
+          <div v-if="reveal?.subtext" class="stat-subtext">{{ reveal?.subtext }}</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, onMounted, watch } from 'vue'
+import AthleteHero from './visuals/AthleteHero.vue'
+import StatGauge from './visuals/StatGauge.vue'
+import ComparisonBar from './visuals/ComparisonBar.vue'
+import RivalCard from './visuals/RivalCard.vue'
+import type { SlideData } from '@/config/slideTemplates'
+import { getWorldRecord } from '@/config/worldRecords'
 
 interface Props {
   title: string
-  content: string
   background: string
   emoji?: string
   type?: string
+  layout?: 'default' | 'hero' | 'split' | 'versus'
+  data?: SlideData
+  // New props from generateSlides
+  computedSequence?: string[]
+  computedReveal?: { value: string, label: string, subtext?: string }
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  layout: 'default',
+  computedSequence: () => [],
+  computedReveal: () => ({ value: '', label: '' })
+})
 
-// Format content to preserve line breaks
-const formattedContent = computed(() => {
-  return props.content.replace(/\n/g, '<br>')
+// State
+const phase = ref<'buildup' | 'reveal'>('buildup')
+const currentLineIndex = ref(-1)
+const sequence = computed(() => props.computedSequence)
+const reveal = computed(() => props.computedReveal)
+
+// WR Logic
+const wrMark = computed(() => {
+  if (props.data?.stats?.bestPerformance?.records && props.data.stats.bestPerformance.records.length > 0) {
+    return props.data.stats.bestPerformance.records[0]
+  }
+  return getWorldRecord(props.data?.stats?.mainDiscipline || '')
+})
+
+// Sequencing Logic
+let sequenceTimer: any = null
+
+function startSequence() {
+  if (props.layout === 'hero') return // Hero slide has its own animation
+  
+  phase.value = 'buildup'
+  currentLineIndex.value = -1
+  
+  // Advance lines every 1.5s
+  const advance = () => {
+    if (currentLineIndex.value < sequence.value.length - 1) {
+      currentLineIndex.value++
+      sequenceTimer = setTimeout(advance, 1500)
+    } else {
+      // Finished lines, wait a bit then switch to reveal
+      sequenceTimer = setTimeout(() => {
+        phase.value = 'reveal'
+      }, 2000)
+    }
+  }
+  
+  // Start first line after delay
+  sequenceTimer = setTimeout(advance, 500)
+}
+
+function handleTap() {
+  if (props.layout === 'hero') return
+
+  if (phase.value === 'buildup') {
+    // Skip to reveal immediately
+    clearTimeout(sequenceTimer)
+    phase.value = 'reveal'
+  }
+}
+
+// Watch for slide changes to restart sequence
+watch(() => props.title, () => {
+  clearTimeout(sequenceTimer)
+  startSequence()
+})
+
+onMounted(() => {
+  startSequence()
 })
 </script>
 
@@ -41,6 +169,7 @@ const formattedContent = computed(() => {
   padding: var(--spacing-2xl);
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 /* Vignette effect */
@@ -61,122 +190,91 @@ const formattedContent = computed(() => {
   text-align: center;
   z-index: 2;
   position: relative;
+  width: 100%;
+}
+
+/* Buildup Styles */
+.buildup-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  min-height: 300px;
+  justify-content: center;
+}
+
+.story-line {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.story-line.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reveal Styles */
+.reveal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .slide-emoji {
   font-size: 6rem;
   margin-bottom: var(--spacing-xl);
   filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
-  animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), float 3s ease-in-out infinite 0.8s;
 }
 
 .slide-title {
-  font-family: 'Bebas Neue', 'Impact', sans-serif;
-  font-size: 4.5rem;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  color: white;
-  margin: 0 0 var(--spacing-xl);
-  line-height: 1;
-  text-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.3),
-    0 4px 20px rgba(0, 0, 0, 0.2);
-  animation: slideInFromLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  text-transform: uppercase;
-}
-
-.slide-text {
+  font-family: 'Outfit', sans-serif;
   font-size: 1.5rem;
-  color: rgba(255, 255, 255, 0.95);
-  margin: 0;
-  line-height: 1.8;
-  font-weight: 500;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 1s ease-out 0.3s both;
-  max-width: 700px;
-  margin: 0 auto;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: var(--spacing-xl);
 }
 
-/* Special styling for specific slide types */
-.slide-type-victoryrate .slide-title,
-.slide-type-worldrecord .slide-title {
-  animation: slideInFromLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1), numberGlow 2s ease-in-out infinite 1s;
+/* Massive Stat Styles */
+.massive-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.slide-type-nemesis .slide-title {
-  color: #ff4444;
-  text-shadow: 
-    0 0 20px rgba(255, 68, 68, 0.8),
-    0 2px 4px rgba(0, 0, 0, 0.5);
+.stat-value-massive {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 10rem;
+  line-height: 0.9;
+  color: white;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
 }
 
-.slide-type-nemesis .slide-emoji {
-  animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), pulse 1.5s ease-in-out infinite 0.8s;
+.stat-label-massive {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #00ff9d;
+  letter-spacing: 2px;
+  margin-top: var(--spacing-md);
 }
 
-.slide-type-finale .slide-text {
-  font-size: 1.25rem;
-  line-height: 2;
-}
-
-/* Numbers in text should glow */
-.slide-text :deep(strong),
-.slide-text :deep(b) {
-  font-weight: 900;
-  font-size: 1.2em;
-  color: #fff;
-}
-
-@media (max-width: 1024px) {
-  .story-slide {
-    padding: var(--spacing-xl);
-  }
-  
-  .slide-emoji {
-    font-size: 4.5rem;
-  }
-  
-  .slide-title {
-    font-size: 3.5rem;
-  }
-  
-  .slide-text {
-    font-size: 1.25rem;
-  }
+.stat-subtext {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: var(--spacing-lg);
+  font-style: italic;
 }
 
 @media (max-width: 768px) {
-  .story-slide {
-    padding: var(--spacing-lg);
-  }
-  
-  .slide-emoji {
-    font-size: 3.5rem;
-    margin-bottom: var(--spacing-md);
-  }
-  
-  .slide-title {
-    font-size: 2.5rem;
-    margin-bottom: var(--spacing-md);
-  }
-  
-  .slide-text {
-    font-size: 1.1rem;
-    line-height: 1.6;
-  }
-}
-
-@media (max-width: 480px) {
-  .slide-emoji {
-    font-size: 2.5rem;
-  }
-  
-  .slide-title {
-    font-size: 2rem;
-  }
-  
-  .slide-text {
-    font-size: 1rem;
-  }
+  .story-line { font-size: 1.8rem; }
+  .stat-value-massive { font-size: 6rem; }
+  .stat-label-massive { font-size: 1.5rem; }
 }
 </style>

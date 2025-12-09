@@ -1,86 +1,95 @@
 import type { ProcessedAthleteStats, PersonalBest } from '@/types/athleteDetails'
 
-export function getWorldRecordComparison(bestPerformance: PersonalBest | null, discipline: string): string {
+import type { ProcessedAthleteStats, PersonalBest } from '@/types/athleteDetails'
+
+export function getWorldRecordSequence(bestPerformance: PersonalBest | null, discipline: string): string[] {
   if (!bestPerformance) {
-    return "No personal best recorded yet. The journey of a thousand miles begins with a single step! 🏃"
+    return [
+      "Every journey begins somewhere...",
+      "You haven't recorded a PB yet",
+      "But greatness awaits! 🏃"
+    ]
   }
 
-  // This is a simplified version - in reality, we'd need a database of world records
-  // For now, we'll create humorous comparisons based on the discipline
-  const jokes = [
-    `Your PB is... well, let's just say Usain Bolt isn't losing sleep over it 😅`,
-    `You're getting there! Only need to shave off... *checks notes* ...quite a bit! 📝`,
-    `The gap between you and the world record? Let's call it 'room for improvement' 💪`,
-    `World record holders: exist. You: 'Hold my water bottle' 🍼`,
-    `You're in the same sport as the world record holder! That's basically the same thing, right? 🤔`
+  return [
+    `Your best mark in ${discipline}...`,
+    "Is impressive in its own right",
+    "But how does it compare to the G.O.A.T? 🤔"
   ]
-
-  return jokes[Math.floor(Math.random() * jokes.length)] || jokes[0]
 }
 
-export function getNemesisJoke(nemesis: { name: string; losses: number } | null): string {
+export function getNemesisSequence(nemesis: { name: string; losses: number } | null): string[] {
   if (!nemesis) {
-    return "No nemesis detected! Either you're unbeatable, or you need to compete more 🤷"
+    return [
+      "We looked for your arch-enemy...",
+      "Scanned all your races...",
+      "But you have no nemesis! (Yet) 🤷"
+    ]
   }
 
-  const name = `<span class="rival-name">${nemesis.name}</span>`
-  const losses = `<span class="stat-value">${nemesis.losses}</span>`
+  return [
+    "One name keeps popping up...",
+    `They've crossed the line before you ${nemesis.losses} times`,
+    "It's time to settle the score... 😤"
+  ]
+}
 
-  const jokes = [
-    `${name} has beaten you ${losses} times. They're living rent-free in your head 🏠`,
-    `${name}: Your personal villain origin story 🦹‍♂️`,
-    `${name} sees you at the start line and smiles. You know why. 😏`,
-    `Plot twist: ${name} doesn't even remember you 💀`
+export function getVictoryRateSequence(victoryRate: number): string[] {
+  const lines = [
+    "We crunched the numbers...",
+    "Calculated your podium finishes...",
   ]
 
-  return jokes[Math.floor(Math.random() * jokes.length)] || jokes[0]
-}
-
-export function getVictoryRateJoke(victoryRate: number): string {
-  const rate = `<span class="stat-value">${victoryRate}%</span>`
-  
   if (victoryRate >= 50) {
-    return `${rate} podium rate! You're basically a podium magnet 🧲🥇`
-  } else if (victoryRate >= 30) {
-    return `${rate} podium rate! Not bad! You're like a part-time champion 🏆`
+    lines.push("And the results are legendary! 🥇")
   } else if (victoryRate >= 15) {
-    return `${rate} podium rate. Hey, quality over quantity, right? ...Right? 😅`
-  } else if (victoryRate >= 5) {
-    return `${rate} podium rate. Rare, like a shiny Pokémon! ✨`
-  } else if (victoryRate > 0) {
-    return `${rate} podium rate. You treasure those moments like gold 🥺💛`
+    lines.push("You're a serious contender! 🏆")
   } else {
-    return `0% podium rate. But you show up, and that's what counts! 💪 (Seriously though, keep trying!)`
+    lines.push("Every race is a battle! 💪")
   }
+  
+  return lines
 }
 
-export function getTopRivalsJoke(topRivals: Array<{ name: string; meetings: number }>): string {
+export function getTopRivalsSequence(topRivals: Array<{ name: string; meetings: number }>): string[] {
   if (topRivals.length === 0) {
-    return "No frequent rivals found. You're either too good or too inconsistent to have regular competition 🎭"
+    return [
+      "You're a lone wolf...",
+      "No regular rivals found",
+      "Just you against the clock ⏱️"
+    ]
   }
 
-  const totalMeetings = `<span class="stat-value">${topRivals.reduce((sum, r) => sum + r.meetings, 0)}</span>`
-  const rivalNames = topRivals.map(r => `<span class="rival-name">${r.name}</span>`).join(', ')
-
-  return `You've faced ${rivalNames} a combined ${totalMeetings} times. It's giving 'anime rivalry arc' energy ⚡`
+  const totalMeetings = topRivals.reduce((sum, r) => sum + r.meetings, 0)
+  
+  return [
+    "You've seen some faces often...",
+    `Combined ${totalMeetings} showdowns`,
+    "These are your main characters ⚔️"
+  ]
 }
 
-export function getWindSpeedJoke(averageWind: number | null, hasWindData: boolean): string {
+export function getWindSpeedSequence(averageWind: number | null, hasWindData: boolean): string[] {
   if (!hasWindData || averageWind === null) {
-    return "No wind data available. You're either a thrower, or the wind gods don't care about you 🌬️"
+    return [
+      "Checking the weather report...",
+      "No wind data found",
+      "Maybe you run indoors? 🌬️"
+    ]
   }
 
-  const wind = `<span class="stat-value">${averageWind > 0 ? '+' : ''}${averageWind}m/s</span>`
-
-  if (averageWind > 1.5) {
-    return `Average wind: ${wind}. You love a good tailwind! Mother Nature is your training partner 🌪️`
-  } else if (averageWind > 0.5) {
-    return `Average wind: ${wind}. Slightly helpful! The wind whispers encouragement 🍃`
-  } else if (averageWind > -0.5) {
-    return `Average wind: ${wind}. Perfectly balanced, as all things should be ⚖️`
-  } else if (averageWind > -1.5) {
-    return `Average wind: ${wind}. Headwinds build character! (That's what we tell ourselves) 💨`
+  const lines = ["Mother Nature has been watching..."]
+  
+  if (averageWind > 1.0) {
+    lines.push("She's been pushing you forward")
+    lines.push("You love a good tailwind! 🌪️")
+  } else if (averageWind < -1.0) {
+    lines.push("She's been pushing you back")
+    lines.push("Headwinds build character! 💨")
   } else {
-    return `Average wind: ${wind}. You're basically running into a wall. Respect. 🧱`
+    lines.push("Conditions have been fair")
+    lines.push("Perfectly balanced ⚖️")
   }
+  
+  return lines
 }

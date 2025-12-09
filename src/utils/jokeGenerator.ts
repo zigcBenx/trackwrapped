@@ -1,77 +1,74 @@
 import type { ProcessedAthleteStats } from '@/types/athleteDetails'
 
-export function getExperienceJoke(yearsActive: number): string {
+import type { ProcessedAthleteStats } from '@/types/athleteDetails'
+
+export function getExperienceSequence(yearsActive: number): string[] {
+  const lines = ["You've been on the track scene for a while..."]
+  
   if (yearsActive <= 2) {
-    return "Fresh legs! You're basically still figuring out which shoe goes on which foot 👟"
+    lines.push("Just getting started!")
+    lines.push("Fresh legs, big dreams 👟")
   } else if (yearsActive <= 5) {
-    return "Solid rookie vibes! You've graduated from 'what's a false start?' to actually knowing the rules 📚"
+    lines.push("Finding your rhythm...")
+    lines.push("No longer a rookie 📚")
   } else if (yearsActive <= 10) {
-    return "Veteran status unlocked! You've seen enough starting blocks to build a house 🏠"
-  } else if (yearsActive <= 15) {
-    return "Track legend! You've been running longer than some athletes have been alive 👴"
+    lines.push("Seen a lot of starting lines...")
+    lines.push("Veteran status loading... 🏠")
   } else {
-    return "Ancient wisdom! At this point, you ARE the track. The track is you. 🏛️"
+    lines.push("Longer than some competitors have been alive!")
+    lines.push("Is retirement knocking? (Jk) 🏛️")
   }
+  
+  return lines
 }
 
-export function getDisciplineJoke(category: string, discipline: string): string {
-  const jokes: Record<string, string[]> = {
-    sprint: [
-      "You're fast... but let's be honest, you haven't run more than 400m at once since PE class 🏃‍♂️💨",
-      "Speed demon! Your warm-up is longer than your actual race 😅",
-      "Quick bursts of glory! You're like a cheetah, but with better shoes 🐆"
-    ],
-    distance: [
-      "You run marathons for fun. Your idea of a 'quick jog' is most people's weekly mileage 🤯",
-      "Endurance machine! You've spent more time running than sleeping this year 🏃‍♀️😴",
-      "Long distance legend! Your GPS watch has seen more miles than most cars 🗺️"
-    ],
-    jump: [
-      "You spend more time in the air than on the ground. Birds are jealous 🦅",
-      "Defying gravity since day one! Newton would be confused 🚀",
-      "Professional air-time collector! You're basically a human pogo stick 🦘"
-    ],
-    throw: [
-      "You throw heavy things far. Simple. Effective. Terrifying. 💪",
-      "Strength personified! You make throwing 16-pound balls look easy ⚡",
-      "Power player! Your warm-up weights are other people's PRs 🏋️"
-    ],
-    combined: [
-      "Jack of all trades! You do everything... which means you're slightly crazy 🤪",
-      "Multi-event warrior! Why specialize when you can suffer in 10 different ways? 🎯",
-      "The ultimate athlete! You're basically a track & field Swiss Army knife 🔧"
-    ]
+export function getDisciplineSequence(category: string, discipline: string): string[] {
+  const lines = [`Your main event is ${discipline}...`]
+  
+  if (category === 'sprint') {
+    lines.push("Life in the fast lane")
+    lines.push("Blink and you'll miss it 🐆")
+  } else if (category === 'distance') {
+    lines.push("The long game")
+    lines.push("Endurance is your middle name 🏃‍♀️")
+  } else if (category === 'jump') {
+    lines.push("Defying gravity")
+    lines.push("The sky is the limit 🚀")
+  } else if (category === 'throw') {
+    lines.push("Power and precision")
+    lines.push("Heavy objects beware 💪")
+  } else {
+    lines.push("Doing it all")
+    lines.push("Why choose one? 🎯")
   }
-
-  const categoryJokes = jokes[category]
-  if (!categoryJokes || categoryJokes.length === 0) {
-    return jokes.combined?.[0] ?? "You're an amazing athlete! 🌟"
-  }
-  return categoryJokes[Math.floor(Math.random() * categoryJokes.length)]
+  
+  return lines
 }
 
-export function getPerformanceJoke(isImproving: boolean, stats: ProcessedAthleteStats): string {
+export function getPerformanceSequence(isImproving: boolean, stats: ProcessedAthleteStats): string[] {
+  const lines = ["Analyzing your recent form..."]
+  
   if (isImproving) {
-    return "📈 Stonks! Your times are dropping faster than your motivation on leg day. Keep it up!"
-  } else if (stats.averagePlace <= 3) {
-    return "Steady as she goes! You're more reliable than your alarm clock ⏰ Consistency is key!"
+    lines.push("The trend line is going up")
+    lines.push("Stonks! 📈")
   } else {
-    return "Every champion has their seasons! Remember: it's not about the times, it's about the vibes ✨"
+    lines.push("Consistency is key")
+    lines.push("Trust the process ✨")
   }
+  
+  return lines
 }
 
-export function getCompetitionJoke(frequency: string, totalCompetitions: number): string {
-  const jokes: Record<string, string> = {
-    rare: `${totalCompetitions} competitions? You're more selective than a Michelin star restaurant 🌟`,
-    occasional: `${totalCompetitions} competitions! Quality over quantity, we respect it 👌`,
-    regular: `${totalCompetitions} competitions! You're a regular on the circuit. The officials know your name 📋`,
-    frequent: `${totalCompetitions} competitions?! You basically LIVE at the track. Do you have a tent there? ⛺`
-  }
-
-  return jokes[frequency] ?? jokes.regular
+export function getCompetitionSequence(frequency: string, totalCompetitions: number): string[] {
+  return [
+    "Looking at your race calendar...",
+    `You've competed ${totalCompetitions} times`,
+    frequency === 'frequent' ? "Do you live at the track? ⛺" : "Quality over quantity 👌"
+  ]
 }
 
 export function generateNickname(stats: ProcessedAthleteStats, name: string): string {
+  // ... (keep existing logic, it returns a string which is fine for the reveal)
   const prefixes: string[] = []
   const suffixes: string[] = []
 
@@ -108,50 +105,36 @@ export function generateNickname(stats: ProcessedAthleteStats, name: string): st
 
   const disciplineName = disciplineNames[stats.disciplineCategory] ?? 'Athlete'
 
-  // Combine elements
-  const nickname = `The ${prefixes[0]} ${disciplineName}`
-  
-  return nickname
+  return `The ${prefixes[0]} ${disciplineName}`
 }
 
 export function getWelcomeMessage(firstName: string): string {
-  const messages = [
-    `Let's unwrap ${firstName}'s track career...`,
-    `Time to dive into ${firstName}'s athletic journey!`,
-    `Ready to see what ${firstName} has been up to?`,
-    `${firstName}'s TrackWrapped is here! 🎉`
-  ]
-  
-  return messages[Math.floor(Math.random() * messages.length)]
+  // Keep as string for title
+  return `${firstName}'s TrackWrapped`
 }
 
-export function getIndoorOutdoorJoke(indoorCount: number, outdoorCount: number): string | null {
+export function getIndoorOutdoorSequence(indoorCount: number, outdoorCount: number): string[] {
   const total = indoorCount + outdoorCount
-  if (total === 0) return null
+  if (total === 0) return ["No preference detected"]
 
   const indoorPercentage = (indoorCount / total) * 100
+  const lines = ["Checking your habitat..."]
 
-  if (indoorPercentage >= 75) {
-    return "🏠 Indoor specialist! You seem to prefer climate-controlled comfort over actual weather. Smart choice! ❄️"
-  } else if (indoorPercentage >= 60) {
-    return "You're definitely not a fan of warm weather - most of your races are indoors! ☃️"
-  } else if (indoorPercentage <= 25) {
-    return "🌞 Outdoor warrior! You thrive in the elements. Rain, shine, or wind - you're out there! 🌤️"
-  } else if (indoorPercentage <= 40) {
-    return "Fresh air enthusiast! You clearly prefer competing under the open sky 🌈"
+  if (indoorPercentage >= 60) {
+    lines.push("You prefer climate control")
+    lines.push("Indoor Specialist 🏠")
+  } else {
+    lines.push("You brave the elements")
+    lines.push("Outdoor Warrior 🌞")
   }
-
-  return null // Balanced indoor/outdoor, no joke needed
+  
+  return lines
 }
 
-export function getFinaleMessage(stats: ProcessedAthleteStats): string {
-  if (stats.hasWorldRecord) {
-    return "A world record holder! You're literally the best in the world at something. That's insane! 🌍🏆"
-  } else if (stats.averagePlace <= 2) {
-    return "A podium regular! You know what it feels like to stand at the top. Keep chasing gold! 🥇"
-  } else if (stats.isImproving) {
-    return "On the rise! Your best days are still ahead. Keep grinding! 💪"
-  } else {
-    return "A true competitor! You show up, you compete, you inspire. That's what it's all about! ❤️"
-  }
+export function getFinaleSequence(stats: ProcessedAthleteStats): string[] {
+  return [
+    "What a season it's been!",
+    "You showed up and showed out",
+    "Here's your summary card 📸"
+  ]
 }
