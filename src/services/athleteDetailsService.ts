@@ -34,11 +34,104 @@ export async function getAthleteResults(athleteId: number): Promise<AthleteResul
   }
 }
 
-export async function getCompleteAthleteData(athleteId: number) {
+export async function getCompleteAthleteData(athleteId: number, scope: 'season' | 'lifetime' = 'season') {
+  // Fetch basic details and results
   const [details, results] = await Promise.all([
     getAthleteDetails(athleteId),
     getAthleteResults(athleteId)
   ])
 
-  return { details, results }
+  // Filter results based on scope
+  let filteredResults = results
+  if (scope === 'season') {
+    // Get the most recent year from results
+    const years = results.map(r => new Date(r.date).getFullYear())
+    const latestYear = Math.max(...years)
+    
+    // Filter for that year (e.g. 2025)
+    filteredResults = results.filter(r => new Date(r.date).getFullYear() === latestYear)
+    
+    // If no results for latest year (unlikely if we got year from results), fallback to all
+    if (filteredResults.length === 0) filteredResults = results
+  }
+
+  // Fetch competition details for rival analysis
+  // Limit to recent competitions to avoid too many API calls
+  // For season scope, we use all results (usually < 20)
+  // For lifetime, we still limit to recent 20 for performance, or maybe 30 for premium feel
+  const limit = scope === 'lifetime' ? 30 : 50
+  const recentResults = filteredResults.slice(0, limit)
+  
+  const resultsWithCompetitors = await Promise.all(
+    recentResults.map(async (result) => {
+      try {
+        // Fetch competition details using the correct endpoint
+        const compResponse = await fetch(
+          `${API_BASE_URL}/competitions/${result.competitionId}/results?eventId=${result.eventId}`
+        )
+        
+        if (!compResponse.ok) {
+          return result  // Return without competitors if fetch fails
+        }
+
+        const compData = await compResponse.json()
+        
+        // The API returns events -> races -> results
+        // We need to find the race where our athlete competed
+        // or collect all competitors from the final if applicable
+        
+        let competitors: any[] = []
+        
+        if (compData.events && compData.events.length > 0) {
+          const event = compData.events[0] // Should be the event we requested
+          
+          if (event.races && event.races.length > 0) {
+            // Collect all results from all races in this event
+            // Ideally we'd match the specific race, but for rival analysis, 
+            // anyone in the same event/round is relevant
+            event.races.forEach((race: any) => {
+              if (race.results) {
+                competitors = [...competitors, ...race.results]
+              }
+            })
+          }
+        }
+        
+        // Map to our Competitor interface
+        const mappedCompetitors = competitors.map((r: any) => {
+          // Athlete info is in the athletes array
+          const athlete = r.athletes && r.athletes.length > 0 ? r.athletes[0] : null
+          
+          if (!athlete) return null
+
+          return {
+            id: athlete.id || 0,
+            name: `${athlete.firstname} ${athlete.lastname}`,
+            firstname: athlete.firstname || '',
+            lastname: athlete.lastname || '',
+            country: athlete.country || r.country || '',
+            place: parseInt(r.place) || 0,
+            result: r.mark || '',
+            resultScore: r.performanceValue || 0
+          }
+        }).filter((c: any) => c && c.id !== 0) // Filter out invalid entries
+
+        return {
+          ...result,
+          competitors: mappedCompetitors
+        }
+      } catch (error) {
+        console.error(`Failed to fetch competitors for competition ${result.competitionId}:`, error)
+        return result  // Return without competitors if error
+      }
+    })
+  )
+
+  // Combine results with competitors and remaining results without
+  const allResults = [
+    ...resultsWithCompetitors,
+    ...filteredResults.slice(limit)
+  ]
+
+  return { details, results: allResults }
 }

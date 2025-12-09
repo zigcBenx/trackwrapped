@@ -43,6 +43,18 @@ export interface AthleteResult {
   records: string[]
   competitionId: number
   eventId: number
+  competitors?: Competitor[]  // Added for rival analysis
+}
+
+export interface Competitor {
+  id: number
+  name: string
+  firstname: string
+  lastname: string
+  country: string
+  place: number
+  result: string
+  resultScore: number
 }
 
 export interface AthleteDetails {

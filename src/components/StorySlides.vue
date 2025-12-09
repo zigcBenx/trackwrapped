@@ -45,6 +45,7 @@
               :content="slide.computedContent"
               :background="slide.background"
               :emoji="slide.emoji"
+              :type="slide.type"
             />
           </TransitionGroup>
         </div>
@@ -88,6 +89,7 @@ interface Props {
   athleteId: number | null
   athleteName: string
   isOpen: boolean
+  scope: 'season' | 'lifetime'
 }
 
 const props = defineProps<Props>()
@@ -101,8 +103,9 @@ const slides = ref<any[]>([])
 const currentSlideIndex = ref(0)
 
 // Watch for athlete changes and fetch data
-watch(() => props.athleteId, async (newId) => {
-  if (newId && props.isOpen) {
+// Watch for athlete changes and open state
+watch([() => props.athleteId, () => props.isOpen], async ([newId, newIsOpen]) => {
+  if (newId && newIsOpen) {
     await loadAthleteStory(newId)
   }
 }, { immediate: true })
@@ -113,7 +116,7 @@ async function loadAthleteStory(athleteId: number) {
   currentSlideIndex.value = 0
   
   try {
-    const { details, results } = await getCompleteAthleteData(athleteId)
+    const { details, results } = await getCompleteAthleteData(athleteId, props.scope)
     const stats = processAthleteData(details, results)
     
     const slideData: SlideData = {

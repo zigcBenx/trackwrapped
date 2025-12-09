@@ -1,19 +1,34 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import SearchInput from './components/SearchInput.vue'
+import WrappedSelection from './components/WrappedSelection.vue'
 import StorySlides from './components/StorySlides.vue'
 import type { Athlete } from './types/athlete'
 
 const selectedAthlete = ref<Athlete | null>(null)
 const isStoryOpen = ref(false)
+const showSelection = ref(false)
+const selectedScope = ref<'season' | 'lifetime'>('season')
 
 function handleAthleteSelect(athlete: Athlete) {
   selectedAthlete.value = athlete
+  showSelection.value = true
+}
+
+function handleSelectionClose() {
+  showSelection.value = false
+  selectedAthlete.value = null
+}
+
+function handleStoryStart(scope: 'season' | 'lifetime') {
+  selectedScope.value = scope
+  showSelection.value = false
   isStoryOpen.value = true
 }
 
 function handleStoryClose() {
   isStoryOpen.value = false
+  selectedAthlete.value = null
 }
 </script>
 
@@ -30,11 +45,19 @@ function handleStoryClose() {
       </div>
     </main>
     
+    <!-- Selection Overlay -->
+    <WrappedSelection
+      :is-open="showSelection"
+      @close="handleSelectionClose"
+      @start="handleStoryStart"
+    />
+
     <!-- Story Slides Overlay -->
     <StorySlides
       :athlete-id="selectedAthlete?.id ?? null"
       :athlete-name="`${selectedAthlete?.firstname ?? ''} ${selectedAthlete?.lastname ?? ''}`"
       :is-open="isStoryOpen"
+      :scope="selectedScope"
       @close="handleStoryClose"
     />
   </div>

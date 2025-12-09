@@ -15,7 +15,7 @@ export function getWorldRecordComparison(bestPerformance: PersonalBest | null, d
     `You're in the same sport as the world record holder! That's basically the same thing, right? 🤔`
   ]
 
-  return jokes[Math.floor(Math.random() * jokes.length)]
+  return jokes[Math.floor(Math.random() * jokes.length)] || jokes[0]
 }
 
 export function getNemesisJoke(nemesis: { name: string; losses: number } | null): string {
@@ -23,27 +23,32 @@ export function getNemesisJoke(nemesis: { name: string; losses: number } | null)
     return "No nemesis detected! Either you're unbeatable, or you need to compete more 🤷"
   }
 
+  const name = `<span class="rival-name">${nemesis.name}</span>`
+  const losses = `<span class="stat-value">${nemesis.losses}</span>`
+
   const jokes = [
-    `${nemesis.name} has beaten you ${nemesis.losses} times. They're living rent-free in your head 🏠`,
-    `${nemesis.name}: Your personal villain origin story 🦹‍♂️`,
-    `${nemesis.name} sees you at the start line and smiles. You know why. 😏`,
-    `Plot twist: ${nemesis.name} doesn't even remember you 💀`
+    `${name} has beaten you ${losses} times. They're living rent-free in your head 🏠`,
+    `${name}: Your personal villain origin story 🦹‍♂️`,
+    `${name} sees you at the start line and smiles. You know why. 😏`,
+    `Plot twist: ${name} doesn't even remember you 💀`
   ]
 
-  return jokes[Math.floor(Math.random() * jokes.length)]
+  return jokes[Math.floor(Math.random() * jokes.length)] || jokes[0]
 }
 
 export function getVictoryRateJoke(victoryRate: number): string {
+  const rate = `<span class="stat-value">${victoryRate}%</span>`
+  
   if (victoryRate >= 50) {
-    return `${victoryRate}% podium rate! You're basically a podium magnet 🧲🥇`
+    return `${rate} podium rate! You're basically a podium magnet 🧲🥇`
   } else if (victoryRate >= 30) {
-    return `${victoryRate}% podium rate! Not bad! You're like a part-time champion 🏆`
+    return `${rate} podium rate! Not bad! You're like a part-time champion 🏆`
   } else if (victoryRate >= 15) {
-    return `${victoryRate}% podium rate. Hey, quality over quantity, right? ...Right? 😅`
+    return `${rate} podium rate. Hey, quality over quantity, right? ...Right? 😅`
   } else if (victoryRate >= 5) {
-    return `${victoryRate}% podium rate. Rare, like a shiny Pokémon! ✨`
+    return `${rate} podium rate. Rare, like a shiny Pokémon! ✨`
   } else if (victoryRate > 0) {
-    return `${victoryRate}% podium rate. You treasure those moments like gold 🥺💛`
+    return `${rate} podium rate. You treasure those moments like gold 🥺💛`
   } else {
     return `0% podium rate. But you show up, and that's what counts! 💪 (Seriously though, keep trying!)`
   }
@@ -54,8 +59,8 @@ export function getTopRivalsJoke(topRivals: Array<{ name: string; meetings: numb
     return "No frequent rivals found. You're either too good or too inconsistent to have regular competition 🎭"
   }
 
-  const totalMeetings = topRivals.reduce((sum, r) => sum + r.meetings, 0)
-  const rivalNames = topRivals.map(r => r.name).join(', ')
+  const totalMeetings = `<span class="stat-value">${topRivals.reduce((sum, r) => sum + r.meetings, 0)}</span>`
+  const rivalNames = topRivals.map(r => `<span class="rival-name">${r.name}</span>`).join(', ')
 
   return `You've faced ${rivalNames} a combined ${totalMeetings} times. It's giving 'anime rivalry arc' energy ⚡`
 }
@@ -65,15 +70,17 @@ export function getWindSpeedJoke(averageWind: number | null, hasWindData: boolea
     return "No wind data available. You're either a thrower, or the wind gods don't care about you 🌬️"
   }
 
+  const wind = `<span class="stat-value">${averageWind > 0 ? '+' : ''}${averageWind}m/s</span>`
+
   if (averageWind > 1.5) {
-    return `Average wind: +${averageWind}m/s. You love a good tailwind! Mother Nature is your training partner 🌪️`
+    return `Average wind: ${wind}. You love a good tailwind! Mother Nature is your training partner 🌪️`
   } else if (averageWind > 0.5) {
-    return `Average wind: +${averageWind}m/s. Slightly helpful! The wind whispers encouragement 🍃`
+    return `Average wind: ${wind}. Slightly helpful! The wind whispers encouragement 🍃`
   } else if (averageWind > -0.5) {
-    return `Average wind: ${averageWind}m/s. Perfectly balanced, as all things should be ⚖️`
+    return `Average wind: ${wind}. Perfectly balanced, as all things should be ⚖️`
   } else if (averageWind > -1.5) {
-    return `Average wind: ${averageWind}m/s. Headwinds build character! (That's what we tell ourselves) 💨`
+    return `Average wind: ${wind}. Headwinds build character! (That's what we tell ourselves) 💨`
   } else {
-    return `Average wind: ${averageWind}m/s. You're basically running into a wall. Respect. 🧱`
+    return `Average wind: ${wind}. You're basically running into a wall. Respect. 🧱`
   }
 }

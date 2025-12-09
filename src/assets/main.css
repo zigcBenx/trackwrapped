@@ -1,10 +1,43 @@
 @import './base.css';
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --font-family-primary: 'Outfit', sans-serif;
+}
 
 #app {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   font-weight: normal;
+}
+
+/* Data Highlighting Utilities */
+.highlight-data {
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.rival-name {
+  font-weight: 800;
+  color: #FFD700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  padding: 0 4px;
+}
+
+.stat-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2em;
+  color: #00ff9d;
+  letter-spacing: 1px;
+}
+
+.location-name {
+  font-weight: 600;
+  color: #00d4ff;
 }
 
 a,
