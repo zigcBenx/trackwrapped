@@ -126,12 +126,20 @@
               :has-wind-data="stats.hasWindData"
             />
             
-            <!-- Finale Slide -->
-            <FinaleSlide
+            <!-- Share Card Slide (Insights) -->
+            <ShareCardSlide
               v-if="currentSlideIndex === 10 && stats"
               v-show="currentSlideIndex === 10"
-              key="finale"
-              :stats="stats"
+              key="sharecard"
+              :first-name="firstName"
+              :last-name="lastName"
+              :country="country"
+              :nickname="nickname"
+              :heatmap-data="stats.competitionHeatmap"
+              :total-competitions="stats.totalCompetitions"
+              :main-discipline="stats.mainDiscipline"
+              :season-best="stats.bestPerformance?.mark || '-'"
+              :average-wind="stats.averageWind"
             />
           </TransitionGroup>
         </div>
@@ -182,7 +190,7 @@ import VictoryRateSlide from './slides/VictoryRateSlide.vue'
 import NemesisSlide from './slides/NemesisSlide.vue'
 import RivalsSlide from './slides/RivalsSlide.vue'
 import WindSlide from './slides/WindSlide.vue'
-import FinaleSlide from './slides/FinaleSlide.vue'
+import ShareCardSlide from './slides/ShareCardSlide.vue'
 
 interface Props {
   athleteId: number | null
@@ -203,6 +211,7 @@ const currentSlideIndex = ref(0)
 // Data
 const firstName = ref('')
 const lastName = ref('')
+const country = ref('')
 const stats = ref<ProcessedAthleteStats | null>(null)
 const nickname = ref('')
 
@@ -228,6 +237,7 @@ async function loadAthleteStory(athleteId: number) {
     // Store data
     firstName.value = details.firstname
     lastName.value = details.lastname
+    country.value = details.country
     stats.value = processedStats
     nickname.value = generateNickname(processedStats, details.firstname)
   } catch (err) {
