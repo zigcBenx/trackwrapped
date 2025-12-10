@@ -258,14 +258,72 @@ async function selectOption(option: 'season' | 'lifetime') {
 }
 
 @media (max-width: 768px) {
+  .selection-overlay {
+    align-items: flex-start;
+    padding-top: 10vh;
+    overflow-y: auto;
+  }
+
+  .selection-container {
+    padding-bottom: var(--spacing-2xl);
+  }
+
+  .selection-title {
+    font-size: 2.5rem;
+  }
+
+  .selection-subtitle {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-xl);
+    padding: 0 var(--spacing-md);
+  }
+
   .options-grid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    max-width: 100%;
+    padding: 0 var(--spacing-md);
   }
   
-  .selection-title {
-    font-size: 3rem;
+  /* On very small screens or landscape, maybe side-by-side scroll is better? 
+     Actually, vertical stack is safer for "selection" to see all options. 
+     Let's just make them compact. */
+  
+  .option-card {
+    padding: var(--spacing-lg);
+  }
+
+  .card-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .features-list {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .features-list li {
+    font-size: 0.9rem;
+  }
+}
+
+/* Horizontal scroll for better "app-like" feel on mobile */
+@media (max-width: 600px) {
+  .options-grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 10px 20px 30px 20px;
+    margin: 0 -20px;
+    width: calc(100% + 40px);
+    gap: 15px;
+  }
+
+  .option-card {
+    min-width: 85vw;
+    scroll-snap-align: center;
+    margin-bottom: 0;
   }
 }
 </style>
