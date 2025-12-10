@@ -107,9 +107,9 @@ const reveal = computed(() => props.computedReveal)
 // WR Logic
 const wrMark = computed(() => {
   if (props.data?.stats?.bestPerformance?.records && props.data.stats.bestPerformance.records.length > 0) {
-    return props.data.stats.bestPerformance.records[0]
+    return props.data.stats.bestPerformance.records[0] || '0'
   }
-  return getWorldRecord(props.data?.stats?.mainDiscipline || '')
+  return getWorldRecord(props.data?.stats?.mainDiscipline || '') || '0'
 })
 
 // Sequencing Logic

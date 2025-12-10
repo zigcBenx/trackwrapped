@@ -52,7 +52,7 @@ const sequence = getWorldRecordSequence(props.bestPerformance, props.mainDiscipl
 
 const wrMark = computed(() => {
   if (props.bestPerformance?.records && props.bestPerformance.records.length > 0) {
-    return props.bestPerformance.records[0]
+    return props.bestPerformance.records[0] || '0'
   }
   return getWorldRecord(props.mainDiscipline) || '0'
 })
