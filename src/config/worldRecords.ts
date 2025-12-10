@@ -41,5 +41,5 @@ export function getWorldRecord(discipline: string): string {
   
   // Try partial match
   const key = Object.keys(worldRecords).find(k => discipline.includes(k))
-  return key ? worldRecords[key] : '0'
+  return (key && worldRecords[key]) || '0'
 }

@@ -50,14 +50,14 @@ const props = defineProps<Props>()
 // Parse marks to numbers for calculation
 // This is tricky because marks can be time (10.58) or distance (8.50)
 // For now, assuming simple number format or mm:ss.ms
-function parseMark(mark: string): number {
+function parseMark(mark: string | undefined): number {
   if (!mark) return 0
   
   // Handle mm:ss.ms
   if (mark.includes(':')) {
     const parts = mark.split(':')
     if (parts.length === 2) {
-      return parseFloat(parts[0]) * 60 + parseFloat(parts[1])
+      return parseFloat(parts[0] || '0') * 60 + parseFloat(parts[1] || '0')
     }
   }
   
@@ -114,6 +114,9 @@ onMounted(() => {
     userWidth.value = Math.min(percentage, 100)
   }, 300)
 })
+
+const userValue = computed(() => props.userMark)
+const wrValue = computed(() => props.wrMark)
 
 const comparisonText = computed(() => {
   const diff = Math.abs(userNumeric.value - wrNumeric.value).toFixed(2)

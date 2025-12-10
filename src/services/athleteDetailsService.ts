@@ -92,30 +92,26 @@ export async function getCompleteAthleteData(athleteId: number, scope: 'season' 
             event.races.forEach((race: any) => {
               if (race.results) {
                 competitors = [...competitors, ...race.results]
-              }
-            })
-          }
-        }
-        
         // Map to our Competitor interface
-        const mappedCompetitors = competitors.map((r: any) => {
-          // Athlete info is in the athletes array
-          const athlete = r.athletes && r.athletes.length > 0 ? r.athletes[0] : null
-          
-          if (!athlete) return null
-
-          return {
-            id: athlete.id || 0,
-            name: `${athlete.firstname} ${athlete.lastname}`,
-            firstname: athlete.firstname || '',
-            lastname: athlete.lastname || '',
-            country: athlete.country || r.country || '',
-            place: parseInt(r.place) || 0,
-            result: r.mark || '',
-            resultScore: r.performanceValue || 0
-          }
-        }).filter((c: any) => c && c.id !== 0) // Filter out invalid entries
-
+        const competitorData = await fetchEventCompetitors(result.competitionId, result.eventId)
+        const competitorsArray = competitorData?.competitors || []
+        
+        const mappedCompetitors = competitorsArray
+          .map((comp: any) => {
+            if (!comp) return null
+            return {
+              id: comp.id,
+              name: `${comp.firstname} ${comp.lastname}`,
+              firstname: comp.firstname,
+              lastname: comp.lastname,
+              country: comp.country,
+              place: parseInt(comp.place) || 0,
+              result: comp.mark,
+              resultScore: comp.resultScore || 0
+            }
+          })
+          .filter((comp): comp is Competitor => comp !== null) // Filter out nulls and assert type
+        
         return {
           ...result,
           competitors: mappedCompetitors

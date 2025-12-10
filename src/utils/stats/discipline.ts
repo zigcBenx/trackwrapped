@@ -14,7 +14,7 @@ export function calculateDisciplineStats(results: AthleteResult[]) {
 
   const mainDiscipline = Object.keys(disciplineCounts).length > 0
     ? Object.keys(disciplineCounts).reduce((a, b) =>
-        disciplineCounts[a] > disciplineCounts[b] ? a : b
+        (disciplineCounts[a] ?? 0) > (disciplineCounts[b] ?? 0) ? a : b
       )
     : 'Unknown'
 

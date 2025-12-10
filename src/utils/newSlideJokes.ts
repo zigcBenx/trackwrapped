@@ -1,7 +1,5 @@
 import type { ProcessedAthleteStats, PersonalBest } from '@/types/athleteDetails'
 
-import type { ProcessedAthleteStats, PersonalBest } from '@/types/athleteDetails'
-
 export function getWorldRecordSequence(bestPerformance: PersonalBest | null, discipline: string): string[] {
   if (!bestPerformance) {
     return [
