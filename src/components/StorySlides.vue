@@ -47,12 +47,13 @@
               :stats="stats"
             />
             
-            <!-- Experience Slide -->
-            <ExperienceSlide
+            <!-- Veteran Status Slide (merged Experience + Nickname) -->
+            <VeteranStatusSlide
               v-if="currentSlideIndex === 1 && stats"
               v-show="currentSlideIndex === 1"
-              key="experience"
+              key="veteran"
               :years-active="stats.yearsActive"
+              :nickname="nickname"
             />
             
             <!-- Discipline Slide -->
@@ -80,20 +81,13 @@
               key="competition"
               :total-competitions="stats.totalCompetitions"
               :competition-frequency="stats.competitionFrequency"
-            />
-            
-            <!-- Nickname Slide -->
-            <NicknameSlide
-              v-if="currentSlideIndex === 5"
-              v-show="currentSlideIndex === 5"
-              key="nickname"
-              :nickname="nickname"
+              :heatmap-data="stats.competitionHeatmap"
             />
             
             <!-- World Record Slide -->
             <WorldRecordSlide
-              v-if="currentSlideIndex === 6 && stats"
-              v-show="currentSlideIndex === 6"
+              v-if="currentSlideIndex === 5 && stats"
+              v-show="currentSlideIndex === 5"
               key="worldrecord"
               :best-performance="stats.bestPerformance"
               :main-discipline="stats.mainDiscipline"
@@ -101,32 +95,32 @@
             
             <!-- Victory Rate Slide -->
             <VictoryRateSlide
-              v-if="currentSlideIndex === 7 && stats"
-              v-show="currentSlideIndex === 7"
+              v-if="currentSlideIndex === 6 && stats"
+              v-show="currentSlideIndex === 6"
               key="victoryrate"
               :victory-rate="stats.victoryRate"
             />
             
             <!-- Nemesis Slide -->
             <NemesisSlide
-              v-if="currentSlideIndex === 8 && stats"
-              v-show="currentSlideIndex === 8"
+              v-if="currentSlideIndex === 7 && stats"
+              v-show="currentSlideIndex === 7"
               key="nemesis"
               :nemesis="stats.nemesis"
             />
             
             <!-- Rivals Slide -->
             <RivalsSlide
-              v-if="currentSlideIndex === 9 && stats"
-              v-show="currentSlideIndex === 9"
+              v-if="currentSlideIndex === 8 && stats"
+              v-show="currentSlideIndex === 8"
               key="rivals"
               :top-rivals="stats.topRivals"
             />
             
             <!-- Wind Slide -->
             <WindSlide
-              v-if="currentSlideIndex === 10 && stats"
-              v-show="currentSlideIndex === 10"
+              v-if="currentSlideIndex === 9 && stats"
+              v-show="currentSlideIndex === 9"
               key="wind"
               :average-wind="stats.averageWind"
               :has-wind-data="stats.hasWindData"
@@ -134,8 +128,8 @@
             
             <!-- Finale Slide -->
             <FinaleSlide
-              v-if="currentSlideIndex === 11 && stats"
-              v-show="currentSlideIndex === 11"
+              v-if="currentSlideIndex === 10 && stats"
+              v-show="currentSlideIndex === 10"
               key="finale"
               :stats="stats"
             />
@@ -179,11 +173,10 @@ import type { ProcessedAthleteStats } from '@/types/athleteDetails'
 
 // Import individual slide components
 import WelcomeSlide from './slides/WelcomeSlide.vue'
-import ExperienceSlide from './slides/ExperienceSlide.vue'
+import VeteranStatusSlide from './slides/VeteranStatusSlide.vue'
 import DisciplineSlide from './slides/DisciplineSlide.vue'
 import PerformanceSlide from './slides/PerformanceSlide.vue'
 import CompetitionSlide from './slides/CompetitionSlide.vue'
-import NicknameSlide from './slides/NicknameSlide.vue'
 import WorldRecordSlide from './slides/WorldRecordSlide.vue'
 import VictoryRateSlide from './slides/VictoryRateSlide.vue'
 import NemesisSlide from './slides/NemesisSlide.vue'
@@ -214,7 +207,7 @@ const stats = ref<ProcessedAthleteStats | null>(null)
 const nickname = ref('')
 
 // Total number of slides
-const totalSlides = 12
+const totalSlides = 11
 
 // Watch for athlete changes and open state
 watch([() => props.athleteId, () => props.isOpen], async ([newId, newIsOpen]) => {

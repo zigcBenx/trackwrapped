@@ -5,6 +5,8 @@ import { calculateDisciplineStats } from './stats/discipline'
 import { calculatePerformanceStats } from './stats/performance'
 import { analyzeRivals } from './stats/rivals'
 import { analyzeWindConditions } from './stats/wind'
+import { calculateGeographyStats } from './stats/geography'
+import { calculateCompetitionHeatmap } from './stats/heatmap'
 
 /**
  * Process athlete data into statistics
@@ -36,6 +38,12 @@ export function processAthleteData(
   // Wind analysis
   const windAnalysis = analyzeWindConditions(results)
   
+  // Geography stats
+  const geographyStats = calculateGeographyStats(results)
+  
+  // Competition heatmap
+  const competitionHeatmap = calculateCompetitionHeatmap(results)
+  
   // Calculate current season competitions (for display purposes)
   const currentYear = new Date().getFullYear()
   const lastYear = careerStats.lastYear
@@ -49,6 +57,7 @@ export function processAthleteData(
     yearsActive: careerStats.yearsActive,
     firstYear: careerStats.firstYear,
     lastYear: careerStats.lastYear,
+    age: careerStats.age,
     
     // Competitions
     totalCompetitions: competitionStats.totalCompetitions,
@@ -76,6 +85,13 @@ export function processAthleteData(
     
     // Wind
     averageWind: windAnalysis.averageWind,
-    hasWindData: windAnalysis.hasWindData
+    hasWindData: windAnalysis.hasWindData,
+    
+    // Geography
+    countries: geographyStats.countries,
+    countriesCount: geographyStats.countriesCount,
+    
+    // Heatmap
+    competitionHeatmap
   }
 }

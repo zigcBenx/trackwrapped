@@ -17,10 +17,14 @@ export function calculateCareerStats(
   if (year) {
     // For a specific year, just return that year's info
     const hasResultsThisYear = results.some(r => new Date(r.date).getFullYear() === year)
+    const age = details.birthdate 
+      ? new Date().getFullYear() - new Date(details.birthdate).getFullYear()
+      : null
     return {
       yearsActive: hasResultsThisYear ? 1 : 0,
       firstYear: year,
-      lastYear: year
+      lastYear: year,
+      age
     }
   }
   
@@ -29,9 +33,15 @@ export function calculateCareerStats(
   const firstYear = activeSeasons.length > 0 ? Math.min(...activeSeasons) : 0
   const lastYear = activeSeasons.length > 0 ? Math.max(...activeSeasons) : 0
   
+  // Calculate age if birthdate available
+  const age = details.birthdate 
+    ? new Date().getFullYear() - new Date(details.birthdate).getFullYear()
+    : null
+  
   return {
     yearsActive,
     firstYear,
-    lastYear
+    lastYear,
+    age
   }
 }

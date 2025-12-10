@@ -75,6 +75,7 @@ export interface ProcessedAthleteStats {
   yearsActive: number
   firstYear: number
   lastYear: number
+  age: number | null
   totalCompetitions: number
   mainDiscipline: string
   disciplineCategory: 'sprint' | 'distance' | 'jump' | 'throw' | 'combined'
@@ -93,5 +94,13 @@ export interface ProcessedAthleteStats {
   topRivals: Array<{ name: string; meetings: number }>
   averageWind: number | null
   hasWindData: boolean
+  countries: string[]
+  countriesCount: number
+  competitionHeatmap: {
+    weeks: Array<{ week: number; count: number; intensity: number }>
+    year: number
+    totalCompetitions: number
+  }
 }
+
 

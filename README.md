@@ -44,6 +44,12 @@ TypeScript cannot handle type information for `.vue` imports by default, so we r
 - Season highlights
 
 -other: lane preference, add emojis for spirit animals/nickname, track tourist - multiple countries
+Average points of all events together
+Reaction time - some joke that your reaction time is so bad or so good
+If someone is above 26years old: your main excuse “but i am old”
+Main excuse: I didn't hear the gun because of bird...
+Favorite lane, you keep getting put on lane "3"
+"What if" - if there would be no wind I would run a PB,... if I count my last jump which was X I would jump A WR...
 
 ## Other ideas
 - Github like graph of competitions

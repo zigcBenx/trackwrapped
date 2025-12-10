@@ -1,7 +1,7 @@
 <template>
   <SlideWrapper 
-    background="linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%)"
-    type="rivals"
+    background="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+    type="veteran"
     @click="handleTap"
   >
     <!-- Buildup Phase -->
@@ -18,33 +18,19 @@
 
     <!-- Reveal Phase -->
     <div v-else class="reveal-container">
-      <div class="slide-emoji">⚔️</div>
-      <h1 class="slide-title">Your Rivalry Squad</h1>
+      <div class="slide-emoji">📅</div>
+      <h1 class="slide-title">{{ yearsActive }} Years in Track & Field</h1>
       
-      <div v-if="topRivals.length > 0" class="rivals-list">
-        <div 
-          v-for="(rival, index) in topRivals.slice(0, 3)" 
-          :key="rival.name"
-          class="rival-item"
-        >
-          <div class="rival-rank">{{ index + 1 }}.</div>
-          <div class="rival-info">
-            <div class="rival-name">{{ rival.name }}</div>
-            <div class="rival-meetings">Faced {{ rival.meetings }} times</div>
-          </div>
-        </div>
-        
-        <div class="rivalry-summary">
-          You've faced these athletes a combined {{ totalMeetings }} times.
-          <br/>
-          It's giving 'anime rivalry arc' energy ⚡
-        </div>
+      <div class="massive-stat">
+        <div class="stat-value-massive">{{ yearsActive }}</div>
+        <div class="stat-label-massive">YEARS ACTIVE</div>
+        <div class="stat-subtext">{{ veteranJoke }}</div>
       </div>
       
-      <div v-else class="massive-stat">
-        <div class="stat-value-massive">0</div>
-        <div class="stat-label-massive">RIVALS</div>
-        <div class="stat-subtext">You're too good! No one can keep up 🦅</div>
+      <!-- Nickname Reveal -->
+      <div class="nickname-reveal">
+        <div class="nickname-label">Meet:</div>
+        <div class="nickname-value">{{ nickname }}</div>
       </div>
     </div>
   </SlideWrapper>
@@ -53,20 +39,49 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import SlideWrapper from './SlideWrapper.vue'
-import { getTopRivalsSequence } from '@/utils/newSlideJokes'
 
 interface Props {
-  topRivals: Array<{ name: string; meetings: number }>
+  yearsActive: number
+  nickname: string
 }
 
 const props = defineProps<Props>()
 
 const phase = ref<'buildup' | 'reveal'>('buildup')
 const currentLineIndex = ref(-1)
-const sequence = getTopRivalsSequence(props.topRivals)
 
-const totalMeetings = computed(() => {
-  return props.topRivals.slice(0, 3).reduce((sum, rival) => sum + rival.meetings, 0)
+// Generate sequence based on years
+const sequence = computed(() => {
+  const lines = ["You've been on the track scene for a while..."]
+  
+  if (props.yearsActive <= 2) {
+    lines.push("Just getting started!")
+    lines.push("Fresh legs, big dreams 👟")
+  } else if (props.yearsActive <= 5) {
+    lines.push("Finding your rhythm...")
+    lines.push("No longer a rookie 📚")
+  } else if (props.yearsActive <= 10) {
+    lines.push("Seen a lot of starting lines...")
+    lines.push("Veteran status loading... 🏠")
+  } else {
+    lines.push("Longer than some competitors have been alive!")
+    lines.push("Is retirement knocking? (Jk) 🏛️")
+  }
+  
+  return lines
+})
+
+// Generate joke based on years (from spec)
+const veteranJoke = computed(() => {
+  if (props.yearsActive <= 2) {
+    return "Fresh legs! The track is your playground 🏃"
+  } else if (props.yearsActive <= 5) {
+    return "Getting serious! You know your way around a starting block 💪"
+  } else if (props.yearsActive <= 10) {
+    return "Veteran status unlocked! You've seen enough starting blocks to build a house 🏠"
+  } else {
+    return "Track legend! You remember when timing chips were optional ⏱️"
+  }
 })
 
 let sequenceTimer: any = null
@@ -76,7 +91,7 @@ function startSequence() {
   currentLineIndex.value = -1
   
   const advance = () => {
-    if (currentLineIndex.value < sequence.length - 1) {
+    if (currentLineIndex.value < sequence.value.length - 1) {
       currentLineIndex.value++
       sequenceTimer = setTimeout(advance, 1500)
     } else {
@@ -150,6 +165,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: var(--spacing-2xl);
 }
 
 .stat-value-massive {
@@ -178,75 +194,47 @@ onMounted(() => {
   font-style: italic;
 }
 
-/* Rivals list styles */
-.rivals-list {
-  width: 100%;
-  max-width: 600px;
-}
-
-.rival-item {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-lg);
-  padding: var(--spacing-lg);
-  margin-bottom: var(--spacing-md);
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
-}
-
-.rival-item:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateX(5px);
-}
-
-.rival-rank {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 3rem;
-  color: #00ff9d;
-  min-width: 50px;
-}
-
-.rival-info {
-  flex: 1;
-  text-align: left;
-}
-
-.rival-name {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: white;
-  margin-bottom: var(--spacing-xs);
-}
-
-.rival-meetings {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.rivalry-summary {
-  margin-top: var(--spacing-xl);
-  padding-top: var(--spacing-xl);
-  border-top: 2px solid rgba(255, 255, 255, 0.2);
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
+/* Nickname reveal */
+.nickname-reveal {
+  margin-top: var(--spacing-2xl);
+  padding-top: var(--spacing-2xl);
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
   text-align: center;
+  animation: fadeIn 1s ease-in 0.5s both;
+}
+
+.nickname-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: var(--spacing-md);
+}
+
+.nickname-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  color: #00ff9d;
+  text-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
+  letter-spacing: 2px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
   .story-line { font-size: 1.8rem; }
   .stat-value-massive { font-size: 6rem; }
   .stat-label-massive { font-size: 1.5rem; }
-  
-  .rival-rank { font-size: 2rem; min-width: 40px; }
-  .rival-name { font-size: 1.2rem; }
-  .rival-meetings { font-size: 0.9rem; }
-  .rivalry-summary { font-size: 1rem; }
+  .nickname-value { font-size: 2.5rem; }
 }
 </style>

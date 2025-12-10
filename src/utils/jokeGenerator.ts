@@ -1,7 +1,5 @@
 import type { ProcessedAthleteStats } from '@/types/athleteDetails'
 
-import type { ProcessedAthleteStats } from '@/types/athleteDetails'
-
 export function getExperienceSequence(yearsActive: number): string[] {
   const lines = ["You've been on the track scene for a while..."]
   
@@ -68,44 +66,34 @@ export function getCompetitionSequence(frequency: string, totalCompetitions: num
 }
 
 export function generateNickname(stats: ProcessedAthleteStats, name: string): string {
-  // ... (keep existing logic, it returns a string which is fine for the reveal)
-  const prefixes: string[] = []
-  const suffixes: string[] = []
-
-  // Based on experience
-  if (stats.yearsActive <= 2) {
-    prefixes.push('Rookie')
-  } else if (stats.yearsActive <= 5) {
-    prefixes.push('Rising')
-  } else if (stats.yearsActive <= 10) {
-    prefixes.push('Veteran')
-  } else {
-    prefixes.push('Legendary')
+  // New formula: [Frequency Modifier] + [Event Animal]
+  
+  // Frequency based on competition count
+  let frequency = 'Weekend'
+  if (stats.totalCompetitions >= 16) {
+    frequency = 'Iron'
+  } else if (stats.totalCompetitions >= 10) {
+    frequency = 'Relentless'
+  } else if (stats.totalCompetitions >= 6) {
+    frequency = 'Steady'
   }
-
-  // Based on performance
-  if (stats.hasWorldRecord) {
-    suffixes.push('Record Breaker')
-  } else if (stats.averagePlace <= 2) {
-    suffixes.push('Podium Hunter')
-  } else if (stats.isImproving) {
-    suffixes.push('Rising Star')
-  } else {
-    suffixes.push('Competitor')
+  
+  // Animal based on discipline category
+  const animals: Record<string, string> = {
+    sprint: 'Cheetah',
+    distance: stats.mainDiscipline.includes('Marathon') || stats.mainDiscipline.includes('5000') || stats.mainDiscipline.includes('10000') ? 'Camel' : 'Gazelle',
+    jump: stats.mainDiscipline.includes('High Jump') || stats.mainDiscipline.includes('Pole') ? 'Grasshopper' : 'Frog',
+    throw: Math.random() > 0.5 ? 'Rhino' : 'Gorilla', // Randomize between two
+    combined: 'Chameleon'
   }
-
-  // Based on discipline
-  const disciplineNames: Record<string, string> = {
-    sprint: 'Speedster',
-    distance: 'Endurance Beast',
-    jump: 'Air Walker',
-    throw: 'Power House',
-    combined: 'All-Rounder'
+  
+  // Add hurdles detection
+  if (stats.mainDiscipline.toLowerCase().includes('hurdle')) {
+    return `${frequency} Kangaroo`
   }
-
-  const disciplineName = disciplineNames[stats.disciplineCategory] ?? 'Athlete'
-
-  return `The ${prefixes[0]} ${disciplineName}`
+  
+  const animal = animals[stats.disciplineCategory] ?? 'Athlete'
+  return `${frequency} ${animal}`
 }
 
 export function getWelcomeMessage(firstName: string): string {

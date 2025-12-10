@@ -263,9 +263,9 @@
 
 **Frequency Modifiers:**
 - 1-5 competitions: "Weekend"
-- 6-15 competitions: "Steady"
-- 16-30 competitions: "Relentless"
-- 30+ competitions: "Iron"
+- 6-10 competitions: "Steady"
+- 10-16 competitions: "Relentless"
+- 16+ competitions: "Iron"
 
 **Event Animals:**
 - Sprints (100m, 200m): Cheetah
@@ -286,12 +286,6 @@
 
 ## TECHNICAL NOTES
 
-**Data Sources:**
-- World Athletics API endpoints needed:
-  - `/api/results-by-athlete` - main results
-  - Individual competition details for reaction times, wind, lanes
-  - Athlete profile for age, country
-
 **Calculations:**
 - Victory rate: (Top 3 finishes / Total competitions) × 100
 - Years competing: Current year - Year of first competition
@@ -304,8 +298,3 @@
 - If only 1 country: adjust joke accordingly
 - If no wind data: skip wind slide
 - Always have fallback jokes
-
-**Performance:**
-- Cache API responses
-- Pre-calculate nicknames
-- Optimize map rendering

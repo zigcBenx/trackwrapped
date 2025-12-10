@@ -19,31 +19,72 @@
     <!-- Reveal Phase -->
     <div v-else class="reveal-container">
       <div class="slide-emoji">🏆</div>
-      <h1 class="slide-title">Race Frequency</h1>
-      <div class="massive-stat">
-        <div class="stat-value-massive">{{ totalCompetitions }}</div>
-        <div class="stat-label-massive">COMPETITIONS</div>
-        <div class="stat-subtext">That's a lot of bib numbers!</div>
+      <h1 class="slide-title">Your {{ heatmapData.year }} Competition Calendar</h1>
+      
+      <!-- Competition Heatmap -->
+      <CompetitionHeatmap 
+        :weeks="heatmapData.weeks"
+        :year="heatmapData.year"
+      />
+      
+      <!-- Total count and joke -->
+      <div class="competition-summary">
+        <div class="stat-value-large">{{ totalCompetitions }}</div>
+        <div class="stat-label-large">TOTAL COMPETITIONS</div>
+        <div class="stat-subtext">{{ frequencyJoke }}</div>
       </div>
     </div>
   </SlideWrapper>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import SlideWrapper from './SlideWrapper.vue'
-import { getCompetitionSequence } from '@/utils/jokeGenerator'
+import CompetitionHeatmap from '../visuals/CompetitionHeatmap.vue'
+
+interface Week {
+  week: number
+  count: number
+  intensity: number
+}
+
+interface HeatmapData {
+  weeks: Week[]
+  year: number
+  totalCompetitions: number
+}
 
 interface Props {
   totalCompetitions: number
   competitionFrequency: string
+  heatmapData: HeatmapData
 }
 
 const props = defineProps<Props>()
 
 const phase = ref<'buildup' | 'reveal'>('buildup')
 const currentLineIndex = ref(-1)
-const sequence = getCompetitionSequence(props.competitionFrequency, props.totalCompetitions)
+
+const sequence = computed(() => {
+  return [
+    "Looking at your race calendar...",
+    `You've competed ${props.totalCompetitions} times`,
+    "Each square is a week of the year..."
+  ]
+})
+
+// Joke based on frequency (from spec)
+const frequencyJoke = computed(() => {
+  if (props.totalCompetitions <= 5) {
+    return "Quality over quantity! You're more selective than a Michelin star restaurant ⭐"
+  } else if (props.totalCompetitions <= 15) {
+    return "Solid season! You found the sweet spot between training and competing 👌"
+  } else if (props.totalCompetitions <= 30) {
+    return "Busy athlete! Your calendar looks like Tetris 📅"
+  } else {
+    return "Do you even rest? You basically LIVE at the track ⛺"
+  }
+})
 
 let sequenceTimer: any = null
 
@@ -52,7 +93,7 @@ function startSequence() {
   currentLineIndex.value = -1
   
   const advance = () => {
-    if (currentLineIndex.value < sequence.length - 1) {
+    if (currentLineIndex.value < sequence.value.length - 1) {
       currentLineIndex.value++
       sequenceTimer = setTimeout(advance, 1500)
     } else {
@@ -105,6 +146,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .slide-emoji {
@@ -119,31 +161,30 @@ onMounted(() => {
   text-transform: uppercase;
   letter-spacing: 4px;
   color: rgba(255, 255, 255, 0.7);
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-2xl);
 }
 
-.massive-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.competition-summary {
+  margin-top: var(--spacing-2xl);
+  text-align: center;
 }
 
-.stat-value-massive {
+.stat-value-large {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 10rem;
+  font-size: 6rem;
   line-height: 0.9;
   color: white;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
 }
 
-.stat-label-massive {
+.stat-label-large {
   font-family: 'Outfit', sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 800;
   text-transform: uppercase;
   color: #00ff9d;
   letter-spacing: 2px;
-  margin-top: var(--spacing-md);
+  margin-top: var(--spacing-sm);
 }
 
 .stat-subtext {
@@ -152,11 +193,13 @@ onMounted(() => {
   color: rgba(255, 255, 255, 0.8);
   margin-top: var(--spacing-lg);
   font-style: italic;
+  max-width: 600px;
 }
 
 @media (max-width: 768px) {
   .story-line { font-size: 1.8rem; }
-  .stat-value-massive { font-size: 6rem; }
-  .stat-label-massive { font-size: 1.5rem; }
+  .stat-value-large { font-size: 4rem; }
+  .stat-label-large { font-size: 1.2rem; }
+  .stat-subtext { font-size: 1rem; }
 }
 </style>
