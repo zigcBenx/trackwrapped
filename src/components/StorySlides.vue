@@ -27,28 +27,117 @@
         <!-- Progress Indicator -->
         <div class="progress-indicator">
           <div 
-            v-for="(slide, index) in slides" 
-            :key="slide.id"
+            v-for="index in totalSlides" 
+            :key="index"
             class="progress-bar"
-            :class="{ active: index === currentSlideIndex }"
+            :class="{ active: index - 1 === currentSlideIndex }"
           ></div>
         </div>
         
         <!-- Slide Container -->
         <div class="slides-wrapper">
           <TransitionGroup name="slide">
-            <StorySlide
-              v-for="(slide, index) in slides"
-              v-show="index === currentSlideIndex"
-              :key="slide.id"
-              :title="slide.computedTitle"
-              :computed-sequence="slide.computedSequence"
-              :computed-reveal="slide.computedReveal"
-              :data="slide.data"
-              :background="slide.background"
-              :emoji="slide.emoji"
-              :type="slide.type"
-              :layout="slide.layout"
+            <!-- Welcome Slide -->
+            <WelcomeSlide
+              v-if="currentSlideIndex === 0 && stats"
+              v-show="currentSlideIndex === 0"
+              key="welcome"
+              :first-name="firstName"
+              :last-name="lastName"
+              :stats="stats"
+            />
+            
+            <!-- Experience Slide -->
+            <ExperienceSlide
+              v-if="currentSlideIndex === 1 && stats"
+              v-show="currentSlideIndex === 1"
+              key="experience"
+              :years-active="stats.yearsActive"
+            />
+            
+            <!-- Discipline Slide -->
+            <DisciplineSlide
+              v-if="currentSlideIndex === 2 && stats"
+              v-show="currentSlideIndex === 2"
+              key="discipline"
+              :discipline-category="stats.disciplineCategory"
+              :main-discipline="stats.mainDiscipline"
+            />
+            
+            <!-- Performance Slide -->
+            <PerformanceSlide
+              v-if="currentSlideIndex === 3 && stats"
+              v-show="currentSlideIndex === 3"
+              key="performance"
+              :is-improving="stats.isImproving"
+              :stats="stats"
+            />
+            
+            <!-- Competition Slide -->
+            <CompetitionSlide
+              v-if="currentSlideIndex === 4 && stats"
+              v-show="currentSlideIndex === 4"
+              key="competition"
+              :total-competitions="stats.totalCompetitions"
+              :competition-frequency="stats.competitionFrequency"
+            />
+            
+            <!-- Nickname Slide -->
+            <NicknameSlide
+              v-if="currentSlideIndex === 5"
+              v-show="currentSlideIndex === 5"
+              key="nickname"
+              :nickname="nickname"
+            />
+            
+            <!-- World Record Slide -->
+            <WorldRecordSlide
+              v-if="currentSlideIndex === 6 && stats"
+              v-show="currentSlideIndex === 6"
+              key="worldrecord"
+              :best-performance="stats.bestPerformance"
+              :main-discipline="stats.mainDiscipline"
+            />
+            
+            <!-- Victory Rate Slide -->
+            <VictoryRateSlide
+              v-if="currentSlideIndex === 7 && stats"
+              v-show="currentSlideIndex === 7"
+              key="victoryrate"
+              :victory-rate="stats.victoryRate"
+            />
+            
+            <!-- Nemesis Slide -->
+            <NemesisSlide
+              v-if="currentSlideIndex === 8 && stats"
+              v-show="currentSlideIndex === 8"
+              key="nemesis"
+              :nemesis="stats.nemesis"
+            />
+            
+            <!-- Rivals Slide -->
+            <RivalsSlide
+              v-if="currentSlideIndex === 9 && stats"
+              v-show="currentSlideIndex === 9"
+              key="rivals"
+              :top-rivals="stats.topRivals"
+            />
+            
+            <!-- Wind Slide -->
+            <WindSlide
+              v-if="currentSlideIndex === 10 && stats"
+              v-show="currentSlideIndex === 10"
+              key="wind"
+              :average-wind="stats.averageWind"
+              :has-wind-data="stats.hasWindData"
+            />
+            
+            <!-- Finale Slide -->
+            <FinaleSlide
+              v-if="currentSlideIndex === 11 && stats"
+              v-show="currentSlideIndex === 11"
+              key="finale"
+              :stats="stats"
             />
           </TransitionGroup>
         </div>
@@ -66,7 +155,7 @@
         </button>
         
         <button 
-          v-if="currentSlideIndex < slides.length - 1"
+          v-if="currentSlideIndex < totalSlides - 1"
           class="nav-button nav-button-next"
           @click="nextSlide"
           aria-label="Next slide"
@@ -83,10 +172,24 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, onUnmounted } from 'vue'
 import StoryLoader from './StoryLoader.vue'
-import StorySlide from './StorySlide.vue'
 import { getCompleteAthleteData } from '@/services/athleteDetailsService'
 import { processAthleteData } from '@/utils/storyGenerator'
-import { generateSlides, type SlideData } from '@/config/slideTemplates'
+import { generateNickname } from '@/utils/jokeGenerator'
+import type { ProcessedAthleteStats } from '@/types/athleteDetails'
+
+// Import individual slide components
+import WelcomeSlide from './slides/WelcomeSlide.vue'
+import ExperienceSlide from './slides/ExperienceSlide.vue'
+import DisciplineSlide from './slides/DisciplineSlide.vue'
+import PerformanceSlide from './slides/PerformanceSlide.vue'
+import CompetitionSlide from './slides/CompetitionSlide.vue'
+import NicknameSlide from './slides/NicknameSlide.vue'
+import WorldRecordSlide from './slides/WorldRecordSlide.vue'
+import VictoryRateSlide from './slides/VictoryRateSlide.vue'
+import NemesisSlide from './slides/NemesisSlide.vue'
+import RivalsSlide from './slides/RivalsSlide.vue'
+import WindSlide from './slides/WindSlide.vue'
+import FinaleSlide from './slides/FinaleSlide.vue'
 
 interface Props {
   athleteId: number | null
@@ -102,10 +205,17 @@ const emit = defineEmits<{
 
 const isLoading = ref(false)
 const error = ref<string | null>(null)
-const slides = ref<any[]>([])
 const currentSlideIndex = ref(0)
 
-// Watch for athlete changes and fetch data
+// Data
+const firstName = ref('')
+const lastName = ref('')
+const stats = ref<ProcessedAthleteStats | null>(null)
+const nickname = ref('')
+
+// Total number of slides
+const totalSlides = 12
+
 // Watch for athlete changes and open state
 watch([() => props.athleteId, () => props.isOpen], async ([newId, newIsOpen]) => {
   if (newId && newIsOpen) {
@@ -120,15 +230,13 @@ async function loadAthleteStory(athleteId: number) {
   
   try {
     const { details, results } = await getCompleteAthleteData(athleteId, props.scope)
-    const stats = processAthleteData(details, results)
+    const processedStats = processAthleteData(details, results)
     
-    const slideData: SlideData = {
-      firstName: details.firstname,
-      lastName: details.lastname,
-      stats
-    }
-    
-    slides.value = generateSlides(slideData)
+    // Store data
+    firstName.value = details.firstname
+    lastName.value = details.lastname
+    stats.value = processedStats
+    nickname.value = generateNickname(processedStats, details.firstname)
   } catch (err) {
     error.value = 'Failed to load athlete data. Please try again.'
     console.error('Error loading athlete story:', err)
@@ -138,7 +246,7 @@ async function loadAthleteStory(athleteId: number) {
 }
 
 function nextSlide() {
-  if (currentSlideIndex.value < slides.value.length - 1) {
+  if (currentSlideIndex.value < totalSlides - 1) {
     currentSlideIndex.value++
   }
 }

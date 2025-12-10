@@ -19,6 +19,38 @@ This template should help get you started developing with Vue 3 in Vite.
 
 TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
 
+## Slides ideas
+- INTRO
+- Athlete hero (first slide) - Name, country,
+- Experience - years competing
+- Nickname reveal
+- Favorite discipline
+
+- SEASON
+- Season opener flashback
+- Number of competitions this season
+- PB
+- Podiums this season
+- Comparison to last year (if lifetime, show results growth over season)
+
+- COMPETITION
+- Rivals
+- Nemesis
+- worst competition or DQ
+
+- LEGACY
+- World Record comparison
+- Wind
+- Season highlights
+
+-other: lane preference, add emojis for spirit animals/nickname, track tourist - multiple countries
+
+## Other ideas
+- Github like graph of competitions
+- World map of generated profiles
+- Nicknames would be generated from discipline, how often they compete
+- Examples: lazy cheetah (sprinter who rearly compeetes), consistent Gorilla for thrower with lots of competitions, legendary bizon,... some better names that that but you get the point -peple shouldn't be offended by the names, they should be funny and rememberable
+
 ## Customize configuration
 
 See [Vite Configuration Reference](https://vite.dev/config/).
