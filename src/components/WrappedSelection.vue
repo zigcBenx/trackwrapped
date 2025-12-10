@@ -1,7 +1,28 @@
 <template>
   <Transition name="fade">
     <div v-if="isOpen" class="selection-overlay" @click.self="$emit('close')">
-      <div class="selection-container">
+      <!-- Coming Soon State -->
+      <div v-if="showComingSoon" class="selection-container coming-soon-container">
+        <div class="coming-soon-content">
+          <div class="icon-wrapper">🚀</div>
+          <h2 class="selection-title">Coming Soon</h2>
+          <p class="selection-subtitle">
+            Lifetime Wrapped is currently under development. <br>
+            We're crunching millions of results to bring you the ultimate career retrospective.
+          </p>
+          
+          <button class="select-button primary-button" @click="switchToSeason">
+            Show my 2025 Wrapped
+          </button>
+          
+          <button class="text-button" @click="showComingSoon = false">
+            Back to Options
+          </button>
+        </div>
+      </div>
+
+      <!-- Selection State -->
+      <div v-else class="selection-container">
         <h2 class="selection-title">Choose Your Experience</h2>
         <p class="selection-subtitle">Select the timeframe for your TrackWrapped story</p>
         
@@ -47,8 +68,7 @@
               </ul>
             </div>
             <button class="select-button premium-button">
-              <span v-if="isProcessing">Processing...</span>
-              <span v-else>Unlock Lifetime</span>
+              Unlock Lifetime
             </button>
           </div>
         </div>
@@ -73,18 +93,22 @@ const emit = defineEmits<{
 
 const selectedOption = ref<'season' | 'lifetime' | null>(null)
 const isProcessing = ref(false)
+const showComingSoon = ref(false)
 
 async function selectOption(option: 'season' | 'lifetime') {
   selectedOption.value = option
   
   if (option === 'lifetime') {
-    // Simulate payment processing
-    isProcessing.value = true
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    isProcessing.value = false
+    showComingSoon.value = true
+    return
   }
   
   emit('start', option)
+}
+
+function switchToSeason() {
+  showComingSoon.value = false
+  selectOption('season')
 }
 </script>
 
@@ -325,5 +349,61 @@ async function selectOption(option: 'season' | 'lifetime') {
     scroll-snap-align: center;
     margin-bottom: 0;
   }
+
+}
+
+.coming-soon-container {
+  max-width: 600px;
+}
+
+.coming-soon-content {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.icon-wrapper {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-md);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.primary-button {
+  background: var(--color-accent-primary);
+  color: black;
+  margin-top: var(--spacing-md);
+}
+
+.primary-button:hover {
+  background: #00e68a;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 255, 157, 0.3);
+}
+
+.text-button {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  transition: color 0.2s;
+}
+
+.text-button:hover {
+  color: white;
+  text-decoration: underline;
 }
 </style>
