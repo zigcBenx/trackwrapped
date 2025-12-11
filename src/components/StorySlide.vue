@@ -13,6 +13,7 @@
       :discipline-category="data?.stats?.disciplineCategory || 'sprint'"
       :total-competitions="data?.stats?.totalCompetitions || 0"
       :years-active="data?.stats?.yearsActive || 0"
+      :nickname="data?.nickname || ''"
     />
 
     <!-- Narrative Flow Layout -->
