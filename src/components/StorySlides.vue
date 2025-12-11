@@ -23,17 +23,29 @@
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
+
+
         
         <!-- Slide Container -->
-        <div class="slides-wrapper">
+        <div class="slides-wrapper" @click="handleSlideTap">
           <!-- Progress Indicator (Inside card) -->
           <div class="progress-indicator">
             <div 
               v-for="index in totalSlides" 
               :key="index"
-              class="progress-bar"
-              :class="{ active: index - 1 === currentSlideIndex }"
-            ></div>
+              class="progress-bar-container"
+            >
+              <div 
+                class="progress-bar-fill"
+                :class="{ 
+                  active: index - 1 === currentSlideIndex,
+                  completed: index - 1 < currentSlideIndex,
+                  paused: isPaused && index - 1 === currentSlideIndex
+                }"
+                :style="index - 1 === currentSlideIndex ? { animationDuration: `${currentDuration}ms` } : {}"
+                @animationend="handleAnimationEnd(index - 1)"
+              ></div>
+            </div>
           </div>
 
           <TransitionGroup name="slide">
@@ -145,6 +157,17 @@
               :athlete-id="athleteId"
             />
           </TransitionGroup>
+
+          <!-- Pause/Play Button (Inside wrapper) -->
+          <button class="control-button pause-button" @click="togglePause" :aria-label="isPaused ? 'Play' : 'Pause'">
+            <svg v-if="isPaused" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <svg v-else width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+              <rect x="6" y="4" width="4" height="16"></rect>
+              <rect x="14" y="4" width="4" height="16"></rect>
+            </svg>
+          </button>
         </div>
         
         <!-- Navigation Buttons -->
@@ -179,6 +202,19 @@ import { ref, watch, onMounted, onUnmounted } from 'vue'
 import StoryLoader from './StoryLoader.vue'
 import { getCompleteAthleteData } from '@/services/athleteDetailsService'
 import { processAthleteData } from '@/utils/storyGenerator'
+import { 
+  getExperienceSequence, 
+  getDisciplineSequence, 
+  getPerformanceSequence, 
+  getCompetitionSequence 
+} from '@/utils/jokeGenerator'
+import { 
+  getWorldRecordSequence, 
+  getVictoryRateSequence, 
+  getNemesisSequence, 
+  getTopRivalsSequence, 
+  getWindSpeedSequence 
+} from '@/utils/newSlideJokes'
 import { generateNickname } from '@/utils/jokeGenerator'
 import type { ProcessedAthleteStats } from '@/types/athleteDetails'
 
@@ -210,6 +246,9 @@ const emit = defineEmits<{
 const isLoading = ref(false)
 const error = ref<string | null>(null)
 const currentSlideIndex = ref(0)
+const currentDuration = ref(5000)
+const isPaused = ref(false)
+let autoplayTimer: any = null
 
 // Data
 const firstName = ref('')
@@ -225,8 +264,17 @@ const totalSlides = 11
 watch([() => props.athleteId, () => props.isOpen], async ([newId, newIsOpen]) => {
   if (newId && newIsOpen) {
     await loadAthleteStory(newId)
+  } else if (!newIsOpen) {
+    stopAutoplay()
   }
 }, { immediate: true })
+
+// Watch for slide changes to restart autoplay
+watch(currentSlideIndex, () => {
+  if (props.isOpen && !isLoading.value) {
+    startAutoplay()
+  }
+})
 
 async function loadAthleteStory(athleteId: number) {
   isLoading.value = true
@@ -243,11 +291,102 @@ async function loadAthleteStory(athleteId: number) {
     country.value = details.country
     stats.value = processedStats
     nickname.value = generateNickname(processedStats, details.firstname)
+    
+    // Start autoplay for first slide
+    startAutoplay()
   } catch (err) {
     error.value = 'Failed to load athlete data. Please try again.'
     console.error('Error loading athlete story:', err)
   } finally {
     isLoading.value = false
+  }
+}
+
+function calculateSlideDuration(index: number): number {
+  if (!stats.value) return 5000
+  
+  const BASE_DELAY = 500 // Initial delay
+  const LINE_DELAY = 1500 // Time per line
+  const REVEAL_DELAY = 2000 // Wait before reveal
+  const REVEAL_ANIM = 1000 // Reveal animation time
+  const READING_TIME = 5000 // Increased from 2000 to 5000 for more time
+  
+  const calculateSequenceDuration = (lines: string[]) => {
+    return BASE_DELAY + ((lines.length - 1) * LINE_DELAY) + REVEAL_DELAY + REVEAL_ANIM + READING_TIME
+  }
+
+  switch (index) {
+    case 0: // Welcome
+      return 6000 // Static slide
+      
+    case 1: // Veteran Status
+      return calculateSequenceDuration(getExperienceSequence(stats.value.yearsActive))
+      
+    case 2: // Discipline
+      return calculateSequenceDuration(getDisciplineSequence(stats.value.disciplineCategory, stats.value.mainDiscipline))
+      
+    case 3: // Performance
+      return calculateSequenceDuration(getPerformanceSequence(stats.value.isImproving, stats.value))
+      
+    case 4: // Competition
+      return calculateSequenceDuration(getCompetitionSequence(stats.value.competitionFrequency, stats.value.totalCompetitions))
+      
+    case 5: // World Record
+      return calculateSequenceDuration(getWorldRecordSequence(stats.value.bestPerformance, stats.value.mainDiscipline))
+      
+    case 6: // Victory Rate
+      return calculateSequenceDuration(getVictoryRateSequence(stats.value.victoryRate))
+      
+    case 7: // Nemesis
+      return calculateSequenceDuration(getNemesisSequence(stats.value.nemesis))
+      
+    case 8: // Rivals
+      return calculateSequenceDuration(getTopRivalsSequence(stats.value.topRivals))
+      
+    case 9: // Wind
+      return calculateSequenceDuration(getWindSpeedSequence(stats.value.averageWind, stats.value.hasWindData))
+      
+    case 10: // Share Card
+      return 10000 // Give more time for the final card
+      
+    default:
+      return 5000
+  }
+}
+
+function startAutoplay() {
+  stopAutoplay()
+  isPaused.value = false
+  currentDuration.value = calculateSlideDuration(currentSlideIndex.value)
+  
+  // The actual advancement is handled by the animationend event on the progress bar
+  // But we keep a backup timer just in case, slightly longer than the animation
+  autoplayTimer = setTimeout(() => {
+    nextSlide()
+  }, currentDuration.value + 100)
+}
+
+function stopAutoplay() {
+  if (autoplayTimer) {
+    clearTimeout(autoplayTimer)
+    autoplayTimer = null
+  }
+}
+
+function togglePause() {
+  isPaused.value = !isPaused.value
+  if (isPaused.value) {
+    stopAutoplay()
+  } else {
+    // Resume logic: we rely on the CSS animation resuming
+    // We don't set a backup timer here to avoid complexity with remaining time
+    // The animationend event will still trigger nextSlide
+  }
+}
+
+function handleAnimationEnd(index: number) {
+  if (index === currentSlideIndex.value && !isPaused.value) {
+    nextSlide()
   }
 }
 
@@ -263,7 +402,24 @@ function previousSlide() {
   }
 }
 
+function handleSlideTap(event: MouseEvent) {
+  // Ignore if clicking a button or interactive element
+  const target = event.target as HTMLElement
+  if (target.closest('button') || target.closest('.interactive')) return
+
+  const wrapper = event.currentTarget as HTMLElement
+  const rect = wrapper.getBoundingClientRect()
+  const x = event.clientX - rect.left
+  
+  if (x < rect.width / 2) {
+    previousSlide()
+  } else {
+    nextSlide()
+  }
+}
+
 function handleClose() {
+  stopAutoplay()
   emit('close')
   currentSlideIndex.value = 0
 }
@@ -334,18 +490,43 @@ onUnmounted(() => {
   justify-content: center;
 }
 
-.progress-bar {
+.progress-bar-container {
   flex: 1;
   height: 4px;
   background: rgba(255, 255, 255, 0.3);
   border-radius: 2px;
-  transition: all var(--transition-base);
+  overflow: hidden;
 }
 
-.close-button {
+.progress-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: white;
+  border-radius: 2px;
+}
+
+.progress-bar-fill.completed {
+  width: 100%;
+}
+
+.progress-bar-fill.active {
+  animation-name: fillProgress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.progress-bar-fill.paused {
+  animation-play-state: paused;
+}
+
+@keyframes fillProgress {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+.close-button,
+.control-button {
   position: fixed;
-  top: 30px;
-  right: 30px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -361,7 +542,21 @@ onUnmounted(() => {
   z-index: 10001;
 }
 
-.close-button:hover {
+.close-button {
+  top: 30px;
+  right: 30px;
+}
+
+.pause-button {
+  position: absolute;
+  top: auto;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.close-button:hover,
+.control-button:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: scale(1.1);
 }
@@ -494,6 +689,7 @@ onUnmounted(() => {
 
 @media (max-width: 768px) {
   .close-button,
+  .control-button,
   .nav-button {
     width: 40px;
     height: 40px;
@@ -501,6 +697,12 @@ onUnmounted(() => {
   
   .close-button {
     top: var(--spacing-md);
+    right: var(--spacing-md);
+  }
+
+  .pause-button {
+    top: auto;
+    bottom: var(--spacing-md);
     right: var(--spacing-md);
   }
   
