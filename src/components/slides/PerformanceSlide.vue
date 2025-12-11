@@ -109,8 +109,8 @@ onMounted(() => {
 }
 
 .slide-emoji {
-  font-size: 6rem;
-  margin-bottom: var(--spacing-xl);
+  font-size: 4rem; /* Reduced from 6rem */
+  margin-bottom: var(--spacing-lg);
   filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
 }
 
@@ -131,15 +131,16 @@ onMounted(() => {
 
 .stat-value-massive {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 10rem;
+  font-size: 5rem; /* Reduced from 10rem */
   line-height: 0.9;
   color: white;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  text-align: center;
 }
 
 .stat-label-massive {
   font-family: 'Outfit', sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem; /* Reduced from 2rem */
   font-weight: 800;
   text-transform: uppercase;
   color: #00ff9d;

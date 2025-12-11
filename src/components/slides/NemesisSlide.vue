@@ -143,7 +143,7 @@ onMounted(() => {
 
 .stat-value-massive {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 10rem;
+  font-size: 6rem; /* Fixed size for card */
   line-height: 0.9;
   color: white;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);

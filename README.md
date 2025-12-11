@@ -19,6 +19,16 @@ This template should help get you started developing with Vue 3 in Vite.
 
 TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
 
+# FIX & New ideas
+- remove wind slide if there is no info about wind
+- on form "steady" add comparison to last season
+- add average points achieved and that put you in top X%
+- When showing you a discipline it shows you your spirit animal - so your nickname makes sense
+- Competition flashback or something, where we could actually list competition names?
+- missing goat name, and result is often not correct - make sure it's same discipline and same gender
+- nemesis is still not responsive and the number of meetings is wrong
+- check last slide, peak month, power level, instead of longest streak you are top X% or average points achieved
+
 ## Slides ideas
 - INTRO
 - Athlete hero (first slide) - Name, country,

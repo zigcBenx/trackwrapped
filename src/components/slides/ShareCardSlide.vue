@@ -1,60 +1,86 @@
 <template>
   <SlideWrapper 
-    background="linear-gradient(135deg, #2c3e50 0%, #000000 100%)"
+    background="#000000"
     type="share-card"
     @click="handleTap"
   >
-    <!-- Reveal Phase (Direct reveal for summary card) -->
-    <div class="share-card-container">
+    <div class="bento-container">
       <!-- Header -->
-      <div class="card-header">
-        <div class="athlete-info">
-          <h1 class="athlete-name">{{ firstName }} {{ lastName }}</h1>
-          <div class="athlete-meta">
-            <span class="country-flag" v-if="countryCode">{{ getFlagEmoji(countryCode) }}</span>
-            <span class="country-name">{{ country }}</span>
+      <div class="bento-header">
+        <div class="user-badge">
+          <div class="avatar">
+            <img 
+              v-if="profileImage && !imageError" 
+              :src="profileImage" 
+              alt="Profile" 
+              class="profile-image"
+              @error="handleImageError"
+            />
+            <span v-else>{{ initials }}</span>
+          </div>
+          <div class="user-info">
+            <div class="name-row">
+              <span class="real-name">{{ firstName }} {{ lastName }}</span>
+              <span class="country-tag" v-if="country">{{ country }}</span>
+            </div>
+            <div class="nickname">@{{ nickname.toLowerCase().replace(/\s+/g, '') }}</div>
+            <div class="main-event">{{ mainDiscipline }}</div>
           </div>
         </div>
-        <div class="nickname-badge">{{ nickname }}</div>
       </div>
 
-      <!-- Heatmap Section -->
-      <div class="heatmap-section">
-        <div class="section-label">2025 SEASON</div>
+      <!-- Heatmap Card -->
+      <div class="bento-card heatmap-card">
         <CompetitionHeatmap 
           :weeks="heatmapData.weeks"
           :year="heatmapData.year"
           class="mini-heatmap"
         />
+        <div class="heatmap-footer">{{ totalCompetitions }} competitions in 2025</div>
       </div>
 
       <!-- Stats Grid -->
       <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-label">RACES</div>
-          <div class="stat-value">{{ totalCompetitions }}</div>
+        <!-- Victory Rate -->
+        <div class="bento-card stat-card">
+          <div class="card-icon">🏆</div>
+          <div class="card-label">Victory Rate</div>
+          <div class="card-value gold">{{ victoryRate }}%</div>
         </div>
-        
-        <div class="stat-item">
-          <div class="stat-label">SEASON BEST</div>
-          <div class="stat-value">{{ seasonBest }}</div>
-          <div class="stat-sub">{{ mainDiscipline }}</div>
-        </div>
-        
-        <div class="stat-item">
-          <div class="stat-label">AVG WIND</div>
-          <div class="stat-value">{{ averageWind ? (averageWind > 0 ? '+' : '') + averageWind.toFixed(1) : '-' }}</div>
-          <div class="stat-sub">m/s</div>
-        </div>
-      </div>
 
-      <!-- Footer / CTA -->
-      <div class="card-footer">
-        <div class="app-branding">
-          <span class="logo-icon">🏃</span> trackwrapped.com
+        <!-- Longest Streak -->
+        <div class="bento-card stat-card">
+          <div class="card-icon">⚡</div>
+          <div class="card-label">Longest Streak</div>
+          <div class="card-value cyan">{{ longestStreak }} wks</div>
         </div>
-        <div class="share-cta">
-          Take a screenshot to share 📸
+
+        <!-- Total Competitions -->
+        <div class="bento-card stat-card">
+          <div class="card-icon">🏃</div>
+          <div class="card-label">Total Races</div>
+          <div class="card-value pink">{{ totalCompetitions }}</div>
+        </div>
+
+        <!-- Most Active Month -->
+        <div class="bento-card stat-card">
+          <div class="card-icon">📅</div>
+          <div class="card-label">Peak Month</div>
+          <div class="card-value purple">{{ peakMonth }}</div>
+        </div>
+
+        <!-- Season Best -->
+        <div class="bento-card stat-card">
+          <div class="card-icon">🌟</div>
+          <div class="card-label">Season Best</div>
+          <div class="card-value yellow">{{ seasonBest }}</div>
+        </div>
+
+        <!-- Power Level -->
+        <div class="bento-card stat-card">
+          <div class="card-icon">🦾</div>
+          <div class="card-label">Power Level</div>
+          <div class="card-value orange">{{ powerLevel }}</div>
         </div>
       </div>
     </div>
@@ -62,7 +88,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import SlideWrapper from './SlideWrapper.vue'
 import CompetitionHeatmap from '../visuals/CompetitionHeatmap.vue'
 
@@ -88,182 +114,327 @@ interface Props {
   mainDiscipline: string
   seasonBest: string
   averageWind: number | null
+  victoryRate: number
+  athleteId?: number | null
 }
 
 const props = defineProps<Props>()
 
-// Helper to get flag emoji from country code (if available)
-// Assuming country might be full name or code. If full name, we might need a map.
-// For now, let's try to extract code if it's in format "Country (CODE)" or just use name.
-const countryCode = computed(() => {
-  // Simple check if country string looks like a code (2-3 chars uppercase)
-  if (props.country && props.country.length <= 3) return props.country
-  return null
+const imageError = ref(false)
+
+const profileImage = computed(() => {
+  if (!props.athleteId) return null
+  return `https://media.aws.iaaf.org/athletes/${props.athleteId}.jpg`
 })
 
-function getFlagEmoji(countryCode: string) {
-  const codePoints = countryCode
-    .toUpperCase()
-    .split('')
-    .map(char =>  127397 + char.charCodeAt(0));
-  return String.fromCodePoint(...codePoints);
+function handleImageError() {
+  imageError.value = true
 }
 
+const initials = computed(() => {
+  const f = props.firstName?.charAt(0) || ''
+  const l = props.lastName?.charAt(0) || ''
+  return (f + l).toUpperCase()
+})
+
+const longestStreak = computed(() => {
+  let maxStreak = 0
+  let currentStreak = 0
+  
+  // Sort weeks by week number to be safe
+  const sortedWeeks = [...props.heatmapData.weeks].sort((a, b) => a.week - b.week)
+  
+  // Create a map of weeks present
+  const weekMap = new Set(sortedWeeks.map(w => w.week))
+  const minWeek = Math.min(...Array.from(weekMap))
+  const maxWeek = Math.max(...Array.from(weekMap))
+  
+  for (let i = minWeek; i <= maxWeek; i++) {
+    if (weekMap.has(i)) {
+      currentStreak++
+    } else {
+      maxStreak = Math.max(maxStreak, currentStreak)
+      currentStreak = 0
+    }
+  }
+  maxStreak = Math.max(maxStreak, currentStreak)
+  
+  return maxStreak || 1 // At least 1 if they have any competitions
+})
+
+const peakMonth = computed(() => {
+  const monthCounts = new Array(12).fill(0)
+  
+  props.heatmapData.weeks.forEach(w => {
+    // Approx month: week / 4.33
+    const monthIndex = Math.min(Math.floor((w.week - 1) / 4.33), 11)
+    monthCounts[monthIndex] += w.count
+  })
+  
+  const maxCount = Math.max(...monthCounts)
+  const maxIndex = monthCounts.indexOf(maxCount)
+  
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  return months[maxIndex]
+})
+
+const powerLevel = computed(() => {
+  if (props.totalCompetitions > 20) return 'Olympian'
+  if (props.totalCompetitions > 10) return 'Elite'
+  if (props.totalCompetitions > 5) return 'Pro'
+  return 'Rookie'
+})
+
 function handleTap() {
-  // No action needed, just prevents event bubbling if needed
+  // No action
 }
 </script>
 
 <style scoped>
-.share-card-container {
-  display: flex;
-  flex-direction: column;
+.bento-container {
+  width: 100%;
   height: 100%;
-  padding: var(--spacing-md);
-  gap: var(--spacing-lg);
-  justify-content: space-between;
-}
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: var(--spacing-md);
-}
-
-.athlete-name {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 3rem;
-  line-height: 0.9;
-  color: white;
-  margin-bottom: var(--spacing-xs);
-}
-
-.athlete-meta {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.7);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.nickname-badge {
-  background: linear-gradient(135deg, #00ff9d 0%, #00d4ff 100%);
-  color: #000;
-  font-family: 'Outfit', sans-serif;
-  font-weight: 800;
-  text-transform: uppercase;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 10px rgba(0, 255, 157, 0.3);
-  transform: rotate(2deg);
-}
-
-.heatmap-section {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-md);
-}
-
-.section-label {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.5);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: var(--spacing-sm);
-}
-
-/* Override heatmap styles for mini version */
-:deep(.competition-heatmap) {
-  max-width: 100%;
-}
-:deep(.heatmap-grid) {
-  padding: 5px;
-  gap: 2px;
-  background: transparent;
-}
-:deep(.heatmap-cell) {
-  border-radius: 1px;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-md);
-}
-
-.stat-item {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.stat-label {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: var(--spacing-xs);
-  letter-spacing: 1px;
-}
-
-.stat-value {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.5rem;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  padding-top: var(--spacing-2xl); /* Add space for progress bars */
   color: white;
-  line-height: 1;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
 }
 
-.stat-sub {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.8rem;
+.bento-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  flex-shrink: 0;
+}
+
+.user-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  width: 100%;
+}
+
+.avatar {
+  width: 48px; /* Slightly smaller */
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0; /* Allow truncation */
+}
+
+.name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.real-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.country-tag {
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1px 5px;
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.nickname {
+  font-size: 0.85rem;
+  color: #a1a1aa;
+}
+
+.main-event {
+  font-size: 0.75rem;
   color: #00ff9d;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   margin-top: 2px;
 }
 
-.card-footer {
-  margin-top: auto;
-  text-align: center;
+/* Cards */
+.bento-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: var(--spacing-sm);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  backdrop-filter: blur(10px);
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.app-branding {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.3);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-size: 0.9rem;
+.bento-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
-.share-cta {
-  background: rgba(255, 255, 255, 0.1);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border-radius: 30px;
-  font-family: 'Outfit', sans-serif;
-  color: white;
-  font-size: 0.9rem;
+.heatmap-card {
+  padding: var(--spacing-sm);
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.mini-heatmap {
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.heatmap-footer {
+  font-size: 0.75rem;
+  color: #71717a;
   align-self: center;
-  animation: pulse 2s infinite;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.05); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.8; }
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-sm);
+  flex: 1;
+  min-height: 0; /* Allow shrinking */
 }
 
-@media (max-width: 768px) {
-  .athlete-name { font-size: 2.5rem; }
-  .stat-value { font-size: 2rem; }
+.stat-card {
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: var(--spacing-xs);
+}
+
+.card-icon {
+  font-size: 1.25rem;
+  margin-bottom: 2px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.card-label {
+  font-size: 0.65rem;
+  color: #a1a1aa;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-value {
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+/* Colors */
+.gold { color: #fbbf24; text-shadow: 0 0 10px rgba(251, 191, 36, 0.3); }
+.cyan { color: #22d3ee; text-shadow: 0 0 10px rgba(34, 211, 238, 0.3); }
+.pink { color: #f472b6; text-shadow: 0 0 10px rgba(244, 114, 182, 0.3); }
+.purple { color: #c084fc; text-shadow: 0 0 10px rgba(192, 132, 252, 0.3); }
+.yellow { color: #facc15; text-shadow: 0 0 10px rgba(250, 204, 21, 0.3); }
+.orange { color: #fb923c; text-shadow: 0 0 10px rgba(251, 146, 60, 0.3); }
+
+/* Footer */
+.bento-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto; /* Push to bottom */
+  padding-top: var(--spacing-xs);
+  padding-bottom: var(--spacing-md); /* Add bottom padding to clear slide branding */
+  flex-shrink: 0;
+}
+
+.branding {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .card-value { font-size: 1.1rem; }
+}
+
+/* Heatmap Overrides */
+:deep(.competition-heatmap) {
+  max-width: 100%;
+}
+
+:deep(.heatmap-grid) {
+  grid-template-columns: repeat(18, 1fr) !important; /* Force 3 rows (52/18 ~= 2.8) */
+  padding: 10px !important;
+  gap: 6px !important;
+  background: transparent;
+}
+
+:deep(.heatmap-cell) {
+  border-radius: 4px !important;
+}
+
+/* Heatmap Visibility Overrides */
+:deep(.intensity-0) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+:deep(.intensity-1) {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+:deep(.intensity-2) {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+:deep(.intensity-3) {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+:deep(.intensity-4) {
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+:deep(.year-label), :deep(.heatmap-legend) {
+  display: none;
 }
 </style>

@@ -38,9 +38,13 @@ withDefaults(defineProps<Props>(), {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
+  position: absolute; /* Fix for transitions */
+  top: 0;
+  left: 0;
   overflow: hidden;
   padding: var(--spacing-2xl);
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
 /* Vignette effect */
@@ -84,12 +88,23 @@ withDefaults(defineProps<Props>(), {
 
 @media (max-width: 768px) {
   .slide-wrapper {
+    border-radius: 0;
     padding: var(--spacing-lg);
+    padding-bottom: calc(var(--spacing-2xl) + 20px);
   }
   
   .slide-branding {
     bottom: var(--spacing-md);
     font-size: 0.75rem;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-height: 700px) {
+  .slide-wrapper {
+    padding: var(--spacing-md);
+    padding-bottom: calc(var(--spacing-xl) + 20px);
   }
 }
 </style>

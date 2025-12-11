@@ -79,7 +79,7 @@ const initials = computed(() => {
 
 .wanted-label {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #ff4444;
   text-align: center;
   letter-spacing: 4px;
@@ -90,8 +90,8 @@ const initials = computed(() => {
 }
 
 .rival-avatar {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   background: #1a1a1a;
   border-radius: 50%;
   margin: 0 auto var(--spacing-lg);
@@ -104,18 +104,19 @@ const initials = computed(() => {
 
 .avatar-placeholder {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 5rem;
+  font-size: 4rem;
   color: #333;
 }
 
 .rival-name {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 4rem;
+  font-size: 3rem;
   color: white;
   text-align: center;
   margin: 0 0 var(--spacing-xl);
   line-height: 0.9;
   text-transform: uppercase;
+  word-break: break-word;
 }
 
 .vs-badge {
@@ -212,7 +213,11 @@ const initials = computed(() => {
 }
 
 @media (max-width: 768px) {
-  .rival-name { font-size: 3rem; }
-  .wanted-label { font-size: 2.5rem; }
+  .rival-name { font-size: clamp(2.5rem, 10vw, 4rem); }
+  .wanted-label { font-size: clamp(1.5rem, 6vw, 2.5rem); }
+  .rival-avatar { width: 100px; height: 100px; }
+  .avatar-placeholder { font-size: 3rem; }
+  .vs-badge { font-size: 5rem; }
+  .rival-card { padding: var(--spacing-lg); }
 }
 </style>

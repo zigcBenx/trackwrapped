@@ -129,15 +129,17 @@ onMounted(() => {
 
 .stat-value-massive {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 10rem;
+  font-size: 5rem; /* Reduced from 10rem */
   line-height: 0.9;
   color: white;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  text-align: center;
+  word-break: break-word; /* Ensure wrapping */
 }
 
 .stat-label-massive {
   font-family: 'Outfit', sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem; /* Reduced from 2rem */
   font-weight: 800;
   text-transform: uppercase;
   color: #00ff9d;

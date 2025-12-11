@@ -161,17 +161,18 @@ onMounted(() => {
   text-transform: uppercase;
   letter-spacing: 4px;
   color: rgba(255, 255, 255, 0.7);
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: var(--spacing-xl); /* Reduced from 2xl */
 }
 
 .competition-summary {
-  margin-top: var(--spacing-2xl);
+  margin-top: var(--spacing-xl); /* Reduced from 2xl */
   text-align: center;
+  padding-bottom: var(--spacing-lg); /* Add padding for safety */
 }
 
 .stat-value-large {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 6rem;
+  font-size: 4rem; /* Reduced from 6rem */
   line-height: 0.9;
   color: white;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
@@ -179,7 +180,7 @@ onMounted(() => {
 
 .stat-label-large {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.2rem; /* Reduced from 1.5rem */
   font-weight: 800;
   text-transform: uppercase;
   color: #00ff9d;
@@ -201,5 +202,67 @@ onMounted(() => {
   .stat-value-large { font-size: 4rem; }
   .stat-label-large { font-size: 1.2rem; }
   .stat-subtext { font-size: 1rem; }
+  
+  .slide-title {
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .slide-emoji {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .competition-summary {
+    margin-top: var(--spacing-xl);
+  }
+}
+
+@media (max-height: 700px) {
+  .slide-emoji { display: none; } /* Hide emoji on very short screens to save space */
+  .slide-title { margin-bottom: var(--spacing-md); }
+  .stat-value-large { font-size: 3.5rem; }
+  .competition-summary { margin-top: var(--spacing-lg); }
+}
+
+/* Heatmap Visibility Overrides */
+:deep(.heatmap-grid) {
+  background: rgba(0, 0, 0, 0.1);
+  grid-template-columns: repeat(18, 1fr) !important;
+  gap: 6px !important;
+  padding: 10px !important;
+}
+
+:deep(.heatmap-cell) {
+  border-radius: 4px !important;
+}
+
+:deep(.intensity-0) {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+:deep(.intensity-1) {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+:deep(.intensity-2) {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+:deep(.intensity-3) {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+:deep(.intensity-4) {
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+:deep(.year-label) {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+:deep(.legend-label) {
+  color: rgba(0, 0, 0, 0.5);
 }
 </style>

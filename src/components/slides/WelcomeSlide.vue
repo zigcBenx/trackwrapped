@@ -9,6 +9,7 @@
       :discipline-category="stats?.disciplineCategory || 'sprint'"
       :total-competitions="stats?.totalCompetitions || 0"
       :years-active="stats?.yearsActive || 0"
+      :nickname="nickname"
     />
   </SlideWrapper>
 </template>
@@ -22,6 +23,7 @@ interface Props {
   firstName: string
   lastName: string
   stats: ProcessedAthleteStats
+  nickname: string
 }
 
 defineProps<Props>()

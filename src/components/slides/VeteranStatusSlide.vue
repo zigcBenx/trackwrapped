@@ -26,12 +26,6 @@
         <div class="stat-label-massive">YEARS ACTIVE</div>
         <div class="stat-subtext">{{ veteranJoke }}</div>
       </div>
-      
-      <!-- Nickname Reveal -->
-      <div class="nickname-reveal">
-        <div class="nickname-label">Meet:</div>
-        <div class="nickname-value">{{ nickname }}</div>
-      </div>
     </div>
   </SlideWrapper>
 </template>
@@ -147,30 +141,31 @@ onMounted(() => {
 }
 
 .slide-emoji {
-  font-size: 6rem;
-  margin-bottom: var(--spacing-xl);
+  font-size: 4rem; /* Reduced from 6rem */
+  margin-bottom: var(--spacing-lg);
   filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
 }
 
 .slide-title {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.2rem; /* Reduced from 1.5rem */
   text-transform: uppercase;
   letter-spacing: 4px;
   color: rgba(255, 255, 255, 0.7);
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
 }
 
 .massive-stat {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: var(--spacing-xl);
 }
 
 .stat-value-massive {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 10rem;
+  font-size: 5rem; /* Reduced from 6rem */
   line-height: 0.9;
   color: white;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
@@ -178,7 +173,7 @@ onMounted(() => {
 
 .stat-label-massive {
   font-family: 'Outfit', sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 800;
   text-transform: uppercase;
   color: #00ff9d;
@@ -188,36 +183,40 @@ onMounted(() => {
 
 .stat-subtext {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.8);
-  margin-top: var(--spacing-lg);
+  margin-top: var(--spacing-md);
   font-style: italic;
+  text-align: center;
+  max-width: 90%;
 }
 
 /* Nickname reveal */
 .nickname-reveal {
-  margin-top: var(--spacing-2xl);
-  padding-top: var(--spacing-2xl);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
   border-top: 2px solid rgba(255, 255, 255, 0.3);
   text-align: center;
   animation: fadeIn 1s ease-in 0.5s both;
+  width: 100%;
 }
 
 .nickname-label {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
 }
 
 .nickname-value {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 3.5rem;
+  font-size: 3rem; /* Reduced from 3.5rem */
   color: #00ff9d;
   text-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
   letter-spacing: 2px;
+  word-break: break-word;
 }
 
 @keyframes fadeIn {
@@ -233,8 +232,26 @@ onMounted(() => {
 
 @media (max-width: 768px) {
   .story-line { font-size: 1.8rem; }
-  .stat-value-massive { font-size: 6rem; }
-  .stat-label-massive { font-size: 1.5rem; }
-  .nickname-value { font-size: 2.5rem; }
+  .stat-value-massive { font-size: clamp(5rem, 15vw, 8rem); }
+  .stat-label-massive { font-size: 1.2rem; }
+  .nickname-value { font-size: clamp(2rem, 8vw, 3rem); }
+  
+  .slide-emoji {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .massive-stat { margin-bottom: var(--spacing-xl); }
+  .nickname-reveal { 
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-xl);
+  }
+}
+
+@media (max-height: 700px) {
+  .slide-emoji { display: none; }
+  .stat-value-massive { font-size: 5rem; }
+  .massive-stat { margin-bottom: var(--spacing-lg); }
+  .nickname-reveal { margin-top: var(--spacing-lg); padding-top: var(--spacing-lg); }
 }
 </style>

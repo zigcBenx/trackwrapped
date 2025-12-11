@@ -24,18 +24,18 @@
           </svg>
         </button>
         
-        <!-- Progress Indicator -->
-        <div class="progress-indicator">
-          <div 
-            v-for="index in totalSlides" 
-            :key="index"
-            class="progress-bar"
-            :class="{ active: index - 1 === currentSlideIndex }"
-          ></div>
-        </div>
-        
         <!-- Slide Container -->
         <div class="slides-wrapper">
+          <!-- Progress Indicator (Inside card) -->
+          <div class="progress-indicator">
+            <div 
+              v-for="index in totalSlides" 
+              :key="index"
+              class="progress-bar"
+              :class="{ active: index - 1 === currentSlideIndex }"
+            ></div>
+          </div>
+
           <TransitionGroup name="slide">
             <!-- Welcome Slide -->
             <WelcomeSlide
@@ -45,6 +45,7 @@
               :first-name="firstName"
               :last-name="lastName"
               :stats="stats"
+              :nickname="nickname"
             />
             
             <!-- Veteran Status Slide (merged Experience + Nickname) -->
@@ -140,6 +141,8 @@
               :main-discipline="stats.mainDiscipline"
               :season-best="stats.bestPerformance?.mark || '-'"
               :average-wind="stats.averageWind"
+              :victory-rate="stats.victoryRate"
+              :athlete-id="athleteId"
             />
           </TransitionGroup>
         </div>
@@ -305,61 +308,62 @@ onUnmounted(() => {
   position: relative;
   width: 100%;
   height: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slides-wrapper {
+  width: 100%;
+  max-width: 450px;
+  height: 85vh;
+  max-height: 900px;
+  aspect-ratio: 9/16;
+  position: relative;
+}
+
+.progress-indicator {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+  z-index: 100;
+  width: 90%;
+  justify-content: center;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  transition: all var(--transition-base);
 }
 
 .close-button {
-  position: absolute;
-  top: var(--spacing-lg);
-  right: var(--spacing-lg);
-  width: 48px;
-  height: 48px;
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all var(--transition-base);
-  z-index: 100;
+  z-index: 10001;
 }
 
 .close-button:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
   transform: scale(1.1);
-}
-
-.progress-indicator {
-  position: absolute;
-  top: var(--spacing-lg);
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: var(--spacing-xs);
-  z-index: 100;
-}
-
-.progress-bar {
-  width: 40px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius-full);
-  transition: all var(--transition-base);
-}
-
-.progress-bar.active {
-  background: white;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-.slides-wrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
 }
 
 .nav-button {
@@ -369,9 +373,9 @@ onUnmounted(() => {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
   display: flex;
   align-items: center;
@@ -382,16 +386,34 @@ onUnmounted(() => {
 }
 
 .nav-button:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
   transform: translateY(-50%) scale(1.1);
 }
 
 .nav-button-prev {
-  left: var(--spacing-lg);
+  left: calc(50% - 225px - 80px); /* Card half width + gap */
 }
 
 .nav-button-next {
-  right: var(--spacing-lg);
+  right: calc(50% - 225px - 80px);
+}
+
+@media (max-width: 768px) {
+  .slides-wrapper {
+    max-width: 100%;
+    height: 100%;
+    max-height: none;
+    aspect-ratio: auto;
+  }
+  
+  .nav-button {
+    display: none; /* Hide nav buttons on mobile, use swipe/tap */
+  }
+  
+  .progress-indicator {
+    top: var(--spacing-lg);
+    width: calc(100% - 40px);
+  }
 }
 
 /* Error State */
