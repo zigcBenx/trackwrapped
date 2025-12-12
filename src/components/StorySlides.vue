@@ -493,6 +493,8 @@ function handleTouchMove(event: TouchEvent) {
   if (!longPressTimer) return
 
   const touch = event.touches[0]
+  if (!touch) return
+
   const deltaX = Math.abs(touch.clientX - touchStartX)
   const deltaY = Math.abs(touch.clientY - touchStartY)
 
@@ -511,6 +513,8 @@ function handleTouchEnd(event: TouchEvent) {
   }
 
   const touch = event.changedTouches[0]
+  if (!touch) return
+
   const deltaX = touch.clientX - touchStartX
   const deltaY = touch.clientY - touchStartY
   const deltaTime = Date.now() - touchStartTime
