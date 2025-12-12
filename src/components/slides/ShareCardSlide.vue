@@ -3,7 +3,7 @@
     background="#000000"
     type="share-card"
   >
-    <div class="bento-container" @click="handleTap">
+    <div class="bento-container" @click="handleTap" @touchend.stop="handleTap">
       <!-- Header -->
       <div class="bento-header">
         <div class="user-badge">
@@ -76,7 +76,7 @@
         </div>
 
         <!-- Power Level -->
-        <div class="bento-card stat-card power-level-card" @click.stop="toggleTooltip" :class="{ 'tooltip-active': showTooltip }">
+        <div class="bento-card stat-card power-level-card" @click.stop="toggleTooltip" @touchend.stop="toggleTooltip" :class="{ 'tooltip-active': showTooltip }">
           <div class="card-icon">🦾</div>
           <div class="card-label">Power Level</div>
           <div class="card-value orange">{{ powerLevel }}</div>
@@ -293,7 +293,9 @@ const powerLevelTooltip = computed(() => {
   return thresholds
 })
 
-function toggleTooltip() {
+function toggleTooltip(event: Event) {
+  event.preventDefault()
+  event.stopPropagation()
   showTooltip.value = !showTooltip.value
 }
 
@@ -560,6 +562,8 @@ function handleTap(event: Event) {
   position: relative;
   cursor: pointer;
   user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
 }
 
 .power-level-card::before {
