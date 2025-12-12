@@ -472,6 +472,8 @@ function handleTouchStart(event: TouchEvent) {
   if (target.closest('button') || target.closest('.interactive')) return
 
   const touch = event.touches[0]
+  if (!touch) return
+
   touchStartX = touch.clientX
   touchStartY = touch.clientY
   touchStartTime = Date.now()
