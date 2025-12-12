@@ -9,8 +9,11 @@ export function getWorldRecordSequence(bestPerformance: PersonalBest | null, dis
     ]
   }
 
+  // Use the discipline from the best performance, not the main discipline
+  const actualDiscipline = bestPerformance.discipline || discipline
+
   return [
-    `Your best mark in ${discipline}...`,
+    `Your best mark in ${actualDiscipline}...`,
     "Is impressive in its own right",
     "But how does it compare to the G.O.A.T? 🤔"
   ]

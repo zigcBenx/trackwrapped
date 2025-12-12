@@ -42,6 +42,7 @@ import type { PersonalBest } from '@/types/athleteDetails'
 interface Props {
   bestPerformance: PersonalBest | null
   mainDiscipline: string
+  gender: string | null
 }
 
 const props = defineProps<Props>()
@@ -51,10 +52,14 @@ const currentLineIndex = ref(-1)
 const sequence = getWorldRecordSequence(props.bestPerformance, props.mainDiscipline)
 
 const wrMark = computed(() => {
-  if (props.bestPerformance?.records && props.bestPerformance.records.length > 0) {
-    return props.bestPerformance.records[0] || '0'
-  }
-  return getWorldRecord(props.mainDiscipline) || '0'
+  // Always get the world record from our database, not from the bestPerformance.records array
+  // The records array contains strings like "NR", "CR", etc., not actual world record values
+
+  // Use the discipline from the best performance, not the main discipline
+  // This ensures we compare the actual PB discipline against the correct WR
+  const disciplineToCompare = props.bestPerformance?.discipline || props.mainDiscipline
+
+  return getWorldRecord(disciplineToCompare, props.gender) || '0'
 })
 
 let sequenceTimer: any = null

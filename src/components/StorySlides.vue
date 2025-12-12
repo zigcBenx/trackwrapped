@@ -114,6 +114,7 @@
               key="worldrecord"
               :best-performance="stats.bestPerformance"
               :main-discipline="stats.mainDiscipline"
+              :gender="sex"
             />
             
             <!-- Victory Rate Slide -->
@@ -266,6 +267,7 @@ let autoplayTimer: any = null
 const firstName = ref('')
 const lastName = ref('')
 const country = ref('')
+const sex = ref<string | null>(null)
 const stats = ref<ProcessedAthleteStats | null>(null)
 const nickname = ref('')
 
@@ -301,6 +303,7 @@ async function loadAthleteStory(athleteId: number) {
     firstName.value = details.firstname
     lastName.value = details.lastname
     country.value = details.country
+    sex.value = details.sex
     stats.value = processedStats
     nickname.value = generateNickname(processedStats, details.firstname)
     
