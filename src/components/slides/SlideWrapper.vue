@@ -78,10 +78,10 @@ withDefaults(defineProps<Props>(), {
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Outfit', sans-serif;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.5);
-  letter-spacing: 1px;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.5px;
   z-index: 3;
   text-transform: lowercase;
 }
@@ -95,7 +95,7 @@ withDefaults(defineProps<Props>(), {
   
   .slide-branding {
     bottom: var(--spacing-md);
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     width: 100%;
     text-align: center;
   }

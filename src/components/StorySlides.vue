@@ -168,10 +168,13 @@
               :heatmap-data="stats.competitionHeatmap"
               :total-competitions="stats.totalCompetitions"
               :main-discipline="stats.mainDiscipline"
-              :season-best="stats.bestPerformance?.mark || '-'"
+              :season-best="seasonBestMark"
               :average-wind="stats.averageWind"
               :victory-rate="stats.victoryRate"
               :athlete-id="athleteId"
+              :current-season-avg-score="stats.currentSeasonAvgScore"
+              :percentile-rank="stats.percentileRank"
+              :season-results="currentYearResults"
             />
           </TransitionGroup>
 
@@ -215,7 +218,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import StoryLoader from './StoryLoader.vue'
 import { getCompleteAthleteData } from '@/services/athleteDetailsService'
 import { processAthleteData } from '@/utils/storyGenerator'
@@ -284,9 +287,23 @@ const country = ref('')
 const sex = ref<string | null>(null)
 const stats = ref<ProcessedAthleteStats | null>(null)
 const nickname = ref('')
+const currentYearResults = ref<any[]>([])
+const allSeasonResults = ref<any[]>([])
 
 // Total number of slides
 const totalSlides = 12
+
+// Computed for season best (not PB)
+const seasonBestMark = computed(() => {
+  if (!currentYearResults.value || currentYearResults.value.length === 0) return '-'
+
+  // Find the best result score from current season
+  const bestResult = currentYearResults.value.reduce((best, current) => {
+    return current.resultScore > best.resultScore ? current : best
+  }, currentYearResults.value[0])
+
+  return bestResult?.mark || '-'
+})
 
 // Watch for athlete changes and open state
 watch([() => props.athleteId, () => props.isOpen], async ([newId, newIsOpen]) => {
@@ -308,11 +325,11 @@ async function loadAthleteStory(athleteId: number) {
   isLoading.value = true
   error.value = null
   currentSlideIndex.value = 0
-  
+
   try {
     const { details, results, allResults } = await getCompleteAthleteData(athleteId, props.scope)
     const processedStats = processAthleteData(details, results, allResults)
-    
+
     // Store data
     firstName.value = details.firstname
     lastName.value = details.lastname
@@ -320,7 +337,9 @@ async function loadAthleteStory(athleteId: number) {
     sex.value = details.sex
     stats.value = processedStats
     nickname.value = generateNickname(processedStats, details.firstname)
-    
+    currentYearResults.value = results
+    allSeasonResults.value = allResults
+
     // Start autoplay for first slide
     startAutoplay()
   } catch (err) {

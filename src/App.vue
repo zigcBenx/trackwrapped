@@ -60,6 +60,9 @@ function handleStoryClose() {
       :scope="selectedScope"
       @close="handleStoryClose"
     />
+    <div class="made-in">
+      made by <a href="https://benxlabs.com">benx</a> in 🇸🇮
+    </div>
   </div>
 </template>
 
@@ -123,5 +126,15 @@ function handleStoryClose() {
   .app-title {
     font-size: var(--font-size-2xl);
   }
+}
+.made-in {
+  text-align: center;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.5px;
+  margin-top: var(--spacing-md);
+  text-transform: lowercase;
 }
 </style>
