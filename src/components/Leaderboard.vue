@@ -60,20 +60,22 @@ onMounted(async () => {
     const details = await Promise.all(
       topAthletes.map(async (athlete) => {
         try {
+          // Use the nimarion proxy endpoint which returns athlete JSON
+          // Example: https://worldathletics.nimarion.de/athletes/14759529
           const response = await fetch(
-            `https://www.worldathletics.org/records/api/v2/athletes?id=${athlete.athleteId}`
+            `https://worldathletics.nimarion.de/athletes/${athlete.athleteId}`
           )
           const data = await response.json()
-          
-          if (data.athletes && data.athletes.length > 0) {
-            const athleteData = data.athletes[0]
-            return {
-              ...athlete,
-              firstname: athleteData.firstname || 'Unknown',
-              lastname: athleteData.lastname || 'Unknown',
-              country: athleteData.country || '',
-              countryFlag: getCountryFlag(athleteData.country || '')
-            }
+
+          // The nimarion endpoint returns the athlete object directly
+          // try to read common fields safely
+          const athleteData = data || {}
+          return {
+            ...athlete,
+            firstname: athleteData.firstname || athleteData.firstnameName || athleteData.name || 'Unknown',
+            lastname: athleteData.lastname || athleteData.surname || athleteData.familyName || 'Athlete',
+            country: athleteData.country || athleteData.nationality || '',
+            countryFlag: getCountryFlag(athleteData.country || athleteData.nationality || '')
           }
         } catch (error) {
           console.error(`Failed to fetch details for athlete ${athlete.athleteId}:`, error)
@@ -99,7 +101,7 @@ onMounted(async () => {
 
 function handleAthleteClick(athlete: AthleteWithDetails) {
   emit('athleteSelect', {
-    id: Number(athlete.athleteId),
+    id: Number((athlete as any).athleteId),
     firstname: athlete.firstname,
     lastname: athlete.lastname
   })
