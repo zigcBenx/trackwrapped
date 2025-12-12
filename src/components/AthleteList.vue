@@ -1,15 +1,15 @@
 <template>
   <div class="athlete-list">
-    <div v-if="athletes.length === 0 && !loading" class="athlete-list__empty">
+    <!-- <div v-if="athletes.length === 0 && !loading" class="athlete-list__empty">
       <div class="empty-state">
         <div class="empty-state__icon">🏃‍♂️</div>
         <p class="empty-state__text">
           {{ searchQuery ? 'No athletes found' : 'Start typing to search for athletes' }}
         </p>
       </div>
-    </div>
+    </div> -->
     
-    <div v-else class="athlete-list__grid">
+    <div class="athlete-list__grid">
       <AthleteCard
         v-for="(athlete, index) in athletes"
         :key="athlete.id"
@@ -52,7 +52,7 @@ function handleAthleteSelect(athlete: Athlete) {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 300px;
+  min-height: 100px;
 }
 
 .empty-state {
