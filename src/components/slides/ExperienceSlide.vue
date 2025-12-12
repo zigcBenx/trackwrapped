@@ -18,9 +18,9 @@
 
     <!-- Reveal Phase -->
     <div v-else class="reveal-container">
-      <div class="slide-emoji">📅</div>
-      <h1 class="slide-title">Experience Check</h1>
-      <div class="massive-stat">
+      <div class="slide-emoji fade-in-up" style="animation-delay: 0ms">📅</div>
+      <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">Experience Check</h1>
+      <div class="massive-stat fade-in-up" style="animation-delay: 300ms">
         <div class="stat-value-massive">{{ yearsActive }}</div>
         <div class="stat-label-massive">YEARS ACTIVE</div>
         <div class="stat-subtext">You're a veteran!</div>
@@ -49,7 +49,7 @@ let sequenceTimer: any = null
 function startSequence() {
   phase.value = 'buildup'
   currentLineIndex.value = -1
-  
+
   const advance = () => {
     if (currentLineIndex.value < sequence.length - 1) {
       currentLineIndex.value++
@@ -60,7 +60,7 @@ function startSequence() {
       }, 2000)
     }
   }
-  
+
   sequenceTimer = setTimeout(advance, 500)
 }
 
@@ -155,7 +155,28 @@ onMounted(() => {
 
 @media (max-width: 768px) {
   .story-line { font-size: 1.8rem; }
-  .stat-value-massive { font-size: 6rem; }
-  .stat-label-massive { font-size: 1.5rem; }
+  .stat-value-massive { font-size: 4rem; }
+  .stat-label-massive { font-size: 1.2rem; }
+  .stat-subtext { font-size: 1rem; }
+}
+
+@media (max-width: 480px) {
+  .stat-value-massive { font-size: 3rem; }
+  .stat-label-massive { font-size: 1rem; }
+  .stat-subtext { font-size: 0.9rem; }
+}
+
+/* Float-in animation for reveal phase */
+.fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

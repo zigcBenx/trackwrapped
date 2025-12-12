@@ -18,11 +18,11 @@
 
     <!-- Reveal Phase -->
     <div v-else class="reveal-container">
-      <div class="slide-emoji">📊</div>
-      <h1 class="slide-title">Performance Analysis</h1>
+      <div class="slide-emoji fade-in-up" style="animation-delay: 0ms">📊</div>
+      <h1 class="slide-title fade-in-up" style="animation-delay: 100ms">Performance Analysis</h1>
 
       <!-- Score Comparison -->
-      <div class="stats-grid">
+      <div class="stats-grid fade-in-up" style="animation-delay: 200ms">
         <div class="stat-card">
           <div class="stat-value">{{ stats.currentSeasonAvgScore }}</div>
           <div class="stat-label">This Season Avg</div>
@@ -34,7 +34,7 @@
       </div>
 
       <!-- Change Indicator -->
-      <div v-if="stats.lastSeasonAvgScore > 0" class="change-indicator">
+      <div v-if="stats.lastSeasonAvgScore > 0" class="change-indicator fade-in-up" style="animation-delay: 350ms">
         <div class="change-arrow" :class="{ positive: stats.scoreChangePercent > 0, negative: stats.scoreChangePercent < 0 }">
           {{ stats.scoreChangePercent > 0 ? '↑' : stats.scoreChangePercent < 0 ? '↓' : '→' }}
         </div>
@@ -44,7 +44,7 @@
       </div>
 
       <!-- Percentile Ranking -->
-      <div class="percentile-section">
+      <div class="percentile-section fade-in-up" style="animation-delay: 500ms">
         <div class="percentile-badge">
           <div class="percentile-rank">Top {{ stats.percentileRank.rank }}</div>
           <div class="percentile-label">{{ stats.percentileRank.label }}</div>
@@ -132,77 +132,81 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 0 var(--spacing-lg);
+  padding: 0 var(--spacing-xl);
+  gap: var(--spacing-lg);
 }
 
 .slide-emoji {
-  font-size: 4rem;
-  margin-bottom: var(--spacing-md);
+  font-size: 5rem;
+  margin-bottom: var(--spacing-sm);
   filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
 }
 
 .slide-title {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
-  letter-spacing: 4px;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: var(--spacing-xl);
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
 }
 
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
   width: 100%;
-  max-width: 500px;
-  margin-bottom: var(--spacing-lg);
+  max-width: 450px;
+  margin-bottom: 0;
 }
 
 .stat-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  padding: var(--spacing-lg);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: var(--spacing-lg) var(--spacing-md);
   text-align: center;
   transition: transform 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .stat-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
 }
 
 .stat-value {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 3rem;
-  color: #00ff9d;
-  text-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
+  font-size: 3.5rem;
+  color: white;
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.4);
   line-height: 1;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
 }
 
 .stat-label {
   font-family: 'Outfit', sans-serif;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.75);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   font-weight: 600;
+  line-height: 1.3;
 }
 
 .change-indicator {
   display: flex;
   align-items: center;
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-xl);
-  background: rgba(255, 255, 255, 0.05);
-  padding: var(--spacing-md) var(--spacing-xl);
+  gap: var(--spacing-sm);
+  background: rgba(255, 255, 255, 0.1);
+  padding: var(--spacing-sm) var(--spacing-lg);
   border-radius: 50px;
+  margin: 0;
 }
 
 .change-arrow {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   line-height: 1;
 }
@@ -217,7 +221,7 @@ onMounted(() => {
 
 .change-value {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
@@ -231,32 +235,32 @@ onMounted(() => {
 
 .percentile-section {
   width: 100%;
-  max-width: 500px;
-  margin-top: var(--spacing-md);
+  max-width: 450px;
+  margin-top: 0;
 }
 
 .percentile-badge {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
   backdrop-filter: blur(20px);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
-  padding: var(--spacing-xl);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 24px;
+  padding: var(--spacing-lg) var(--spacing-xl);
   text-align: center;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
 .percentile-rank {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 3.5rem;
+  font-size: 4rem;
   color: white;
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 2px 20px rgba(255, 255, 255, 0.6);
   line-height: 1;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
 }
 
 .percentile-label {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #00ff9d;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -268,8 +272,22 @@ onMounted(() => {
     font-size: 1.8rem;
   }
 
-  .stats-grid {
+  .reveal-container {
+    padding: 0 var(--spacing-md);
     gap: var(--spacing-md);
+  }
+
+  .slide-emoji {
+    font-size: 4rem;
+  }
+
+  .stats-grid {
+    gap: var(--spacing-sm);
+    max-width: 100%;
+  }
+
+  .stat-card {
+    padding: var(--spacing-md);
   }
 
   .stat-value {
@@ -277,15 +295,42 @@ onMounted(() => {
   }
 
   .stat-label {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 
   .change-arrow {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .change-value {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+  }
+
+  .percentile-rank {
+    font-size: 3rem;
+  }
+
+  .percentile-label {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide-title {
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .slide-emoji {
+    font-size: 3.5rem;
+  }
+
+  .stat-value {
+    font-size: 2.2rem;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
   }
 
   .percentile-rank {
@@ -293,7 +338,29 @@ onMounted(() => {
   }
 
   .percentile-label {
+    font-size: 0.85rem;
+  }
+
+  .change-arrow {
+    font-size: 1.3rem;
+  }
+
+  .change-value {
     font-size: 1rem;
+  }
+}
+
+/* Float-in animation for reveal phase */
+.fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>

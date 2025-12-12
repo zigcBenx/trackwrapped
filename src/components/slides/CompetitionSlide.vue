@@ -18,17 +18,19 @@
 
     <!-- Reveal Phase -->
     <div v-else class="reveal-container">
-      <div class="slide-emoji">🏆</div>
-      <h1 class="slide-title">Your {{ heatmapData.year }} Competition Calendar</h1>
-      
+      <div class="slide-emoji fade-in-up" style="animation-delay: 0ms">🏆</div>
+      <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">Your {{ heatmapData.year }} Competition Calendar</h1>
+
       <!-- Competition Heatmap -->
-      <CompetitionHeatmap 
-        :weeks="heatmapData.weeks"
-        :year="heatmapData.year"
-      />
-      
+      <div class="fade-in-up" style="animation-delay: 300ms">
+        <CompetitionHeatmap
+          :weeks="heatmapData.weeks"
+          :year="heatmapData.year"
+        />
+      </div>
+
       <!-- Total count and joke -->
-      <div class="competition-summary">
+      <div class="competition-summary fade-in-up" style="animation-delay: 450ms">
         <div class="stat-value-large">{{ totalCompetitions }}</div>
         <div class="stat-label-large">TOTAL COMPETITIONS</div>
         <div class="stat-subtext">{{ frequencyJoke }}</div>
@@ -264,5 +266,19 @@ onMounted(() => {
 
 :deep(.legend-label) {
   color: rgba(0, 0, 0, 0.5);
+}
+
+/* Float-in animation for reveal phase */
+.fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

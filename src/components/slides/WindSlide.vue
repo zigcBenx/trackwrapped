@@ -18,9 +18,9 @@
 
     <!-- Reveal Phase -->
     <div v-else class="reveal-container">
-      <div class="slide-emoji">🌬️</div>
-      <h1 class="slide-title">Wind Gods</h1>
-      <div class="massive-stat">
+      <div class="slide-emoji fade-in-up" style="animation-delay: 0ms">🌬️</div>
+      <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">Wind Gods</h1>
+      <div class="massive-stat fade-in-up" style="animation-delay: 300ms">
         <div class="stat-value-massive">
           {{ averageWind !== null ? `${averageWind > 0 ? '+' : ''}${averageWind}` : 'N/A' }}
         </div>

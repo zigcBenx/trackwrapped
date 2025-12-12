@@ -18,9 +18,9 @@
 
     <!-- Reveal Phase -->
     <div v-else class="reveal-container">
-      <div class="slide-emoji">🏅</div>
-      <h1 class="slide-title">The Comparison</h1>
-      <div class="visual-container">
+      <div class="slide-emoji fade-in-up" style="animation-delay: 0ms">🏅</div>
+      <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">The Comparison</h1>
+      <div class="visual-container fade-in-up" style="animation-delay: 300ms">
         <ComparisonBar
           :user-mark="bestPerformance?.mark || '0'"
           :wr-mark="wrMark"
@@ -147,5 +147,19 @@ onMounted(() => {
 
 @media (max-width: 768px) {
   .story-line { font-size: 1.8rem; }
+}
+
+/* Float-in animation for reveal phase */
+.fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

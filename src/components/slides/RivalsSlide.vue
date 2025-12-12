@@ -18,12 +18,12 @@
 
     <!-- Reveal Phase -->
     <div v-else class="reveal-container">
-      <div class="slide-emoji">⚔️</div>
-      <h1 class="slide-title">Your Rivalry Squad</h1>
-      
-      <div v-if="topRivals.length > 0" class="rivals-list">
-        <div 
-          v-for="(rival, index) in topRivals.slice(0, 3)" 
+      <div class="slide-emoji fade-in-up" style="animation-delay: 0ms">⚔️</div>
+      <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">Your Rivalry Squad</h1>
+
+      <div v-if="topRivals.length > 0" class="rivals-list fade-in-up" style="animation-delay: 300ms">
+        <div
+          v-for="(rival, index) in topRivals.slice(0, 3)"
           :key="rival.name"
           class="rival-item"
         >
@@ -33,15 +33,16 @@
             <div class="rival-meetings">Faced {{ rival.meetings }} times</div>
           </div>
         </div>
-        
+
         <div class="rivalry-summary">
           You've faced these athletes a combined {{ totalMeetings }} times.
           <br/>
           It's giving 'anime rivalry arc' energy ⚡
         </div>
       </div>
-      
-      <div v-else class="massive-stat">
+
+
+      <div v-else class="massive-stat fade-in-up" style="animation-delay: 300ms">
         <div class="stat-value-massive">0</div>
         <div class="stat-label-massive">RIVALS</div>
         <div class="stat-subtext">You're too good! No one can keep up 🦅</div>
@@ -187,9 +188,9 @@ onMounted(() => {
 .rival-item {
   display: flex;
   align-items: center;
-  gap: var(--spacing-lg);
-  padding: var(--spacing-lg);
-  margin-bottom: var(--spacing-md);
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
   background: rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-lg);
   backdrop-filter: blur(10px);
@@ -204,9 +205,9 @@ onMounted(() => {
 
 .rival-rank {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #00ff9d;
-  min-width: 50px;
+  min-width: 45px;
 }
 
 .rival-info {
@@ -216,37 +217,59 @@ onMounted(() => {
 
 .rival-name {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: white;
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: 2px;
 }
 
 .rival-meetings {
   font-family: 'Outfit', sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.7);
 }
 
 .rivalry-summary {
-  margin-top: var(--spacing-xl);
-  padding-top: var(--spacing-xl);
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-md);
   border-top: 2px solid rgba(255, 255, 255, 0.2);
   font-family: 'Outfit', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
+  line-height: 1.5;
   text-align: center;
 }
 
 @media (max-width: 768px) {
   .story-line { font-size: 1.8rem; }
-  .stat-value-massive { font-size: 6rem; }
-  .stat-label-massive { font-size: 1.5rem; }
-  
-  .rival-rank { font-size: 2rem; min-width: 40px; }
-  .rival-name { font-size: 1.2rem; }
-  .rival-meetings { font-size: 0.9rem; }
-  .rivalry-summary { font-size: 1rem; }
+  .stat-value-massive { font-size: 4rem; }
+  .stat-label-massive { font-size: 1.2rem; }
+  .stat-subtext { font-size: 1rem; }
+
+  .rival-item { padding: var(--spacing-xs) var(--spacing-md); }
+  .rival-rank { font-size: 2rem; min-width: 35px; }
+  .rival-name { font-size: 1.1rem; }
+  .rival-meetings { font-size: 0.8rem; }
+  .rivalry-summary { font-size: 0.9rem; margin-top: var(--spacing-md); }
+}
+
+@media (max-width: 480px) {
+  .stat-value-massive { font-size: 3rem; }
+  .stat-label-massive { font-size: 1rem; }
+  .stat-subtext { font-size: 0.9rem; }
+}
+
+/* Float-in animation for reveal phase */
+.fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

@@ -50,6 +50,7 @@ defineProps<Props>()
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
+  padding: 0 var(--spacing-xl);
 }
 
 .heatmap-header {
@@ -69,8 +70,8 @@ defineProps<Props>()
 .heatmap-grid {
   display: grid;
   grid-template-columns: repeat(52, 1fr);
-  gap: 3px;
-  padding: var(--spacing-md);
+  gap: 2px;
+  padding: var(--spacing-sm);
   background: rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-lg);
   margin-bottom: var(--spacing-lg);
@@ -78,6 +79,8 @@ defineProps<Props>()
 
 .heatmap-cell {
   aspect-ratio: 1;
+  min-width: 12px;
+  min-height: 12px;
   border-radius: 2px;
   position: relative;
   transition: all 0.2s ease;
@@ -142,25 +145,45 @@ defineProps<Props>()
 }
 
 @media (max-width: 768px) {
+  .competition-heatmap {
+    padding: 0 var(--spacing-md);
+  }
+
   .heatmap-grid {
     grid-template-columns: repeat(26, 1fr);
     gap: 2px;
+    padding: var(--spacing-xs);
   }
-  
+
+  .heatmap-cell {
+    min-width: 10px;
+    min-height: 10px;
+  }
+
   .year-label {
     font-size: 0.875rem;
   }
 }
 
 @media (max-width: 480px) {
-  .heatmap-grid {
-    grid-template-columns: repeat(13, 1fr);
-    padding: var(--spacing-sm);
+  .competition-heatmap {
+    padding: 0 var(--spacing-sm);
   }
-  
+
+  .heatmap-grid {
+    grid-template-columns: repeat(26, 1fr);
+    padding: var(--spacing-xs);
+    gap: 2px;
+  }
+
+  .heatmap-cell {
+    min-width: 8px;
+    min-height: 8px;
+  }
+
   .legend-cell {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
   }
 }
 </style>

@@ -18,10 +18,10 @@
 
     <!-- Reveal Phase -->
     <div v-else class="reveal-container">
-      <div class="slide-emoji">📅</div>
-      <h1 class="slide-title">{{ yearsActive }} Years in Track & Field</h1>
-      
-      <div class="massive-stat">
+      <div class="slide-emoji fade-in-up" style="animation-delay: 0ms">📅</div>
+      <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">{{ yearsActive }} Years in Track & Field</h1>
+
+      <div class="massive-stat fade-in-up" style="animation-delay: 300ms">
         <div class="stat-value-massive">{{ yearsActive }}</div>
         <div class="stat-label-massive">YEARS ACTIVE</div>
         <div class="stat-subtext">{{ veteranJoke }}</div>
@@ -253,5 +253,19 @@ onMounted(() => {
   .stat-value-massive { font-size: 5rem; }
   .massive-stat { margin-bottom: var(--spacing-lg); }
   .nickname-reveal { margin-top: var(--spacing-lg); padding-top: var(--spacing-lg); }
+}
+
+/* Float-in animation for reveal phase */
+.fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

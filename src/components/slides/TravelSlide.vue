@@ -18,17 +18,17 @@
 
     <!-- Reveal Phase -->
     <div v-else class="reveal-container">
-      <div class="slide-emoji">🌍</div>
-      <h1 class="slide-title">Global Footprint</h1>
-      
-      <div class="massive-stat">
+      <div class="slide-emoji fade-in-up" style="animation-delay: 0ms">🌍</div>
+      <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">Global Footprint</h1>
+
+      <div class="massive-stat fade-in-up" style="animation-delay: 300ms">
         <div class="stat-value-massive">{{ countriesCount }}</div>
         <div class="stat-label-massive">COUNTRIES VISITED</div>
         <div class="stat-subtext">{{ travelJoke }}</div>
       </div>
 
       <!-- Country List (if not too many) -->
-      <div v-if="countries.length > 0 && countries.length <= 12" class="country-list">
+      <div v-if="countries.length > 0 && countries.length <= 12" class="country-list fade-in-up" style="animation-delay: 450ms">
         <div v-for="country in countries" :key="country" class="country-tag">
           <img 
             :src="getCountryFlagUrl(country)" 
@@ -231,12 +231,33 @@ onMounted(() => {
 
 @media (max-width: 768px) {
   .story-line { font-size: 1.8rem; }
-  .stat-value-massive { font-size: 6rem; }
+  .stat-value-massive { font-size: 4rem; }
   .stat-label-massive { font-size: 1.2rem; }
-  
+  .stat-subtext { font-size: 1rem; }
+
   .slide-emoji {
     font-size: 4rem;
     margin-bottom: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-value-massive { font-size: 3rem; }
+  .stat-label-massive { font-size: 1rem; }
+  .stat-subtext { font-size: 0.9rem; }
+}
+
+/* Float-in animation for reveal phase */
+.fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>

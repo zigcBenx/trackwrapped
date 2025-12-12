@@ -18,9 +18,9 @@
 
     <!-- Reveal Phase -->
     <div v-else class="reveal-container">
-      <div class="slide-emoji">🏃</div>
-      <h1 class="slide-title">Main Event</h1>
-      <div class="massive-stat">
+      <div class="slide-emoji fade-in-up" style="animation-delay: 0ms">🏃</div>
+      <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">Main Event</h1>
+      <div class="massive-stat fade-in-up" style="animation-delay: 300ms">
         <div class="stat-value-massive">{{ mainDiscipline }}</div>
         <div class="stat-label-massive">MAIN DISCIPLINE</div>
       </div>
@@ -149,7 +149,26 @@ onMounted(() => {
 
 @media (max-width: 768px) {
   .story-line { font-size: 1.8rem; }
-  .stat-value-massive { font-size: 6rem; }
-  .stat-label-massive { font-size: 1.5rem; }
+  .stat-value-massive { font-size: 2rem; }
+  .stat-label-massive { font-size: 1.2rem; }
+}
+
+@media (max-width: 480px) {
+  .stat-value-massive { font-size: 1.5rem; }
+  .stat-label-massive { font-size: 1rem; }
+}
+
+/* Float-in animation for reveal phase */
+.fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
