@@ -44,16 +44,35 @@ export function getDisciplineSequence(category: string, discipline: string): str
 }
 
 export function getPerformanceSequence(isImproving: boolean, stats: ProcessedAthleteStats): string[] {
-  const lines = ["Analyzing your recent form..."]
-  
-  if (isImproving) {
-    lines.push("The trend line is going up")
-    lines.push("Stonks! 📈")
+  const lines = ["Crunching your season numbers..."]
+
+  // Comment on score progression
+  if (stats.lastSeasonAvgScore > 0) {
+    if (stats.scoreChangePercent > 10) {
+      lines.push("Your scores are soaring! 🚀")
+    } else if (stats.scoreChangePercent > 0) {
+      lines.push("Small gains, big impact 📈")
+    } else if (stats.scoreChangePercent < -10) {
+      lines.push("Every champion has off seasons")
+    } else {
+      lines.push("Steady as she goes ⚓")
+    }
   } else {
-    lines.push("Consistency is key")
-    lines.push("Trust the process ✨")
+    lines.push("Let's see where you stand...")
   }
-  
+
+  // Comment on percentile
+  const percentileNum = parseFloat(stats.percentileRank.rank)
+  if (percentileNum <= 1) {
+    lines.push("You're among the elite! 👑")
+  } else if (percentileNum <= 10) {
+    lines.push("Top tier performance! 🔥")
+  } else if (percentileNum <= 50) {
+    lines.push("You're leveling up! 💪")
+  } else {
+    lines.push("The journey continues! ⭐")
+  }
+
   return lines
 }
 

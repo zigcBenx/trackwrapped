@@ -17,7 +17,7 @@
       <!-- Slides -->
       <div v-else class="story-slides-container">
         <!-- Close Button -->
-        <button class="close-button" @click="handleClose" aria-label="Close">
+        <button class="close-button" @click.stop="handleClose" aria-label="Close">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -170,7 +170,7 @@
           </TransitionGroup>
 
           <!-- Pause/Play Button (Inside wrapper) -->
-          <button class="control-button pause-button" @click="togglePause" :aria-label="isPaused ? 'Play' : 'Pause'">
+          <button class="control-button pause-button" @click.stop="togglePause" :aria-label="isPaused ? 'Play' : 'Pause'">
             <svg v-if="isPaused" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none">
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
@@ -182,21 +182,21 @@
         </div>
         
         <!-- Navigation Buttons -->
-        <button 
+        <button
           v-if="currentSlideIndex > 0"
           class="nav-button nav-button-prev"
-          @click="previousSlide"
+          @click.stop="previousSlide"
           aria-label="Previous slide"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="15 18 9 12 15 6"></polyline>
           </svg>
         </button>
-        
-        <button 
+
+        <button
           v-if="currentSlideIndex < totalSlides - 1"
           class="nav-button nav-button-next"
-          @click="nextSlide"
+          @click.stop="nextSlide"
           aria-label="Next slide"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -296,8 +296,8 @@ async function loadAthleteStory(athleteId: number) {
   currentSlideIndex.value = 0
   
   try {
-    const { details, results } = await getCompleteAthleteData(athleteId, props.scope)
-    const processedStats = processAthleteData(details, results)
+    const { details, results, allResults } = await getCompleteAthleteData(athleteId, props.scope)
+    const processedStats = processAthleteData(details, results, allResults)
     
     // Store data
     firstName.value = details.firstname

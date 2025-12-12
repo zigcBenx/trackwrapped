@@ -11,26 +11,30 @@ import { calculateCompetitionHeatmap } from './stats/heatmap'
 /**
  * Process athlete data into statistics
  * @param details - Athlete details from API
- * @param results - Athlete results from API (should be pre-filtered by year if needed)
- * @param year - Optional year for scope (null = lifetime)
+ * @param results - Athlete results from API (filtered by scope/year)
+ * @param allResults - All unfiltered results (for season comparison)
  * @returns Processed statistics for all slides
  */
 export function processAthleteData(
   details: AthleteDetails,
   results: AthleteResult[],
-  year?: number | null
+  allResults?: AthleteResult[]
 ): ProcessedAthleteStats {
   // Career stats
-  const careerStats = calculateCareerStats(details, results, year)
-  
+  const careerStats = calculateCareerStats(details, results)
+
   // Competition stats
   const competitionStats = calculateCompetitionStats(results, careerStats.yearsActive)
-  
+
   // Discipline stats
   const disciplineStats = calculateDisciplineStats(results)
-  
-  // Performance stats
-  const performanceStats = calculatePerformanceStats(details, results)
+
+  // Performance stats - pass both filtered and all results
+  const performanceStats = calculatePerformanceStats(
+    details,
+    allResults || results,  // Use all results for season comparison
+    results  // Use filtered results for current season stats
+  )
   
   // Rival analysis
   const rivalAnalysis = analyzeRivals(results, details.firstname, details.lastname)
@@ -78,7 +82,11 @@ export function processAthleteData(
     isImproving: performanceStats.isImproving,
     averageResultScore: performanceStats.averageResultScore,
     victoryRate: performanceStats.victoryRate,
-    
+    currentSeasonAvgScore: performanceStats.currentSeasonAvgScore,
+    lastSeasonAvgScore: performanceStats.lastSeasonAvgScore,
+    scoreChangePercent: performanceStats.scoreChangePercent,
+    percentileRank: performanceStats.percentileRank,
+
     // Rivals
     nemesis: rivalAnalysis.nemesis,
     topRivals: rivalAnalysis.topRivals,

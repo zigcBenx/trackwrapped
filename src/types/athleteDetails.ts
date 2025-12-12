@@ -90,6 +90,10 @@ export interface ProcessedAthleteStats {
   currentSeasonCompetitions: number
   averageResultScore: number
   victoryRate: number
+  currentSeasonAvgScore: number
+  lastSeasonAvgScore: number
+  scoreChangePercent: number
+  percentileRank: { rank: string; label: string }
   nemesis: { name: string; losses: number } | null
   topRivals: Array<{ name: string; meetings: number }>
   averageWind: number | null

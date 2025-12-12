@@ -110,12 +110,8 @@ export function getWorldRecord(discipline: string, gender: string | null = null)
   // Normalize the discipline name for comparison
   const normalizedDiscipline = discipline.trim()
 
-  // Debug logging
-  console.log('[WR Debug] Looking for:', normalizedDiscipline, 'Gender:', gender || 'null')
-
   // Try exact match first (strict)
   if (records[normalizedDiscipline]) {
-    console.log('[WR Debug] Exact match found:', records[normalizedDiscipline])
     return records[normalizedDiscipline]
   }
 
@@ -124,12 +120,8 @@ export function getWorldRecord(discipline: string, gender: string | null = null)
   const exactMatchKey = Object.keys(records).find(key => key.toLowerCase() === disciplineLower)
 
   if (exactMatchKey && records[exactMatchKey]) {
-    console.log('[WR Debug] Case-insensitive match found:', records[exactMatchKey])
     return records[exactMatchKey]
   }
-
-  // List all available keys for debugging
-  console.log('[WR Debug] No match found. Available keys:', Object.keys(records))
 
   // If no exact match found, return '0' to avoid false matches
   // This prevents "60 Metres" from matching "100 Metres" or "4x400m Relay" from matching "400m Hurdles"

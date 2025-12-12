@@ -36,23 +36,23 @@ export async function getAthleteResults(athleteId: number): Promise<AthleteResul
 
 export async function getCompleteAthleteData(athleteId: number, scope: 'season' | 'lifetime' = 'season') {
   // Fetch basic details and results
-  const [details, results] = await Promise.all([
+  const [details, allResults] = await Promise.all([
     getAthleteDetails(athleteId),
     getAthleteResults(athleteId)
   ])
 
   // Filter results based on scope
-  let filteredResults = results
+  let filteredResults = allResults
   if (scope === 'season') {
     // Get the most recent year from results
-    const years = results.map(r => new Date(r.date).getFullYear())
+    const years = allResults.map(r => new Date(r.date).getFullYear())
     const latestYear = Math.max(...years)
-    
+
     // Filter for that year (e.g. 2025)
-    filteredResults = results.filter(r => new Date(r.date).getFullYear() === latestYear)
-    
+    filteredResults = allResults.filter(r => new Date(r.date).getFullYear() === latestYear)
+
     // If no results for latest year (unlikely if we got year from results), fallback to all
-    if (filteredResults.length === 0) filteredResults = results
+    if (filteredResults.length === 0) filteredResults = allResults
   }
 
   // Fetch competition details for rival analysis
@@ -129,10 +129,14 @@ export async function getCompleteAthleteData(athleteId: number, scope: 'season' 
   )
 
   // Combine results with competitors and remaining results without
-  const allResults = [
+  const combinedResults = [
     ...resultsWithCompetitors,
     ...filteredResults.slice(limit)
   ]
 
-  return { details, results: allResults }
+  return {
+    details,
+    results: combinedResults,
+    allResults: allResults  // Return unfiltered results for season comparison
+  }
 }
