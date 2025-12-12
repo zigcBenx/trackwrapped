@@ -6,23 +6,27 @@
       Loading...
     </div>
     
-    <div v-else-if="topAthletes.length === 0" class="leaderboard-empty">
+    <div v-else-if="athleteDetails.length === 0" class="leaderboard-empty">
       No views yet. Be the first to explore!
     </div>
     
     <div v-else class="leaderboard-list">
-      <div
-        v-for="(athlete, index) in topAthletes"
+      <button
+        v-for="(athlete, index) in athleteDetails"
         :key="athlete.athleteId"
         class="leaderboard-item"
         :class="{ 'top-1': index === 0, 'top-2': index === 1, 'top-3': index === 2 }"
+        @click="handleAthleteClick(athlete)"
       >
         <div class="rank-badge">{{ index + 1 }}</div>
         <div class="athlete-info">
-          <div class="athlete-id">ID: {{ athlete.athleteId }}</div>
+          <div class="athlete-name-row">
+            <span class="athlete-name">{{ athlete.firstname }} {{ athlete.lastname }}</span>
+            <span class="country-flag" v-if="athlete.countryFlag">{{ athlete.countryFlag }}</span>
+          </div>
           <div class="athlete-views">{{ athlete.views }} views</div>
         </div>
-      </div>
+      </button>
     </div>
   </div>
 </template>
@@ -30,16 +34,76 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { getTopAthletes } from '@/services/viewTrackingService'
+import { getCountryFlag } from '@/utils/countryFlags'
 import type { TopAthlete } from '@/services/viewTrackingService'
 
-const topAthletes = ref<TopAthlete[]>([])
+interface AthleteWithDetails extends TopAthlete {
+  firstname: string
+  lastname: string
+  country: string
+  countryFlag: string
+}
+
+const athleteDetails = ref<AthleteWithDetails[]>([])
 const isLoading = ref(true)
+
+const emit = defineEmits<{
+  athleteSelect: [athlete: { id: number; firstname: string; lastname: string }]
+}>()
 
 onMounted(async () => {
   isLoading.value = true
-  topAthletes.value = await getTopAthletes()
-  isLoading.value = false
+  try {
+    const topAthletes = await getTopAthletes()
+    
+    // Fetch details for each athlete
+    const details = await Promise.all(
+      topAthletes.map(async (athlete) => {
+        try {
+          const response = await fetch(
+            `https://www.worldathletics.org/records/api/v2/athletes?id=${athlete.athleteId}`
+          )
+          const data = await response.json()
+          
+          if (data.athletes && data.athletes.length > 0) {
+            const athleteData = data.athletes[0]
+            return {
+              ...athlete,
+              firstname: athleteData.firstname || 'Unknown',
+              lastname: athleteData.lastname || 'Unknown',
+              country: athleteData.country || '',
+              countryFlag: getCountryFlag(athleteData.country || '')
+            }
+          }
+        } catch (error) {
+          console.error(`Failed to fetch details for athlete ${athlete.athleteId}:`, error)
+        }
+        
+        return {
+          ...athlete,
+          firstname: 'Unknown',
+          lastname: 'Athlete',
+          country: '',
+          countryFlag: ''
+        }
+      })
+    )
+    
+    athleteDetails.value = details
+  } catch (error) {
+    console.error('Error loading leaderboard:', error)
+  } finally {
+    isLoading.value = false
+  }
 })
+
+function handleAthleteClick(athlete: AthleteWithDetails) {
+  emit('athleteSelect', {
+    id: Number(athlete.athleteId),
+    firstname: athlete.firstname,
+    lastname: athlete.lastname
+  })
+}
 </script>
 
 <style scoped>
@@ -84,6 +148,10 @@ onMounted(async () => {
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  font-family: inherit;
 }
 
 .leaderboard-item:hover {
@@ -97,14 +165,29 @@ onMounted(async () => {
   border-color: rgba(251, 191, 36, 0.3);
 }
 
+.leaderboard-item.top-1:hover {
+  background: rgba(251, 191, 36, 0.15);
+  border-color: rgba(251, 191, 36, 0.5);
+}
+
 .leaderboard-item.top-2 {
   background: rgba(192, 192, 192, 0.1);
   border-color: rgba(192, 192, 192, 0.3);
 }
 
+.leaderboard-item.top-2:hover {
+  background: rgba(192, 192, 192, 0.15);
+  border-color: rgba(192, 192, 192, 0.5);
+}
+
 .leaderboard-item.top-3 {
   background: rgba(205, 127, 50, 0.1);
   border-color: rgba(205, 127, 50, 0.3);
+}
+
+.leaderboard-item.top-3:hover {
+  background: rgba(205, 127, 50, 0.15);
+  border-color: rgba(205, 127, 50, 0.5);
 }
 
 .rank-badge {
@@ -138,19 +221,35 @@ onMounted(async () => {
 .athlete-info {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   flex: 1;
   min-width: 0;
 }
 
-.athlete-id {
-  font-size: var(--font-size-sm);
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 500;
+.athlete-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.athlete-name {
+  font-size: var(--font-size-base);
+  color: white;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.country-flag {
+  font-size: 1.2rem;
+  line-height: 1;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
 .athlete-views {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-sm);
   font-weight: 700;
   color: #00ff9d;
   letter-spacing: 0.5px;
@@ -183,8 +282,13 @@ onMounted(async () => {
     font-size: var(--font-size-base);
   }
 
+  .athlete-name {
+    font-size: var(--font-size-sm);
+  }
+
   .athlete-views {
-    font-size: var(--font-size-base);
+    font-size: 0.75rem;
   }
 }
 </style>
+

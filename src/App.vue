@@ -11,8 +11,8 @@ const isStoryOpen = ref(false)
 const showSelection = ref(false)
 const selectedScope = ref<'season' | 'lifetime'>('season')
 
-function handleAthleteSelect(athlete: Athlete) {
-  selectedAthlete.value = athlete
+function handleAthleteSelect(athlete: Athlete | { id: number; firstname: string; lastname: string }) {
+  selectedAthlete.value = athlete as Athlete
   showSelection.value = true
 }
 
@@ -44,7 +44,7 @@ function handleStoryClose() {
         
         <SearchInput @athlete-select="handleAthleteSelect" />
         
-        <Leaderboard />
+        <Leaderboard @athlete-select="handleAthleteSelect" />
       </div>
     </main>
     
