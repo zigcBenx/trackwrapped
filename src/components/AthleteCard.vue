@@ -1,7 +1,15 @@
 <template>
   <div class="athlete-card glass" @click="handleClick">
     <div class="athlete-card__header">
-      <div class="athlete-card__flag">{{ countryFlag }}</div>
+      <div class="athlete-card__flag">
+        <img 
+          :src="countryFlagUrl" 
+          :alt="athlete.country" 
+          class="flag-icon"
+          loading="lazy"
+          @error="(e) => (e.target as HTMLImageElement).style.display = 'none'"
+        />
+      </div>
       <div class="athlete-card__country">{{ athlete.country }}</div>
     </div>
     <div class="athlete-card__body">
@@ -25,6 +33,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { Athlete } from '@/types/athlete'
+import { getCountryFlagUrl } from '@/utils/countryFlags'
 
 interface Props {
   athlete: Athlete
@@ -39,30 +48,8 @@ function handleClick() {
   emit('select', props.athlete)
 }
 
-const countryFlag = computed(() => {
-  // Convert country code to flag emoji
-  const code = props.athlete.country
-  if (!code || code.length !== 3) return '🏃'
-  
-  // Map common 3-letter codes to 2-letter ISO codes for flags
-  const countryMap: Record<string, string> = {
-    'USA': 'US', 'GBR': 'GB', 'JAM': 'JM', 'KEN': 'KE', 'ETH': 'ET',
-    'GER': 'DE', 'FRA': 'FR', 'ITA': 'IT', 'ESP': 'ES', 'NED': 'NL',
-    'AUS': 'AU', 'CAN': 'CA', 'CHN': 'CN', 'JPN': 'JP', 'BRA': 'BR',
-    'RSA': 'ZA', 'SUI': 'CH', 'POL': 'PL', 'ROU': 'RO', 'NOR': 'NO'
-  }
-  
-  const isoCode = countryMap[code] || code.slice(0, 2)
-  
-  try {
-    return isoCode
-      .toUpperCase()
-      .split('')
-      .map(char => String.fromCodePoint(127397 + char.charCodeAt(0)))
-      .join('')
-  } catch {
-    return '🏃'
-  }
+const countryFlagUrl = computed(() => {
+  return getCountryFlagUrl(props.athlete.country)
 })
 
 const genderLabel = computed(() => {
@@ -106,8 +93,19 @@ const formattedBirthdate = computed(() => {
 }
 
 .athlete-card__flag {
-  font-size: var(--font-size-xl);
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.flag-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .athlete-card__country {

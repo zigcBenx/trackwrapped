@@ -29,9 +29,16 @@
 
       <!-- Country List (if not too many) -->
       <div v-if="countries.length > 0 && countries.length <= 12" class="country-list">
-        <span v-for="country in countries" :key="country" class="country-tag">
-          {{ country }}
-        </span>
+        <div v-for="country in countries" :key="country" class="country-tag">
+          <img 
+            :src="getCountryFlagUrl(country)" 
+            :alt="country" 
+            class="country-flag"
+            loading="lazy"
+            @error="(e) => (e.target as HTMLImageElement).style.display = 'none'"
+          />
+          <span class="country-name">{{ country }}</span>
+        </div>
       </div>
     </div>
   </SlideWrapper>
@@ -41,6 +48,7 @@
 import { ref, computed, onMounted } from 'vue'
 import SlideWrapper from './SlideWrapper.vue'
 import { getTravelSequence } from '@/utils/newSlideJokes'
+import { getCountryFlagUrl } from '@/utils/countryFlags'
 
 interface Props {
   countries: string[]
@@ -197,13 +205,28 @@ onMounted(() => {
 
 .country-tag {
   background: rgba(255, 255, 255, 0.1);
-  padding: 8px 16px;
+  padding: 6px 12px;
   border-radius: 20px;
   font-family: 'Outfit', sans-serif;
   font-size: 1rem;
   color: white;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.country-flag {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.country-name {
+  font-weight: 500;
 }
 
 @media (max-width: 768px) {
