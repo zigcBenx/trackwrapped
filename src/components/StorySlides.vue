@@ -221,6 +221,7 @@
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import StoryLoader from './StoryLoader.vue'
 import { getCompleteAthleteData } from '@/services/athleteDetailsService'
+import { trackAthleteView } from '@/services/viewTrackingService'
 import { processAthleteData } from '@/utils/storyGenerator'
 import { 
   getExperienceSequence, 
@@ -339,6 +340,9 @@ async function loadAthleteStory(athleteId: number) {
     nickname.value = generateNickname(processedStats, details.firstname)
     currentYearResults.value = results
     allSeasonResults.value = allResults
+
+    // Track this view
+    trackAthleteView(athleteId)
 
     // Start autoplay for first slide
     startAutoplay()
