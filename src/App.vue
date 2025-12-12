@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import SearchInput from './components/SearchInput.vue'
+import Leaderboard from './components/Leaderboard.vue'
 import WrappedSelection from './components/WrappedSelection.vue'
 import StorySlides from './components/StorySlides.vue'
 import type { Athlete } from './types/athlete'
@@ -42,6 +43,8 @@ function handleStoryClose() {
         </header>
         
         <SearchInput @athlete-select="handleAthleteSelect" />
+        
+        <Leaderboard />
       </div>
     </main>
     

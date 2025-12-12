@@ -8,6 +8,17 @@ export interface ViewTrackingResponse {
   views: number
 }
 
+export interface TopAthlete {
+  athleteId: string
+  views: number
+  updatedAt: string
+}
+
+export interface TopAthletesResponse {
+  success: boolean
+  topAthletes: TopAthlete[]
+}
+
 /**
  * Track an athlete view by sending a POST request to the API
  * @param athleteId - The athlete ID to track
@@ -46,7 +57,33 @@ export async function trackAthleteView(athleteId: number | null): Promise<ViewTr
 }
 
 /**
- * Get the current view count for an athlete (optional - can be added later)
+ * Get the top 3 athletes by view count
+ * @returns Array of top 3 athletes with their view counts
+ */
+export async function getTopAthletes(): Promise<TopAthlete[]> {
+  try {
+    const response = await fetch('/api/view', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    if (!response.ok) {
+      console.error('Failed to fetch top athletes')
+      return []
+    }
+
+    const data: TopAthletesResponse = await response.json()
+    return data.topAthletes || []
+  } catch (error) {
+    console.error('Error getting top athletes:', error)
+    return []
+  }
+}
+
+/**
+ * Get the current view count for an athlete (optional)
  * @param athleteId - The athlete ID to get views for
  * @returns The current view count
  */
