@@ -158,8 +158,9 @@ export function getIsoCode(code: string): string | null {
   if (code.length === 2) return code.toUpperCase()
   
   // Check manual IOC mapping first (common in athletics)
-  if (IOC_MAPPING[code.toUpperCase()]) {
-    return IOC_MAPPING[code.toUpperCase()]
+  const iocMatch = IOC_MAPPING[code.toUpperCase()]
+  if (iocMatch) {
+    return iocMatch
   }
   
   // Try lookup by ISO3
