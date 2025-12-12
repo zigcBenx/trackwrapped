@@ -24,8 +24,20 @@ export function calculatePerformanceStats(
   // Check for world records
   const hasWorldRecord = details.personalbests?.some(pb => pb.records.includes('WR')) || false
 
-  // Top placements (podium finishes)
-  const topPlacements = resultsForStats.filter(r => r.place <= 3).length
+  // Top placements (podium finishes) - only count true finals
+  // Filter for finals where everyone competed together (not multi-heat finals like "F1", "F2", "F3")
+  // True finals have race = "F" or "FA" (or "FB"), not race values with numbers
+  const finalResults = resultsForStats.filter(r => {
+    const isTrueFinal = r.race === 'F' || r.race === 'FA' || r.race === 'FB'
+    return isTrueFinal && r.place > 0 && r.place <= 3
+  })
+  const topPlacements = finalResults.length
+
+  // Debug logging
+  console.log('RESULTS FOR STATS', resultsForStats)
+  console.log('ALL RACES', resultsForStats.map(r => ({ race: r.race, place: r.place, competition: r.competition })))
+  console.log('TRUE FINALS ONLY (F/FA/FB)', finalResults.map(r => ({ race: r.race, place: r.place, competition: r.competition })))
+  console.log('TOP PLACEMENTS IN FINALS', topPlacements)
 
   // Average place
   const validPlacements = resultsForStats.filter(r => r.place > 0)
@@ -42,11 +54,17 @@ export function calculatePerformanceStats(
     ? Math.round(validScores.reduce((sum, r) => sum + r.resultScore, 0) / validScores.length)
     : 0
 
-  // Victory rate (podium finishes / total)
+  // Victory rate (podium finishes in finals / total competitions)
+  // This shows what % of competitions you reached the final AND placed on podium
   const totalCompetitions = resultsForStats.length
+
   const victoryRate = totalCompetitions > 0
     ? Math.round((topPlacements / totalCompetitions) * 100)
     : 0
+
+  console.log('TOTAL COMPETITIONS', totalCompetitions)
+  console.log('PODIUM FINISHES IN FINALS', topPlacements)
+  console.log('VICTORY RATE', victoryRate)
 
   // Season-over-season comparison - always use ALL results, not filtered
   const seasonComparison = calculateSeasonComparison(results)
