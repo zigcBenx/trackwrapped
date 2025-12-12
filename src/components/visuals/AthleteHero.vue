@@ -114,23 +114,34 @@ defineProps<Props>()
   font-family: 'Bebas Neue', sans-serif;
   margin-bottom: var(--spacing-xl);
   transform: rotate(-2deg);
+  width: 90%;
+  max-width: 90%;
 }
 
 .first-name {
-  font-size: 3rem;
+  font-size: clamp(1rem, 8vw, 6rem);
   color: rgba(255, 255, 255, 0.9);
   letter-spacing: 2px;
   animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  overflow: visible;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .last-name {
-  font-size: 4rem; /* Reduced from 4.5rem */
+  font-size: clamp(1.5rem, 12vw, 8rem);
   color: white;
   font-weight: 900;
   letter-spacing: -2px;
   text-shadow: 4px 4px 0px rgba(0,0,0,0.3);
   animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
-  white-space: nowrap; /* Force single line */
+  white-space: nowrap;
+  overflow: visible;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .hero-stats {
@@ -166,9 +177,8 @@ defineProps<Props>()
 }
 
 .aka-section {
-  margin-top: auto; /* Push to bottom */
   text-align: center;
-  padding-top: var(--spacing-xl);
+  padding-top: var(--spacing-xs);
   animation: fadeIn 1s ease 0.5s backwards;
 }
 
@@ -209,8 +219,6 @@ defineProps<Props>()
 }
 
 @media (max-width: 768px) {
-  .first-name { font-size: 2.5rem; }
-  .last-name { font-size: 4rem; }
   .stat-number { font-size: 3rem; }
 }
 </style>
