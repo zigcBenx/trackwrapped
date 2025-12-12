@@ -620,6 +620,15 @@ onUnmounted(() => {
   max-height: 900px;
   aspect-ratio: 9/16;
   position: relative;
+
+  /* Prevent text selection on touch devices */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  /* Prevent callout menu on long press */
+  -webkit-touch-callout: none;
 }
 
 .progress-indicator {
