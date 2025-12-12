@@ -280,27 +280,27 @@ const powerLevel = computed(() => {
 
 const powerLevelTooltip = computed(() => {
   const thresholds = [
-    { label: 'World Class Elite', threshold: '≥1350 pts', percentile: 'Top 0.1%' },
-    { label: 'Elite International', threshold: '≥1300 pts', percentile: 'Top 1%' },
+    { label: 'World Class Elite', threshold: '≥1200 pts', percentile: 'Top 0.1%' },
+    { label: 'Elite International', threshold: '≥1150 pts', percentile: 'Top 1%' },
     { label: 'National Elite', threshold: '≥1200 pts', percentile: 'Top 5%' },
     { label: 'Advanced Competitive', threshold: '≥1100 pts', percentile: 'Top 10%' },
     { label: 'Competitive', threshold: '≥1000 pts', percentile: 'Top 15%' },
     { label: 'Club Level', threshold: '≥900 pts', percentile: 'Top 20%' },
-    { label: 'Recreational', threshold: '≥700 pts', percentile: 'Top 50%' },
-    { label: 'Developing', threshold: '<700 pts', percentile: '' }
+    { label: 'Recreational', threshold: '≥800 pts', percentile: 'Top 50%' },
+    { label: 'Developing', threshold: '<600 pts', percentile: '' }
   ]
 
   return thresholds
 })
 
 function toggleTooltip() {
-  console.log('HEY')
   showTooltip.value = !showTooltip.value
 }
 
-function handleTap() {
-  // Close tooltip if open when tapping elsewhere
-  if (showTooltip.value) {
+function handleTap(event: Event) {
+  // Close tooltip if open when tapping elsewhere on the container
+  const target = event.target as HTMLElement
+  if (showTooltip.value && !target.closest('.power-level-card')) {
     showTooltip.value = false
   }
 }
@@ -591,7 +591,7 @@ function handleTap() {
   max-width: 320px;
   z-index: 1000;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 .power-tooltip::after {
