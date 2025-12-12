@@ -192,3 +192,30 @@ export function getCountryFlagUrl(code: string): string {
   
   return `https://hatscripts.github.io/circle-flags/flags/${isoCode.toLowerCase()}.svg`
 }
+
+/**
+ * Convert ISO2 country code to flag emoji
+ * @param isoCode 2-letter ISO code (e.g., 'US', 'DE')
+ * @returns Flag emoji
+ */
+export function getCountryFlagEmoji(isoCode: string): string {
+  if (!isoCode || isoCode.length !== 2) return ''
+  
+  const codePoints = isoCode
+    .toUpperCase()
+    .split('')
+    .map(char => 127397 + char.charCodeAt(0))
+  
+  return String.fromCodePoint(...codePoints)
+}
+
+/**
+ * Convert 3-letter country code to flag emoji
+ * @param code 3-letter country code
+ * @returns Flag emoji
+ */
+export function getCountryFlag(code: string): string {
+  const isoCode = getIsoCode(code)
+  if (!isoCode) return ''
+  return getCountryFlagEmoji(isoCode)
+}
