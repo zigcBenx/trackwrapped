@@ -27,7 +27,13 @@
 
         
         <!-- Slide Container -->
-        <div class="slides-wrapper" @click="handleSlideTap">
+        <div
+          class="slides-wrapper"
+          @click="handleSlideTap"
+          @touchstart="handleTouchStart"
+          @touchmove="handleTouchMove"
+          @touchend="handleTouchEnd"
+        >
           <!-- Progress Indicator (Inside card) -->
           <div class="progress-indicator">
             <div 
@@ -263,6 +269,14 @@ const currentDuration = ref(5000)
 const isPaused = ref(false)
 let autoplayTimer: any = null
 
+// Touch handling state
+let touchStartX = 0
+let touchStartY = 0
+let touchStartTime = 0
+let longPressTimer: any = null
+let wasHolding = false
+let touchHandled = false
+
 // Data
 const firstName = ref('')
 const lastName = ref('')
@@ -396,9 +410,12 @@ function togglePause() {
   if (isPaused.value) {
     stopAutoplay()
   } else {
-    // Resume logic: we rely on the CSS animation resuming
-    // We don't set a backup timer here to avoid complexity with remaining time
-    // The animationend event will still trigger nextSlide
+    // Resume: set backup timer for the full duration
+    // The CSS animation will resume from where it paused
+    currentDuration.value = calculateSlideDuration(currentSlideIndex.value)
+    autoplayTimer = setTimeout(() => {
+      nextSlide()
+    }, currentDuration.value + 100)
   }
 }
 
@@ -421,6 +438,12 @@ function previousSlide() {
 }
 
 function handleSlideTap(event: MouseEvent) {
+  // Ignore if touch already handled this interaction
+  if (touchHandled) {
+    touchHandled = false
+    return
+  }
+
   // Ignore if clicking a button or interactive element
   const target = event.target as HTMLElement
   if (target.closest('button') || target.closest('.interactive')) return
@@ -428,7 +451,7 @@ function handleSlideTap(event: MouseEvent) {
   const wrapper = event.currentTarget as HTMLElement
   const rect = wrapper.getBoundingClientRect()
   const x = event.clientX - rect.left
-  
+
   if (x < rect.width / 2) {
     previousSlide()
   } else {
@@ -442,10 +465,107 @@ function handleClose() {
   currentSlideIndex.value = 0
 }
 
+// Touch handling for mobile (Instagram-style)
+function handleTouchStart(event: TouchEvent) {
+  // Ignore if touching a button
+  const target = event.target as HTMLElement
+  if (target.closest('button') || target.closest('.interactive')) return
+
+  const touch = event.touches[0]
+  touchStartX = touch.clientX
+  touchStartY = touch.clientY
+  touchStartTime = Date.now()
+  wasHolding = false
+  touchHandled = false
+
+  // Start long press timer (pause after 200ms hold)
+  longPressTimer = setTimeout(() => {
+    wasHolding = true
+    touchHandled = true // Mark as handled to prevent click event
+    if (!isPaused.value) {
+      isPaused.value = true
+      stopAutoplay()
+    }
+  }, 200)
+}
+
+function handleTouchMove(event: TouchEvent) {
+  if (!longPressTimer) return
+
+  const touch = event.touches[0]
+  const deltaX = Math.abs(touch.clientX - touchStartX)
+  const deltaY = Math.abs(touch.clientY - touchStartY)
+
+  // If moved significantly, cancel long press
+  if (deltaX > 10 || deltaY > 10) {
+    clearTimeout(longPressTimer)
+    longPressTimer = null
+  }
+}
+
+function handleTouchEnd(event: TouchEvent) {
+  // Clear long press timer
+  if (longPressTimer) {
+    clearTimeout(longPressTimer)
+    longPressTimer = null
+  }
+
+  const touch = event.changedTouches[0]
+  const deltaX = touch.clientX - touchStartX
+  const deltaY = touch.clientY - touchStartY
+  const deltaTime = Date.now() - touchStartTime
+
+  // Calculate distances
+  const absX = Math.abs(deltaX)
+  const absY = Math.abs(deltaY)
+
+  // If was holding, just resume without advancing
+  if (wasHolding) {
+    if (isPaused.value) {
+      isPaused.value = false
+      startAutoplay()
+    }
+    wasHolding = false
+    // touchHandled is already set to true, will prevent click event
+    return
+  }
+
+  // Check for swipe (moved more than 50px, more horizontal than vertical)
+  if (absX > 50 && absX > absY) {
+    event.preventDefault()
+    touchHandled = true // Mark as handled to prevent click event
+    if (deltaX > 0) {
+      // Swipe right -> previous slide
+      previousSlide()
+    } else {
+      // Swipe left -> next slide
+      nextSlide()
+    }
+    return
+  }
+
+  // Check for quick tap (< 300ms, < 10px movement)
+  if (deltaTime < 300 && absX < 10 && absY < 10) {
+    event.preventDefault()
+    touchHandled = true // Mark as handled to prevent click event
+
+    // Tap to navigate based on side
+    const wrapper = event.currentTarget as HTMLElement
+    const rect = wrapper.getBoundingClientRect()
+    const x = touch.clientX - rect.left
+
+    if (x < rect.width / 2) {
+      previousSlide()
+    } else {
+      nextSlide()
+    }
+  }
+}
+
 // Keyboard navigation
 function handleKeydown(event: KeyboardEvent) {
   if (!props.isOpen) return
-  
+
   if (event.key === 'ArrowRight') {
     nextSlide()
   } else if (event.key === 'ArrowLeft') {
