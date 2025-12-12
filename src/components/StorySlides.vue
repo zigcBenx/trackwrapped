@@ -96,11 +96,21 @@
               :competition-frequency="stats.competitionFrequency"
               :heatmap-data="stats.competitionHeatmap"
             />
+
+            <!-- Travel Slide -->
+            <TravelSlide
+              v-if="currentSlideIndex === 5 && stats"
+              v-show="currentSlideIndex === 5"
+              key="travel"
+              :countries="stats.countries"
+              :countries-count="stats.countriesCount"
+              :home-country="country"
+            />
             
             <!-- World Record Slide -->
             <WorldRecordSlide
-              v-if="currentSlideIndex === 5 && stats"
-              v-show="currentSlideIndex === 5"
+              v-if="currentSlideIndex === 6 && stats"
+              v-show="currentSlideIndex === 6"
               key="worldrecord"
               :best-performance="stats.bestPerformance"
               :main-discipline="stats.mainDiscipline"
@@ -108,32 +118,32 @@
             
             <!-- Victory Rate Slide -->
             <VictoryRateSlide
-              v-if="currentSlideIndex === 6 && stats"
-              v-show="currentSlideIndex === 6"
+              v-if="currentSlideIndex === 7 && stats"
+              v-show="currentSlideIndex === 7"
               key="victoryrate"
               :victory-rate="stats.victoryRate"
             />
             
             <!-- Nemesis Slide -->
             <NemesisSlide
-              v-if="currentSlideIndex === 7 && stats"
-              v-show="currentSlideIndex === 7"
+              v-if="currentSlideIndex === 8 && stats"
+              v-show="currentSlideIndex === 8"
               key="nemesis"
               :nemesis="stats.nemesis"
             />
             
             <!-- Rivals Slide -->
             <RivalsSlide
-              v-if="currentSlideIndex === 8 && stats"
-              v-show="currentSlideIndex === 8"
+              v-if="currentSlideIndex === 9 && stats"
+              v-show="currentSlideIndex === 9"
               key="rivals"
               :top-rivals="stats.topRivals"
             />
             
             <!-- Wind Slide -->
             <WindSlide
-              v-if="currentSlideIndex === 9 && stats"
-              v-show="currentSlideIndex === 9"
+              v-if="currentSlideIndex === 10 && stats"
+              v-show="currentSlideIndex === 10"
               key="wind"
               :average-wind="stats.averageWind"
               :has-wind-data="stats.hasWindData"
@@ -141,8 +151,8 @@
             
             <!-- Share Card Slide (Insights) -->
             <ShareCardSlide
-              v-if="currentSlideIndex === 10 && stats"
-              v-show="currentSlideIndex === 10"
+              v-if="currentSlideIndex === 11 && stats"
+              v-show="currentSlideIndex === 11"
               key="sharecard"
               :first-name="firstName"
               :last-name="lastName"
@@ -213,7 +223,8 @@ import {
   getVictoryRateSequence, 
   getNemesisSequence, 
   getTopRivalsSequence, 
-  getWindSpeedSequence 
+  getWindSpeedSequence,
+  getTravelSequence
 } from '@/utils/newSlideJokes'
 import { generateNickname } from '@/utils/jokeGenerator'
 import type { ProcessedAthleteStats } from '@/types/athleteDetails'
@@ -224,6 +235,7 @@ import VeteranStatusSlide from './slides/VeteranStatusSlide.vue'
 import DisciplineSlide from './slides/DisciplineSlide.vue'
 import PerformanceSlide from './slides/PerformanceSlide.vue'
 import CompetitionSlide from './slides/CompetitionSlide.vue'
+import TravelSlide from './slides/TravelSlide.vue'
 import WorldRecordSlide from './slides/WorldRecordSlide.vue'
 import VictoryRateSlide from './slides/VictoryRateSlide.vue'
 import NemesisSlide from './slides/NemesisSlide.vue'
@@ -258,7 +270,7 @@ const stats = ref<ProcessedAthleteStats | null>(null)
 const nickname = ref('')
 
 // Total number of slides
-const totalSlides = 11
+const totalSlides = 12
 
 // Watch for athlete changes and open state
 watch([() => props.athleteId, () => props.isOpen], async ([newId, newIsOpen]) => {
@@ -330,23 +342,26 @@ function calculateSlideDuration(index: number): number {
       
     case 4: // Competition
       return calculateSequenceDuration(getCompetitionSequence(stats.value.competitionFrequency, stats.value.totalCompetitions))
+
+    case 5: // Travel
+      return calculateSequenceDuration(getTravelSequence(stats.value.countriesCount, stats.value.countriesCount === 1 && stats.value.countries[0] === country.value, country.value))
       
-    case 5: // World Record
+    case 6: // World Record
       return calculateSequenceDuration(getWorldRecordSequence(stats.value.bestPerformance, stats.value.mainDiscipline))
       
-    case 6: // Victory Rate
+    case 7: // Victory Rate
       return calculateSequenceDuration(getVictoryRateSequence(stats.value.victoryRate))
       
-    case 7: // Nemesis
+    case 8: // Nemesis
       return calculateSequenceDuration(getNemesisSequence(stats.value.nemesis))
       
-    case 8: // Rivals
+    case 9: // Rivals
       return calculateSequenceDuration(getTopRivalsSequence(stats.value.topRivals))
       
-    case 9: // Wind
+    case 10: // Wind
       return calculateSequenceDuration(getWindSpeedSequence(stats.value.averageWind, stats.value.hasWindData))
       
-    case 10: // Share Card
+    case 11: // Share Card
       return 10000 // Give more time for the final card
       
     default:

@@ -89,5 +89,34 @@ export function getWindSpeedSequence(averageWind: number | null, hasWindData: bo
     lines.push("Perfectly balanced ⚖️")
   }
   
+  
+  return lines
+}
+
+export function getTravelSequence(countriesCount: number, isDomesticOnly: boolean, homeCountry: string): string[] {
+  if (isDomesticOnly) {
+    return [
+      "Checking your passport stamps...",
+      "Wait, it's empty! 📄",
+      `You stayed loyal to ${homeCountry} 🏠`
+    ]
+  }
+
+  const lines = ["Checking your passport stamps..."]
+  
+  if (countriesCount <= 3) {
+    lines.push("You dipped your toes internationally")
+    lines.push("A taste of the world 🌍")
+  } else if (countriesCount <= 10) {
+    lines.push("You've been getting around!")
+    lines.push("Collecting flags like medals 🚩")
+  } else {
+    return [
+      "Checking your passport stamps...",
+      "We ran out of pages! 📚",
+      "You are officially a world traveler ✈️"
+    ]
+  }
+  
   return lines
 }
