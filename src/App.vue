@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import SearchInput from './components/SearchInput.vue'
+import ViewStats from './components/ViewStats.vue'
 import Leaderboard from './components/Leaderboard.vue'
 import WrappedSelection from './components/WrappedSelection.vue'
 import StorySlides from './components/StorySlides.vue'
@@ -39,11 +40,13 @@ function handleStoryClose() {
       <div class="container">
         <header class="app-header">
           <h1 class="app-title gradient-text">TrackWrapped</h1>
-          <p class="app-subtitle">Discover the world's greatest track & field athletes</p>
+          <p class="app-subtitle">Your track & field journey wrapped up in an epic story</p>
         </header>
-        
+
         <SearchInput @athlete-select="handleAthleteSelect" />
-        
+
+        <ViewStats />
+
         <Leaderboard @athlete-select="handleAthleteSelect" />
       </div>
     </main>
