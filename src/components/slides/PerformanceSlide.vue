@@ -212,7 +212,7 @@ onMounted(() => {
 }
 
 .change-arrow.positive {
-  color: #00ff9d;
+  color: #089c63;
 }
 
 .change-arrow.negative {
@@ -226,7 +226,7 @@ onMounted(() => {
 }
 
 .change-value.positive {
-  color: #00ff9d;
+  color: #089c63;
 }
 
 .change-value.negative {
@@ -261,7 +261,7 @@ onMounted(() => {
 .percentile-label {
   font-family: 'Outfit', sans-serif;
   font-size: 1.1rem;
-  color: #00ff9d;
+  color: #089c63;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 700;

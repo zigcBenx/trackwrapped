@@ -18,7 +18,7 @@
 
     <!-- Reveal Phase -->
     <div v-else class="reveal-container">
-      <div class="slide-emoji fade-in-up" style="animation-delay: 0ms">🏃</div>
+      <div class="slide-emoji fade-in-up" style="animation-delay: 0ms">{{ disciplineEmoji }}</div>
       <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">Main Event</h1>
       <div class="massive-stat fade-in-up" style="animation-delay: 300ms">
         <div class="stat-value-massive">{{ mainDiscipline }}</div>
@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import SlideWrapper from './SlideWrapper.vue'
 import { getDisciplineSequence } from '@/utils/jokeGenerator'
 
@@ -43,6 +43,22 @@ const props = defineProps<Props>()
 const phase = ref<'buildup' | 'reveal'>('buildup')
 const currentLineIndex = ref(-1)
 const sequence = getDisciplineSequence(props.disciplineCategory, props.mainDiscipline)
+
+const disciplineEmoji = computed(() => {
+  switch (props.disciplineCategory.toLowerCase()) {
+    case 'sprint':
+    case 'distance':
+      return '🏃'
+    case 'jump':
+      return '🤸'
+    case 'throw':
+      return '🥏'
+    case 'combined':
+      return '🏅'
+    default:
+      return '🏃'
+  }
+})
 
 let sequenceTimer: any = null
 

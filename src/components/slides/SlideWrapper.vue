@@ -79,8 +79,8 @@ withDefaults(defineProps<Props>(), {
   transform: translateX(-50%);
   font-family: 'Outfit', sans-serif;
   font-size: 0.7rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
   letter-spacing: 0.5px;
   z-index: 3;
   text-transform: lowercase;

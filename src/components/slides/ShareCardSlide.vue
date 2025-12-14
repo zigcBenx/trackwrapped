@@ -342,8 +342,8 @@ function handleTap(event: Event) {
 }
 
 .avatar {
-  width: 48px; /* Slightly smaller */
-  height: 48px;
+  width: 60px; /* Slightly smaller */
+  height: 60px;
   border-radius: 50%;
   background: linear-gradient(135deg, #6366f1, #a855f7);
   display: flex;

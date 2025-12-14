@@ -3,28 +3,16 @@ import { ref } from 'vue'
 import SearchInput from './components/SearchInput.vue'
 import ViewStats from './components/ViewStats.vue'
 import Leaderboard from './components/Leaderboard.vue'
-import WrappedSelection from './components/WrappedSelection.vue'
 import StorySlides from './components/StorySlides.vue'
 import type { Athlete } from './types/athlete'
 
 const selectedAthlete = ref<Athlete | null>(null)
 const isStoryOpen = ref(false)
-const showSelection = ref(false)
 const selectedScope = ref<'season' | 'lifetime'>('season')
 
 function handleAthleteSelect(athlete: Athlete | { id: number; firstname: string; lastname: string }) {
   selectedAthlete.value = athlete as Athlete
-  showSelection.value = true
-}
-
-function handleSelectionClose() {
-  showSelection.value = false
-  selectedAthlete.value = null
-}
-
-function handleStoryStart(scope: 'season' | 'lifetime') {
-  selectedScope.value = scope
-  showSelection.value = false
+  selectedScope.value = 'season'
   isStoryOpen.value = true
 }
 
@@ -50,13 +38,6 @@ function handleStoryClose() {
         <Leaderboard @athlete-select="handleAthleteSelect" />
       </div>
     </main>
-    
-    <!-- Selection Overlay -->
-    <WrappedSelection
-      :is-open="showSelection"
-      @close="handleSelectionClose"
-      @start="handleStoryStart"
-    />
 
     <!-- Story Slides Overlay -->
     <StorySlides
