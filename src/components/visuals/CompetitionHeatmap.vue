@@ -1,3 +1,4 @@
+
 <template>
   <div class="competition-heatmap">
     <div class="heatmap-header">
@@ -54,7 +55,6 @@ defineProps<Props>()
 }
 
 .heatmap-header {
-  margin-bottom: var(--spacing-md);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -74,7 +74,6 @@ defineProps<Props>()
   padding: var(--spacing-sm);
   background: rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-lg);
-  margin-bottom: var(--spacing-lg);
 }
 
 .heatmap-cell {

@@ -20,10 +20,16 @@
           <div class="user-info">
             <div class="name-row">
               <span class="real-name">{{ firstName }} {{ lastName }}</span>
-              <span class="country-flag" v-if="country">{{ countryFlag }}</span>
             </div>
-            <div class="nickname">@{{ nickname.toLowerCase().replace(/\s+/g, '') }}</div>
-            <div class="main-event">{{ mainDiscipline }}</div>
+            <div class="name-row">
+              <div>
+                <span class="country-flag" v-if="country">{{ countryFlag }}</span>
+              </div>
+              <div>
+                <div class="nickname">@{{ nickname.toLowerCase().replace(/\s+/g, '') }}</div>
+                <div class="main-event">{{ mainDiscipline }}</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -342,8 +348,8 @@ function handleTap(event: Event) {
 }
 
 .avatar {
-  width: 60px; /* Slightly smaller */
-  height: 60px;
+  width: 48px; /* Slightly smaller */
+  height: 48px;
   border-radius: 50%;
   background: linear-gradient(135deg, #6366f1, #a855f7);
   display: flex;
