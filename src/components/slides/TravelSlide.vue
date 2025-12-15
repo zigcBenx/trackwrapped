@@ -1,7 +1,8 @@
 <template>
   <SlideWrapper 
-    background="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
+    background="#000000"
     type="travel"
+    :showPattern="true"
     @click="handleTap"
   >
     <!-- Buildup Phase -->
@@ -10,7 +11,10 @@
         v-for="(line, index) in sequence" 
         :key="index"
         class="story-line"
-        :class="{ 'visible': index <= currentLineIndex }"
+        :class="[
+          { 'visible': index <= currentLineIndex },
+          index <= currentLineIndex ? (index % 2 === 0 ? 'race-in-left' : 'race-in-right') : ''
+        ]"
       >
         {{ line }}
       </div>
@@ -18,16 +22,16 @@
 
     <!-- Reveal Phase -->
     <div v-else class="reveal-container">
-      <div class="slide-emoji fade-in-up" style="animation-delay: 0ms">🌍</div>
-      <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">Global Footprint</h1>
+      <img src="@/assets/world.gif" class="slide-gif fade-in-up" style="animation-delay: 0ms" alt="World" />
+      <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">Global Takeover</h1>
 
       <div class="massive-stat fade-in-up" style="animation-delay: 300ms">
-        <div class="stat-value-massive">{{ countriesCount }}</div>
-        <div class="stat-label-massive">COUNTRIES VISITED</div>
+        <div class="stat-value-massive neon-cyan">{{ countriesCount }}</div>
+        <div class="stat-label-massive">COUNTRIES CONQUERED</div>
         <div class="stat-subtext">{{ travelJoke }}</div>
       </div>
 
-      <!-- Country List (if not too many) -->
+      <!-- Country List (Poster Style) -->
       <div v-if="countries.length > 0 && countries.length <= 12" class="country-list fade-in-up" style="animation-delay: 450ms">
         <div v-for="country in countries" :key="country" class="country-tag">
           <img 
@@ -120,21 +124,24 @@ onMounted(() => {
   gap: var(--spacing-xl);
   min-height: 300px;
   justify-content: center;
+  width: 100%;
+  overflow: hidden;
 }
 
 .story-line {
-  font-family: 'Outfit', sans-serif;
-  font-size: 2.5rem;
+  font-family: var(--font-family-heading);
+  font-size: 3.5rem;
   font-weight: 700;
   color: white;
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+  width: 100%;
 }
 
 .story-line.visible {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .reveal-container {
@@ -144,19 +151,22 @@ onMounted(() => {
   width: 100%;
 }
 
-.slide-emoji {
-  font-size: 6rem;
-  margin-bottom: var(--spacing-xl);
-  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
+.slide-gif {
+  width: 150px;
+  height: 150px;
+  margin-bottom: var(--spacing-lg);
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.3));
 }
 
 .slide-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
+  font-family: var(--font-family-heading);
+  font-size: 2rem;
   text-transform: uppercase;
-  letter-spacing: 4px;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: var(--spacing-xl);
+  letter-spacing: 2px;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-ys);
+  text-align: center;
 }
 
 .massive-stat {
@@ -167,28 +177,33 @@ onMounted(() => {
 }
 
 .stat-value-massive {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--font-family-heading);
   font-size: 8rem;
   line-height: 0.9;
   color: white;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
 }
 
+.neon-cyan {
+  color: var(--color-accent-tertiary);
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+}
+
 .stat-label-massive {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
+  font-family: var(--font-family-heading);
+  font-size: 2rem;
   font-weight: 800;
   text-transform: uppercase;
-  color: #00ff9d;
-  letter-spacing: 2px;
+  color: white;
+  letter-spacing: 4px;
   margin-top: var(--spacing-md);
 }
 
 .stat-subtext {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-family-primary);
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.8);
-  margin-top: var(--spacing-lg);
+  margin-top: var(--spacing-xs);
   font-style: italic;
   text-align: center;
   max-width: 80%;
@@ -200,51 +215,39 @@ onMounted(() => {
   justify-content: center;
   gap: var(--spacing-sm);
   max-width: 600px;
-  margin-top: var(--spacing-lg);
 }
 
 .country-tag {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 1rem;
-  color: white;
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px 16px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   gap: 8px;
+  transform: skewX(-10deg);
+  transition: transform 0.2s ease;
+}
+
+.country-tag:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-accent-tertiary);
 }
 
 .country-flag {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transform: skewX(10deg); /* Counter-skew */
 }
 
 .country-name {
-  font-weight: 500;
-}
-
-@media (max-width: 768px) {
-  .story-line { font-size: 1.8rem; }
-  .stat-value-massive { font-size: 4rem; }
-  .stat-label-massive { font-size: 1.2rem; }
-  .stat-subtext { font-size: 1rem; }
-
-  .slide-emoji {
-    font-size: 4rem;
-    margin-bottom: var(--spacing-lg);
-  }
-}
-
-@media (max-width: 480px) {
-  .stat-value-massive { font-size: 3rem; }
-  .stat-label-massive { font-size: 1rem; }
-  .stat-subtext { font-size: 0.9rem; }
+  font-family: var(--font-family-heading);
+  font-size: 1.2rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transform: skewX(10deg); /* Counter-skew */
 }
 
 /* Float-in animation for reveal phase */
@@ -258,6 +261,17 @@ onMounted(() => {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .story-line { font-size: 2.5rem; }
+  .stat-value-massive { font-size: 6rem; }
+  .stat-label-massive { font-size: 1.5rem; }
+  .slide-gif {
+    width: 120px;
+    height: 120px;
+    margin-bottom: var(--spacing-lg);
   }
 }
 </style>

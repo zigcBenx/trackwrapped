@@ -1,7 +1,8 @@
 <template>
   <SlideWrapper 
-    background="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+    background="#000000"
     type="veteran"
+    :showPattern="true"
     @click="handleTap"
   >
     <!-- Buildup Phase -->
@@ -10,7 +11,10 @@
         v-for="(line, index) in sequence" 
         :key="index"
         class="story-line"
-        :class="{ 'visible': index <= currentLineIndex }"
+        :class="[
+          { 'visible': index <= currentLineIndex },
+          index <= currentLineIndex ? (index % 2 === 0 ? 'race-in-left' : 'race-in-right') : ''
+        ]"
       >
         {{ line }}
       </div>
@@ -19,10 +23,10 @@
     <!-- Reveal Phase -->
     <div v-else class="reveal-container">
       <div class="slide-emoji fade-in-up" style="animation-delay: 0ms">📅</div>
-      <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">{{ yearsActive }} Years in Track & Field</h1>
+      <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">{{ yearsActive }} Years in the Game</h1>
 
       <div class="massive-stat fade-in-up" style="animation-delay: 300ms">
-        <div class="stat-value-massive">{{ yearsActive }}</div>
+        <div class="stat-value-massive neon-gold">{{ yearsActive }}</div>
         <div class="stat-label-massive">YEARS ACTIVE</div>
         <div class="stat-subtext">{{ veteranJoke }}</div>
       </div>
@@ -56,7 +60,7 @@ const sequence = computed(() => {
     lines.push("No longer a rookie 📚")
   } else if (props.yearsActive <= 10) {
     lines.push("Seen a lot of starting lines...")
-    lines.push("Veteran status loading... 🏠")
+    lines.push("Veteran status loading... 👴")
   } else {
     lines.push("Longer than some competitors have been alive!")
     lines.push("Is retirement knocking? (Jk) 🏛️")
@@ -117,21 +121,24 @@ onMounted(() => {
   gap: var(--spacing-xl);
   min-height: 300px;
   justify-content: center;
+  width: 100%;
+  overflow: hidden; /* Prevent scrollbars during animation */
 }
 
 .story-line {
-  font-family: 'Outfit', sans-serif;
-  font-size: 2.5rem;
+  font-family: var(--font-family-heading);
+  font-size: 3.5rem;
   font-weight: 700;
   color: white;
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+  width: 100%;
 }
 
 .story-line.visible {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1; /* Animation handles visibility, but keep this for state */
 }
 
 .reveal-container {
@@ -141,17 +148,17 @@ onMounted(() => {
 }
 
 .slide-emoji {
-  font-size: 4rem; /* Reduced from 6rem */
+  font-size: 4rem;
   margin-bottom: var(--spacing-lg);
   filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
 }
 
 .slide-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.2rem; /* Reduced from 1.5rem */
+  font-family: var(--font-family-heading);
+  font-size: 2rem;
   text-transform: uppercase;
-  letter-spacing: 4px;
-  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 2px;
+  color: var(--color-text-secondary);
   margin-bottom: var(--spacing-lg);
   text-align: center;
 }
@@ -164,95 +171,36 @@ onMounted(() => {
 }
 
 .stat-value-massive {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 5rem; /* Reduced from 6rem */
-  line-height: 0.9;
+  font-family: var(--font-family-heading);
+  font-size: 10rem;
+  line-height: 0.8;
   color: white;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
 }
 
+.neon-gold {
+  color: var(--color-accent-primary);
+  text-shadow: 0 0 20px rgba(204, 255, 0, 0.5);
+}
+
 .stat-label-massive {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-family: var(--font-family-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
   text-transform: uppercase;
-  color: #00ff9d;
-  letter-spacing: 2px;
+  color: white;
+  letter-spacing: 4px;
   margin-top: var(--spacing-md);
 }
 
 .stat-subtext {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1rem;
+  font-family: var(--font-family-primary);
+  font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.8);
-  margin-top: var(--spacing-md);
+  margin-top: var(--spacing-lg);
   font-style: italic;
   text-align: center;
   max-width: 90%;
-}
-
-/* Nickname reveal */
-.nickname-reveal {
-  margin-top: var(--spacing-xl);
-  padding-top: var(--spacing-xl);
-  border-top: 2px solid rgba(255, 255, 255, 0.3);
-  text-align: center;
-  animation: fadeIn 1s ease-in 0.5s both;
-  width: 100%;
-}
-
-.nickname-label {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.6);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: var(--spacing-sm);
-}
-
-.nickname-value {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 3rem; /* Reduced from 3.5rem */
-  color: #00ff9d;
-  text-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
-  letter-spacing: 2px;
-  word-break: break-word;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 768px) {
-  .story-line { font-size: 1.8rem; }
-  .stat-value-massive { font-size: clamp(5rem, 15vw, 8rem); }
-  .stat-label-massive { font-size: 1.2rem; }
-  .nickname-value { font-size: clamp(2rem, 8vw, 3rem); }
-  
-  .slide-emoji {
-    font-size: 4rem;
-    margin-bottom: var(--spacing-lg);
-  }
-  
-  .massive-stat { margin-bottom: var(--spacing-xl); }
-  .nickname-reveal { 
-    margin-top: var(--spacing-xl);
-    padding-top: var(--spacing-xl);
-  }
-}
-
-@media (max-height: 700px) {
-  .slide-emoji { display: none; }
-  .stat-value-massive { font-size: 5rem; }
-  .massive-stat { margin-bottom: var(--spacing-lg); }
-  .nickname-reveal { margin-top: var(--spacing-lg); padding-top: var(--spacing-lg); }
 }
 
 /* Float-in animation for reveal phase */
@@ -267,5 +215,11 @@ onMounted(() => {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@media (max-width: 768px) {
+  .story-line { font-size: 2.5rem; }
+  .stat-value-massive { font-size: 8rem; }
+  .stat-label-massive { font-size: 2rem; }
 }
 </style>

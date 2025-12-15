@@ -1,7 +1,8 @@
 <template>
   <SlideWrapper 
-    background="linear-gradient(135deg, #000000 0%, #1a1a1a 100%)"
+    background="#000000"
     type="nemesis"
+    :showPattern="true"
     @click="handleTap"
   >
     <!-- Buildup Phase -->
@@ -10,7 +11,10 @@
         v-for="(line, index) in sequence" 
         :key="index"
         class="story-line"
-        :class="{ 'visible': index <= currentLineIndex }"
+        :class="[
+          { 'visible': index <= currentLineIndex },
+          index <= currentLineIndex ? (index % 2 === 0 ? 'race-in-left' : 'race-in-right') : ''
+        ]"
       >
         {{ line }}
       </div>
@@ -20,7 +24,7 @@
     <div v-else class="reveal-container">
       <div class="slide-emoji fade-in-up" style="animation-delay: 0ms">😈</div>
       <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">Nemesis Alert</h1>
-      <div v-if="nemesis" class="visual-container fade-in-up" style="animation-delay: 300ms">
+      <div v-if="nemesis" class="visual-container flip-in-3d" style="animation-delay: 300ms">
         <RivalCard
           :name="nemesis.name"
           :losses="nemesis.losses"
@@ -28,7 +32,7 @@
         />
       </div>
       <div v-else class="massive-stat fade-in-up" style="animation-delay: 300ms">
-        <div class="stat-value-massive">NONE</div>
+        <div class="stat-value-massive neon-green">NONE</div>
         <div class="stat-label-massive">ARCH RIVAL</div>
         <div class="stat-subtext">You are safe... for now</div>
       </div>
@@ -91,21 +95,24 @@ onMounted(() => {
   gap: var(--spacing-xl);
   min-height: 300px;
   justify-content: center;
+  width: 100%;
+  overflow: hidden;
 }
 
 .story-line {
-  font-family: 'Outfit', sans-serif;
-  font-size: 2.5rem;
+  font-family: var(--font-family-heading);
+  font-size: 3.5rem;
   font-weight: 700;
   color: white;
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+  width: 100%;
 }
 
 .story-line.visible {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .reveal-container {
@@ -116,82 +123,52 @@ onMounted(() => {
 }
 
 .slide-emoji {
-  font-size: 3.5rem;
-  margin-bottom: var(--spacing-sm);
+  font-size: 6rem;
+  margin-bottom: var(--spacing-xl);
   filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
 }
 
 .slide-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.1rem;
+  font-family: var(--font-family-heading);
+  font-size: 2rem;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: var(--spacing-md);
+  letter-spacing: 2px;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
 }
 
 .visual-container {
   width: 100%;
   max-width: 400px;
   padding: 0 var(--spacing-md);
+  perspective: 1000px; /* Enable 3D space */
 }
 
-.massive-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* ... existing styles ... */
+
+/* 3D Flip Animation */
+.flip-in-3d {
+  animation: flipIn3D 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  opacity: 0;
+  transform-style: preserve-3d;
+  transform: rotateY(90deg);
 }
 
-.stat-value-massive {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 6rem; /* Fixed size for card */
-  line-height: 0.9;
-  color: white;
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
-}
-
-.stat-label-massive {
-  font-family: 'Outfit', sans-serif;
-  font-size: 2rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: #00ff9d;
-  letter-spacing: 2px;
-  margin-top: var(--spacing-md);
-}
-
-.stat-subtext {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-top: var(--spacing-lg);
-  font-style: italic;
+@keyframes flipIn3D {
+  0% {
+    opacity: 0;
+    transform: rotateY(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateY(0deg);
+  }
 }
 
 @media (max-width: 768px) {
-  .story-line { font-size: 1.8rem; }
-  .stat-value-massive { font-size: 4rem; }
-  .stat-label-massive { font-size: 1.2rem; }
-  .stat-subtext { font-size: 1rem; }
-}
-
-@media (max-width: 480px) {
-  .stat-value-massive { font-size: 3rem; }
-  .stat-label-massive { font-size: 1rem; }
-  .stat-subtext { font-size: 0.9rem; }
-}
-
-/* Float-in animation for reveal phase */
-.fade-in-up {
-  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .story-line { font-size: 2.5rem; }
+  .stat-value-massive { font-size: 6rem; }
+  .stat-label-massive { font-size: 1.5rem; }
 }
 </style>

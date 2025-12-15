@@ -1,7 +1,8 @@
 <template>
   <SlideWrapper 
-    background="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
+    background="#000000"
     type="discipline"
+    :showPattern="true"
     @click="handleTap"
   >
     <!-- Buildup Phase -->
@@ -10,7 +11,10 @@
         v-for="(line, index) in sequence" 
         :key="index"
         class="story-line"
-        :class="{ 'visible': index <= currentLineIndex }"
+        :class="[
+          { 'visible': index <= currentLineIndex },
+          index <= currentLineIndex ? (index % 2 === 0 ? 'race-in-left' : 'race-in-right') : ''
+        ]"
       >
         {{ line }}
       </div>
@@ -19,10 +23,10 @@
     <!-- Reveal Phase -->
     <div v-else class="reveal-container">
       <div class="slide-emoji fade-in-up" style="animation-delay: 0ms">{{ disciplineEmoji }}</div>
-      <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">Main Event</h1>
+      <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">This is Your Arena</h1>
       <div class="massive-stat fade-in-up" style="animation-delay: 300ms">
-        <div class="stat-value-massive">{{ mainDiscipline }}</div>
-        <div class="stat-label-massive">MAIN DISCIPLINE</div>
+        <div class="stat-value-massive neon-cyan">{{ mainDiscipline }}</div>
+        <div class="stat-label-massive">MAIN EVENT</div>
       </div>
     </div>
   </SlideWrapper>
@@ -99,21 +103,24 @@ onMounted(() => {
   gap: var(--spacing-xl);
   min-height: 300px;
   justify-content: center;
+  width: 100%;
+  overflow: hidden;
 }
 
 .story-line {
-  font-family: 'Outfit', sans-serif;
-  font-size: 2.5rem;
+  font-family: var(--font-family-heading);
+  font-size: 3.5rem;
   font-weight: 700;
   color: white;
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+  width: 100%;
 }
 
 .story-line.visible {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .reveal-container {
@@ -129,12 +136,13 @@ onMounted(() => {
 }
 
 .slide-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
+  font-family: var(--font-family-heading);
+  font-size: 2rem;
   text-transform: uppercase;
-  letter-spacing: 4px;
-  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 2px;
+  color: var(--color-text-secondary);
   margin-bottom: var(--spacing-xl);
+  text-align: center;
 }
 
 .massive-stat {
@@ -144,34 +152,29 @@ onMounted(() => {
 }
 
 .stat-value-massive {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 5rem; /* Reduced from 10rem */
+  font-family: var(--font-family-heading);
+  font-size: 8rem;
   line-height: 0.9;
   color: white;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
   text-align: center;
-  word-break: break-word; /* Ensure wrapping */
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.neon-cyan {
+  color: var(--color-accent-tertiary);
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
 }
 
 .stat-label-massive {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem; /* Reduced from 2rem */
+  font-family: var(--font-family-heading);
+  font-size: 2.5rem;
   font-weight: 800;
   text-transform: uppercase;
-  color: #00ff9d;
-  letter-spacing: 2px;
+  color: white;
+  letter-spacing: 4px;
   margin-top: var(--spacing-md);
-}
-
-@media (max-width: 768px) {
-  .story-line { font-size: 1.8rem; }
-  .stat-value-massive { font-size: 2rem; }
-  .stat-label-massive { font-size: 1.2rem; }
-}
-
-@media (max-width: 480px) {
-  .stat-value-massive { font-size: 1.5rem; }
-  .stat-label-massive { font-size: 1rem; }
 }
 
 /* Float-in animation for reveal phase */
@@ -186,5 +189,11 @@ onMounted(() => {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@media (max-width: 768px) {
+  .story-line { font-size: 2.5rem; }
+  .stat-value-massive { font-size: 5rem; }
+  .stat-label-massive { font-size: 2rem; }
 }
 </style>

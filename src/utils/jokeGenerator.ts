@@ -11,7 +11,7 @@ export function getExperienceSequence(yearsActive: number): string[] {
     lines.push("No longer a rookie 📚")
   } else if (yearsActive <= 10) {
     lines.push("Seen a lot of starting lines...")
-    lines.push("Veteran status loading... 🏠")
+    lines.push("Veteran status loading... 👴")
   } else {
     lines.push("Longer than some competitors have been alive!")
     lines.push("Is retirement knocking? (Jk) 🏛️")
