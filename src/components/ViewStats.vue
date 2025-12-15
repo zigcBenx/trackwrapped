@@ -52,7 +52,7 @@ onMounted(() => {
   gap: 6px;
   padding: 0;
   margin: 0;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.4);
   animation: fadeIn 0.6s ease-out 0.2s backwards;
@@ -60,12 +60,12 @@ onMounted(() => {
 }
 
 .stat-number {
-  font-weight: 600;
+  font-weight: 800;
   color: rgba(255, 255, 255, 0.6);
 }
 
 .stat-text {
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .stat-divider {

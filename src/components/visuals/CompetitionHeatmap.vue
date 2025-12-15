@@ -61,7 +61,7 @@ defineProps<Props>()
 }
 
 .year-label {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.7);
@@ -127,7 +127,7 @@ defineProps<Props>()
 }
 
 .legend-label {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.5);
 }

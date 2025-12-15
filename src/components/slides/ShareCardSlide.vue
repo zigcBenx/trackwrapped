@@ -351,14 +351,14 @@ function handleTap(event: Event) {
   width: 48px; /* Slightly smaller */
   height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #6366f1, #a855f7);
+  background: linear-gradient(135deg, #22d3ee, #d946ef);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
   font-size: 1.2rem;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(34, 211, 238, 0.5);
   flex-shrink: 0;
   overflow: hidden;
 }
@@ -384,7 +384,7 @@ function handleTap(event: Event) {
 }
 
 .real-name {
-  font-weight: 700;
+  font-weight: 800;
   font-size: 1rem;
   color: white;
   white-space: nowrap;
@@ -405,7 +405,7 @@ function handleTap(event: Event) {
 
 .main-event {
   font-size: 0.75rem;
-  color: #00ff9d;
+  color: #10b981;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -471,26 +471,31 @@ function handleTap(event: Event) {
 }
 
 .card-label {
-  font-size: 0.65rem;
-  color: #a1a1aa;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.7);
   margin-bottom: 2px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1.5px;
 }
 
 .card-value {
-  font-size: 1.2rem;
-  font-weight: 800;
-  line-height: 1.1;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+  font-size: 1.95rem; /* Increased by 50% */
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-/* Colors */
-.gold { color: #fbbf24; text-shadow: 0 0 10px rgba(251, 191, 36, 0.3); }
-.cyan { color: #22d3ee; text-shadow: 0 0 10px rgba(34, 211, 238, 0.3); }
-.pink { color: #f472b6; text-shadow: 0 0 10px rgba(244, 114, 182, 0.3); }
-.purple { color: #c084fc; text-shadow: 0 0 10px rgba(192, 132, 252, 0.3); }
-.yellow { color: #facc15; text-shadow: 0 0 10px rgba(250, 204, 21, 0.3); }
-.orange { color: #fb923c; text-shadow: 0 0 10px rgba(251, 146, 60, 0.3); }
+/* Colors - All white with glows */
+.gold { color: #ffffff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+.cyan { color: #ffffff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+.pink { color: #ffffff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+.purple { color: #ffffff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+.yellow { color: #ffffff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+.orange { color: #ffffff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
 
 /* Footer */
 .bento-footer {
@@ -615,7 +620,7 @@ function handleTap(event: Event) {
 }
 
 .tooltip-header {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.9);
@@ -645,7 +650,7 @@ function handleTap(event: Event) {
 }
 
 .tier-label {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.7rem;
   font-weight: 600;
   color: white;
@@ -706,7 +711,7 @@ function handleTap(event: Event) {
 }
 
 .cta-text {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.8);

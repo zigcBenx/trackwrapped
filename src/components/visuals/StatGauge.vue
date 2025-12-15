@@ -127,21 +127,21 @@ function animateValue() {
 }
 
 .value {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 8rem;
   color: white;
   text-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
 }
 
 .symbol {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 4rem;
   color: rgba(255, 255, 255, 0.8);
   margin-left: 5px;
 }
 
 .label {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 2px;

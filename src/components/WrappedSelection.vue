@@ -135,7 +135,7 @@ function switchToSeason() {
 }
 
 .selection-title {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 4rem;
   color: white;
   margin: 0 0 var(--spacing-sm);
@@ -396,7 +396,7 @@ function switchToSeason() {
   background: transparent;
   border: none;
   color: rgba(255, 255, 255, 0.5);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
   cursor: pointer;
   padding: var(--spacing-sm);

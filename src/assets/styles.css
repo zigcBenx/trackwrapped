@@ -1,26 +1,33 @@
 /* TrackWrapped - Futuristic Design System */
 
 :root {
-  /* Color Palette - Dark Futuristic Theme */
-  --color-bg-primary: #0a0e27;
-  --color-bg-secondary: #151b3d;
-  --color-bg-tertiary: #1e2749;
-  
+  /* Color Palette - Aggressive Sports Theme */
+  --color-bg-primary: #000000;
+  --color-bg-secondary: #0a0a0a;
+  --color-bg-tertiary: #141414;
+
   /* Glassmorphism */
-  --glass-bg: rgba(30, 39, 73, 0.4);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  
-  /* Accent Colors - Athletic Track Inspired */
-  --color-accent-primary: #00d4ff;
-  --color-accent-secondary: #7c3aed;
-  --color-accent-tertiary: #ec4899;
-  --color-gradient: linear-gradient(135deg, #00d4ff 0%, #7c3aed 50%, #ec4899 100%);
-  
+  --glass-bg: rgba(10, 10, 10, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+
+  /* Electric Accent Colors */
+  --color-accent-primary: #22d3ee; /* Electric cyan */
+  --color-accent-secondary: #d946ef; /* Hot magenta */
+  --color-accent-tertiary: #10b981; /* Acid green */
+  --color-gradient: linear-gradient(135deg, #22d3ee 0%, #2563eb 50%, #d946ef 100%);
+
+  /* Neon Gradients */
+  --gradient-electric: linear-gradient(135deg, #22d3ee 0%, #2563eb 50%, #d946ef 100%);
+  --gradient-acid: linear-gradient(135deg, #10b981 0%, #22d3ee 100%);
+  --gradient-fire: linear-gradient(135deg, #ec4899 0%, #f97316 100%);
+  --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  --gradient-nemesis: linear-gradient(135deg, #7f1d1d 0%, #000000 100%);
+
   /* Text Colors */
   --color-text-primary: #ffffff;
-  --color-text-secondary: #a0aec0;
-  --color-text-muted: #718096;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
   
   /* Spacing */
   --spacing-xs: 0.5rem;
@@ -55,8 +62,7 @@
   --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.3);
 }
 
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+/* Fonts imported in main.css */
 
 /* Global Reset & Base Styles */
 *,
@@ -82,7 +88,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Animated Background */
+/* Grain texture overlay */
 body::before {
   content: '';
   position: fixed;
@@ -90,13 +96,28 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
-  animation: backgroundPulse 15s ease-in-out infinite;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
   pointer-events: none;
   z-index: 0;
+  mix-blend-mode: overlay;
+}
+
+/* Animated Background - Electric Neon */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(34, 211, 238, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(217, 70, 239, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(16, 185, 129, 0.2) 0%, transparent 50%);
+  animation: backgroundPulse 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
 }
 
 @keyframes backgroundPulse {
@@ -104,7 +125,7 @@ body::before {
     opacity: 1;
   }
   50% {
-    opacity: 0.7;
+    opacity: 0.8;
   }
 }
 

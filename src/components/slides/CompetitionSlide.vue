@@ -1,6 +1,6 @@
 <template>
   <SlideWrapper 
-    background="linear-gradient(135deg, #fa709a 0%, #fee140 100%)"
+    background="linear-gradient(135deg, #ec4899 0%, #f97316 100%)"
     type="competition"
     @click="handleTap"
   >
@@ -130,7 +130,7 @@ onMounted(() => {
 }
 
 .story-line {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: white;
@@ -158,7 +158,7 @@ onMounted(() => {
 }
 
 .slide-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -173,7 +173,7 @@ onMounted(() => {
 }
 
 .stat-value-large {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 4rem; /* Reduced from 6rem */
   line-height: 0.9;
   color: white;
@@ -181,17 +181,17 @@ onMounted(() => {
 }
 
 .stat-label-large {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.2rem; /* Reduced from 1.5rem */
   font-weight: 800;
   text-transform: uppercase;
-  color: #00ff9d;
+  color: #10b981;
   letter-spacing: 2px;
   margin-top: var(--spacing-sm);
 }
 
 .stat-subtext {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.8);
   margin-top: var(--spacing-lg);

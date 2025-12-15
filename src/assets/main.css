@@ -1,8 +1,10 @@
 @import './base.css';
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;800;900&family=Bebas+Neue&display=swap');
 
 :root {
-  --font-family-primary: 'Outfit', sans-serif;
+  --font-family-primary: 'Inter', sans-serif;
+  --font-family-display: 'Bebas Neue', 'Arial Black', sans-serif;
+  --font-family-numbers: 'Bebas Neue', 'Arial Black', sans-serif;
 }
 
 #app {
@@ -14,10 +16,12 @@
 
 /* Viral Design Utilities */
 .text-massive {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 8rem;
+  font-family: var(--font-family-numbers);
+  font-size: 12rem; /* Increased by 50% */
+  font-weight: 900;
   line-height: 0.8;
   text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .text-slam {
@@ -31,30 +35,37 @@
 
 /* Data Highlighting Utilities */
 .highlight-data {
-  font-weight: 700;
-  color: #fff;
+  font-weight: 900;
+  color: #ffffff;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 .rival-name {
-  font-weight: 800;
+  font-family: var(--font-family-display);
+  font-weight: 900;
   color: #FFD700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  letter-spacing: 1px;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
   padding: 0 4px;
 }
 
 .stat-value {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.2em;
-  color: #00ff9d;
-  letter-spacing: 1px;
+  font-family: var(--font-family-numbers);
+  font-size: 1.8em; /* Increased by 50% */
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
 .location-name {
-  font-weight: 600;
-  color: #00d4ff;
+  font-family: var(--font-family-display);
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
 a,

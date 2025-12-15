@@ -111,7 +111,7 @@ defineProps<Props>()
   flex-direction: column;
   line-height: 0.9;
   text-transform: uppercase;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   margin-bottom: var(--spacing-xl);
   transform: rotate(-2deg);
   width: 90%;
@@ -161,8 +161,9 @@ defineProps<Props>()
 }
 
 .stat-label {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.8rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
   color: rgba(255, 255, 255, 0.6);
@@ -170,10 +171,13 @@ defineProps<Props>()
 }
 
 .stat-number {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+  font-weight: 900;
   font-size: 3.5rem;
   line-height: 1;
-  color: #00ff9d;
+  letter-spacing: -0.02em;
+  color: #10b981;
+  text-shadow: 0 0 30px rgba(16, 185, 129, 0.6), 0 0 60px rgba(16, 185, 129, 0.3);
 }
 
 .aka-section {
@@ -184,7 +188,7 @@ defineProps<Props>()
 
 .aka-label {
   display: block;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.5);
   margin-bottom: 4px;
@@ -192,7 +196,7 @@ defineProps<Props>()
 }
 
 .aka-value {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 2rem;
   color: white;
   letter-spacing: 1px;

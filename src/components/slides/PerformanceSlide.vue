@@ -1,6 +1,6 @@
 <template>
   <SlideWrapper 
-    background="linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"
+    background="linear-gradient(135deg, #10b981 0%, #22d3ee 100%)"
     type="performance"
     @click="handleTap"
   >
@@ -113,7 +113,7 @@ onMounted(() => {
 }
 
 .story-line {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: white;
@@ -143,7 +143,7 @@ onMounted(() => {
 }
 
 .slide-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -177,7 +177,7 @@ onMounted(() => {
 }
 
 .stat-value {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 3.5rem;
   color: white;
   text-shadow: 0 2px 12px rgba(255, 255, 255, 0.4);
@@ -186,7 +186,7 @@ onMounted(() => {
 }
 
 .stat-label {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.75);
   text-transform: uppercase;
@@ -220,7 +220,7 @@ onMounted(() => {
 }
 
 .change-value {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 1.5rem;
   font-weight: bold;
 }
@@ -250,7 +250,7 @@ onMounted(() => {
 }
 
 .percentile-rank {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 4rem;
   color: white;
   text-shadow: 0 2px 20px rgba(255, 255, 255, 0.6);
@@ -259,7 +259,7 @@ onMounted(() => {
 }
 
 .percentile-label {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.1rem;
   color: #089c63;
   text-transform: uppercase;

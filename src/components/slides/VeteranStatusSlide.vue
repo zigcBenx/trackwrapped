@@ -1,6 +1,6 @@
 <template>
   <SlideWrapper 
-    background="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+    background="linear-gradient(135deg, #22d3ee 0%, #2563eb 50%, #d946ef 100%)"
     type="veteran"
     @click="handleTap"
   >
@@ -120,7 +120,7 @@ onMounted(() => {
 }
 
 .story-line {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: white;
@@ -147,7 +147,7 @@ onMounted(() => {
 }
 
 .slide-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.2rem; /* Reduced from 1.5rem */
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -164,7 +164,7 @@ onMounted(() => {
 }
 
 .stat-value-massive {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 5rem; /* Reduced from 6rem */
   line-height: 0.9;
   color: white;
@@ -172,17 +172,17 @@ onMounted(() => {
 }
 
 .stat-label-massive {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.5rem;
   font-weight: 800;
   text-transform: uppercase;
-  color: #00ff9d;
+  color: #10b981;
   letter-spacing: 2px;
   margin-top: var(--spacing-md);
 }
 
 .stat-subtext {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.8);
   margin-top: var(--spacing-md);
@@ -202,7 +202,7 @@ onMounted(() => {
 }
 
 .nickname-label {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
@@ -211,9 +211,9 @@ onMounted(() => {
 }
 
 .nickname-value {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 3rem; /* Reduced from 3.5rem */
-  color: #00ff9d;
+  color: #10b981;
   text-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
   letter-spacing: 2px;
   word-break: break-word;

@@ -204,7 +204,7 @@ onMounted(() => {
 }
 
 .story-line {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: white;
@@ -232,7 +232,7 @@ onMounted(() => {
 }
 
 .slide-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -248,7 +248,7 @@ onMounted(() => {
 }
 
 .stat-value-massive {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 10rem;
   line-height: 0.9;
   color: white;
@@ -256,7 +256,7 @@ onMounted(() => {
 }
 
 .stat-label-massive {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 2rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -266,7 +266,7 @@ onMounted(() => {
 }
 
 .stat-subtext {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.8);
   margin-top: var(--spacing-lg);

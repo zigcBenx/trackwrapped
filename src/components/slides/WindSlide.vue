@@ -1,6 +1,6 @@
 <template>
   <SlideWrapper 
-    background="linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)"
+    background="linear-gradient(135deg, #10b981 0%, #22d3ee 100%)"
     type="wind"
     @click="handleTap"
   >
@@ -88,7 +88,7 @@ onMounted(() => {
 }
 
 .story-line {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: white;
@@ -115,7 +115,7 @@ onMounted(() => {
 }
 
 .slide-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -130,7 +130,7 @@ onMounted(() => {
 }
 
 .stat-value-massive {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 10rem;
   line-height: 0.9;
   color: white;
@@ -138,11 +138,11 @@ onMounted(() => {
 }
 
 .stat-label-massive {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 2rem;
   font-weight: 800;
   text-transform: uppercase;
-  color: #00ff9d;
+  color: #10b981;
   letter-spacing: 2px;
   margin-top: var(--spacing-md);
 }

@@ -1,6 +1,6 @@
 <template>
   <SlideWrapper 
-    background="linear-gradient(135deg, #000000 0%, #1a1a1a 100%)"
+    background="linear-gradient(135deg, #7f1d1d 0%, #000000 100%)"
     type="nemesis"
     @click="handleTap"
   >
@@ -94,7 +94,7 @@ onMounted(() => {
 }
 
 .story-line {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: white;
@@ -122,7 +122,7 @@ onMounted(() => {
 }
 
 .slide-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.1rem;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -143,7 +143,7 @@ onMounted(() => {
 }
 
 .stat-value-massive {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 6rem; /* Fixed size for card */
   line-height: 0.9;
   color: white;
@@ -151,17 +151,17 @@ onMounted(() => {
 }
 
 .stat-label-massive {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 2rem;
   font-weight: 800;
   text-transform: uppercase;
-  color: #00ff9d;
+  color: #10b981;
   letter-spacing: 2px;
   margin-top: var(--spacing-md);
 }
 
 .stat-subtext {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.8);
   margin-top: var(--spacing-lg);

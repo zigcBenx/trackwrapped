@@ -78,7 +78,7 @@ const initials = computed(() => {
 }
 
 .wanted-label {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 1.3rem;
   color: #ff4444;
   text-align: center;
@@ -103,13 +103,13 @@ const initials = computed(() => {
 }
 
 .avatar-placeholder {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 1.8rem;
   color: #333;
 }
 
 .rival-name {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 1.8rem;
   color: white;
   text-align: center;
@@ -124,7 +124,7 @@ const initials = computed(() => {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(15deg);
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 5rem;
   color: rgba(255, 255, 255, 0.05);
   pointer-events: none;
@@ -145,7 +145,7 @@ const initials = computed(() => {
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--spacing-xs);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .stat-row:last-child {
@@ -176,7 +176,7 @@ const initials = computed(() => {
 }
 
 .threat-label {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.65rem;
   color: #888;
   text-transform: uppercase;
@@ -200,7 +200,7 @@ const initials = computed(() => {
 }
 
 .threat-value {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   color: #ff4444;
   font-size: 0.9rem;
   letter-spacing: 0.5px;

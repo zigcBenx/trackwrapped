@@ -143,7 +143,7 @@ const comparisonText = computed(() => {
   display: flex;
   justify-content: space-between;
   margin-bottom: var(--spacing-xs);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: white;
 }
 
@@ -154,7 +154,7 @@ const comparisonText = computed(() => {
 }
 
 .label-value {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 1.5rem;
   color: #00ff9d;
 }
@@ -195,7 +195,7 @@ const comparisonText = computed(() => {
 
 .comparison-text {
   text-align: center;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: rgba(255, 255, 255, 0.8);
   margin-top: var(--spacing-lg);
   font-style: italic;

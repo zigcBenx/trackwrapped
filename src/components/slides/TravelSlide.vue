@@ -1,6 +1,6 @@
 <template>
-  <SlideWrapper 
-    background="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
+  <SlideWrapper
+    background="linear-gradient(135deg, #22d3ee 0%, #2563eb 50%, #d946ef 100%)"
     type="travel"
     @click="handleTap"
   >
@@ -90,15 +90,15 @@ function startSequence() {
   const advance = () => {
     if (currentLineIndex.value < sequence.value.length - 1) {
       currentLineIndex.value++
-      sequenceTimer = setTimeout(advance, 1500)
+      sequenceTimer = setTimeout(advance, 300) // Reduced from 1500ms
     } else {
       sequenceTimer = setTimeout(() => {
         phase.value = 'reveal'
-      }, 2000)
+      }, 800) // Reduced from 2000ms
     }
   }
-  
-  sequenceTimer = setTimeout(advance, 500)
+
+  sequenceTimer = setTimeout(advance, 200) // Reduced from 500ms
 }
 
 function handleTap() {
@@ -123,13 +123,15 @@ onMounted(() => {
 }
 
 .story-line {
-  font-family: 'Outfit', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: white;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(30px); /* Increased from 20px */
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); /* Faster: 0.5s → 0.3s */
 }
 
 .story-line.visible {
@@ -151,11 +153,12 @@ onMounted(() => {
 }
 
 .slide-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 4px;
-  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 6px;
+  color: #ffffff;
   margin-bottom: var(--spacing-xl);
 }
 
@@ -167,26 +170,31 @@ onMounted(() => {
 }
 
 .stat-value-massive {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 8rem;
-  line-height: 0.9;
-  color: white;
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+  font-weight: 900;
+  font-size: 12rem; /* Increased by 50% */
+  line-height: 0.85;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
 }
 
 .stat-label-massive {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif;
+  font-size: 2.25rem; /* Increased by 50% */
+  font-weight: 900;
   text-transform: uppercase;
-  color: #00ff9d;
-  letter-spacing: 2px;
+  color: #ffffff;
+  letter-spacing: 4px;
   margin-top: var(--spacing-md);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 .stat-subtext {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.2rem;
+  font-weight: 600;
   color: rgba(255, 255, 255, 0.8);
   margin-top: var(--spacing-lg);
   font-style: italic;
@@ -207,7 +215,7 @@ onMounted(() => {
   background: rgba(255, 255, 255, 0.1);
   padding: 6px 12px;
   border-radius: 20px;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1rem;
   color: white;
   backdrop-filter: blur(10px);

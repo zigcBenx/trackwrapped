@@ -116,7 +116,7 @@ function handleStoryClose() {
 }
 .made-in {
   text-align: center;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.7rem;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.3);

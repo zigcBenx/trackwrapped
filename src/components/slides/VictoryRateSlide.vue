@@ -1,6 +1,6 @@
 <template>
   <SlideWrapper 
-    background="linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)"
+    background="linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)"
     type="victoryrate"
     @click="handleTap"
   >
@@ -88,7 +88,7 @@ onMounted(() => {
 }
 
 .story-line {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: white;
@@ -116,7 +116,7 @@ onMounted(() => {
 }
 
 .slide-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 4px;

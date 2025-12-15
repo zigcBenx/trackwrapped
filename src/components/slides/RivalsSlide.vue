@@ -1,6 +1,6 @@
 <template>
   <SlideWrapper 
-    background="linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%)"
+    background="linear-gradient(135deg, #ec4899 0%, #f97316 100%)"
     type="rivals"
     @click="handleTap"
   >
@@ -112,7 +112,7 @@ onMounted(() => {
 }
 
 .story-line {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: white;
@@ -139,7 +139,7 @@ onMounted(() => {
 }
 
 .slide-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -154,7 +154,7 @@ onMounted(() => {
 }
 
 .stat-value-massive {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 10rem;
   line-height: 0.9;
   color: white;
@@ -162,17 +162,17 @@ onMounted(() => {
 }
 
 .stat-label-massive {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 2rem;
   font-weight: 800;
   text-transform: uppercase;
-  color: #00ff9d;
+  color: #10b981;
   letter-spacing: 2px;
   margin-top: var(--spacing-md);
 }
 
 .stat-subtext {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.8);
   margin-top: var(--spacing-lg);
@@ -204,9 +204,9 @@ onMounted(() => {
 }
 
 .rival-rank {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif; font-weight: 900;
   font-size: 2.5rem;
-  color: #00ff9d;
+  color: #10b981;
   min-width: 45px;
 }
 
@@ -216,7 +216,7 @@ onMounted(() => {
 }
 
 .rival-name {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
   color: white;
@@ -224,7 +224,7 @@ onMounted(() => {
 }
 
 .rival-meetings {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -233,7 +233,7 @@ onMounted(() => {
   margin-top: var(--spacing-lg);
   padding-top: var(--spacing-md);
   border-top: 2px solid rgba(255, 255, 255, 0.2);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.5;
