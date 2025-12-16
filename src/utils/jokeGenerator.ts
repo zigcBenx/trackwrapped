@@ -47,7 +47,7 @@ export function getPerformanceSequence(isImproving: boolean, stats: ProcessedAth
   const lines = ["Crunching your season numbers..."]
 
   // Comment on score progression
-  if (stats.lastSeasonAvgScore > 0) {
+  if (stats.lastSeasonBestScore > 0) {
     if (stats.scoreChangePercent > 10) {
       lines.push("Your scores are soaring! 🚀")
     } else if (stats.scoreChangePercent > 0) {

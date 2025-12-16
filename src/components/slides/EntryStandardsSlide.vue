@@ -124,7 +124,9 @@ function parseMark(mark: string): number {
   if (!mark || mark === '-' || mark === '---') return 0
   if (mark.includes(':')) {
     const parts = mark.split(':')
-    return parseFloat(parts[0]) * 60 + parseFloat(parts[1])
+    const min = parts[0] ? parseFloat(parts[0]) : 0
+    const sec = parts[1] ? parseFloat(parts[1]) : 0
+    return min * 60 + sec
   }
   return parseFloat(mark)
 }

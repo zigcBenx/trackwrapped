@@ -168,7 +168,7 @@ onMounted(() => {
 
 .slide-emoji {
   font-size: 6rem;
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-xs);
   filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
 }
 
@@ -178,7 +178,7 @@ onMounted(() => {
   text-transform: uppercase;
   letter-spacing: 2px;
   color: var(--color-text-secondary);
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-sm);
   text-align: center;
 }
 

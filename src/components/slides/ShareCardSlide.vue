@@ -46,9 +46,9 @@
               </div>
             </div>
             
-            <h1 class="athlete-name">
-              <span class="first-name">{{ firstName }}</span>
-              <span class="last-name">{{ lastName }}</span>
+            <h1 class="athlete-name" ref="containerRef">
+              <span class="first-name" ref="firstNameRef">{{ firstName }}</span>
+              <span class="last-name" ref="lastNameRef">{{ lastName }}</span>
             </h1>
             <div class="discipline-tag">{{ mainDiscipline }}</div>
           </div>
@@ -169,7 +169,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 import SlideWrapper from './SlideWrapper.vue'
 import { getCountryFlag } from '@/utils/countryFlags'
 
@@ -351,11 +351,42 @@ function getPowerWidth(label: string): string {
   return `${((index + 1) / levels.length) * 100}%`
 }
 
+// Text fitting logic
+const firstNameRef = ref<HTMLElement | null>(null)
+const lastNameRef = ref<HTMLElement | null>(null)
+const containerRef = ref<HTMLElement | null>(null)
 
+function fitText() {
+  if (!containerRef.value) return
+
+  const maxWidth = containerRef.value.clientWidth - 32 // 32px buffer/padding
+  
+  const adjustElement = (el: HTMLElement, initialSize: number) => {
+    let size = initialSize
+    el.style.fontSize = `${size}rem`
+    
+    // Minimum readable size
+    const minSize = 1.5
+    
+    while (el.scrollWidth > maxWidth && size > minSize) {
+      size -= 0.1
+      el.style.fontSize = `${size}rem`
+    }
+  }
+
+  if (firstNameRef.value) adjustElement(firstNameRef.value, 3)
+  if (lastNameRef.value) adjustElement(lastNameRef.value, 4.5)
+}
 
 function handleTap(event: Event) {
   // Placeholder
 }
+
+onMounted(() => {
+  // Run fit text after a short delay to ensure fonts are loaded/layout is stable
+  setTimeout(fitText, 100)
+  window.addEventListener('resize', fitText)
+})
 </script>
 
 <style scoped>
