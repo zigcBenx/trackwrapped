@@ -93,13 +93,11 @@
                   <span class="sub-label">MAX POINTS</span>
                   <span class="sub-value">{{ Math.round(maxScore) }}</span>
                 </div>
-                <template v-if="bestRanking">
-                  <div class="sub-divider"></div>
-                  <div class="sub-stat">
-                    <span class="sub-label">WORLD RANK</span>
-                    <span class="sub-value">#{{ bestRanking.place }}</span>
-                  </div>
-                </template>
+                <div class="sub-divider"></div>
+                <div class="sub-stat">
+                  <span class="sub-label">{{ subStat3.label }}</span>
+                  <span class="sub-value">{{ subStat3.value }}</span>
+                </div>
               </div>
             </div>
 
@@ -326,26 +324,10 @@ const flexStats = computed(() => {
     })
   }
 
-  // 5. World Rank
-  if (stats.length < 3 && bestRanking.value && bestRanking.value.place <= 100) {
-    stats.push({ 
-      initial: `#${bestRanking.value.place}`,
-      label: 'WORLD RANK', 
-      value: 'CURRENT RANKING', 
-      highlight: bestRanking.value.place <= 10 
-    })
-  }
-
-  // Fill with standard stats
-  if (stats.length < 3) {
-    if (bestRanking.value && !stats.find(s => s.label === 'WORLD RANK')) {
-      stats.push({ 
-        initial: `#${bestRanking.value.place}`,
-        label: 'WORLD RANK', 
-        value: 'CURRENT RANKING', 
-        highlight: false 
-      })
-    }
+  // 5. Races (Fallback for Top Badges if Rank is shown below)
+  // Only show Races here if we have a Ranking (which means Ranking is shown below)
+  // If we don't have a Ranking, Races will be shown below, so don't duplicate here.
+  if (stats.length < 3 && bestRanking.value) {
     stats.push({ 
       initial: props.totalCompetitions.toString(),
       label: 'RACES', 
@@ -354,7 +336,30 @@ const flexStats = computed(() => {
     })
   }
 
+  // 5. World Rank (Always show as badge if space permits)
+  if (stats.length < 3 && bestRanking.value) {
+    stats.push({ 
+      initial: `#${bestRanking.value.place}`,
+      label: 'WORLD RANK', 
+      value: 'CURRENT RANKING', 
+      highlight: bestRanking.value.place <= 100 
+    })
+  }
+
   return stats.slice(0, 3)
+})
+
+const subStat3 = computed(() => {
+  if (bestRanking.value) {
+    return {
+      label: 'WORLD RANK',
+      value: `#${bestRanking.value.place}`
+    }
+  }
+  return {
+    label: 'RACES',
+    value: props.totalCompetitions.toString()
+  }
 })
 
 function getPowerWidth(label: string): string {
