@@ -91,8 +91,8 @@ export interface ProcessedAthleteStats {
   currentSeasonCompetitions: number
   averageResultScore: number
   victoryRate: number
-  currentSeasonAvgScore: number
-  lastSeasonAvgScore: number
+  currentSeasonBestScore: number
+  lastSeasonBestScore: number
   scoreChangePercent: number
   percentileRank: { rank: string; label: string }
   nemesis: { name: string; losses: number } | null

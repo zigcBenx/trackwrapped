@@ -31,6 +31,13 @@
           :discipline="mainDiscipline"
         />
       </div>
+
+      <!-- GOAT Message -->
+      <div v-if="isWRHolder" class="goat-message slam-in" style="animation-delay: 600ms">
+        <span class="goat-emoji">🐐</span>
+        <span class="goat-text">YOU ARE THE GOAT!</span>
+        <span class="goat-subtext">(FOR NOW...)</span>
+      </div>
     </div>
   </SlideWrapper>
 </template>
@@ -58,6 +65,17 @@ const sequence = getWorldRecordSequence(props.bestPerformance, props.mainDiscipl
 const wrMark = computed(() => {
   const disciplineToCompare = props.bestPerformance?.discipline || props.mainDiscipline
   return getWorldRecord(disciplineToCompare, props.gender) || '0'
+})
+
+const isWRHolder = computed(() => {
+  if (!props.bestPerformance) return false
+  // Check if records array contains 'WR'
+  if (props.bestPerformance.records && props.bestPerformance.records.includes('WR')) return true
+  
+  // Fallback: compare marks if available
+  if (wrMark.value && props.bestPerformance.mark === wrMark.value) return true
+  
+  return false
 })
 
 let sequenceTimer: any = null
@@ -185,5 +203,48 @@ onMounted(() => {
 
 @media (max-width: 768px) {
   .story-line { font-size: 2.5rem; }
+}
+
+.goat-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  text-align: center;
+}
+
+.goat-emoji {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+.goat-text {
+  font-family: var(--font-family-heading);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--color-accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(204, 255, 0, 0.3);
+}
+
+.goat-subtext {
+  font-family: var(--font-family-primary);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+}
+
+.slam-in {
+  animation: slamIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  opacity: 0;
+  transform: scale(2);
+}
+
+@keyframes slamIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 </style>

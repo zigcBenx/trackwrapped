@@ -26,7 +26,7 @@ export const worldRecords: Record<'M' | 'W', Record<string, string>> = {
 
     // Jumps
     'High Jump': '2.45',
-    'Pole Vault': '6.26',
+    'Pole Vault': '6.30',
     'Long Jump': '8.95',
     'Triple Jump': '18.29',
 

@@ -86,8 +86,9 @@ export function processAthleteData(
     isImproving: performanceStats.isImproving,
     averageResultScore: performanceStats.averageResultScore,
     victoryRate: performanceStats.victoryRate,
-    currentSeasonAvgScore: performanceStats.currentSeasonAvgScore,
-    lastSeasonAvgScore: performanceStats.lastSeasonAvgScore,
+    victoryRate: performanceStats.victoryRate,
+    currentSeasonBestScore: performanceStats.currentSeasonBestScore,
+    lastSeasonBestScore: performanceStats.lastSeasonBestScore,
     scoreChangePercent: performanceStats.scoreChangePercent,
     percentileRank: performanceStats.percentileRank,
 

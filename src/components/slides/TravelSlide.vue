@@ -32,8 +32,8 @@
       </div>
 
       <!-- Country List (Poster Style) -->
-      <div v-if="countries.length > 0 && countries.length <= 12" class="country-list fade-in-up" style="animation-delay: 450ms">
-        <div v-for="country in countries" :key="country" class="country-tag">
+      <div v-if="countries.length > 0" class="country-list fade-in-up" style="animation-delay: 450ms">
+        <div v-for="country in countries.slice(0, 6)" :key="country" class="country-tag">
           <img 
             :src="getCountryFlagUrl(country)" 
             :alt="country" 
@@ -42,6 +42,10 @@
             @error="(e) => (e.target as HTMLImageElement).style.display = 'none'"
           />
           <span class="country-name">{{ country }}</span>
+        </div>
+        <!-- Overflow Tag -->
+        <div v-if="countries.length > 6" class="country-tag overflow-tag">
+          <span class="country-name">AND {{ countries.length - 6 }} MORE...</span>
         </div>
       </div>
     </div>
@@ -248,6 +252,16 @@ onMounted(() => {
   text-transform: uppercase;
   letter-spacing: 1px;
   transform: skewX(10deg); /* Counter-skew */
+}
+
+.overflow-tag {
+  background: rgba(204, 255, 0, 0.1); /* Neon accent background */
+  border-color: var(--color-accent-primary);
+}
+
+.overflow-tag .country-name {
+  color: var(--color-accent-primary);
+  font-weight: 800;
 }
 
 /* Float-in animation for reveal phase */

@@ -24,14 +24,14 @@
 
         <!-- Massive Score Display -->
         <div class="score-display slam-in" style="animation-delay: 200ms">
-          <div class="score-value">{{ stats.currentSeasonAvgScore }}</div>
+          <div class="score-value">{{ stats.currentSeasonBestScore }}</div>
         </div>
 
         <!-- Comparison Grid -->
         <div class="comparison-grid fade-in-up" style="animation-delay: 400ms">
           <div class="comparison-item">
             <div class="label">LAST SEASON</div>
-            <div class="value">{{ stats.lastSeasonAvgScore || '--' }}</div>
+            <div class="value">{{ stats.lastSeasonBestScore || '--' }}</div>
           </div>
           
           <div class="comparison-item">

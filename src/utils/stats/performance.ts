@@ -69,8 +69,9 @@ export function calculatePerformanceStats(
   // Season-over-season comparison - always use ALL results, not filtered
   const seasonComparison = calculateSeasonComparison(results)
 
-  // Percentile ranking based on average score
-  const percentile = calculatePercentile(averageResultScore)
+  // Percentile ranking based on BEST score (Power Level)
+  // We use the current season's best score for the power level
+  const percentile = calculatePercentile(seasonComparison.currentSeasonBest)
 
   return {
     bestPerformance,
@@ -80,8 +81,8 @@ export function calculatePerformanceStats(
     isImproving,
     averageResultScore,
     victoryRate,
-    currentSeasonAvgScore: seasonComparison.currentSeasonAvg,
-    lastSeasonAvgScore: seasonComparison.lastSeasonAvg,
+    currentSeasonBestScore: seasonComparison.currentSeasonBest,
+    lastSeasonBestScore: seasonComparison.lastSeasonBest,
     scoreChangePercent: seasonComparison.changePercent,
     percentileRank: percentile
   }
@@ -121,48 +122,48 @@ function calculateSeasonComparison(results: AthleteResult[]) {
     return year === lastYear && r.resultScore > 0
   })
 
-  // Calculate averages
-  const currentSeasonAvg = currentSeasonResults.length > 0
-    ? Math.round(currentSeasonResults.reduce((sum, r) => sum + r.resultScore, 0) / currentSeasonResults.length)
+  // Calculate BEST scores
+  const currentSeasonBest = currentSeasonResults.length > 0
+    ? Math.max(...currentSeasonResults.map(r => r.resultScore))
     : 0
 
-  const lastSeasonAvg = lastSeasonResults.length > 0
-    ? Math.round(lastSeasonResults.reduce((sum, r) => sum + r.resultScore, 0) / lastSeasonResults.length)
+  const lastSeasonBest = lastSeasonResults.length > 0
+    ? Math.max(...lastSeasonResults.map(r => r.resultScore))
     : 0
 
   // Calculate percent change
-  const changePercent = lastSeasonAvg > 0
-    ? Math.round(((currentSeasonAvg - lastSeasonAvg) / lastSeasonAvg) * 100)
+  const changePercent = lastSeasonBest > 0
+    ? Math.round(((currentSeasonBest - lastSeasonBest) / lastSeasonBest) * 100)
     : 0
 
   return {
-    currentSeasonAvg,
-    lastSeasonAvg,
+    currentSeasonBest,
+    lastSeasonBest,
     changePercent
   }
 }
 
 /**
- * Calculate percentile ranking based on average result score
+ * Calculate percentile ranking based on BEST result score
  * Fixed thresholds based on World Athletics scoring system
  */
-function calculatePercentile(avgScore: number): { rank: string; label: string } {
+function calculatePercentile(bestScore: number): { rank: string; label: string } {
   // World Athletics result scores typically range from ~100 (beginner) to 1400+ (elite)
   // These thresholds are approximate based on competitive levels
 
-  if (avgScore >= 1300) {
+  if (bestScore >= 1300) {
     return { rank: '0.1%', label: 'Legendary' }
-  } else if (avgScore >= 1200) {
+  } else if (bestScore >= 1200) {
     return { rank: '1%', label: 'World Class' }
-  } else if (avgScore >= 1100) {
+  } else if (bestScore >= 1100) {
     return { rank: '5%', label: 'International' }
-  } else if (avgScore >= 1000) {
+  } else if (bestScore >= 1000) {
     return { rank: '10%', label: 'National Elite' }
-  } else if (avgScore >= 900) {
+  } else if (bestScore >= 900) {
     return { rank: '15%', label: 'Competitive' }
-  } else if (avgScore >= 800) {
+  } else if (bestScore >= 800) {
     return { rank: '20%', label: 'Club Level' }
-  } else if (avgScore >= 600) {
+  } else if (bestScore >= 600) {
     return { rank: '50%', label: 'Recreational' }
   } else {
     return { rank: '>50%', label: 'Rising' }
