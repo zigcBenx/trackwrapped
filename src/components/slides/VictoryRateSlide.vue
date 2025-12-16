@@ -1,7 +1,8 @@
 <template>
   <SlideWrapper 
-    background="linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)"
+    background="#000000"
     type="victoryrate"
+    :showPattern="true"
     @click="handleTap"
   >
     <!-- Buildup Phase -->
@@ -10,7 +11,10 @@
         v-for="(line, index) in sequence" 
         :key="index"
         class="story-line"
-        :class="{ 'visible': index <= currentLineIndex }"
+        :class="[
+          { 'visible': index <= currentLineIndex },
+          index <= currentLineIndex ? (index % 2 === 0 ? 'race-in-left' : 'race-in-right') : ''
+        ]"
       >
         {{ line }}
       </div>
@@ -85,21 +89,24 @@ onMounted(() => {
   gap: var(--spacing-xl);
   min-height: 300px;
   justify-content: center;
+  width: 100%;
+  overflow: hidden;
 }
 
 .story-line {
-  font-family: 'Outfit', sans-serif;
-  font-size: 2.5rem;
+  font-family: var(--font-family-heading);
+  font-size: 3.5rem;
   font-weight: 700;
   color: white;
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+  width: 100%;
 }
 
 .story-line.visible {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .reveal-container {
@@ -116,21 +123,18 @@ onMounted(() => {
 }
 
 .slide-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
+  font-family: var(--font-family-heading);
+  font-size: 2rem;
   text-transform: uppercase;
-  letter-spacing: 4px;
-  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 2px;
+  color: var(--color-text-secondary);
   margin-bottom: var(--spacing-xl);
+  text-align: center;
 }
 
 .visual-container {
   width: 100%;
   max-width: 400px;
-}
-
-@media (max-width: 768px) {
-  .story-line { font-size: 1.8rem; }
 }
 
 /* Float-in animation for reveal phase */
@@ -145,5 +149,9 @@ onMounted(() => {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@media (max-width: 768px) {
+  .story-line { font-size: 2.5rem; }
 }
 </style>

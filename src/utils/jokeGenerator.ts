@@ -1,76 +1,76 @@
 import type { ProcessedAthleteStats } from '@/types/athleteDetails'
 
 export function getExperienceSequence(yearsActive: number): string[] {
-  const lines = ["You've been on the track scene for a while..."]
+  const lines = ["You've been in the arena for a while..."]
   
   if (yearsActive <= 2) {
-    lines.push("Just getting started!")
-    lines.push("Fresh legs, big dreams 👟")
+    lines.push("Fresh blood on the track.")
+    lines.push("The future is yours to take. ⚡")
   } else if (yearsActive <= 5) {
-    lines.push("Finding your rhythm...")
-    lines.push("No longer a rookie 📚")
+    lines.push("Making your name known.")
+    lines.push("No longer a rookie. A threat. ⚠️")
   } else if (yearsActive <= 10) {
-    lines.push("Seen a lot of starting lines...")
-    lines.push("Veteran status loading... 🏠")
+    lines.push("A seasoned warrior.")
+    lines.push("Respect earned on the track. 🫡")
   } else {
-    lines.push("Longer than some competitors have been alive!")
-    lines.push("Is retirement knocking? (Jk) 🏛️")
+    lines.push("A legacy in the making.")
+    lines.push("Decades of dominance. 👑")
   }
   
   return lines
 }
 
 export function getDisciplineSequence(category: string, discipline: string): string[] {
-  const lines = [`Your main event is ${discipline}...`]
+  const lines = [`Your battlefield is ${discipline}...`]
   
   if (category === 'sprint') {
-    lines.push("Life in the fast lane")
-    lines.push("Blink and you'll miss it 🐆")
+    lines.push("Pure explosive power.")
+    lines.push("Speed kills. 🐆")
   } else if (category === 'distance') {
-    lines.push("The long game")
-    lines.push("Endurance is your middle name 🏃‍♀️")
+    lines.push("Pain is fuel.")
+    lines.push("Outlasting the weak. 💀")
   } else if (category === 'jump') {
-    lines.push("Defying gravity")
-    lines.push("The sky is the limit 🚀")
+    lines.push("Gravity is just a suggestion.")
+    lines.push("Flight mode engaged. ✈️")
   } else if (category === 'throw') {
-    lines.push("Power and precision")
-    lines.push("Heavy objects beware 💪")
+    lines.push("Brute force & precision.")
+    lines.push("Unleashing the beast. 🦍")
   } else {
-    lines.push("Doing it all")
-    lines.push("Why choose one? 🎯")
+    lines.push("Master of all trades.")
+    lines.push("The ultimate athlete. ⚔️")
   }
   
   return lines
 }
 
 export function getPerformanceSequence(isImproving: boolean, stats: ProcessedAthleteStats): string[] {
-  const lines = ["Crunching your season numbers..."]
+  const lines = ["Analyzing your season output..."]
 
   // Comment on score progression
-  if (stats.lastSeasonAvgScore > 0) {
+  if (stats.lastSeasonBestScore > 0) {
     if (stats.scoreChangePercent > 10) {
-      lines.push("Your scores are soaring! 🚀")
+      lines.push("Leveling up aggressively. 🚀")
     } else if (stats.scoreChangePercent > 0) {
-      lines.push("Small gains, big impact 📈")
+      lines.push("Grinding out the gains. 📈")
     } else if (stats.scoreChangePercent < -10) {
-      lines.push("Every champion has off seasons")
+      lines.push("Rebuilding the engine.")
     } else {
-      lines.push("Steady as she goes ⚓")
+      lines.push("Holding the line. 🛡️")
     }
   } else {
-    lines.push("Let's see where you stand...")
+    lines.push("Establishing your baseline...")
   }
 
   // Comment on percentile
   const percentileNum = parseFloat(stats.percentileRank.rank)
   if (percentileNum <= 1) {
-    lines.push("You're among the elite! 👑")
+    lines.push("ELITE STATUS UNLOCKED. 👑")
   } else if (percentileNum <= 10) {
-    lines.push("Top tier performance! 🔥")
+    lines.push("World Class Material. 🔥")
   } else if (percentileNum <= 50) {
-    lines.push("You're leveling up! 💪")
+    lines.push("Climbing the ranks. 🧗")
   } else {
-    lines.push("The journey continues! ⭐")
+    lines.push("The grind never stops. ⚙️")
   }
 
   return lines
@@ -78,9 +78,9 @@ export function getPerformanceSequence(isImproving: boolean, stats: ProcessedAth
 
 export function getCompetitionSequence(frequency: string, totalCompetitions: number): string[] {
   return [
-    "Looking at your race calendar...",
-    `You've competed ${totalCompetitions} times`,
-    frequency === 'frequent' ? "Do you live at the track? ⛺" : "Quality over quantity 👌"
+    "Scanning your race calendar...",
+    `You stepped up ${totalCompetitions} times`,
+    frequency === 'frequent' ? "Track is your second home. 🏠" : "Selective strikes. 🎯"
   ]
 }
 
@@ -99,16 +99,16 @@ export function generateNickname(stats: ProcessedAthleteStats, name: string): st
   
   // Animal based on discipline category
   const animals: Record<string, string> = {
-    sprint: 'Cheetah',
-    distance: stats.mainDiscipline.includes('Marathon') || stats.mainDiscipline.includes('5000') || stats.mainDiscipline.includes('10000') ? 'Camel' : 'Gazelle',
-    jump: stats.mainDiscipline.includes('High Jump') || stats.mainDiscipline.includes('Pole') ? 'Grasshopper' : 'Frog',
-    throw: Math.random() > 0.5 ? 'Rhino' : 'Gorilla', // Randomize between two
-    combined: 'Chameleon'
+    sprint: 'Viper',
+    distance: stats.mainDiscipline.includes('Marathon') || stats.mainDiscipline.includes('5000') || stats.mainDiscipline.includes('10000') ? 'Titan' : 'Wolf',
+    jump: stats.mainDiscipline.includes('High Jump') || stats.mainDiscipline.includes('Pole') ? 'Eagle' : 'Hawk',
+    throw: Math.random() > 0.5 ? 'Tank' : 'Goliath', // Randomize between two
+    combined: 'Gladiator'
   }
   
   // Add hurdles detection
   if (stats.mainDiscipline.toLowerCase().includes('hurdle')) {
-    return `${frequency} Kangaroo`
+    return `${frequency} Raptor`
   }
   
   const animal = animals[stats.disciplineCategory] ?? 'Athlete'
@@ -128,11 +128,11 @@ export function getIndoorOutdoorSequence(indoorCount: number, outdoorCount: numb
   const lines = ["Checking your habitat..."]
 
   if (indoorPercentage >= 60) {
-    lines.push("You prefer climate control")
-    lines.push("Indoor Specialist 🏠")
+    lines.push("King of the Boards. 🏟️")
+    lines.push("Short track dominance.")
   } else {
-    lines.push("You brave the elements")
-    lines.push("Outdoor Warrior 🌞")
+    lines.push("Element Proof. ⛈️")
+    lines.push("Conquering the outdoors.")
   }
   
   return lines
@@ -140,8 +140,8 @@ export function getIndoorOutdoorSequence(indoorCount: number, outdoorCount: numb
 
 export function getFinaleSequence(stats: ProcessedAthleteStats): string[] {
   return [
-    "What a season it's been!",
-    "You showed up and showed out",
-    "Here's your summary card 📸"
+    "Season: CONQUERED. 🏁",
+    "The numbers don't lie.",
+    "Proof of your grind. 📸"
   ]
 }

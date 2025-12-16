@@ -69,7 +69,7 @@ function handleAthleteSelect(athlete: Athlete) {
 <style scoped>
 .search-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -79,53 +79,67 @@ function handleAthleteSelect(athlete: Athlete) {
   align-items: center;
   gap: var(--spacing-sm);
   padding: var(--spacing-md) var(--spacing-lg);
-  border-radius: var(--radius-lg);
-  transition: all var(--transition-base);
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: skew(-5deg);
 }
 
 .search-input-wrapper:focus-within {
   border-color: var(--color-accent-primary);
+  background: rgba(0, 0, 0, 0.8);
   box-shadow: 
-    var(--glass-shadow),
-    0 0 30px rgba(0, 212, 255, 0.3);
+    0 0 40px rgba(204, 255, 0, 0.15), /* Softer, wider glow */
+    inset 0 0 20px rgba(204, 255, 0, 0.05);
+  transform: skew(-5deg) scale(1.02);
 }
 
 .search-icon {
-  font-size: var(--font-size-xl);
-  opacity: 0.7;
+  font-size: 1.5rem;
+  opacity: 0.5;
   transition: opacity var(--transition-base);
+  transform: skew(5deg); /* Counter-skew */
 }
 
 .search-input-wrapper:focus-within .search-icon {
   opacity: 1;
+  color: var(--color-accent-primary);
 }
 
 .search-input {
   flex: 1;
+  min-width: 0; /* Fix flexbox overflow */
   background: transparent;
   border: none;
   outline: none;
-  color: var(--color-text-primary);
-  font-size: var(--font-size-lg);
-  font-weight: 500;
-  font-family: var(--font-family-primary);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: var(--font-family-heading);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transform: skew(5deg); /* Counter-skew */
 }
 
 .search-input::placeholder {
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.3);
   font-weight: 400;
+  text-transform: none;
+  font-family: var(--font-family-primary);
+  letter-spacing: 0;
 }
 
 .search-loading {
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: skew(5deg); /* Counter-skew */
 }
 
 .spinner {
   width: 24px;
   height: 24px;
-  border: 3px solid var(--glass-border);
+  border: 3px solid rgba(255, 255, 255, 0.1);
   border-top-color: var(--color-accent-primary);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
@@ -143,7 +157,7 @@ function handleAthleteSelect(athlete: Athlete) {
   }
   
   .search-input {
-    font-size: var(--font-size-base);
+    font-size: 1.2rem;
   }
 }
 </style>

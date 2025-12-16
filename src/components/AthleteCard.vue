@@ -70,19 +70,22 @@ const formattedBirthdate = computed(() => {
 
 <style scoped>
 .athlete-card {
-  border-radius: var(--radius-md);
+  border-radius: 4px; /* Sharper corners */
   padding: var(--spacing-md);
   transition: all var(--transition-base);
   cursor: pointer;
   animation: scaleIn var(--transition-base) ease-out;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .athlete-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) skewX(-2deg);
   box-shadow: 
-    var(--glass-shadow),
-    0 0 30px rgba(0, 212, 255, 0.2);
+    0 10px 30px -10px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(204, 255, 0, 0.1); /* Neon glow */
   border-color: var(--color-accent-primary);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .athlete-card__header {
@@ -109,10 +112,12 @@ const formattedBirthdate = computed(() => {
 }
 
 .athlete-card__country {
-  font-size: var(--font-size-sm);
-  font-weight: 600;
+  font-family: var(--font-family-heading);
+  font-size: 1.2rem;
+  font-weight: 500;
   color: var(--color-text-secondary);
-  letter-spacing: 0.05em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .athlete-card__body {
@@ -122,11 +127,14 @@ const formattedBirthdate = computed(() => {
 }
 
 .athlete-card__name {
-  font-size: var(--font-size-xl);
-  font-weight: 700;
+  font-family: var(--font-family-heading);
+  font-size: 2rem;
+  font-weight: 600;
   color: var(--color-text-primary);
-  line-height: 1.2;
+  line-height: 1;
   margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .athlete-card__details {
@@ -138,12 +146,16 @@ const formattedBirthdate = computed(() => {
 .athlete-card__detail {
   display: flex;
   gap: var(--spacing-xs);
-  font-size: var(--font-size-sm);
+  font-size: 0.9rem;
+  font-family: var(--font-family-primary);
 }
 
 .athlete-card__label {
   color: var(--color-text-muted);
   font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
 }
 
 .athlete-card__value {
@@ -157,7 +169,7 @@ const formattedBirthdate = computed(() => {
   }
   
   .athlete-card__name {
-    font-size: var(--font-size-lg);
+    font-size: 1.5rem;
   }
 }
 </style>

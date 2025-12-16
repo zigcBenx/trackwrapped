@@ -5,14 +5,19 @@
       <div class="silhouette"></div>
     </div>
 
+    <!-- Wrapped Badge -->
+    <div class="wrapped-badge slam-in" style="animation-delay: 800ms">
+      2025 WRAPPED
+    </div>
+
     <!-- Massive Typography -->
     <div class="hero-content">
       <h1 class="hero-name">
-        <span class="first-name">{{ firstName }}</span>
-        <span class="last-name">{{ lastName }}</span>
+        <span class="first-name slide-in-left" :style="firstNameStyle">{{ firstName }}</span>
+        <span class="last-name slide-in-right" :style="lastNameStyle">{{ lastName }}</span>
       </h1>
       
-      <div class="hero-stats">
+      <div class="hero-stats fade-in-up">
         <div class="hero-stat">
           <span class="stat-number">{{ totalCompetitions }}</span>
           <span class="stat-label">Competitions</span>
@@ -23,8 +28,8 @@
         </div>
       </div>
 
-      <div class="aka-section">
-        <span class="aka-label">aka</span>
+      <div class="aka-section fade-in-up" style="animation-delay: 400ms">
+        <span class="aka-label">KNOWN AS</span>
         <span class="aka-value">{{ nickname }}</span>
       </div>
     </div>
@@ -32,6 +37,8 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+
 interface Props {
   firstName: string
   lastName: string
@@ -41,7 +48,24 @@ interface Props {
   nickname: string
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
+
+const firstNameStyle = computed(() => {
+  const len = props.firstName.length
+  if (len > 15) return { fontSize: 'clamp(1.5rem, 5vw, 3rem)' }
+  if (len > 10) return { fontSize: 'clamp(2rem, 7vw, 4rem)' }
+  return {}
+})
+
+const lastNameStyle = computed(() => {
+  const len = props.lastName.length
+  // Very long names (e.g. compound names > 15 chars)
+  if (len > 20) return { fontSize: 'clamp(1.5rem, 5vw, 3.5rem)' }
+  if (len > 15) return { fontSize: 'clamp(1.8rem, 6vw, 4.5rem)' }
+  if (len > 10) return { fontSize: 'clamp(2.5rem, 9vw, 6rem)' }
+  if (len > 7) return { fontSize: 'clamp(3rem, 11vw, 8rem)' }
+  return {}
+})
 </script>
 
 <style scoped>
@@ -64,8 +88,8 @@ defineProps<Props>()
   width: 100%;
   height: 100%;
   z-index: 1;
-  opacity: 0.4;
-  mix-blend-mode: overlay;
+  opacity: 0.3;
+  mix-blend-mode: screen;
   pointer-events: none;
 }
 
@@ -75,25 +99,40 @@ defineProps<Props>()
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: contrast(1.2) brightness(0.8);
+  filter: contrast(1.5) brightness(0.6) grayscale(100%);
 }
 
-/* Define silhouette images based on category (using CSS gradients/shapes for now, ideally SVGs) */
+/* Define silhouette images based on category */
 .sprint .silhouette {
-  background-image: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.8) 0%, transparent 60%),
-                    linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 100%);
+  background-image: radial-gradient(circle at 70% 30%, var(--color-accent-primary) 0%, transparent 60%),
+                    linear-gradient(45deg, transparent 40%, var(--color-accent-secondary) 100%);
 }
 
 .distance .silhouette {
-  background-image: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.8) 0%, transparent 60%);
+  background-image: radial-gradient(circle at 30% 40%, var(--color-accent-tertiary) 0%, transparent 60%);
 }
 
 .jump .silhouette {
-  background-image: radial-gradient(circle at 50% 20%, rgba(255,255,255,0.8) 0%, transparent 70%);
+  background-image: radial-gradient(circle at 50% 20%, var(--color-accent-primary) 0%, transparent 70%);
 }
 
 .throw .silhouette {
-  background-image: radial-gradient(circle at 80% 50%, rgba(255,255,255,0.8) 0%, transparent 60%);
+  background-image: radial-gradient(circle at 80% 50%, var(--color-accent-secondary) 0%, transparent 60%);
+}
+
+.wrapped-badge {
+  position: absolute;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  background: white;
+  color: black;
+  font-family: var(--font-family-heading);
+  font-size: 1.5rem;
+  padding: 4px 12px;
+  transform: rotate(5deg);
+  z-index: 10;
+  font-weight: 700;
+  box-shadow: 4px 4px 0 var(--color-accent-secondary);
 }
 
 .hero-content {
@@ -109,49 +148,42 @@ defineProps<Props>()
 .hero-name {
   display: flex;
   flex-direction: column;
-  line-height: 0.9;
+  line-height: 0.8;
   text-transform: uppercase;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--font-family-heading);
   margin-bottom: var(--spacing-xl);
   transform: rotate(-2deg);
-  width: 90%;
-  max-width: 90%;
+  width: 100%;
 }
 
 .first-name {
-  font-size: clamp(1rem, 8vw, 6rem);
-  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(3rem, 12vw, 8rem);
+  color: transparent;
+  -webkit-text-stroke: 2px white;
   letter-spacing: 2px;
-  animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
-  overflow: visible;
   display: block;
-  width: fit-content;
-  max-width: 100%;
 }
 
 .last-name {
-  font-size: clamp(1.5rem, 12vw, 8rem);
-  color: white;
-  font-weight: 900;
+  font-size: clamp(4rem, 15vw, 10rem);
+  color: var(--color-accent-primary);
+  font-weight: 700;
   letter-spacing: -2px;
-  text-shadow: 4px 4px 0px rgba(0,0,0,0.3);
-  animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
+  text-shadow: 8px 8px 0px rgba(255, 255, 255, 0.1);
   white-space: nowrap;
-  overflow: visible;
   display: block;
-  width: fit-content;
-  max-width: 100%;
+  margin-left: var(--spacing-md);
 }
 
 .hero-stats {
   display: flex;
-  justify-content: space-between; /* Better alignment */
+  justify-content: space-between;
   gap: var(--spacing-lg);
   margin-top: var(--spacing-lg);
-  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s backwards;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 4px solid white;
   padding-top: var(--spacing-lg);
+  width: 100%;
 }
 
 .hero-stat {
@@ -161,64 +193,104 @@ defineProps<Props>()
 }
 
 .stat-label {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.8rem;
+  font-family: var(--font-family-primary);
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--color-text-secondary);
   margin-top: 4px;
+  font-weight: 700;
 }
 
 .stat-number {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 3.5rem;
-  line-height: 1;
-  color: #00ff9d;
+  font-family: var(--font-family-heading);
+  font-size: 4rem;
+  line-height: 0.9;
+  color: white;
 }
 
 .aka-section {
   text-align: center;
-  padding-top: var(--spacing-xs);
-  animation: fadeIn 1s ease 0.5s backwards;
+  padding-top: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Fixed alignment */
 }
 
 .aka-label {
-  display: block;
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 4px;
-  font-style: italic;
+  font-family: var(--font-family-heading);
+  font-size: 1.2rem;
+  color: var(--color-accent-secondary);
+  margin-bottom: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .aka-value {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2rem;
+  font-family: var(--font-family-heading);
+  font-size: 3rem;
   color: white;
   letter-spacing: 1px;
+  line-height: 1;
+}
+
+/* Animations */
+.slide-in-left {
+  animation: slideInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.slide-in-right {
+  animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.slam-in {
+  animation: slamIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  opacity: 0;
+  transform: scale(2);
 }
 
 @keyframes slideInLeft {
-  from { transform: translateX(-100px); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes slideInRight {
-  from { transform: translateX(100px); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes fadeInUp {
-  from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes slamIn {
+  to { opacity: 1; transform: scale(1) rotate(5deg); }
 }
 
 @media (max-width: 768px) {
+  .athlete-hero {
+    padding: var(--spacing-md);
+  }
+  
+  .first-name {
+    font-size: 3.5rem;
+  }
+  
+  .last-name {
+    font-size: 4.5rem;
+    margin-left: var(--spacing-sm);
+  }
+  
   .stat-number { font-size: 3rem; }
+  
+  .aka-value { font-size: 2.5rem; }
 }
 </style>

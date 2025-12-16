@@ -7,6 +7,7 @@ import { analyzeRivals } from './stats/rivals'
 import { analyzeWindConditions } from './stats/wind'
 import { calculateGeographyStats } from './stats/geography'
 import { calculateCompetitionHeatmap } from './stats/heatmap'
+import { calculateHonoursAndRecords } from './stats/honours'
 
 /**
  * Process athlete data into statistics
@@ -47,6 +48,9 @@ export function processAthleteData(
   
   // Competition heatmap
   const competitionHeatmap = calculateCompetitionHeatmap(results)
+
+  // Honours and Records
+  const honoursAndRecords = calculateHonoursAndRecords(details)
   
   // Calculate current season competitions (for display purposes)
   const currentYear = new Date().getFullYear()
@@ -82,8 +86,8 @@ export function processAthleteData(
     isImproving: performanceStats.isImproving,
     averageResultScore: performanceStats.averageResultScore,
     victoryRate: performanceStats.victoryRate,
-    currentSeasonAvgScore: performanceStats.currentSeasonAvgScore,
-    lastSeasonAvgScore: performanceStats.lastSeasonAvgScore,
+    currentSeasonBestScore: performanceStats.currentSeasonBestScore,
+    lastSeasonBestScore: performanceStats.lastSeasonBestScore,
     scoreChangePercent: performanceStats.scoreChangePercent,
     percentileRank: performanceStats.percentileRank,
 
@@ -100,6 +104,11 @@ export function processAthleteData(
     countriesCount: geographyStats.countriesCount,
     
     // Heatmap
-    competitionHeatmap
+    competitionHeatmap,
+
+    // Honours & Records
+    honours: honoursAndRecords.honours,
+    recentHonours: honoursAndRecords.recentHonours,
+    records: honoursAndRecords.records
   }
 }

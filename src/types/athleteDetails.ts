@@ -69,6 +69,7 @@ export interface AthleteDetails {
   currentWorldRankings: any[]
   seasonsbests: any[]
   personalbests: PersonalBest[]
+  honours?: any[]
 }
 
 export interface ProcessedAthleteStats {
@@ -90,8 +91,8 @@ export interface ProcessedAthleteStats {
   currentSeasonCompetitions: number
   averageResultScore: number
   victoryRate: number
-  currentSeasonAvgScore: number
-  lastSeasonAvgScore: number
+  currentSeasonBestScore: number
+  lastSeasonBestScore: number
   scoreChangePercent: number
   percentileRank: { rank: string; label: string }
   nemesis: { name: string; losses: number } | null
@@ -105,6 +106,7 @@ export interface ProcessedAthleteStats {
     year: number
     totalCompetitions: number
   }
+  honours?: Array<{ category: string; count: number }>
+  recentHonours?: Array<{ category: string; place: number; competition: string }>
+  records?: { nr: number; wr: number; other: number }
 }
-
-

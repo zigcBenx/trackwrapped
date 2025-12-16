@@ -77,6 +77,7 @@ function handleAthleteSelect(athlete: Athlete) {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: var(--spacing-md);
   animation: fadeIn var(--transition-base) ease-out;
+  padding: var(--spacing-sm); /* Add padding to prevent cut-off shadows */
 }
 
 @media (max-width: 768px) {

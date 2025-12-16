@@ -1,7 +1,8 @@
 <template>
   <SlideWrapper 
-    background="linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%)"
+    background="#000000"
     type="rivals"
+    :showPattern="true"
     @click="handleTap"
   >
     <!-- Buildup Phase -->
@@ -10,7 +11,10 @@
         v-for="(line, index) in sequence" 
         :key="index"
         class="story-line"
-        :class="{ 'visible': index <= currentLineIndex }"
+        :class="[
+          { 'visible': index <= currentLineIndex },
+          index <= currentLineIndex ? (index % 2 === 0 ? 'race-in-left' : 'race-in-right') : ''
+        ]"
       >
         {{ line }}
       </div>
@@ -43,7 +47,7 @@
 
 
       <div v-else class="massive-stat fade-in-up" style="animation-delay: 300ms">
-        <div class="stat-value-massive">0</div>
+        <div class="stat-value-massive neon-green">0</div>
         <div class="stat-label-massive">RIVALS</div>
         <div class="stat-subtext">You're too good! No one can keep up 🦅</div>
       </div>
@@ -109,27 +113,31 @@ onMounted(() => {
   gap: var(--spacing-xl);
   min-height: 300px;
   justify-content: center;
+  width: 100%;
+  overflow: hidden;
 }
 
 .story-line {
-  font-family: 'Outfit', sans-serif;
-  font-size: 2.5rem;
+  font-family: var(--font-family-heading);
+  font-size: 3.5rem;
   font-weight: 700;
   color: white;
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+  width: 100%;
 }
 
 .story-line.visible {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .reveal-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .slide-emoji {
@@ -139,12 +147,13 @@ onMounted(() => {
 }
 
 .slide-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
+  font-family: var(--font-family-heading);
+  font-size: 2rem;
   text-transform: uppercase;
-  letter-spacing: 4px;
-  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 2px;
+  color: var(--color-text-secondary);
   margin-bottom: var(--spacing-xl);
+  text-align: center;
 }
 
 .massive-stat {
@@ -154,25 +163,30 @@ onMounted(() => {
 }
 
 .stat-value-massive {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--font-family-heading);
   font-size: 10rem;
   line-height: 0.9;
   color: white;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
 }
 
+.neon-green {
+  color: var(--color-accent-primary);
+  text-shadow: 0 0 20px rgba(204, 255, 0, 0.5);
+}
+
 .stat-label-massive {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-family-heading);
   font-size: 2rem;
   font-weight: 800;
   text-transform: uppercase;
-  color: #00ff9d;
-  letter-spacing: 2px;
+  color: white;
+  letter-spacing: 4px;
   margin-top: var(--spacing-md);
 }
 
 .stat-subtext {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-family-primary);
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.8);
   margin-top: var(--spacing-lg);
@@ -191,40 +205,45 @@ onMounted(() => {
   gap: var(--spacing-md);
   padding: var(--spacing-sm) var(--spacing-lg);
   margin-bottom: var(--spacing-sm);
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px; /* Sharper */
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
+  transform: skewX(-10deg);
 }
 
 .rival-item:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateX(5px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-accent-secondary);
+  transform: skewX(-10deg) translateX(10px);
 }
 
 .rival-rank {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--font-family-heading);
   font-size: 2.5rem;
-  color: #00ff9d;
+  color: var(--color-accent-secondary);
   min-width: 45px;
+  transform: skewX(10deg);
 }
 
 .rival-info {
   flex: 1;
   text-align: left;
+  transform: skewX(10deg);
 }
 
 .rival-name {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.3rem;
+  font-family: var(--font-family-heading);
+  font-size: 1.5rem;
   font-weight: 700;
   color: white;
   margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .rival-meetings {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-family-primary);
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -232,8 +251,8 @@ onMounted(() => {
 .rivalry-summary {
   margin-top: var(--spacing-lg);
   padding-top: var(--spacing-md);
-  border-top: 2px solid rgba(255, 255, 255, 0.2);
-  font-family: 'Outfit', sans-serif;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: var(--font-family-primary);
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.5;
@@ -241,16 +260,9 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
-  .story-line { font-size: 1.8rem; }
-  .stat-value-massive { font-size: 4rem; }
-  .stat-label-massive { font-size: 1.2rem; }
-  .stat-subtext { font-size: 1rem; }
-
-  .rival-item { padding: var(--spacing-xs) var(--spacing-md); }
-  .rival-rank { font-size: 2rem; min-width: 35px; }
-  .rival-name { font-size: 1.1rem; }
-  .rival-meetings { font-size: 0.8rem; }
-  .rivalry-summary { font-size: 0.9rem; margin-top: var(--spacing-md); }
+  .story-line { font-size: 2.5rem; }
+  .stat-value-massive { font-size: 6rem; }
+  .stat-label-massive { font-size: 1.5rem; }
 }
 
 @media (max-width: 480px) {

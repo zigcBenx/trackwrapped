@@ -1,7 +1,8 @@
 <template>
   <SlideWrapper 
-    background="linear-gradient(135deg, #fa709a 0%, #fee140 100%)"
+    background="#000000"
     type="competition"
+    :showPattern="true"
     @click="handleTap"
   >
     <!-- Buildup Phase -->
@@ -10,7 +11,10 @@
         v-for="(line, index) in sequence" 
         :key="index"
         class="story-line"
-        :class="{ 'visible': index <= currentLineIndex }"
+        :class="[
+          { 'visible': index <= currentLineIndex },
+          index <= currentLineIndex ? (index % 2 === 0 ? 'race-in-left' : 'race-in-right') : ''
+        ]"
       >
         {{ line }}
       </div>
@@ -19,7 +23,7 @@
     <!-- Reveal Phase -->
     <div v-else class="reveal-container">
       <div class="slide-emoji fade-in-up" style="animation-delay: 0ms">🏆</div>
-      <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">Your {{ heatmapData.year }} Competition Calendar</h1>
+      <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">Your {{ heatmapData.year }} Grind</h1>
 
       <!-- Competition Heatmap -->
       <div class="fade-in-up" style="animation-delay: 300ms">
@@ -31,7 +35,7 @@
 
       <!-- Total count and joke -->
       <div class="competition-summary fade-in-up" style="animation-delay: 450ms">
-        <div class="stat-value-large">{{ totalCompetitions }}</div>
+        <div class="stat-value-large neon-pink">{{ totalCompetitions }}</div>
         <div class="stat-label-large">TOTAL COMPETITIONS</div>
         <div class="stat-subtext">{{ frequencyJoke }}</div>
       </div>
@@ -127,21 +131,24 @@ onMounted(() => {
   gap: var(--spacing-xl);
   min-height: 300px;
   justify-content: center;
+  width: 100%;
+  overflow: hidden;
 }
 
 .story-line {
-  font-family: 'Outfit', sans-serif;
-  font-size: 2.5rem;
+  font-family: var(--font-family-heading);
+  font-size: 3.5rem;
   font-weight: 700;
   color: white;
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+  width: 100%;
 }
 
 .story-line.visible {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .reveal-container {
@@ -158,40 +165,46 @@ onMounted(() => {
 }
 
 .slide-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
+  font-family: var(--font-family-heading);
+  font-size: 2rem;
   text-transform: uppercase;
-  letter-spacing: 4px;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: var(--spacing-xl); /* Reduced from 2xl */
+  letter-spacing: 2px;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
 }
 
 .competition-summary {
-  margin-top: var(--spacing-xl); /* Reduced from 2xl */
+  margin-top: var(--spacing-xl);
   text-align: center;
-  padding-bottom: var(--spacing-lg); /* Add padding for safety */
+  padding-bottom: var(--spacing-lg);
 }
 
 .stat-value-large {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 4rem; /* Reduced from 6rem */
+  font-family: var(--font-family-heading);
+  font-size: 8rem;
   line-height: 0.9;
   color: white;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
 }
 
+.neon-pink {
+  color: var(--color-accent-secondary);
+  text-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
+}
+
 .stat-label-large {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.2rem; /* Reduced from 1.5rem */
+  font-family: var(--font-family-heading);
+  font-size: 2rem;
   font-weight: 800;
   text-transform: uppercase;
-  color: #00ff9d;
-  letter-spacing: 2px;
+  color: white;
+  letter-spacing: 4px;
   margin-top: var(--spacing-sm);
 }
 
 .stat-subtext {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-family-primary);
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.8);
   margin-top: var(--spacing-lg);
@@ -200,10 +213,9 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
-  .story-line { font-size: 1.8rem; }
-  .stat-value-large { font-size: 4rem; }
-  .stat-label-large { font-size: 1.2rem; }
-  .stat-subtext { font-size: 1rem; }
+  .story-line { font-size: 2.5rem; }
+  .stat-value-large { font-size: 6rem; }
+  .stat-label-large { font-size: 1.5rem; }
   
   .slide-title {
     font-size: 1.2rem;
@@ -229,30 +241,32 @@ onMounted(() => {
 
 /* Heatmap Visibility Overrides */
 :deep(.heatmap-grid) {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   grid-template-columns: repeat(18, 1fr) !important;
-  gap: 6px !important;
+  gap: 4px !important;
   padding: 10px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
 }
 
 :deep(.heatmap-cell) {
-  border-radius: 4px !important;
+  border-radius: 2px !important;
 }
 
 :deep(.intensity-0) {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 :deep(.intensity-1) {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 :deep(.intensity-2) {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.4);
 }
 
 :deep(.intensity-3) {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 :deep(.intensity-4) {
@@ -261,11 +275,11 @@ onMounted(() => {
 }
 
 :deep(.year-label) {
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 :deep(.legend-label) {
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 /* Float-in animation for reveal phase */
