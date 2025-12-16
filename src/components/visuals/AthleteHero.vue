@@ -13,8 +13,8 @@
     <!-- Massive Typography -->
     <div class="hero-content">
       <h1 class="hero-name">
-        <span class="first-name slide-in-left">{{ firstName }}</span>
-        <span class="last-name slide-in-right">{{ lastName }}</span>
+        <span class="first-name slide-in-left" :style="firstNameStyle">{{ firstName }}</span>
+        <span class="last-name slide-in-right" :style="lastNameStyle">{{ lastName }}</span>
       </h1>
       
       <div class="hero-stats fade-in-up">
@@ -37,6 +37,8 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+
 interface Props {
   firstName: string
   lastName: string
@@ -46,7 +48,24 @@ interface Props {
   nickname: string
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
+
+const firstNameStyle = computed(() => {
+  const len = props.firstName.length
+  if (len > 15) return { fontSize: 'clamp(1.5rem, 5vw, 3rem)' }
+  if (len > 10) return { fontSize: 'clamp(2rem, 7vw, 4rem)' }
+  return {}
+})
+
+const lastNameStyle = computed(() => {
+  const len = props.lastName.length
+  // Very long names (e.g. compound names > 15 chars)
+  if (len > 20) return { fontSize: 'clamp(1.5rem, 5vw, 3.5rem)' }
+  if (len > 15) return { fontSize: 'clamp(1.8rem, 6vw, 4.5rem)' }
+  if (len > 10) return { fontSize: 'clamp(2.5rem, 9vw, 6rem)' }
+  if (len > 7) return { fontSize: 'clamp(3rem, 11vw, 8rem)' }
+  return {}
+})
 </script>
 
 <style scoped>

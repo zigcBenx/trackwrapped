@@ -12,6 +12,21 @@
       </div>
       <h2 class="loader-title animate-glitch">PREPARING<br>YOUR WRAPPED</h2>
       <p class="loader-subtitle">CRUNCHING THE NUMBERS...</p>
+      
+      <div class="loader-instructions">
+        <div class="instruction-item">
+          <span class="instruction-emoji">👈</span>
+          <span class="instruction-text">TAP BACK</span>
+        </div>
+        <div class="instruction-item">
+          <span class="instruction-emoji">👆</span>
+          <span class="instruction-text">HOLD TO PAUSE</span>
+        </div>
+        <div class="instruction-item">
+          <span class="instruction-emoji">👉</span>
+          <span class="instruction-text">TAP NEXT</span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -183,5 +198,42 @@
   .loader-subtitle {
     font-size: 1rem;
   }
+}
+
+.loader-instructions {
+  display: flex;
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 1s forwards;
+}
+
+.instruction-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.instruction-emoji {
+  font-size: 2rem;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.instruction-text {
+  font-family: var(--font-family-heading);
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .loader-instructions {
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+  }
+  
+  .instruction-emoji { font-size: 1.5rem; }
+  .instruction-text { font-size: 0.8rem; }
 }
 </style>

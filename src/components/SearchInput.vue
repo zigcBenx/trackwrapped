@@ -108,6 +108,7 @@ function handleAthleteSelect(athlete: Athlete) {
 
 .search-input {
   flex: 1;
+  min-width: 0; /* Fix flexbox overflow */
   background: transparent;
   border: none;
   outline: none;

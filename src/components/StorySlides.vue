@@ -326,6 +326,10 @@ async function loadAthleteStory(athleteId: number) {
   isLoading.value = true
   error.value = null
   currentSlideIndex.value = 0
+  
+  // Record start time to ensure minimum loading duration
+  const startTime = Date.now()
+  const MIN_LOADING_TIME = 4000 // 4 seconds to read instructions
 
   try {
     const { details, results, allResults } = await getCompleteAthleteData(athleteId, props.scope)
@@ -343,6 +347,12 @@ async function loadAthleteStory(athleteId: number) {
 
     // Track this view
     trackAthleteView(athleteId)
+
+    // Calculate elapsed time and wait if needed
+    const elapsed = Date.now() - startTime
+    if (elapsed < MIN_LOADING_TIME) {
+      await new Promise(resolve => setTimeout(resolve, MIN_LOADING_TIME - elapsed))
+    }
 
     // Start autoplay for first slide
     startAutoplay()
@@ -799,7 +809,7 @@ onUnmounted(() => {
 
 .error-content {
   text-align: center;
-  padding: var(--spacing-xl);
+  color: white;
 }
 
 .error-emoji {
