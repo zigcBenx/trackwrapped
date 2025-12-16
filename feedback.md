@@ -16,16 +16,16 @@ Marko Pepelnak:
     - If relay have better points, it shows relay instead of individual discipline
 
 Filip Dominkovič:
-- Improve fonts, more bold, more Vibe
-- More striking
-- Better animations
+- Improve fonts, more bold, more Vibe ✅
+- More striking ✅
+- Better animations ✅
 
 Andrej Skočir:
-- more clean UX, better fonts
-- better animations
+- more clean UX, better fonts ✅
+- better animations ✅
 
 Mathias Hove Johansen:
-- faster progress between slides, option to skip by tapping
+- faster progress between slides, option to skip by tapping ✅
 - skip inside one slide, since first part is only story, second one is statistics
 
 Anej Čurin:
@@ -37,9 +37,9 @@ Anej Čurin:
     - Best competition (European, World, Olympic)
 
 Matevž Šuštaršič:
-- To much slides, until final one for sharing or it takes a bit to long with progressing with animations
+- To much slides, until final one for sharing or it takes a bit to long with progressing with animations ✅
 - Final slide should show PB for primary discipline or more disciplines
-- Podium/vicotory rate maybe remove, since athletes will not be happy if it's low.
+- Podium/vicotory rate maybe remove, since athletes will not be happy if it's low. ✅
 
 Gal Kumar:
 

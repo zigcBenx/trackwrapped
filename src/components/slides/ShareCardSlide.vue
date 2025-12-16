@@ -3,80 +3,96 @@
     background="#000000"
     type="share-card"
   >
-    <div class="poster-container" @click="handleTap" @touchend.stop="handleTap">
-      <!-- Decorative Elements -->
-      <div class="corner-accents"></div>
-      
-      <!-- Header -->
-      <div class="poster-header">
-        <div class="user-badge">
-          <div class="avatar">
-            <img 
-              v-if="profileImage && !imageError" 
-              :src="profileImage" 
-              alt="Profile" 
-              class="profile-image"
-              @error="handleImageError"
-            />
-            <span v-else>{{ initials }}</span>
+    <div class="share-card-container" @click="handleTap" @touchend.stop="handleTap">
+      <!-- Background Image Layer -->
+      <div class="background-layer">
+        <div class="bg-pattern">
+          <div class="initials-bg">{{ initials }}</div>
+        </div>
+        <div class="gradient-overlay"></div>
+      </div>
+
+      <!-- Content Layer -->
+      <div class="content-layer">
+        <!-- Brand Header -->
+        <div class="brand-header">
+          <span class="brand-text">TRACK WRAPPED</span>
+          <span class="year-badge">2025</span>
+        </div>
+
+        <!-- Main Content (Bottom Aligned) -->
+        <div class="main-content">
+          <!-- Identity -->
+          <div class="identity-section">
+            <div class="identity-header">
+              <div class="avatar-circle">
+                <img 
+                  v-if="profileImage && !imageError" 
+                  :src="profileImage" 
+                  alt="Profile" 
+                  class="avatar-img"
+                  @error="handleImageError"
+                />
+                <span v-else>{{ initials }}</span>
+              </div>
+              <div class="badges-col">
+                <div class="country-badge" v-if="country">
+                  <span class="flag">{{ flagEmoji }}</span>
+                  <span class="country-code">{{ country }}</span>
+                </div>
+                <div class="nickname-badge" v-if="nickname">
+                  @{{ nickname.toLowerCase().replace(/\s+/g, '') }}
+                </div>
+              </div>
+            </div>
+            
+            <h1 class="athlete-name">
+              <span class="first-name">{{ firstName }}</span>
+              <span class="last-name">{{ lastName }}</span>
+            </h1>
+            <div class="discipline-tag">{{ mainDiscipline }}</div>
           </div>
-          <div class="user-info">
-            <h1 class="real-name">{{ firstName }} {{ lastName }}</h1>
-            <div class="meta-row">
-              <span class="country-flag" v-if="country">{{ countryFlag }}</span>
-              <span class="nickname">@{{ nickname.toLowerCase().replace(/\s+/g, '') }}</span>
+
+          <!-- Stats Grid -->
+          <div class="stats-grid">
+            <!-- Season Best (Hero Stat) -->
+            <div class="stat-box hero">
+              <div class="stat-label">SEASON BEST</div>
+              <div class="stat-value highlight">{{ seasonBest }}</div>
+            </div>
+
+            <!-- World Rank (if available) -->
+            <div class="stat-box" v-if="bestRanking">
+              <div class="stat-label">WORLD RANK</div>
+              <div class="stat-value">#{{ bestRanking.place }}</div>
+            </div>
+
+            <!-- Total Races -->
+            <div class="stat-box">
+              <div class="stat-label">RACES</div>
+              <div class="stat-value">{{ totalCompetitions }}</div>
+            </div>
+          </div>
+
+          <!-- Top Events List (Compact) -->
+          <div class="top-events" v-if="topDisciplines.length > 0">
+            <div class="events-label">TOP EVENTS</div>
+            <div class="events-list">
+              <span 
+                v-for="(disc, idx) in topDisciplines.slice(0, 3)" 
+                :key="idx" 
+                class="event-tag"
+              >
+                {{ disc.name }}
+              </span>
             </div>
           </div>
         </div>
-        <div class="wrapped-badge-mini">2025</div>
-      </div>
 
-      <!-- Main Stats Section -->
-      <div class="stats-poster-grid">
-        <!-- Season Best (Featured) -->
-        <div class="poster-stat featured">
-          <div class="stat-label">SEASON BEST</div>
-          <div class="stat-value neon-gold">{{ seasonBest }}</div>
-          <div class="stat-sublabel">{{ mainDiscipline }}</div>
+        <!-- Footer CTA -->
+        <div class="share-footer">
+          <div class="share-btn">SHARE YOUR SEASON</div>
         </div>
-
-        <!-- Top Disciplines (if multiple) or Best Comp -->
-        <div class="poster-stat">
-          <div class="stat-label">TOP EVENTS</div>
-          <div class="stat-list">
-            <div v-for="(disc, idx) in topDisciplines.slice(0, 2)" :key="idx" class="stat-list-item">
-              <span class="item-name">{{ disc.name }}</span>
-              <span class="item-val neon-cyan">{{ disc.mark }}</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Total Races -->
-        <div class="poster-stat">
-          <div class="stat-label">RACES</div>
-          <div class="stat-value neon-pink">{{ totalCompetitions }}</div>
-        </div>
-      </div>
-
-      <!-- Heatmap Strip -->
-      <div class="heatmap-strip">
-        <div class="strip-label">ACTIVITY</div>
-        <CompetitionHeatmap 
-          :weeks="heatmapData.weeks"
-          :year="heatmapData.year"
-          class="mini-heatmap"
-        />
-      </div>
-
-      <!-- Power Level Footer -->
-      <div class="power-footer">
-        <div class="power-label">POWER LEVEL</div>
-        <div class="power-value neon-orange">{{ powerLevel }}</div>
-      </div>
-
-      <!-- Share CTA -->
-      <div class="share-cta">
-        <div class="cta-text">SHARE YOUR STORY</div>
       </div>
     </div>
   </SlideWrapper>
@@ -85,32 +101,21 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import SlideWrapper from './SlideWrapper.vue'
-import CompetitionHeatmap from '../visuals/CompetitionHeatmap.vue'
-
-interface Week {
-  week: number
-  count: number
-  intensity: number
-}
-
-interface HeatmapData {
-  weeks: Week[]
-  year: number
-  totalCompetitions: number
-}
+import { getCountryFlag } from '@/utils/countryFlags'
 
 interface Props {
   firstName: string
   lastName: string
   country: string
   nickname: string
-  heatmapData: HeatmapData
+  heatmapData: any
   totalCompetitions: number
   mainDiscipline: string
   seasonBest: string
   athleteId?: number | null
   percentileRank: { rank: string; label: string }
   topDisciplines: Array<{ name: string; mark: string }>
+  rankings?: any[]
 }
 
 const props = defineProps<Props>()
@@ -119,6 +124,7 @@ const imageError = ref(false)
 
 const profileImage = computed(() => {
   if (!props.athleteId) return null
+  // Using high-res image if available, or standard
   return `https://media.aws.iaaf.org/athletes/${props.athleteId}.jpg`
 })
 
@@ -132,298 +138,329 @@ const initials = computed(() => {
   return (f + l).toUpperCase()
 })
 
-const countryFlag = computed(() => {
-  if (!props.country || props.country.length !== 3) return props.country
-
-  // Convert 3-letter country code to 2-letter ISO code for flag emoji
-  const countryMap: Record<string, string> = {
-    'SLO': 'SI', 'GER': 'DE', 'USA': 'US', 'GBR': 'GB', 'NED': 'NL',
-    'SUI': 'CH', 'CRO': 'HR', 'BEL': 'BE', 'AUT': 'AT', 'CZE': 'CZ',
-    'POL': 'PL', 'ITA': 'IT', 'FRA': 'FR', 'ESP': 'ES', 'POR': 'PT',
-    'SWE': 'SE', 'NOR': 'NO', 'DEN': 'DK', 'FIN': 'FI', 'GRE': 'GR',
-    'TUR': 'TR', 'RUS': 'RU', 'UKR': 'UA', 'BUL': 'BG', 'ROM': 'RO',
-    'HUN': 'HU', 'SVK': 'SK', 'SRB': 'RS', 'CAN': 'CA', 'AUS': 'AU',
-    'NZL': 'NZ', 'JPN': 'JP', 'CHN': 'CN', 'KOR': 'KR', 'IND': 'IN',
-    'BRA': 'BR', 'ARG': 'AR', 'MEX': 'MX', 'RSA': 'ZA', 'KEN': 'KE',
-    'ETH': 'ET', 'JAM': 'JM',
-  }
-
-  const isoCode = countryMap[props.country.toUpperCase()] || props.country.substring(0, 2)
-
-  const codePoints = isoCode
-    .toUpperCase()
-    .split('')
-    .map(char => 127397 + char.charCodeAt(0))
-
-  return String.fromCodePoint(...codePoints)
+const flagEmoji = computed(() => {
+  return getCountryFlag(props.country)
 })
 
-const powerLevel = computed(() => {
-  return props.percentileRank?.label || 'Rookie'
+const bestRanking = computed(() => {
+  if (!props.rankings || props.rankings.length === 0) return null
+  // Try main discipline
+  const main = props.rankings.find(r => r.discipline && r.discipline.toLowerCase() === props.mainDiscipline.toLowerCase())
+  if (main) return main
+  // Fallback to best
+  return [...props.rankings].sort((a, b) => a.place - b.place)[0]
 })
 
 function handleTap(event: Event) {
-  // Placeholder for tap handler
+  // Placeholder
 }
 </script>
 
 <style scoped>
-.poster-container {
+.share-card-container {
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: var(--spacing-md);
-  padding-top: var(--spacing-2xl);
-  color: white;
-  box-sizing: border-box;
-  background: #000;
-  border: 4px solid white;
   position: relative;
+  overflow: hidden;
+  background: #000;
+  font-family: var(--font-family-heading);
 }
 
-.corner-accents::before,
-.corner-accents::after {
-  content: '';
+/* Background Layer */
+.background-layer {
   position: absolute;
-  width: 20px;
-  height: 20px;
-  background: var(--color-accent-primary);
-  z-index: 10;
-}
-
-.corner-accents::before {
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 
-.corner-accents::after {
-  bottom: 0;
-  right: 0;
-}
-
-.poster-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: var(--spacing-lg);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-  padding-bottom: var(--spacing-md);
-}
-
-.user-badge {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-md);
-}
-
-.avatar {
-  width: 64px;
-  height: 64px;
-  background: var(--color-accent-secondary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1.5rem;
-  border: 2px solid white;
-  overflow: hidden;
-}
-
-.profile-image {
+.bg-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%) contrast(1.2);
+  /* Slight zoom for effect */
+  transform: scale(1.1);
 }
 
-.user-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.real-name {
-  font-family: var(--font-family-heading);
-  font-size: 2.5rem;
-  line-height: 0.9;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-.meta-row {
+.bg-pattern {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #333, #000);
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
-}
-
-.country-flag {
-  font-size: 1.2rem;
-}
-
-.nickname {
-  font-family: var(--font-family-primary);
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.wrapped-badge-mini {
-  background: white;
-  color: black;
-  font-family: var(--font-family-heading);
-  font-size: 1.2rem;
-  padding: 2px 8px;
-  font-weight: 700;
-  transform: rotate(5deg);
-}
-
-.stats-poster-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-lg);
-}
-
-.poster-stat {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: var(--spacing-sm);
-  display: flex;
-  flex-direction: column;
   justify-content: center;
 }
 
-.poster-stat.featured {
-  grid-column: span 2;
-  background: rgba(255, 255, 255, 0.05);
-  border-color: white;
+.initials-bg {
+  font-size: 15rem;
+  color: rgba(255, 255, 255, 0.05);
+  font-weight: 900;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0) 30%,
+    rgba(0, 0, 0, 0.6) 60%,
+    rgba(0, 0, 0, 0.95) 90%,
+    #000 100%
+  );
+}
+
+/* Content Layer */
+.content-layer {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--spacing-lg);
+  box-sizing: border-box;
+}
+
+.brand-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--spacing-md);
+  margin-top: var(--spacing-xl);
+}
+
+.brand-text {
+  font-size: 1rem;
+  letter-spacing: 4px;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.year-badge {
+  background: var(--color-accent-primary);
+  color: black;
+  padding: 2px 8px;
+  font-size: 1rem;
+  font-weight: 800;
+  transform: rotate(-5deg);
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.identity-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.identity-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+.avatar-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--color-accent-secondary);
+  border: 3px solid white;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 900;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.badges-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.country-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: fit-content;
+}
+
+.nickname-badge {
+  font-family: var(--font-family-primary);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  padding-left: 4px;
+}
+
+.flag {
+  font-size: 1.2rem;
+}
+
+.country-code {
+  font-size: 0.9rem;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.athlete-name {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.85;
+  margin: 0;
+  text-transform: uppercase;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.first-name {
+  font-size: 3rem;
+  color: white;
+  font-weight: 400;
+}
+
+.last-name {
+  font-size: 4.5rem;
+  color: white;
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+
+.discipline-tag {
+  font-family: var(--font-family-primary);
+  color: var(--color-accent-primary);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+  padding-left: var(--spacing-sm);
+}
+
+.stat-box.hero {
+  grid-column: span 3; /* Full width for Season Best */
+  border-left: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  padding-left: 0;
+  padding-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
 }
 
 .stat-label {
   font-family: var(--font-family-primary);
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: var(--color-text-secondary);
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   margin-bottom: 4px;
-  font-weight: 700;
 }
 
 .stat-value {
-  font-family: var(--font-family-heading);
-  font-size: 3rem;
-  line-height: 0.9;
-}
-
-.stat-sublabel {
-  font-family: var(--font-family-heading);
-  font-size: 1rem;
-  color: var(--color-text-secondary);
-  margin-top: 4px;
-}
-
-.poster-stat.featured .stat-value {
-  font-size: 5rem;
-}
-
-.stat-list {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.stat-list-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--font-family-heading);
-}
-
-.item-name {
-  font-size: 1rem;
+  font-size: 2rem;
   color: white;
-}
-
-.item-val {
-  font-size: 1.2rem;
-}
-
-.neon-gold { color: var(--color-accent-primary); text-shadow: 0 0 10px rgba(204, 255, 0, 0.3); }
-.neon-cyan { color: var(--color-accent-tertiary); text-shadow: 0 0 10px rgba(0, 240, 255, 0.3); }
-.neon-pink { color: var(--color-accent-secondary); text-shadow: 0 0 10px rgba(255, 0, 85, 0.3); }
-.neon-purple { color: #c084fc; }
-.neon-orange { color: #fb923c; }
-
-.heatmap-strip {
-  margin-bottom: var(--spacing-lg);
-}
-
-.strip-label {
-  font-family: var(--font-family-heading);
-  font-size: 1.2rem;
-  margin-bottom: var(--spacing-xs);
-  color: white;
-}
-
-.mini-heatmap {
-  width: 100%;
-  filter: grayscale(100%) contrast(1.5) brightness(1.2);
-}
-
-.power-footer {
-  margin-top: auto;
-  border-top: 4px solid white;
-  padding-top: var(--spacing-md);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-}
-
-.power-label {
-  font-family: var(--font-family-heading);
-  font-size: 1.5rem;
   line-height: 1;
+}
+
+.stat-value.highlight {
+  font-size: 4.5rem;
+  color: var(--color-accent-primary);
+  text-shadow: 0 0 20px rgba(204, 255, 0, 0.3);
+}
+
+.top-events {
+  margin-top: var(--spacing-sm);
+}
+
+.events-label {
+  font-family: var(--font-family-primary);
+  font-size: 0.7rem;
   color: var(--color-text-secondary);
+  margin-bottom: 8px;
 }
 
-.power-value {
-  font-family: var(--font-family-heading);
-  font-size: 3.5rem;
-  line-height: 0.85;
-  text-transform: uppercase;
-  word-break: break-word;
-  max-width: 100%;
+.events-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.share-cta {
-  margin-top: var(--spacing-md);
+.event-tag {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.share-footer {
+  text-align: center;
+  padding-bottom: var(--spacing-md);
+}
+
+.share-btn {
   background: white;
   color: black;
-  text-align: center;
-  padding: var(--spacing-sm);
-  font-family: var(--font-family-heading);
-  font-size: 1.5rem;
-  font-weight: 700;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  font-weight: 800;
   letter-spacing: 2px;
+  display: inline-block;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
   cursor: pointer;
+  transition: transform 0.2s;
 }
 
-@media (max-width: 400px) {
-  .real-name { font-size: 2rem; }
-  .poster-stat.featured .stat-value { font-size: 4rem; }
-  .stat-value { font-size: 2.5rem; }
+.share-btn:active {
+  transform: scale(0.95);
 }
 
-/* Heatmap Overrides */
-:deep(.competition-heatmap) {
-  max-width: 100%;
+/* Responsive Adjustments */
+@media (max-width: 380px) {
+  .first-name { font-size: 2.5rem; }
+  .last-name { font-size: 3.5rem; }
+  .stat-value.highlight { font-size: 3.5rem; }
+  .stat-value { font-size: 1.5rem; }
 }
 
-:deep(.heatmap-grid) {
-  gap: 2px !important;
-}
-
-:deep(.heatmap-cell) {
-  border-radius: 0 !important; /* Square pixels */
+@media (min-height: 800px) {
+  .main-content { margin-bottom: var(--spacing-2xl); }
 }
 </style>

@@ -175,6 +175,7 @@
               :athlete-id="athleteId"
               :percentile-rank="stats.percentileRank"
               :top-disciplines="topDisciplines"
+              :rankings="rankings"
             />
           </TransitionGroup>
 

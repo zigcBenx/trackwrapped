@@ -59,5 +59,5 @@ This document outlines the current sequence of slides in the TrackWrapped story 
 
 ## 12. Share Card Slide (`ShareCardSlide.vue`)
 *   **Purpose**: The final summary card designed for social sharing.
-*   **Content**: "2025 SEASON", Season Best, Top Events, Total Races, Heatmap, "TRACK WRAPPED".
-*   **Visual**: Highly stylized, dense with info, "Share" button prompt.
+*   **Content**: Athlete Image, Name, Country Flag, Season Best, World Rank, Total Races.
+*   **Visual**: "Poster" aesthetic, dark mode, neon accents, "SHARE YOUR SEASON" CTA.
