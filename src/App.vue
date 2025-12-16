@@ -138,7 +138,7 @@ function handleStoryClose() {
 
 .year-badge {
   position: absolute;
-  top: -15px; /* Moved down to overlap */
+  top: 70px; /* Moved down to overlap */
   right: -30px; /* Moved left to overlap */
   font-family: var(--font-family-heading);
   font-size: 5rem; /* Bigger */
