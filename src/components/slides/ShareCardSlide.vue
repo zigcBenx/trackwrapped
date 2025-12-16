@@ -583,7 +583,6 @@ function handleTap(event: Event) {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--spacing-md);
-  margin-top: var(--spacing-md);
 }
 
 .stat-box {
@@ -712,10 +711,10 @@ function handleTap(event: Event) {
   background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
   border: 1px solid rgba(255,255,255,0.3);
   border-radius: 16px;
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-md); /* Reduced padding */
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px; /* Reduced gap */
   position: relative;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -723,28 +722,29 @@ function handleTap(event: Event) {
 
 .power-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Center the text */
   align-items: center;
   width: 100%;
+  position: relative; /* For absolute positioning of icon */
 }
 
 .power-label {
   font-family: var(--font-family-primary);
-  font-size: 0.9rem;
+  font-size: 0.7rem; /* Even smaller */
   color: var(--color-accent-primary);
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   font-weight: 700;
 }
 
 .power-main {
   display: flex;
   justify-content: center;
-  padding: 8px 0;
+  padding: 2px 0; /* Minimal padding */
 }
 
 .power-value-glitch {
   font-family: var(--font-family-heading);
-  font-size: 3.5rem; /* Bigger size */
+  font-size: 1.5rem; /* Even smaller */
   color: white;
   text-transform: uppercase;
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
@@ -752,6 +752,13 @@ function handleTap(event: Event) {
   z-index: 1;
   line-height: 1;
   text-align: center;
+}
+
+.info-icon {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  position: absolute;
+  right: 0; /* Keep icon to the right */
 }
 
 .power-bar {
@@ -774,7 +781,7 @@ function handleTap(event: Event) {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
-  margin-top: 180px; /* Increased margin to push content down */
+  margin-top: 120px; /* Increased margin to push content down */
 }
 
 /* Flex Badges Row */
