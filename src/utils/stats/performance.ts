@@ -150,14 +150,14 @@ function calculatePercentile(avgScore: number): { rank: string; label: string } 
   // World Athletics result scores typically range from ~100 (beginner) to 1400+ (elite)
   // These thresholds are approximate based on competitive levels
 
-  if (avgScore >= 1200) {
-    return { rank: '0.1%', label: 'World Class Elite' }
-  } else if (avgScore >= 1150) {
-    return { rank: '1%', label: 'Elite International' }
+  if (avgScore >= 1300) {
+    return { rank: '0.1%', label: 'Legendary' }
+  } else if (avgScore >= 1200) {
+    return { rank: '1%', label: 'World Class' }
   } else if (avgScore >= 1100) {
-    return { rank: '5%', label: 'National Elite' }
+    return { rank: '5%', label: 'International' }
   } else if (avgScore >= 1000) {
-    return { rank: '10%', label: 'Advanced Competitive' }
+    return { rank: '10%', label: 'National Elite' }
   } else if (avgScore >= 900) {
     return { rank: '15%', label: 'Competitive' }
   } else if (avgScore >= 800) {
@@ -165,6 +165,6 @@ function calculatePercentile(avgScore: number): { rank: string; label: string } 
   } else if (avgScore >= 600) {
     return { rank: '50%', label: 'Recreational' }
   } else {
-    return { rank: '>50%', label: 'Developing' }
+    return { rank: '>50%', label: 'Rising' }
   }
 }

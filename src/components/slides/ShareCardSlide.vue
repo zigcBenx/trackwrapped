@@ -144,7 +144,7 @@
           </div>
 
           <!-- Top Events List (Compact) -->
-          <div class="top-events" v-if="topDisciplines.length > 0">
+          <!-- <div class="top-events" v-if="topDisciplines.length > 0">
             <div class="events-label">TOP EVENTS</div>
             <div class="events-list">
               <span 
@@ -155,7 +155,7 @@
                 {{ disc.name }}
               </span>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <!-- Footer CTA -->
@@ -324,27 +324,8 @@ const flexStats = computed(() => {
     })
   }
 
-  // 5. Races (Fallback for Top Badges if Rank is shown below)
-  // Only show Races here if we have a Ranking (which means Ranking is shown below)
-  // If we don't have a Ranking, Races will be shown below, so don't duplicate here.
-  if (stats.length < 3 && bestRanking.value) {
-    stats.push({ 
-      initial: props.totalCompetitions.toString(),
-      label: 'RACES', 
-      value: 'TOTAL RACES', 
-      highlight: false 
-    })
-  }
-
-  // 5. World Rank (Always show as badge if space permits)
-  if (stats.length < 3 && bestRanking.value) {
-    stats.push({ 
-      initial: `#${bestRanking.value.place}`,
-      label: 'WORLD RANK', 
-      value: 'CURRENT RANKING', 
-      highlight: bestRanking.value.place <= 100 
-    })
-  }
+  // 5. World Rank (Removed from badges as it is now in sub-stats if available)
+  // 6. Races (Removed from badges as requested)
 
   return stats.slice(0, 3)
 })
@@ -603,7 +584,6 @@ function handleTap(event: Event) {
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
   padding-left: 0;
   padding-bottom: var(--spacing-md);
-  margin-bottom: var(--spacing-sm);
 }
 
 .stat-label {
@@ -707,7 +687,6 @@ function handleTap(event: Event) {
 
 .power-level-container {
   grid-column: span 3;
-  margin-top: var(--spacing-sm);
   position: relative;
   cursor: pointer;
 }
