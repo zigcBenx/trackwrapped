@@ -14,39 +14,39 @@ export function getWorldRecordSequence(bestPerformance: PersonalBest | null, dis
 
   return [
     `Your best mark in ${actualDiscipline}...`,
-    "Is impressive in its own right",
-    "But how does it compare to the G.O.A.T? 🤔"
+    "Chasing the immortals. ⚡",
+    "How close are you to history? 🤔"
   ]
 }
 
 export function getNemesisSequence(nemesis: { name: string; losses: number } | null): string[] {
   if (!nemesis) {
     return [
-      "We looked for your arch-enemy...",
-      "Scanned all your races...",
-      "But you have no nemesis! (Yet) 🤷"
+      "We scanned the opposition...",
+      "No one dares challenge you. 👑",
+      "Dominating solo. 🐺"
     ]
   }
 
   return [
-    "One name keeps popping up...",
-    `They've crossed the line before you ${nemesis.losses} times`,
-    "It's time to settle the score... 😤"
+    "Target Acquired. 🎯",
+    `They crossed the line before you ${nemesis.losses} times`,
+    "Time to take them down. ⚔️"
   ]
 }
 
 export function getVictoryRateSequence(victoryRate: number): string[] {
   const lines = [
-    "We crunched the numbers...",
-    "Calculated your podium finishes...",
+    "Analyzing your podium finishes...",
+    "Calculating dominance...",
   ]
 
   if (victoryRate >= 50) {
-    lines.push("And the results are legendary! 🥇")
+    lines.push("Dominating the field! 🥇")
   } else if (victoryRate >= 15) {
-    lines.push("You're a serious contender! 🏆")
+    lines.push("Podium Hunter! 🏆")
   } else {
-    lines.push("Every race is a battle! 💪")
+    lines.push("Every race is a war! 💪")
   }
   
   return lines
@@ -64,32 +64,32 @@ export function getTopRivalsSequence(topRivals: Array<{ name: string; meetings: 
   const totalMeetings = topRivals.reduce((sum, r) => sum + r.meetings, 0)
   
   return [
-    "You've seen some faces often...",
+    "Your recurring nightmares. 😈",
     `Combined ${totalMeetings} showdowns`,
-    "These are your main characters ⚔️"
+    "The Usual Suspects. ⚔️"
   ]
 }
 
 export function getWindSpeedSequence(averageWind: number | null, hasWindData: boolean): string[] {
   if (!hasWindData || averageWind === null) {
     return [
-      "Checking the weather report...",
+      "Checking conditions...",
       "No wind data found",
       "Maybe you run indoors? 🌬️"
     ]
   }
 
-  const lines = ["Mother Nature has been watching..."]
+  const lines = ["Mother Nature's verdict..."]
   
   if (averageWind > 1.0) {
-    lines.push("She's been pushing you forward")
-    lines.push("You love a good tailwind! 🌪️")
+    lines.push("Riding the storm. 🌪️")
+    lines.push("Wind assist? We take those.")
   } else if (averageWind < -1.0) {
-    lines.push("She's been pushing you back")
-    lines.push("Headwinds build character! 💨")
+    lines.push("Fighting the gale. 🛡️")
+    lines.push("Resistance training. 💨")
   } else {
-    lines.push("Conditions have been fair")
-    lines.push("Perfectly balanced ⚖️")
+    lines.push("Pure speed. No excuses. ⚖️")
+    lines.push("Conditions were fair.")
   }
   
   
@@ -99,25 +99,28 @@ export function getWindSpeedSequence(averageWind: number | null, hasWindData: bo
 export function getTravelSequence(countriesCount: number, isDomesticOnly: boolean, homeCountry: string): string[] {
   if (isDomesticOnly) {
     return [
-      "Checking your passport stamps...",
-      "Wait, it's empty! 📄",
-      `You stayed loyal to ${homeCountry} 🏠`
+      "Checking your passport...",
+      "Hometown Hero. 🏠",
+      `Defending the turf in ${homeCountry}`
     ]
   }
 
-  const lines = ["Checking your passport stamps..."]
+  const lines = ["Checking your passport..."]
   
   if (countriesCount <= 3) {
-    lines.push("You dipped your toes internationally")
-    lines.push("A taste of the world 🌍")
+    return [
+      "International Assassin. 🌍",
+      "Global threats.",
+      "A taste of the world"
+    ]
   } else if (countriesCount <= 10) {
     lines.push("You've been getting around!")
     lines.push("Collecting flags like medals 🚩")
   } else {
     return [
-      "Checking your passport stamps...",
-      "We ran out of pages! 📚",
-      "You are officially a world traveler ✈️"
+      "World Tour Mode. ✈️",
+      "No borders.",
+      "Just finish lines."
     ]
   }
   
