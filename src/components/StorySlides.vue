@@ -84,7 +84,7 @@
               :main-discipline="stats.mainDiscipline"
             />
             
-            <!-- Performance Slide -->
+            <!-- Performance Slide (Score) -->
             <PerformanceSlide
               v-if="currentSlideIndex === 3 && stats"
               v-show="currentSlideIndex === 3"
@@ -93,10 +93,30 @@
               :stats="stats"
             />
             
-            <!-- Competition Slide -->
-            <CompetitionSlide
+            <!-- Progression Slide -->
+            <ProgressionSlide
               v-if="currentSlideIndex === 4 && stats"
               v-show="currentSlideIndex === 4"
+              key="progression"
+              :results="currentYearResults"
+              :main-discipline="stats.mainDiscipline"
+              :discipline-category="stats.disciplineCategory"
+              :year="2025"
+            />
+            
+            <!-- Ranking Slide -->
+            <RankingSlide
+              v-if="currentSlideIndex === 5 && stats"
+              v-show="currentSlideIndex === 5"
+              key="ranking"
+              :rankings="rankings"
+              :main-discipline="stats.mainDiscipline"
+            />
+            
+            <!-- Competition Slide -->
+            <CompetitionSlide
+              v-if="currentSlideIndex === 6 && stats"
+              v-show="currentSlideIndex === 6"
               key="competition"
               :total-competitions="stats.totalCompetitions"
               :competition-frequency="stats.competitionFrequency"
@@ -105,8 +125,8 @@
 
             <!-- Travel Slide -->
             <TravelSlide
-              v-if="currentSlideIndex === 5 && stats"
-              v-show="currentSlideIndex === 5"
+              v-if="currentSlideIndex === 7 && stats"
+              v-show="currentSlideIndex === 7"
               key="travel"
               :countries="stats.countries"
               :countries-count="stats.countriesCount"
@@ -115,45 +135,28 @@
             
             <!-- World Record Slide -->
             <WorldRecordSlide
-              v-if="currentSlideIndex === 6 && stats"
-              v-show="currentSlideIndex === 6"
+              v-if="currentSlideIndex === 8 && stats"
+              v-show="currentSlideIndex === 8"
               key="worldrecord"
               :best-performance="stats.bestPerformance"
               :main-discipline="stats.mainDiscipline"
               :gender="sex"
             />
             
-            <!-- Victory Rate Slide -->
-            <VictoryRateSlide
-              v-if="currentSlideIndex === 7 && stats"
-              v-show="currentSlideIndex === 7"
-              key="victoryrate"
-              :victory-rate="stats.victoryRate"
-            />
-            
             <!-- Nemesis Slide -->
             <NemesisSlide
-              v-if="currentSlideIndex === 8 && stats"
-              v-show="currentSlideIndex === 8"
+              v-if="currentSlideIndex === 9 && stats"
+              v-show="currentSlideIndex === 9"
               key="nemesis"
               :nemesis="stats.nemesis"
             />
             
             <!-- Rivals Slide -->
             <RivalsSlide
-              v-if="currentSlideIndex === 9 && stats"
-              v-show="currentSlideIndex === 9"
-              key="rivals"
-              :top-rivals="stats.topRivals"
-            />
-            
-            <!-- Wind Slide -->
-            <WindSlide
               v-if="currentSlideIndex === 10 && stats"
               v-show="currentSlideIndex === 10"
-              key="wind"
-              :average-wind="stats.averageWind"
-              :has-wind-data="stats.hasWindData"
+              key="rivals"
+              :top-rivals="stats.topRivals"
             />
             
             <!-- Share Card Slide (Insights) -->
@@ -169,12 +172,9 @@
               :total-competitions="stats.totalCompetitions"
               :main-discipline="stats.mainDiscipline"
               :season-best="seasonBestMark"
-              :average-wind="stats.averageWind"
-              :victory-rate="stats.victoryRate"
               :athlete-id="athleteId"
-              :current-season-avg-score="stats.currentSeasonAvgScore"
               :percentile-rank="stats.percentileRank"
-              :season-results="currentYearResults"
+              :top-disciplines="topDisciplines"
             />
           </TransitionGroup>
 
@@ -248,11 +248,11 @@ import PerformanceSlide from './slides/PerformanceSlide.vue'
 import CompetitionSlide from './slides/CompetitionSlide.vue'
 import TravelSlide from './slides/TravelSlide.vue'
 import WorldRecordSlide from './slides/WorldRecordSlide.vue'
-import VictoryRateSlide from './slides/VictoryRateSlide.vue'
 import NemesisSlide from './slides/NemesisSlide.vue'
 import RivalsSlide from './slides/RivalsSlide.vue'
-import WindSlide from './slides/WindSlide.vue'
 import ShareCardSlide from './slides/ShareCardSlide.vue'
+import ProgressionSlide from './slides/ProgressionSlide.vue'
+import RankingSlide from './slides/RankingSlide.vue'
 
 interface Props {
   athleteId: number | null
@@ -290,6 +290,7 @@ const stats = ref<ProcessedAthleteStats | null>(null)
 const nickname = ref('')
 const currentYearResults = ref<any[]>([])
 const allSeasonResults = ref<any[]>([])
+const rankings = ref<any[]>([])
 
 // Total number of slides
 const totalSlides = 12
@@ -304,6 +305,36 @@ const seasonBestMark = computed(() => {
   }, currentYearResults.value[0])
 
   return bestResult?.mark || '-'
+})
+
+const seasonBestPoints = computed(() => {
+  if (!currentYearResults.value || currentYearResults.value.length === 0) return 0
+  const bestResult = currentYearResults.value.reduce((best, current) => {
+    return current.resultScore > best.resultScore ? current : best
+  }, currentYearResults.value[0])
+  return bestResult?.resultScore || 0
+})
+
+const personalBestMark = computed(() => {
+  return stats.value?.bestPerformance?.mark || '-'
+})
+
+const topDisciplines = computed(() => {
+  if (!currentYearResults.value || currentYearResults.value.length === 0) return []
+  
+  const byDisc: Record<string, { name: string; mark: string; score: number }> = {}
+  
+  currentYearResults.value.forEach(r => {
+    if (!byDisc[r.discipline]) {
+      byDisc[r.discipline] = { name: r.discipline, mark: r.mark, score: r.resultScore }
+    } else {
+      if (r.resultScore > byDisc[r.discipline]!.score) {
+        byDisc[r.discipline] = { name: r.discipline, mark: r.mark, score: r.resultScore }
+      }
+    }
+  })
+  
+  return Object.values(byDisc).sort((a, b) => b.score - a.score)
 })
 
 // Watch for athlete changes and open state
@@ -344,6 +375,7 @@ async function loadAthleteStory(athleteId: number) {
     nickname.value = generateNickname(processedStats, details.firstname)
     currentYearResults.value = results
     allSeasonResults.value = allResults
+    rankings.value = details.currentWorldRankings || []
 
     // Track this view
     trackAthleteView(athleteId)
@@ -390,26 +422,26 @@ function calculateSlideDuration(index: number): number {
     case 3: // Performance
       return calculateSequenceDuration(getPerformanceSequence(stats.value.isImproving, stats.value))
       
-    case 4: // Competition
+    case 4: // Progression (Graph)
+      return 7000 // Give time to see the animation
+      
+    case 5: // Ranking
+      return 7000 // Give time to read
+      
+    case 6: // Competition (Heatmap)
       return calculateSequenceDuration(getCompetitionSequence(stats.value.competitionFrequency, stats.value.totalCompetitions))
 
-    case 5: // Travel
+    case 7: // Travel
       return calculateSequenceDuration(getTravelSequence(stats.value.countriesCount, stats.value.countriesCount === 1 && stats.value.countries[0] === country.value, country.value))
       
-    case 6: // World Record
+    case 8: // World Record
       return calculateSequenceDuration(getWorldRecordSequence(stats.value.bestPerformance, stats.value.mainDiscipline))
       
-    case 7: // Victory Rate
-      return calculateSequenceDuration(getVictoryRateSequence(stats.value.victoryRate))
-      
-    case 8: // Nemesis
+    case 9: // Nemesis
       return calculateSequenceDuration(getNemesisSequence(stats.value.nemesis))
       
-    case 9: // Rivals
+    case 10: // Rivals
       return calculateSequenceDuration(getTopRivalsSequence(stats.value.topRivals))
-      
-    case 10: // Wind
-      return calculateSequenceDuration(getWindSpeedSequence(stats.value.averageWind, stats.value.hasWindData))
       
     case 11: // Share Card
       return 10000 // Give more time for the final card

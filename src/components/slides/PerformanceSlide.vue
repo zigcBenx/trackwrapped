@@ -141,24 +141,6 @@ onMounted(() => {
   justify-content: center;
 }
 
-.slanted-bg {
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 10px,
-    rgba(255, 255, 255, 0.03) 10px,
-    rgba(255, 255, 255, 0.03) 20px
-  );
-  transform: rotate(-15deg);
-  pointer-events: none;
-  z-index: 0;
-}
-
 .content-wrapper {
   position: relative;
   z-index: 2;
@@ -176,6 +158,7 @@ onMounted(() => {
   color: var(--color-accent-primary);
   margin: 0;
   letter-spacing: 4px;
+  font-weight: 600;
 }
 
 .score-display {
@@ -304,9 +287,7 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
-  .score-value {
-    /* Font size handled by clamp() in base style */
-  }
+
   
   .comparison-grid {
     gap: var(--spacing-md);

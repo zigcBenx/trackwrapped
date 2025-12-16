@@ -33,28 +33,28 @@
 
       <!-- Main Stats Section -->
       <div class="stats-poster-grid">
-        <!-- Victory Rate (Featured) -->
+        <!-- Season Best (Featured) -->
         <div class="poster-stat featured">
-          <div class="stat-label">VICTORY RATE</div>
-          <div class="stat-value neon-gold">{{ victoryRate }}%</div>
+          <div class="stat-label">SEASON BEST</div>
+          <div class="stat-value neon-gold">{{ seasonBest }}</div>
+          <div class="stat-sublabel">{{ mainDiscipline }}</div>
         </div>
 
-        <!-- Season Best -->
+        <!-- Top Disciplines (if multiple) or Best Comp -->
         <div class="poster-stat">
-          <div class="stat-label">SEASON BEST</div>
-          <div class="stat-value neon-cyan">{{ seasonBest }}</div>
+          <div class="stat-label">TOP EVENTS</div>
+          <div class="stat-list">
+            <div v-for="(disc, idx) in topDisciplines.slice(0, 2)" :key="idx" class="stat-list-item">
+              <span class="item-name">{{ disc.name }}</span>
+              <span class="item-val neon-cyan">{{ disc.mark }}</span>
+            </div>
+          </div>
         </div>
 
         <!-- Total Races -->
         <div class="poster-stat">
           <div class="stat-label">RACES</div>
           <div class="stat-value neon-pink">{{ totalCompetitions }}</div>
-        </div>
-
-        <!-- Avg Points -->
-        <div class="poster-stat">
-          <div class="stat-label">AVG POINTS</div>
-          <div class="stat-value neon-purple">{{ currentSeasonAvgScore }}</div>
         </div>
       </div>
 
@@ -108,12 +108,9 @@ interface Props {
   totalCompetitions: number
   mainDiscipline: string
   seasonBest: string
-  averageWind: number | null
-  victoryRate: number
   athleteId?: number | null
-  currentSeasonAvgScore: number
   percentileRank: { rank: string; label: string }
-  seasonResults?: any[]
+  topDisciplines: Array<{ name: string; mark: string }>
 }
 
 const props = defineProps<Props>()
@@ -317,8 +314,37 @@ function handleTap(event: Event) {
   line-height: 0.9;
 }
 
+.stat-sublabel {
+  font-family: var(--font-family-heading);
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}
+
 .poster-stat.featured .stat-value {
   font-size: 5rem;
+}
+
+.stat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-family-heading);
+}
+
+.item-name {
+  font-size: 1rem;
+  color: white;
+}
+
+.item-val {
+  font-size: 1.2rem;
 }
 
 .neon-gold { color: var(--color-accent-primary); text-shadow: 0 0 10px rgba(204, 255, 0, 0.3); }
