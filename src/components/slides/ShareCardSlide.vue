@@ -15,10 +15,10 @@
       <!-- Content Layer -->
       <div class="content-layer">
         <!-- Brand Header -->
-        <div class="brand-header">
+        <!-- <div class="brand-header">
           <span class="brand-text">TRACK WRAPPED</span>
           <span class="year-badge">2025</span>
-        </div>
+        </div> -->
 
         <!-- Main Content (Bottom Aligned) -->
         <div class="main-content">
@@ -141,6 +141,12 @@
                 </div>
               </Transition>
             </div>
+            <!-- Footer CTA -->
+            <div class="share-footer">
+              <div class="share-btn">
+                Screenshot & Share!
+              </div>
+            </div>
           </div>
 
           <!-- Top Events List (Compact) -->
@@ -156,11 +162,6 @@
               </span>
             </div>
           </div> -->
-        </div>
-
-        <!-- Footer CTA -->
-        <div class="share-footer">
-          <div class="share-btn">SHARE YOUR SEASON</div>
         </div>
       </div>
     </div>
@@ -423,7 +424,7 @@ function handleTap(event: Event) {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start; /* Changed from space-between */
   padding: var(--spacing-lg);
   box-sizing: border-box;
 }
@@ -434,6 +435,7 @@ function handleTap(event: Event) {
   align-items: center;
   padding-top: var(--spacing-md);
   margin-top: var(--spacing-xl);
+  flex-shrink: 0; /* Prevent header from shrinking */
 }
 
 .brand-text {
@@ -457,14 +459,14 @@ function handleTap(event: Event) {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-xl);
+  margin-top: auto; /* Push to bottom if space permits, but don't force header off */
+  padding-bottom: var(--spacing-xl);
 }
 
 .identity-section {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
-  margin-top: 150px;
 }
 
 .identity-header {
@@ -472,7 +474,7 @@ function handleTap(event: Event) {
   align-items: center;
   gap: var(--spacing-md);
   margin-bottom: var(--spacing-sm);
-  margin-top: var(--spacing-3xl);
+  margin-top: 120px;
 }
 
 .avatar-circle {
@@ -633,18 +635,21 @@ function handleTap(event: Event) {
 }
 
 .share-footer {
+  grid-column: span 3;
+  position: relative;
+  cursor: pointer;
   text-align: center;
-  padding-bottom: var(--spacing-md);
 }
 
 .share-btn {
   background: white;
   color: black;
-  padding: 12px 24px;
+  padding: 5px 24px;
   font-size: 1.2rem;
   font-weight: 800;
-  letter-spacing: 2px;
-  display: inline-block;
+  display: block; /* Changed from inline-block */
+  width: 100%; /* Full width */
+  text-align: center;
   clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
   cursor: pointer;
   transition: transform 0.2s;
@@ -765,7 +770,7 @@ function handleTap(event: Event) {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
-  margin-top: 120px; /* Increased margin to push content down */
+  margin-top: 0px; /* Increased margin to push content down */
 }
 
 /* Flex Badges Row */
@@ -945,7 +950,4 @@ function handleTap(event: Event) {
   .power-value-glitch { font-size: 2rem; }
 }
 
-@media (min-height: 800px) {
-  .main-content { margin-bottom: var(--spacing-2xl); }
-}
 </style>
