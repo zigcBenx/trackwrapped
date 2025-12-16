@@ -69,6 +69,7 @@ export interface AthleteDetails {
   currentWorldRankings: any[]
   seasonsbests: any[]
   personalbests: PersonalBest[]
+  honours?: any[]
 }
 
 export interface ProcessedAthleteStats {
@@ -105,6 +106,7 @@ export interface ProcessedAthleteStats {
     year: number
     totalCompetitions: number
   }
+  honours?: Array<{ category: string; count: number }>
+  recentHonours?: Array<{ category: string; place: number; competition: string }>
+  records?: { nr: number; wr: number; other: number }
 }
-
-

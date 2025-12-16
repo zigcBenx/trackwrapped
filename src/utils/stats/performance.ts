@@ -49,7 +49,7 @@ export function calculatePerformanceStats(
   const isImproving = analyzeProgression(resultsForStats)
 
   // Average result score
-  const validScores = resultsForStats.filter(r => r.resultScore > 0)
+  const validScores = resultsForStats.filter(r => typeof r.resultScore === 'number' && !isNaN(r.resultScore) && r.resultScore > 0)
   const averageResultScore = validScores.length > 0
     ? Math.round(validScores.reduce((sum, r) => sum + r.resultScore, 0) / validScores.length)
     : 0

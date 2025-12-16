@@ -55,22 +55,93 @@
 
           <!-- Stats Grid -->
           <div class="stats-grid">
+            <!-- Flex Badges (Top Priority) -->
+            <div class="flex-badges-row">
+              <div 
+                class="flex-badge" 
+                v-for="(stat, idx) in flexStats" 
+                :key="idx" 
+                :class="{ highlight: stat.highlight }"
+                @click.stop="toggleBadgeTooltip(idx)"
+              >
+                <div class="badge-content-wrapper">
+                  <span class="badge-initial">{{ stat.initial }}</span>
+                  <span v-if="stat.medalIcon" class="badge-medal">{{ stat.medalIcon }}</span>
+                </div>
+                
+                <!-- Badge Tooltip -->
+                <Transition name="fade">
+                  <div v-if="activeBadgeIndex === idx" class="badge-tooltip">
+                    <div class="tooltip-label">{{ stat.label }}</div>
+                    <div class="tooltip-value">{{ stat.value }}</div>
+                  </div>
+                </Transition>
+              </div>
+            </div>
+
             <!-- Season Best (Hero Stat) -->
             <div class="stat-box hero">
               <div class="stat-label">SEASON BEST</div>
               <div class="stat-value highlight">{{ seasonBest }}</div>
+              <div class="sub-stats">
+                <div class="sub-stat">
+                  <span class="sub-label">AVG POINTS</span>
+                  <span class="sub-value">{{ Math.round(averageScore) }}</span>
+                </div>
+                <div class="sub-divider"></div>
+                <div class="sub-stat">
+                  <span class="sub-label">MAX POINTS</span>
+                  <span class="sub-value">{{ Math.round(maxScore) }}</span>
+                </div>
+                <template v-if="bestRanking">
+                  <div class="sub-divider"></div>
+                  <div class="sub-stat">
+                    <span class="sub-label">WORLD RANK</span>
+                    <span class="sub-value">#{{ bestRanking.place }}</span>
+                  </div>
+                </template>
+              </div>
             </div>
 
-            <!-- World Rank (if available) -->
-            <div class="stat-box" v-if="bestRanking">
-              <div class="stat-label">WORLD RANK</div>
-              <div class="stat-value">#{{ bestRanking.place }}</div>
-            </div>
+            <!-- Power Level (Dominant Feature) -->
+            <div class="power-level-container" @click="toggleTooltip">
+              <div class="power-badge">
+                <div class="power-header">
+                  <span class="power-label">POWER LEVEL</span>
+                  <span class="info-icon">ⓘ</span>
+                </div>
+                <div class="power-main">
+                  <div class="power-value-glitch" :data-text="percentileRank.label">
+                    {{ percentileRank.label }}
+                  </div>
+                </div>
+                <div class="power-bar">
+                  <div class="power-fill" :style="{ width: getPowerWidth(percentileRank.label) }"></div>
+                </div>
+              </div>
 
-            <!-- Total Races -->
-            <div class="stat-box">
-              <div class="stat-label">RACES</div>
-              <div class="stat-value">{{ totalCompetitions }}</div>
+              <!-- Tooltip Overlay -->
+              <Transition name="fade">
+                <div v-if="showTooltip" class="tooltip-overlay">
+                  <div class="tooltip-content">
+                    <h3>POWER LEVELS</h3>
+                    <div class="level-list">
+                      <div 
+                        v-for="level in POWER_LEVELS" 
+                        :key="level.label"
+                        class="level-item"
+                        :class="{ active: level.label === percentileRank.label }"
+                      >
+                        <div class="level-header">
+                          <span class="level-name">{{ level.label }}</span>
+                          <span class="level-range">{{ level.range }}</span>
+                        </div>
+                        <div class="level-desc">{{ level.desc }}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Transition>
             </div>
           </div>
 
@@ -116,9 +187,41 @@ interface Props {
   percentileRank: { rank: string; label: string }
   topDisciplines: Array<{ name: string; mark: string }>
   rankings?: any[]
+  averageScore: number
+  maxScore: number
+  honours?: Array<{ category: string; count: number }>
+  recentHonours?: Array<{ category: string; place: number; competition: string }>
+  records?: { nr: number; wr: number; other: number }
 }
 
 const props = defineProps<Props>()
+
+const showTooltip = ref(false)
+const activeBadgeIndex = ref<number | null>(null)
+
+function toggleTooltip(e: Event) {
+  e.stopPropagation()
+  showTooltip.value = !showTooltip.value
+  activeBadgeIndex.value = null // Close other tooltips
+}
+
+function toggleBadgeTooltip(idx: number) {
+  if (activeBadgeIndex.value === idx) {
+    activeBadgeIndex.value = null
+  } else {
+    activeBadgeIndex.value = idx
+    showTooltip.value = false // Close power level tooltip
+  }
+}
+
+const POWER_LEVELS = [
+  { label: 'ROOKIE', range: '< 800', desc: 'Just getting started.' },
+  { label: 'LOCAL HERO', range: '800-950', desc: 'Dominating the local scene.' },
+  { label: 'NATIONAL CLASS', range: '950-1050', desc: 'Competing at the national level.' },
+  { label: 'INTERNATIONAL', range: '1050-1150', desc: 'Making waves globally.' },
+  { label: 'WORLD CLASS', range: '1150-1250', desc: 'Among the best in the world.' },
+  { label: 'ELITE', range: '1250+', desc: 'Legendary status.' },
+]
 
 const imageError = ref(false)
 
@@ -144,12 +247,124 @@ const flagEmoji = computed(() => {
 
 const bestRanking = computed(() => {
   if (!props.rankings || props.rankings.length === 0) return null
-  // Try main discipline
-  const main = props.rankings.find(r => r.discipline && r.discipline.toLowerCase() === props.mainDiscipline.toLowerCase())
-  if (main) return main
-  // Fallback to best
+  // Strictly find the best ranking (lowest place)
   return [...props.rankings].sort((a, b) => a.place - b.place)[0]
 })
+
+const flexStats = computed(() => {
+  const stats: Array<{ 
+    initial: string
+    label: string
+    value: string
+    highlight: boolean
+    medalIcon?: string 
+  }> = []
+
+  // 1. World Records
+  if (props.records?.wr) {
+    stats.push({ 
+      initial: 'WR', 
+      label: 'WORLD RECORD', 
+      value: 'HOLDER', 
+      highlight: true 
+    })
+  }
+
+  // 2. National Records
+  if (props.records?.nr) {
+    stats.push({ 
+      initial: 'NR', 
+      label: 'NATIONAL RECORD', 
+      value: 'HOLDER', 
+      highlight: true 
+    })
+  }
+
+  // 3. Recent Honours (This Season)
+  if (props.recentHonours) {
+    props.recentHonours.slice(0, 2).forEach(h => {
+      let label = h.category.replace(' Championships', '').replace('Athletics ', '').toUpperCase()
+      if (label.length > 20) label = label.split(' ')[0] + ' CHAMPS'
+      
+      const value = h.place === 1 ? '2025 CHAMPION' : '2025 MEDALIST'
+      // Create initial (e.g., "WC" for World Champs, "EC" for European)
+      const words = label.split(' ')
+      const initial = words.length > 1 
+        ? words.map(w => w[0]).join('')
+        : label.substring(0, 2)
+
+      stats.push({ 
+        initial: initial,
+        medalIcon: h.place === 1 ? '🥇' : '🥉',
+        label: label, 
+        value: value, 
+        highlight: true 
+      })
+    })
+  }
+
+  // 4. Lifetime Honours
+  if (props.honours && stats.length < 3) {
+    props.honours.forEach(h => {
+      if (stats.length >= 3) return
+      if (props.recentHonours?.some(rh => rh.category === h.category)) return
+
+      let label = h.category.replace(' Championships', '').replace('Athletics ', '').toUpperCase()
+      if (label.length > 20) label = label.split(' ')[0] + ' CHAMPS'
+      
+      const words = label.split(' ')
+      const initial = words.length > 1 
+        ? words.map(w => w[0]).join('')
+        : label.substring(0, 2)
+      
+      stats.push({ 
+        initial: initial,
+        label: label, 
+        value: `${h.count}x MEDALIST`, 
+        highlight: true 
+      })
+    })
+  }
+
+  // 5. World Rank
+  if (stats.length < 3 && bestRanking.value && bestRanking.value.place <= 100) {
+    stats.push({ 
+      initial: `#${bestRanking.value.place}`,
+      label: 'WORLD RANK', 
+      value: 'CURRENT RANKING', 
+      highlight: bestRanking.value.place <= 10 
+    })
+  }
+
+  // Fill with standard stats
+  if (stats.length < 3) {
+    if (bestRanking.value && !stats.find(s => s.label === 'WORLD RANK')) {
+      stats.push({ 
+        initial: `#${bestRanking.value.place}`,
+        label: 'WORLD RANK', 
+        value: 'CURRENT RANKING', 
+        highlight: false 
+      })
+    }
+    stats.push({ 
+      initial: props.totalCompetitions.toString(),
+      label: 'RACES', 
+      value: 'TOTAL RACES', 
+      highlight: false 
+    })
+  }
+
+  return stats.slice(0, 3)
+})
+
+function getPowerWidth(label: string): string {
+  const levels = POWER_LEVELS.map(l => l.label)
+  const index = levels.indexOf(label)
+  if (index === -1) return '10%'
+  return `${((index + 1) / levels.length) * 100}%`
+}
+
+
 
 function handleTap(event: Event) {
   // Placeholder
@@ -263,6 +478,7 @@ function handleTap(event: Event) {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
+  margin-top: 150px;
 }
 
 .identity-header {
@@ -270,6 +486,7 @@ function handleTap(event: Event) {
   align-items: center;
   gap: var(--spacing-md);
   margin-bottom: var(--spacing-sm);
+  margin-top: var(--spacing-3xl);
 }
 
 .avatar-circle {
@@ -342,6 +559,7 @@ function handleTap(event: Event) {
   font-size: 3rem;
   color: white;
   font-weight: 400;
+  margin-bottom: 8px;
 }
 
 .last-name {
@@ -452,12 +670,288 @@ function handleTap(event: Event) {
   transform: scale(0.95);
 }
 
+.sub-stats {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-top: 8px;
+}
+
+.sub-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.sub-label {
+  font-family: var(--font-family-primary);
+  font-size: 0.6rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 1px;
+}
+
+.sub-value {
+  font-family: var(--font-family-heading);
+  font-size: 1.2rem;
+  color: white;
+}
+
+.sub-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.power-level-container {
+  grid-column: span 3;
+  margin-top: var(--spacing-sm);
+  position: relative;
+  cursor: pointer;
+}
+
+.power-badge {
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 16px;
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.power-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.power-label {
+  font-family: var(--font-family-primary);
+  font-size: 0.9rem;
+  color: var(--color-accent-primary);
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+.power-main {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.power-value-glitch {
+  font-family: var(--font-family-heading);
+  font-size: 3.5rem; /* Bigger size */
+  color: white;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+  text-align: center;
+}
+
+.power-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  margin-top: 4px;
+  overflow: hidden;
+}
+
+.power-fill {
+  height: 100%;
+  background: var(--color-accent-secondary);
+  box-shadow: 0 0 15px var(--color-accent-secondary);
+  transition: width 1s ease-out;
+}
+
+.identity-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-top: 180px; /* Increased margin to push content down */
+}
+
+/* Flex Badges Row */
+.flex-badges-row {
+  grid-column: span 3;
+  display: flex;
+  justify-content: center; /* Center badges */
+  gap: 16px;
+  margin-bottom: 12px; /* Space below badges */
+}
+
+.flex-badge {
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%; /* Circular badges */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.flex-badge:active {
+  transform: scale(0.95);
+}
+
+.flex-badge.highlight {
+  border-color: var(--color-accent-primary);
+  background: rgba(204, 255, 0, 0.1);
+  box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+}
+
+.badge-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.badge-initial {
+  font-family: var(--font-family-heading);
+  font-size: 1.2rem;
+  color: white;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.badge-medal {
+  font-size: 1rem;
+  margin-top: -2px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.flex-badge.highlight .badge-initial {
+  color: var(--color-accent-primary);
+}
+
+.badge-tooltip {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.95);
+  border: 1px solid var(--color-accent-primary);
+  border-radius: 8px;
+  padding: 8px 12px;
+  width: max-content;
+  max-width: 200px;
+  z-index: 100;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+
+.tooltip-label {
+  font-family: var(--font-family-primary);
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 2px;
+}
+
+.tooltip-value {
+  font-family: var(--font-family-heading);
+  font-size: 0.9rem;
+  color: white;
+  font-weight: 700;
+}
+
+.info-icon {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.tooltip-overlay {
+  position: absolute;
+  bottom: 100%; /* Show above */
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.98);
+  border: 1px solid var(--color-accent-primary);
+  border-radius: 12px;
+  padding: var(--spacing-md);
+  z-index: 100;
+  margin-bottom: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+}
+
+.tooltip-content h3 {
+  font-family: var(--font-family-heading);
+  font-size: 1.2rem;
+  color: var(--color-accent-primary);
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+  text-align: center;
+}
+
+.level-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.level-item {
+  opacity: 0.4;
+  transition: all 0.2s;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.level-item.active {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 3px solid var(--color-accent-secondary);
+}
+
+.level-header {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-family-heading);
+  font-size: 1rem;
+  color: white;
+  margin-bottom: 2px;
+}
+
+.level-item.active .level-header {
+  color: var(--color-accent-secondary);
+  text-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
+}
+
+.level-desc {
+  font-family: var(--font-family-primary);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
 /* Responsive Adjustments */
 @media (max-width: 380px) {
   .first-name { font-size: 2.5rem; }
   .last-name { font-size: 3.5rem; }
   .stat-value.highlight { font-size: 3.5rem; }
   .stat-value { font-size: 1.5rem; }
+  .power-value-glitch { font-size: 2rem; }
 }
 
 @media (min-height: 800px) {
