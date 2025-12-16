@@ -73,6 +73,10 @@
   flex-direction: column;
   align-items: center;
   animation: slideInFromBottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  padding: 0 var(--spacing-md);
+  width: 90%; /* Constrain width to ensure margins */
+  max-width: 600px; /* Reduced max-width for better readability */
+  margin: 0 auto;
 }
 
 @keyframes slideInFromBottom {
@@ -135,7 +139,7 @@
   font-size: 5rem;
   font-weight: 700;
   color: white;
-  margin: 0;
+  margin: 10px 10px;
   line-height: 0.9;
   text-transform: uppercase;
   letter-spacing: 4px;
@@ -160,17 +164,24 @@
 }
 
 @media (max-width: 768px) {
+  .loader-content {
+    width: 85%; /* Slightly narrower on mobile */
+    padding: 0 var(--spacing-sm);
+  }
+
   .loader-spinner {
     width: 80px;
     height: 80px;
   }
   
   .loader-title {
-    font-size: 3.5rem;
+    font-size: clamp(1.8rem, 8vw, 3.5rem); /* Smaller min size to prevent splitting */
+    word-break: normal; /* Don't break words unless absolutely necessary */
+    overflow-wrap: break-word;
   }
   
   .loader-subtitle {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 }
 </style>

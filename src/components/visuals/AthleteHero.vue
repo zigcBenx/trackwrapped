@@ -191,15 +191,14 @@ defineProps<Props>()
 }
 
 .aka-section {
-  text-align: right;
+  text-align: center;
   padding-top: var(--spacing-xl);
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center; /* Fixed alignment */
 }
 
 .aka-label {
-  display: block;
   font-family: var(--font-family-heading);
   font-size: 1.2rem;
   color: var(--color-accent-secondary);
