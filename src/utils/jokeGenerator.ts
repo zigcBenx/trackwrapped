@@ -11,9 +11,9 @@ export function getExperienceSequence(yearsActive: number): string[] {
     lines.push("No longer a rookie. A threat. ⚠️")
   } else if (yearsActive <= 10) {
     lines.push("A seasoned warrior.")
-    lines.push("Respect earned on the track. 🫡")
+    lines.push("Respect earned in blood & sweat. 🫡")
   } else {
-    lines.push("A legacy in the making.")
+    lines.push("A living legend.")
     lines.push("Decades of dominance. 👑")
   }
   

@@ -79,10 +79,18 @@
               </div>
             </div>
 
-            <!-- Season Best (Hero Stat) -->
-            <div class="stat-box hero">
-              <div class="stat-label">SEASON BEST</div>
-              <div class="stat-value highlight">{{ seasonBest }}</div>
+            <!-- Top Results Carousel -->
+            <div class="stat-box hero carousel-container">
+              <div class="carousel-content">
+                <Transition name="slide-fade" mode="out-in">
+                  <div v-if="currentCarouselItem" :key="currentCarouselItem.name" class="carousel-item">
+                    <div class="stat-label">TOP RESULTS</div>
+                    <div class="stat-value highlight hero-effect">{{ currentCarouselItem.mark }}</div>
+                    <div class="discipline-sub-label">{{ currentCarouselItem.name }}</div>
+                  </div>
+                </Transition>
+              </div>
+              
               <div class="sub-stats">
                 <div class="sub-stat">
                   <span class="sub-label">AVG POINTS</span>
@@ -118,28 +126,7 @@
                 </div>
               </div>
 
-              <!-- Tooltip Overlay -->
-              <Transition name="fade">
-                <div v-if="showTooltip" class="tooltip-overlay">
-                  <div class="tooltip-content">
-                    <h3>POWER LEVELS</h3>
-                    <div class="level-list">
-                      <div 
-                        v-for="level in POWER_LEVELS" 
-                        :key="level.label"
-                        class="level-item"
-                        :class="{ active: level.label === percentileRank.label }"
-                      >
-                        <div class="level-header">
-                          <span class="level-name">{{ level.label }}</span>
-                          <span class="level-range">{{ level.range }}</span>
-                        </div>
-                        <div class="level-desc">{{ level.desc }}</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Transition>
+              <!-- Tooltip moved to root -->
             </div>
             <!-- Footer CTA -->
             <div class="share-footer">
@@ -164,12 +151,36 @@
           </div> -->
         </div>
       </div>
+
+      <!-- Tooltip Modal (Moved to root) -->
+      <div v-if="showTooltip" class="tooltip-backdrop" @click.stop="showTooltip = false"></div>
+      <Transition name="fade">
+        <div v-if="showTooltip" class="tooltip-overlay" @click.stop>
+          <div class="tooltip-content">
+            <h3>POWER LEVELS</h3>
+            <div class="level-list">
+              <div 
+                v-for="level in POWER_LEVELS" 
+                :key="level.label"
+                class="level-item"
+                :class="{ active: level.label === percentileRank.label }"
+              >
+                <div class="level-info">
+                  <span class="level-name">{{ level.label }}</span>
+                  <div class="level-desc">{{ level.desc }}</div>
+                </div>
+                <span class="level-range">{{ level.range }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Transition>
     </div>
   </SlideWrapper>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onMounted } from 'vue'
+import { computed, ref, onMounted, onUnmounted } from 'vue'
 import SlideWrapper from './SlideWrapper.vue'
 import { getCountryFlag } from '@/utils/countryFlags'
 
@@ -386,7 +397,45 @@ onMounted(() => {
   // Run fit text after a short delay to ensure fonts are loaded/layout is stable
   setTimeout(fitText, 100)
   window.addEventListener('resize', fitText)
+  
+  // Start carousel
+  startCarousel()
 })
+
+onUnmounted(() => {
+  stopCarousel()
+})
+
+// Carousel Logic
+const carouselIndex = ref(0)
+let carouselInterval: number | null = null
+
+const carouselItems = computed(() => {
+  // Use top disciplines if available, otherwise fallback to season best
+  if (props.topDisciplines && props.topDisciplines.length > 0) {
+    return props.topDisciplines.slice(0, 3)
+  }
+  return [{ name: props.mainDiscipline, mark: props.seasonBest }]
+})
+
+const currentCarouselItem = computed(() => {
+  return carouselItems.value[carouselIndex.value] || carouselItems.value[0]
+})
+
+function startCarousel() {
+  if (carouselItems.value.length <= 1) return
+  
+  carouselInterval = setInterval(() => {
+    carouselIndex.value = (carouselIndex.value + 1) % carouselItems.value.length
+  }, 4000)
+}
+
+function stopCarousel() {
+  if (carouselInterval) {
+    clearInterval(carouselInterval)
+    carouselInterval = null
+  }
+}
 </script>
 
 <style scoped>
@@ -639,6 +688,72 @@ onMounted(() => {
   text-shadow: 0 0 20px rgba(204, 255, 0, 0.3);
 }
 
+/* Hero Effect for Carousel */
+.hero-effect {
+  background: linear-gradient(
+    110deg, 
+    var(--color-accent-primary) 20%, 
+    #ffffff 50%, 
+    var(--color-accent-primary) 80%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 3s linear infinite;
+  text-shadow: 0 0 30px rgba(204, 255, 0, 0.4);
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.carousel-container {
+  min-height: 140px; /* Reserve space to prevent jumping */
+  justify-content: space-between;
+}
+
+.carousel-content {
+  height: 90px; /* Fixed height for the changing content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.carousel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.discipline-sub-label {
+  font-family: var(--font-family-primary);
+  font-size: 1rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin-top: -6px; /* Pull closer to the number */
+  opacity: 0.8;
+}
+
+/* Transitions */
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-enter-from {
+  transform: translateX(20px);
+  opacity: 0;
+}
+
+.slide-fade-leave-to {
+  transform: translateX(-20px);
+  opacity: 0;
+}
+
 .top-events {
   margin-top: var(--spacing-sm);
 }
@@ -694,7 +809,7 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: var(--spacing-md);
-  margin-top: 8px;
+  margin-top: 24px;
 }
 
 .sub-stat {
@@ -898,67 +1013,130 @@ onMounted(() => {
   opacity: 0.7;
 }
 
-.tooltip-overlay {
+.tooltip-backdrop {
   position: absolute;
-  bottom: 100%; /* Show above */
+  top: 0;
   left: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.98);
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: 900;
+}
+
+.tooltip-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 340px;
+  max-height: 80vh; /* Prevent going off screen */
+  background: #000000;
   border: 1px solid var(--color-accent-primary);
-  border-radius: 12px;
-  padding: var(--spacing-md);
-  z-index: 100;
-  margin-bottom: 12px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+  border-radius: 16px;
+  padding: var(--spacing-lg);
+  z-index: 1000;
+  box-shadow: 0 0 50px rgba(0,0,0,0.9), 0 0 20px rgba(204, 255, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.tooltip-content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Contain scrollable list */
+  height: 100%;
 }
 
 .tooltip-content h3 {
   font-family: var(--font-family-heading);
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: var(--color-accent-primary);
   margin-bottom: var(--spacing-md);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 12px;
   text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(204, 255, 0, 0.3);
+  flex-shrink: 0; /* Keep header visible */
 }
 
 .level-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
+  overflow-y: auto; /* Allow scrolling */
+  padding-right: 4px; /* Space for scrollbar */
 }
 
 .level-item {
-  opacity: 0.4;
+  opacity: 0.5;
   transition: all 0.2s;
-  padding: 4px 8px;
-  border-radius: 4px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
 }
 
 .level-item.active {
   opacity: 1;
-  background: rgba(255, 255, 255, 0.1);
-  border-left: 3px solid var(--color-accent-secondary);
+  background: rgba(204, 255, 0, 0.1);
+  border: 1px solid var(--color-accent-primary);
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-.level-header {
+.level-info {
   display: flex;
-  justify-content: space-between;
-  font-family: var(--font-family-heading);
-  font-size: 1rem;
-  color: white;
-  margin-bottom: 2px;
+  flex-direction: column;
+  gap: 2px;
+  text-align: left;
 }
 
-.level-item.active .level-header {
-  color: var(--color-accent-secondary);
-  text-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
+.level-name {
+  color: white;
+  font-weight: 700;
+  font-family: var(--font-family-heading);
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.level-range {
+  color: var(--color-accent-primary);
+  font-family: var(--font-family-primary); /* Use monospace-like font for numbers if available, or just primary */
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: rgba(0,0,0,0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+  flex-shrink: 0; /* Prevent range from shrinking */
+  white-space: nowrap;
+}
+
+.level-item.active .level-name {
+  color: var(--color-accent-primary);
+  text-shadow: 0 0 10px rgba(204, 255, 0, 0.3);
+}
+
+.level-item.active .level-range {
+  background: var(--color-accent-primary);
+  color: black;
 }
 
 .level-desc {
   font-family: var(--font-family-primary);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--color-text-secondary);
+  line-height: 1.2;
+}
+
+.level-item.active .level-desc {
+  color: white;
 }
 
 .fade-enter-active,

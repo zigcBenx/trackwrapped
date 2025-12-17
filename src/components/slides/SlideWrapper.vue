@@ -31,7 +31,7 @@ interface Props {
 
 withDefaults(defineProps<Props>(), {
   type: 'default',
-  showPattern: false
+  showPattern: true
 })
 </script>
 

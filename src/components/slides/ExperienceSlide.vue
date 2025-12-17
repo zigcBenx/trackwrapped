@@ -1,7 +1,8 @@
 <template>
   <SlideWrapper 
-    background="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+    background="#000000"
     type="experience"
+    :showPattern="true"
     @click="handleTap"
   >
     <!-- Buildup Phase -->
@@ -18,12 +19,14 @@
 
     <!-- Reveal Phase -->
     <div v-else class="reveal-container">
-      <div class="slide-emoji fade-in-up" style="animation-delay: 0ms">📅</div>
-      <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">Experience Check</h1>
-      <div class="massive-stat fade-in-up" style="animation-delay: 300ms">
-        <div class="stat-value-massive">{{ yearsActive }}</div>
+      <div class="slide-emoji slam-in" style="animation-delay: 0ms">📅</div>
+      <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">{{ yearsActive }} YEARS IN THE GAME</h1>
+      <div class="massive-stat slam-in" style="animation-delay: 300ms">
+        <div class="stat-value-massive neon-yellow">{{ yearsActive }}</div>
         <div class="stat-label-massive">YEARS ACTIVE</div>
-        <div class="stat-subtext">You're a veteran!</div>
+        <div class="stat-badge fade-in-up" style="animation-delay: 600ms">
+          Veteran status unlocked! 🔓
+        </div>
       </div>
     </div>
   </SlideWrapper>
@@ -83,16 +86,21 @@ onMounted(() => {
   gap: var(--spacing-xl);
   min-height: 300px;
   justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .story-line {
-  font-family: 'Outfit', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
   color: white;
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 .story-line.visible {
@@ -104,69 +112,96 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 }
 
 .slide-emoji {
   font-size: 6rem;
   margin-bottom: var(--spacing-xl);
-  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.4));
 }
 
 .slide-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.5rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
   text-transform: uppercase;
-  letter-spacing: 4px;
-  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 2px;
+  color: white;
   margin-bottom: var(--spacing-xl);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  text-align: center;
+  line-height: 0.9;
+  max-width: 90%;
 }
 
 .massive-stat {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transform: skew(-5deg);
 }
 
 .stat-value-massive {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 10rem;
-  line-height: 0.9;
+  font-size: 16rem;
+  line-height: 0.8;
   color: white;
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  text-shadow: 
+    8px 8px 0px rgba(255, 255, 255, 0.1),
+    0 0 40px rgba(255, 255, 255, 0.2);
+}
+
+.neon-yellow {
+  color: #FFD700;
+  text-shadow: 
+    4px 4px 0px rgba(255, 255, 255, 0.2),
+    0 0 30px rgba(255, 215, 0, 0.6);
 }
 
 .stat-label-massive {
-  font-family: 'Outfit', sans-serif;
-  font-size: 2rem;
-  font-weight: 800;
+  font-family: 'Inter', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
   text-transform: uppercase;
-  color: #00ff9d;
-  letter-spacing: 2px;
+  color: white;
+  letter-spacing: 6px;
   margin-top: var(--spacing-md);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
-.stat-subtext {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-top: var(--spacing-lg);
-  font-style: italic;
+.stat-badge {
+  margin-top: var(--spacing-xl);
+  background: white;
+  color: black;
+  padding: 1rem 2rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  transform: skew(-5deg);
+  box-shadow: 
+    8px 8px 0px var(--color-accent-primary),
+    0 0 30px rgba(255, 255, 255, 0.4);
+  letter-spacing: 1px;
+  border: 2px solid white;
 }
 
-@media (max-width: 768px) {
-  .story-line { font-size: 1.8rem; }
-  .stat-value-massive { font-size: 4rem; }
-  .stat-label-massive { font-size: 1.2rem; }
-  .stat-subtext { font-size: 1rem; }
+/* Animations */
+.slam-in {
+  animation: slamIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  opacity: 0;
+  transform: scale(3);
 }
 
-@media (max-width: 480px) {
-  .stat-value-massive { font-size: 3rem; }
-  .stat-label-massive { font-size: 1rem; }
-  .stat-subtext { font-size: 0.9rem; }
+@keyframes slamIn {
+  to {
+    opacity: 1;
+    transform: scale(1) skew(-5deg);
+  }
 }
 
-/* Float-in animation for reveal phase */
 .fade-in-up {
   animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0;
@@ -178,5 +213,13 @@ onMounted(() => {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@media (max-width: 768px) {
+  .story-line { font-size: 2rem; }
+  .slide-title { font-size: 3rem; }
+  .stat-value-massive { font-size: 12rem; }
+  .stat-label-massive { font-size: 1.8rem; }
+  .stat-badge { font-size: 1.1rem; padding: 0.8rem 1.5rem; }
 }
 </style>

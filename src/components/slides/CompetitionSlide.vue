@@ -35,7 +35,7 @@
 
       <!-- Total count and joke -->
       <div class="competition-summary fade-in-up" style="animation-delay: 450ms">
-        <div class="stat-value-large neon-pink">{{ totalCompetitions }}</div>
+        <div class="stat-value-large neon-pink slam-in" style="animation-delay: 600ms">{{ totalCompetitions }}</div>
         <div class="stat-label-large">TOTAL COMPETITIONS</div>
         <div class="stat-subtext">{{ frequencyJoke }}</div>
       </div>
@@ -181,34 +181,40 @@ onMounted(() => {
 }
 
 .stat-value-large {
-  font-family: var(--font-family-heading);
-  font-size: 8rem;
-  line-height: 0.9;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 12rem;
+  line-height: 0.8;
   color: white;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  transform: skew(-5deg);
 }
 
 .neon-pink {
   color: var(--color-accent-secondary);
-  text-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
+  text-shadow: 
+    4px 4px 0px rgba(255, 255, 255, 0.2),
+    0 0 20px rgba(255, 0, 85, 0.5);
 }
 
 .stat-label-large {
-  font-family: var(--font-family-heading);
+  font-family: 'Inter', sans-serif;
   font-size: 2rem;
-  font-weight: 800;
+  font-weight: 900;
   text-transform: uppercase;
   color: white;
   letter-spacing: 4px;
   margin-top: var(--spacing-sm);
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
 }
 
 .stat-subtext {
-  font-family: var(--font-family-primary);
+  font-family: 'Inter', sans-serif;
   font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.8);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
   margin-top: var(--spacing-lg);
-  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   max-width: 600px;
 }
 
@@ -282,7 +288,20 @@ onMounted(() => {
   color: rgba(255, 255, 255, 0.5);
 }
 
-/* Float-in animation for reveal phase */
+/* Animations */
+.slam-in {
+  animation: slamIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  opacity: 0;
+  transform: scale(3);
+}
+
+@keyframes slamIn {
+  to {
+    opacity: 1;
+    transform: scale(1) skew(-5deg);
+  }
+}
+
 .fade-in-up {
   animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0;

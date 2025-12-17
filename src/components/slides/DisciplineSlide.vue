@@ -25,7 +25,7 @@
       <div class="slide-emoji fade-in-up" style="animation-delay: 0ms">{{ disciplineEmoji }}</div>
       <h1 class="slide-title fade-in-up" style="animation-delay: 150ms">This is Your Arena</h1>
       <div class="massive-stat fade-in-up" style="animation-delay: 300ms">
-        <div class="stat-value-massive neon-cyan">{{ mainDiscipline }}</div>
+        <div class="stat-value-massive neon-cyan slam-in" style="animation-delay: 450ms">{{ mainDiscipline }}</div>
         <div class="stat-label-massive">MAIN EVENT</div>
       </div>
     </div>
@@ -152,32 +152,49 @@ onMounted(() => {
 }
 
 .stat-value-massive {
-  font-family: var(--font-family-heading);
-  font-size: 8rem;
-  line-height: 0.9;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 10rem;
+  line-height: 0.8;
   color: white;
   text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
   text-align: center;
   word-break: break-word;
   max-width: 100%;
+  transform: skew(-5deg);
 }
 
 .neon-cyan {
   color: var(--color-accent-tertiary);
-  text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+  text-shadow: 
+    4px 4px 0px rgba(255, 255, 255, 0.2),
+    0 0 20px rgba(0, 240, 255, 0.5);
 }
 
 .stat-label-massive {
-  font-family: var(--font-family-heading);
+  font-family: 'Inter', sans-serif;
   font-size: 2.5rem;
-  font-weight: 800;
+  font-weight: 900;
   text-transform: uppercase;
   color: white;
   letter-spacing: 4px;
   margin-top: var(--spacing-md);
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
 }
 
-/* Float-in animation for reveal phase */
+/* Animations */
+.slam-in {
+  animation: slamIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  opacity: 0;
+  transform: scale(3);
+}
+
+@keyframes slamIn {
+  to {
+    opacity: 1;
+    transform: scale(1) skew(-5deg);
+  }
+}
+
 .fade-in-up {
   animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0;
@@ -193,7 +210,7 @@ onMounted(() => {
 
 @media (max-width: 768px) {
   .story-line { font-size: 2.5rem; }
-  .stat-value-massive { font-size: 5rem; }
+  .stat-value-massive { font-size: 6rem; }
   .stat-label-massive { font-size: 2rem; }
 }
 </style>

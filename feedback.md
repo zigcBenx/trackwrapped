@@ -1,18 +1,18 @@
 # User feedback
 
 Matic Ian Guček:
-- Best result instead of average result at performance slide and for calculating  power level
+- Best result instead of average result at performance slide and for calculating  power level✅
     - because people hold back in qualifications and semi-finals
-- highest level +1300 - Legendary
+- highest level +1300 - Legendary✅
 - Rivals and nemesis don't have correct data
 
 Marko Pepelnak:
 - share button at the end doesn't do anything - it should at least download photo?
 - Suggestions to add:
     - How much left to achieve entry standard for big competitions
-    - graph of progress over time
-    - what times were necessary on last big competition for podium
-    - world, european and national rankings info
+    - graph of progress over time✅
+    - what times were necessary on last big competition for podium✅
+    - world, european and national rankings info✅
     - If relay have better points, it shows relay instead of individual discipline
 
 Filip Dominkovič:

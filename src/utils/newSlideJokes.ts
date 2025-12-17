@@ -15,7 +15,7 @@ export function getWorldRecordSequence(bestPerformance: PersonalBest | null, dis
   return [
     `Your best mark in ${actualDiscipline}...`,
     "Chasing the immortals. ⚡",
-    "How close are you to history? 🤔"
+    "But how does it compare to the G.O.A.T? 🤔"
   ]
 }
 

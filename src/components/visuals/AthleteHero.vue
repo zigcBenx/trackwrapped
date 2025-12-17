@@ -30,7 +30,7 @@
 
       <div class="aka-section fade-in-up" style="animation-delay: 400ms">
         <span class="aka-label">KNOWN AS</span>
-        <span class="aka-value">{{ nickname }}</span>
+        <span class="aka-value" :data-text="nickname">{{ nickname }}</span>
       </div>
     </div>
   </div>
@@ -232,6 +232,32 @@ const lastNameStyle = computed(() => {
   color: white;
   letter-spacing: 1px;
   line-height: 1;
+  position: relative;
+  animation: glitch 3s infinite;
+}
+
+.aka-value::before,
+.aka-value::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.aka-value::before {
+  left: 2px;
+  text-shadow: -1px 0 #ff00c1;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.aka-value::after {
+  left: -2px;
+  text-shadow: -1px 0 #00fff9;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
 }
 
 /* Animations */
@@ -273,6 +299,33 @@ const lastNameStyle = computed(() => {
 
 @keyframes slamIn {
   to { opacity: 1; transform: scale(1) rotate(5deg); }
+}
+
+@keyframes glitch {
+  0% { transform: skew(0deg); }
+  20% { transform: skew(-2deg); }
+  40% { transform: skew(2deg); }
+  60% { transform: skew(-1deg); }
+  80% { transform: skew(1deg); }
+  100% { transform: skew(0deg); }
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(33px, 9999px, 11px, 0); }
+  20% { clip: rect(87px, 9999px, 96px, 0); }
+  40% { clip: rect(15px, 9999px, 62px, 0); }
+  60% { clip: rect(64px, 9999px, 23px, 0); }
+  80% { clip: rect(3px, 9999px, 92px, 0); }
+  100% { clip: rect(55px, 9999px, 4px, 0); }
+}
+
+@keyframes glitch-anim2 {
+  0% { clip: rect(65px, 9999px, 100px, 0); }
+  20% { clip: rect(22px, 9999px, 6px, 0); }
+  40% { clip: rect(93px, 9999px, 35px, 0); }
+  60% { clip: rect(12px, 9999px, 84px, 0); }
+  80% { clip: rect(48px, 9999px, 59px, 0); }
+  100% { clip: rect(7px, 9999px, 29px, 0); }
 }
 
 @media (max-width: 768px) {

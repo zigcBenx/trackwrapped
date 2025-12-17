@@ -104,19 +104,10 @@
               :year="2025"
             />
             
-            <!-- Ranking Slide -->
-            <RankingSlide
-              v-if="currentSlideIndex === 5 && stats"
-              v-show="currentSlideIndex === 5"
-              key="ranking"
-              :rankings="rankings"
-              :main-discipline="stats.mainDiscipline"
-            />
-            
             <!-- Competition Slide -->
             <CompetitionSlide
-              v-if="currentSlideIndex === 6 && stats"
-              v-show="currentSlideIndex === 6"
+              v-if="currentSlideIndex === 5 && stats"
+              v-show="currentSlideIndex === 5"
               key="competition"
               :total-competitions="stats.totalCompetitions"
               :competition-frequency="stats.competitionFrequency"
@@ -125,8 +116,8 @@
 
             <!-- Travel Slide -->
             <TravelSlide
-              v-if="currentSlideIndex === 7 && stats"
-              v-show="currentSlideIndex === 7"
+              v-if="currentSlideIndex === 6 && stats"
+              v-show="currentSlideIndex === 6"
               key="travel"
               :countries="stats.countries"
               :countries-count="stats.countriesCount"
@@ -135,8 +126,8 @@
             
             <!-- World Record Slide -->
             <WorldRecordSlide
-              v-if="currentSlideIndex === 8 && stats"
-              v-show="currentSlideIndex === 8"
+              v-if="currentSlideIndex === 7 && stats"
+              v-show="currentSlideIndex === 7"
               key="worldrecord"
               :best-performance="stats.bestPerformance"
               :main-discipline="stats.mainDiscipline"
@@ -145,24 +136,24 @@
             
             <!-- Nemesis Slide -->
             <NemesisSlide
-              v-if="currentSlideIndex === 9 && stats"
-              v-show="currentSlideIndex === 9"
+              v-if="currentSlideIndex === 8 && stats"
+              v-show="currentSlideIndex === 8"
               key="nemesis"
               :nemesis="stats.nemesis"
             />
             
             <!-- Rivals Slide -->
             <RivalsSlide
-              v-if="currentSlideIndex === 10 && stats"
-              v-show="currentSlideIndex === 10"
+              v-if="currentSlideIndex === 9 && stats"
+              v-show="currentSlideIndex === 9"
               key="rivals"
               :top-rivals="stats.topRivals"
             />
             
             <!-- Share Card Slide (Insights) -->
             <ShareCardSlide
-              v-if="currentSlideIndex === 11 && stats"
-              v-show="currentSlideIndex === 11"
+              v-if="currentSlideIndex === 10 && stats"
+              v-show="currentSlideIndex === 10"
               key="sharecard"
               :first-name="firstName"
               :last-name="lastName"
@@ -258,7 +249,6 @@ import NemesisSlide from './slides/NemesisSlide.vue'
 import RivalsSlide from './slides/RivalsSlide.vue'
 import ShareCardSlide from './slides/ShareCardSlide.vue'
 import ProgressionSlide from './slides/ProgressionSlide.vue'
-import RankingSlide from './slides/RankingSlide.vue'
 
 interface Props {
   athleteId: number | null
@@ -299,7 +289,7 @@ const allSeasonResults = ref<any[]>([])
 const rankings = ref<any[]>([])
 
 // Total number of slides
-const totalSlides = 12
+const totalSlides = 11
 
 // Computed for season best (not PB)
 const seasonBestMark = computed(() => {
@@ -431,25 +421,22 @@ function calculateSlideDuration(index: number): number {
     case 4: // Progression (Graph)
       return 7000 // Give time to see the animation
       
-    case 5: // Ranking
-      return 7000 // Give time to read
-      
-    case 6: // Competition (Heatmap)
+    case 5: // Competition (Heatmap)
       return calculateSequenceDuration(getCompetitionSequence(stats.value.competitionFrequency, stats.value.totalCompetitions))
 
-    case 7: // Travel
+    case 6: // Travel
       return calculateSequenceDuration(getTravelSequence(stats.value.countriesCount, stats.value.countriesCount === 1 && stats.value.countries[0] === country.value, country.value))
       
-    case 8: // World Record
+    case 7: // World Record
       return calculateSequenceDuration(getWorldRecordSequence(stats.value.bestPerformance, stats.value.mainDiscipline))
       
-    case 9: // Nemesis
+    case 8: // Nemesis
       return calculateSequenceDuration(getNemesisSequence(stats.value.nemesis))
       
-    case 10: // Rivals
+    case 9: // Rivals
       return calculateSequenceDuration(getTopRivalsSequence(stats.value.topRivals))
       
-    case 11: // Share Card
+    case 10: // Share Card
       return 10000 // Give more time for the final card
       
     default:
