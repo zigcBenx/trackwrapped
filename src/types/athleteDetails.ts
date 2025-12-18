@@ -95,7 +95,7 @@ export interface ProcessedAthleteStats {
   lastSeasonBestScore: number
   scoreChangePercent: number
   percentileRank: { rank: string; label: string }
-  nemesis: { name: string; losses: number } | null
+  nemesis: { name: string; losses: number; meetings: number } | null
   topRivals: Array<{ name: string; meetings: number }>
   averageWind: number | null
   hasWindData: boolean

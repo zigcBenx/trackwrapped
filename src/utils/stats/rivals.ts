@@ -1,7 +1,7 @@
 import type { AthleteResult } from '@/types/athleteDetails'
 
 export interface RivalAnalysis {
-  nemesis: { name: string; losses: number } | null
+  nemesis: { name: string; losses: number; meetings: number } | null
   topRivals: Array<{ name: string; meetings: number }>
 }
 
@@ -93,7 +93,7 @@ export function analyzeRivals(
   // console.log('-----------------------')
 
   return {
-    nemesis: nemesis ? { name: nemesis.name, losses: nemesis.losses } : null,
+    nemesis: nemesis ? { name: nemesis.name, losses: nemesis.losses, meetings: nemesis.meetings } : null,
     topRivals
   }
 }

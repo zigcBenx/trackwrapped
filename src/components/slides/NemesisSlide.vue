@@ -28,7 +28,7 @@
         <RivalCard
           :name="nemesis.name"
           :losses="nemesis.losses"
-          :meetings="nemesis.losses"
+          :meetings="nemesis.meetings"
         />
       </div>
       <div v-else class="massive-stat fade-in-up" style="animation-delay: 300ms">
@@ -47,7 +47,7 @@ import RivalCard from '../visuals/RivalCard.vue'
 import { getNemesisSequence } from '@/utils/newSlideJokes'
 
 interface Props {
-  nemesis: { name: string; losses: number } | null
+  nemesis: { name: string; losses: number; meetings: number } | null
 }
 
 const props = defineProps<Props>()
