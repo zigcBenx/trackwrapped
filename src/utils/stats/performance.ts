@@ -33,12 +33,6 @@ export function calculatePerformanceStats(
   })
   const topPlacements = finalResults.length
 
-  // Debug logging
-  console.log('RESULTS FOR STATS', resultsForStats)
-  console.log('ALL RACES', resultsForStats.map(r => ({ race: r.race, place: r.place, competition: r.competition })))
-  console.log('TRUE FINALS ONLY (F/FA/FB)', finalResults.map(r => ({ race: r.race, place: r.place, competition: r.competition })))
-  console.log('TOP PLACEMENTS IN FINALS', topPlacements)
-
   // Average place
   const validPlacements = resultsForStats.filter(r => r.place > 0)
   const averagePlace = validPlacements.length > 0
@@ -61,10 +55,6 @@ export function calculatePerformanceStats(
   const victoryRate = totalCompetitions > 0
     ? Math.round((topPlacements / totalCompetitions) * 100)
     : 0
-
-  console.log('TOTAL COMPETITIONS', totalCompetitions)
-  console.log('PODIUM FINISHES IN FINALS', topPlacements)
-  console.log('VICTORY RATE', victoryRate)
 
   // Season-over-season comparison - always use ALL results, not filtered
   const seasonComparison = calculateSeasonComparison(results)

@@ -129,7 +129,7 @@
               v-if="currentSlideIndex === 7 && stats"
               v-show="currentSlideIndex === 7"
               key="worldrecord"
-              :best-performance="stats.bestPerformance"
+              :best-performance="mainDisciplineBest"
               :main-discipline="stats.mainDiscipline"
               :gender="sex"
             />
@@ -287,6 +287,7 @@ const nickname = ref('')
 const currentYearResults = ref<any[]>([])
 const allSeasonResults = ref<any[]>([])
 const rankings = ref<any[]>([])
+const personalBests = ref<any[]>([])
 
 // Total number of slides
 const totalSlides = 11
@@ -301,6 +302,24 @@ const seasonBestMark = computed(() => {
   }, currentYearResults.value[0])
 
   return bestResult?.mark || '-'
+})
+
+const mainDisciplineBest = computed(() => {
+  if (!stats.value) return null
+  const discipline = stats.value.mainDiscipline
+  
+  if (props.scope === 'season') {
+    // Find best result in currentYearResults for this discipline
+    const seasonResults = currentYearResults.value.filter(r => r.discipline === discipline)
+    if (seasonResults.length === 0) return null
+    
+    return seasonResults.reduce((best, current) => {
+      return current.resultScore > best.resultScore ? current : best
+    }, seasonResults[0])
+  } else {
+    // Lifetime
+    return personalBests.value.find(pb => pb.discipline === discipline) || null
+  }
 })
 
 const seasonBestPoints = computed(() => {
@@ -372,6 +391,7 @@ async function loadAthleteStory(athleteId: number) {
     currentYearResults.value = results
     allSeasonResults.value = allResults
     rankings.value = details.currentWorldRankings || []
+    personalBests.value = details.personalbests
 
     // Track this view
     trackAthleteView(athleteId)
