@@ -60,6 +60,7 @@
               v-if="currentSlideIndex === 0 && stats"
               v-show="currentSlideIndex === 0"
               key="welcome"
+              ref="currentSlideRef"
               :first-name="firstName"
               :last-name="lastName"
               :stats="stats"
@@ -71,6 +72,7 @@
               v-if="currentSlideIndex === 1 && stats"
               v-show="currentSlideIndex === 1"
               key="veteran"
+              ref="currentSlideRef"
               :years-active="stats.yearsActive"
               :nickname="nickname"
             />
@@ -80,6 +82,7 @@
               v-if="currentSlideIndex === 2 && stats"
               v-show="currentSlideIndex === 2"
               key="discipline"
+              ref="currentSlideRef"
               :discipline-category="stats.disciplineCategory"
               :main-discipline="stats.mainDiscipline"
             />
@@ -89,6 +92,7 @@
               v-if="currentSlideIndex === 3 && stats"
               v-show="currentSlideIndex === 3"
               key="performance"
+              ref="currentSlideRef"
               :is-improving="stats.isImproving"
               :stats="stats"
             />
@@ -98,6 +102,7 @@
               v-if="currentSlideIndex === 4 && stats"
               v-show="currentSlideIndex === 4"
               key="progression"
+              ref="currentSlideRef"
               :results="currentYearResults"
               :main-discipline="stats.mainDiscipline"
               :discipline-category="stats.disciplineCategory"
@@ -109,16 +114,18 @@
               v-if="currentSlideIndex === 5 && stats"
               v-show="currentSlideIndex === 5"
               key="competition"
+              ref="currentSlideRef"
               :total-competitions="stats.totalCompetitions"
               :competition-frequency="stats.competitionFrequency"
               :heatmap-data="stats.competitionHeatmap"
             />
-
+ 
             <!-- Travel Slide -->
             <TravelSlide
               v-if="currentSlideIndex === 6 && stats"
               v-show="currentSlideIndex === 6"
               key="travel"
+              ref="currentSlideRef"
               :countries="stats.countries"
               :countries-count="stats.countriesCount"
               :home-country="country"
@@ -129,6 +136,7 @@
               v-if="currentSlideIndex === 7 && stats"
               v-show="currentSlideIndex === 7"
               key="worldrecord"
+              ref="currentSlideRef"
               :best-performance="mainDisciplineBest"
               :main-discipline="stats.mainDiscipline"
               :gender="sex"
@@ -139,6 +147,7 @@
               v-if="currentSlideIndex === 8 && stats"
               v-show="currentSlideIndex === 8"
               key="nemesis"
+              ref="currentSlideRef"
               :nemesis="stats.nemesis"
             />
             
@@ -147,6 +156,7 @@
               v-if="currentSlideIndex === 9 && stats"
               v-show="currentSlideIndex === 9"
               key="rivals"
+              ref="currentSlideRef"
               :top-rivals="stats.topRivals"
             />
             
@@ -155,6 +165,7 @@
               v-if="currentSlideIndex === 10 && stats"
               v-show="currentSlideIndex === 10"
               key="sharecard"
+              ref="currentSlideRef"
               :first-name="firstName"
               :last-name="lastName"
               :country="country"
@@ -236,6 +247,8 @@ import {
 } from '@/utils/newSlideJokes'
 import { generateNickname } from '@/utils/jokeGenerator'
 import type { ProcessedAthleteStats } from '@/types/athleteDetails'
+
+const currentSlideRef = ref<any>(null)
 
 // Import individual slide components
 import WelcomeSlide from './slides/WelcomeSlide.vue'
@@ -504,6 +517,11 @@ function handleAnimationEnd(index: number) {
 }
 
 function nextSlide() {
+  // Check if current slide can skip buildup
+  if (currentSlideRef.value?.skipBuildup?.()) {
+    return // Handled internally by child
+  }
+  
   if (currentSlideIndex.value < totalSlides - 1) {
     currentSlideIndex.value++
   }

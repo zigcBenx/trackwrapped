@@ -83,17 +83,26 @@ export async function getCompleteAthleteData(athleteId: number, scope: 'season' 
         let competitors: any[] = []
         
         if (compData.events && compData.events.length > 0) {
-          const event = compData.events[0] // Should be the event we requested
+          const event = compData.events[0]
           
           if (event.races && event.races.length > 0) {
-            // Collect all results from all races in this event
-            // Ideally we'd match the specific race, but for rival analysis, 
-            // anyone in the same event/round is relevant
-            event.races.forEach((race: any) => {
-              if (race.results) {
-                competitors = [...competitors, ...race.results]
+            // Find the specific race where our athlete competed
+            // We match by checking if the athleteId is in the results of that race
+            const ourRace = event.races.find((race: any) => 
+              race.results && race.results.some((r: any) => 
+                r.athletes && r.athletes.some((a: any) => a.id === athleteId)
+              )
+            )
+
+            if (ourRace && ourRace.results) {
+              competitors = ourRace.results
+            } else {
+              // Fallback: if we can't find the specific race, 
+              // check if there's only one race (e.g. a Final)
+              if (event.races.length === 1 && event.races[0].results) {
+                competitors = event.races[0].results
               }
-            })
+            }
           }
         }
         // Map to our Competitor interface

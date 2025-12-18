@@ -86,6 +86,16 @@ function handleTap() {
 onMounted(() => {
   startSequence()
 })
+
+defineExpose({
+  skipBuildup: () => {
+    if (phase.value === 'buildup') {
+      handleTap()
+      return true
+    }
+    return false
+  }
+})
 </script>
 
 <style scoped>
