@@ -36,6 +36,7 @@
 import { ref, computed, onMounted } from 'vue'
 import SlideWrapper from './SlideWrapper.vue'
 import { getDisciplineSequence } from '@/utils/jokeGenerator'
+import { getDisciplineEmoji } from '@/utils/disciplineEmojis'
 
 interface Props {
   disciplineCategory: string
@@ -49,19 +50,7 @@ const currentLineIndex = ref(-1)
 const sequence = getDisciplineSequence(props.disciplineCategory, props.mainDiscipline)
 
 const disciplineEmoji = computed(() => {
-  switch (props.disciplineCategory.toLowerCase()) {
-    case 'sprint':
-    case 'distance':
-      return '🏃'
-    case 'jump':
-      return '🤸'
-    case 'throw':
-      return '🥏'
-    case 'combined':
-      return '🏅'
-    default:
-      return '🏃'
-  }
+  return getDisciplineEmoji(props.mainDiscipline)
 })
 
 let sequenceTimer: any = null

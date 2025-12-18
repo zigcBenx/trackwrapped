@@ -149,23 +149,19 @@ function calculateSeasonComparison(results: AthleteResult[]) {
  */
 function calculatePercentile(bestScore: number): { rank: string; label: string } {
   // World Athletics result scores typically range from ~100 (beginner) to 1400+ (elite)
-  // These thresholds are approximate based on competitive levels
+  // These thresholds match the ShareCardSlide definitions
 
-  if (bestScore >= 1300) {
-    return { rank: '0.1%', label: 'Legendary' }
-  } else if (bestScore >= 1200) {
-    return { rank: '1%', label: 'World Class' }
-  } else if (bestScore >= 1100) {
-    return { rank: '5%', label: 'International' }
-  } else if (bestScore >= 1000) {
-    return { rank: '10%', label: 'National Elite' }
-  } else if (bestScore >= 900) {
-    return { rank: '15%', label: 'Competitive' }
+  if (bestScore >= 1250) {
+    return { rank: '0.1%', label: 'LEGENDARY' }
+  } else if (bestScore >= 1150) {
+    return { rank: '1%', label: 'WORLD CLASS' }
+  } else if (bestScore >= 1050) {
+    return { rank: '5%', label: 'INTERNATIONAL' }
+  } else if (bestScore >= 950) {
+    return { rank: '10%', label: 'NATIONAL CLASS' }
   } else if (bestScore >= 800) {
-    return { rank: '20%', label: 'Club Level' }
-  } else if (bestScore >= 600) {
-    return { rank: '50%', label: 'Recreational' }
+    return { rank: '20%', label: 'LOCAL HERO' }
   } else {
-    return { rank: '>50%', label: 'Rising' }
+    return { rank: '>50%', label: 'ROOKIE' }
   }
 }

@@ -168,7 +168,7 @@
               :top-disciplines="topDisciplines"
               :rankings="rankings"
               :average-score="stats.averageResultScore"
-              :max-score="stats.bestPerformance?.resultScore || 0"
+              :max-score="stats.currentSeasonBestScore || 0"
               :honours="stats.honours"
               :recent-honours="stats.recentHonours"
               :records="stats.records"

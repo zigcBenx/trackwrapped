@@ -86,7 +86,10 @@
                   <div v-if="currentCarouselItem" :key="currentCarouselItem.name" class="carousel-item">
                     <div class="stat-label">TOP RESULTS</div>
                     <div class="stat-value highlight hero-effect">{{ currentCarouselItem.mark }}</div>
-                    <div class="discipline-sub-label">{{ currentCarouselItem.name }}</div>
+                    <div class="discipline-sub-label">
+                      {{ currentCarouselItem.name }} 
+                      <span class="emoji-span">{{ getDisciplineEmoji(currentCarouselItem.name) }}</span>
+                    </div>
                   </div>
                 </Transition>
               </div>
@@ -156,6 +159,7 @@
       <div v-if="showTooltip" class="tooltip-backdrop" @click.stop="showTooltip = false"></div>
       <Transition name="fade">
         <div v-if="showTooltip" class="tooltip-overlay" @click.stop>
+          <div class="tooltip-close-btn" @click.stop="showTooltip = false">✕</div>
           <div class="tooltip-content">
             <h3>POWER LEVELS</h3>
             <div class="level-list">
@@ -183,6 +187,7 @@
 import { computed, ref, onMounted, onUnmounted } from 'vue'
 import SlideWrapper from './SlideWrapper.vue'
 import { getCountryFlag } from '@/utils/countryFlags'
+import { getDisciplineEmoji } from '@/utils/disciplineEmojis'
 
 interface Props {
   firstName: string
@@ -230,7 +235,7 @@ const POWER_LEVELS = [
   { label: 'NATIONAL CLASS', range: '950-1050', desc: 'Competing at the national level.' },
   { label: 'INTERNATIONAL', range: '1050-1150', desc: 'Making waves globally.' },
   { label: 'WORLD CLASS', range: '1150-1250', desc: 'Among the best in the world.' },
-  { label: 'ELITE', range: '1250+', desc: 'Legendary status.' },
+  { label: 'LEGENDARY', range: '1250+', desc: 'Legendary status.' },
 ]
 
 const imageError = ref(false)
@@ -356,10 +361,47 @@ const subStat3 = computed(() => {
 })
 
 function getPowerWidth(label: string): string {
+  const score = props.maxScore || 0
+  
+  // Define ranges matching POWER_LEVELS
+  // Rookie: < 800
+  // Local Hero: 800-950
+  // National Class: 950-1050
+  // International: 1050-1150
+  // World Class: 1150-1250
+  // Elite: 1250+ (using 1400 as virtual max for bar)
+  
+  const ranges = [
+    { min: 0, max: 800 },
+    { min: 800, max: 950 },
+    { min: 950, max: 1050 },
+    { min: 1050, max: 1150 },
+    { min: 1150, max: 1250 },
+    { min: 1250, max: 1400 }
+  ]
+  
   const levels = POWER_LEVELS.map(l => l.label)
   const index = levels.indexOf(label)
-  if (index === -1) return '10%'
-  return `${((index + 1) / levels.length) * 100}%`
+  
+  if (index === -1) return '5%' // Fallback
+  
+  // Calculate base width for completed levels (16.66% each)
+  const segmentWidth = 100 / levels.length
+  const baseWidth = index * segmentWidth
+  
+  // Calculate progress within current level
+  const range = ranges[index]
+  if (!range) return `${Math.max(5, Math.min(100, baseWidth))}%`
+
+  const rangeSpan = range.max - range.min
+  const scoreInLevel = Math.max(0, Math.min(score - range.min, rangeSpan))
+  const progressInLevel = scoreInLevel / rangeSpan
+  
+  // Total width
+  const totalWidth = baseWidth + (progressInLevel * segmentWidth)
+  
+  // Clamp between 5% and 100%
+  return `${Math.max(5, Math.min(100, totalWidth))}%`
 }
 
 // Text fitting logic
@@ -736,6 +778,15 @@ function stopCarousel() {
   font-weight: 700;
   margin-top: -6px; /* Pull closer to the number */
   opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.emoji-span {
+  font-size: 1.2rem;
+  filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
 }
 
 /* Transitions */
@@ -907,9 +958,28 @@ function stopCarousel() {
 
 .power-fill {
   height: 100%;
-  background: var(--color-accent-secondary);
-  box-shadow: 0 0 15px var(--color-accent-secondary);
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-secondary) 0%,
+    var(--color-accent-secondary) 40%,
+    color-mix(in srgb, var(--color-accent-secondary), white 40%) 50%,
+    var(--color-accent-secondary) 60%,
+    var(--color-accent-secondary) 100%
+  );
+  background-size: 200% 100%;
+  box-shadow: 0 0 20px var(--color-accent-secondary);
   transition: width 1s ease-out;
+  position: relative;
+  animation: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .identity-section {
@@ -1014,18 +1084,18 @@ function stopCarousel() {
 }
 
 .tooltip-backdrop {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(5px);
-  z-index: 900;
+  z-index: 9999;
 }
 
 .tooltip-overlay {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -1036,10 +1106,32 @@ function stopCarousel() {
   border: 1px solid var(--color-accent-primary);
   border-radius: 16px;
   padding: var(--spacing-lg);
-  z-index: 1000;
+  z-index: 10000;
   box-shadow: 0 0 50px rgba(0,0,0,0.9), 0 0 20px rgba(204, 255, 0, 0.1);
   display: flex;
   flex-direction: column;
+}
+
+.tooltip-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 10001;
+  transition: background 0.2s;
+}
+
+.tooltip-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .tooltip-content {
