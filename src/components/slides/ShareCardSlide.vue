@@ -441,7 +441,6 @@ function fitText() {
 const shareCardRef = ref<HTMLElement | null>(null)
 
 async function handleShare(event?: any) {
-  console.log('!!! handleShare TRIGGERED !!!', event?.type)
   if (event && event.stopPropagation) {
     event.stopPropagation()
   }
@@ -464,6 +463,46 @@ async function handleShare(event?: any) {
         if (el) {
           el.style.transform = 'none'
         }
+        
+        // Fix background-clip: text issues (html2canvas doesn't support it)
+        const heroElements = clonedDoc.querySelectorAll('.hero-effect')
+        heroElements.forEach(item => {
+          const htmlItem = item as HTMLElement
+          htmlItem.style.background = 'none'
+          htmlItem.style.webkitBackgroundClip = 'initial'
+          htmlItem.style.backgroundClip = 'initial'
+          htmlItem.style.color = '#CCFF00' // Use static volt green
+          htmlItem.style.textShadow = 'none'
+        })
+
+        // Fix badges
+        const badges = clonedDoc.querySelectorAll('.flex-badge')
+        badges.forEach(badge => {
+          const htmlBadge = badge as HTMLElement
+          htmlBadge.style.boxShadow = 'none'
+          htmlBadge.style.textShadow = 'none'
+        })
+
+        const badgeWrappers = clonedDoc.querySelectorAll('.badge-content-wrapper')
+        badgeWrappers.forEach(wrapper => {
+          const htmlWrapper = wrapper as HTMLElement
+          htmlWrapper.style.display = 'block' // Simplify flex to block
+          htmlWrapper.style.textAlign = 'center'
+        })
+
+        const medals = clonedDoc.querySelectorAll('.badge-medal')
+        medals.forEach(medal => {
+          const htmlMedal = medal as HTMLElement
+          htmlMedal.style.display = 'block'
+          htmlMedal.style.marginTop = '2px'
+        })
+
+        // Hide info icons and tooltips in capture
+        const infoIcons = clonedDoc.querySelectorAll('.info-icon')
+        infoIcons.forEach(icon => {
+          const htmlIcon = icon as HTMLElement
+          htmlIcon.style.display = 'none'
+        })
       }
     })
 
@@ -510,7 +549,6 @@ function handleTap(event: Event) {
 }
 
 onMounted(() => {
-  console.log('ShareCardSlide mounted. shareCardRef:', shareCardRef.value)
   // Run fit text after a short delay to ensure fonts are loaded/layout is stable
   setTimeout(fitText, 100)
   window.addEventListener('resize', fitText)
