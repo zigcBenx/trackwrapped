@@ -135,13 +135,16 @@
             <div class="share-footer">
               <button 
                 class="share-btn interactive" 
+                :class="{ 'is-sharing': isSharing }"
                 @click.stop="handleShare" 
                 @touchstart.stop="handleShare"
                 @touchend.stop
                 @mousedown.stop="handleShare"
+                :disabled="isSharing"
               >
                 Screenshot & Share!
               </button>
+              <div class="capture-link">track-wrapped.com</div>
             </div>
           </div>
 
@@ -439,6 +442,7 @@ function fitText() {
 }
 
 const shareCardRef = ref<HTMLElement | null>(null)
+const isSharing = ref(false)
 
 async function handleShare(event?: any) {
   if (event && event.stopPropagation) {
@@ -449,6 +453,11 @@ async function handleShare(event?: any) {
     console.error('shareCardRef is null, cannot capture')
     return
   }
+
+  isSharing.value = true
+
+  // Small delay to let the UI update (show "Generating...")
+  await new Promise(resolve => setTimeout(resolve, 100))
 
   try {
     console.log('Capturing canvas...')
@@ -503,17 +512,28 @@ async function handleShare(event?: any) {
           const htmlIcon = icon as HTMLElement
           htmlIcon.style.display = 'none'
         })
+
+        // Hide the share button itself in the capture for a cleaner image
+        const footer = clonedDoc.querySelector('.share-footer') as HTMLElement
+        const btn = clonedDoc.querySelector('.share-btn') as HTMLElement
+        const link = clonedDoc.querySelector('.capture-link') as HTMLElement
+        
+        if (btn) btn.style.display = 'none'
+        if (link) {
+          link.style.display = 'block'
+          link.style.opacity = '1'
+        }
       }
     })
 
-    const dataUrl = canvas.toDataURL('image/png')
-    console.log('Canvas captured, dataUrl length:', dataUrl.length)
+    const blob = await new Promise<Blob | null>(resolve => canvas.toBlob(resolve, 'image/png'))
+    if (!blob) throw new Error('Failed to create blob')
+    
+    console.log('Canvas captured, blob size:', blob.size)
 
     // Check if it's mobile and supports sharing
     if (navigator.share && navigator.canShare) {
       console.log('Native share supported, preparing file...')
-      const response = await fetch(dataUrl)
-      const blob = await response.blob()
       const file = new File([blob], 'track-wrapped-2025.png', { type: 'image/png' })
       
       if (navigator.canShare({ files: [file] })) {
@@ -534,6 +554,7 @@ async function handleShare(event?: any) {
 
     // Fallback for desktop or if sharing fails: Download
     console.log('Triggering download fallback...')
+    const dataUrl = canvas.toDataURL('image/png')
     const link = document.createElement('a')
     link.download = 'track-wrapped-2025.png'
     link.href = dataUrl
@@ -541,6 +562,8 @@ async function handleShare(event?: any) {
     console.log('Download triggered')
   } catch (error) {
     console.error('Error during share/capture:', error)
+  } finally {
+    isSharing.value = false
   }
 }
 
@@ -984,6 +1007,43 @@ function stopCarousel() {
 
 .share-btn:active {
   transform: scale(0.98);
+}
+
+.share-btn.is-sharing {
+  background: var(--color-accent-primary);
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+  animation: loaderPulse 1.5s infinite;
+}
+
+.capture-link {
+  display: none; /* Hidden on screen */
+  font-family: var(--font-family-primary);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  width: 100%;
+  margin-top: var(--spacing-sm);
+}
+
+.sharing-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.loader-dots {
+  animation: loaderPulse 1.5s infinite;
+}
+
+@keyframes loaderPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
 .sub-stats {
