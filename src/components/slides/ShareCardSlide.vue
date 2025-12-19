@@ -134,6 +134,7 @@
             </div>
             <!-- Footer CTA -->
             <div class="share-footer">
+              <p class="footer-link interactive" target="_blank">trackwrapped.vercel.app</p>
               <button 
                 class="share-btn interactive" 
                 :class="{ 'is-sharing': isSharing }"
@@ -530,8 +531,10 @@ async function handleShare(event?: any) {
         const footer = clonedDoc.querySelector('.share-footer') as HTMLElement
         const btn = clonedDoc.querySelector('.share-btn') as HTMLElement
         const link = clonedDoc.querySelector('.capture-link') as HTMLElement
+        const footerLink = clonedDoc.querySelector('.footer-link') as HTMLElement
         
         if (btn) btn.style.display = 'none'
+        if (footerLink) footerLink.style.display = 'none'
         if (link) {
           link.style.display = 'block'
           link.style.opacity = '1'
@@ -999,6 +1002,27 @@ function stopCarousel() {
   margin-top: auto;
   padding-top: var(--spacing-sm);
   pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-link {
+  display: block;
+  font-family: var(--font-family-primary);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  margin-bottom: var(--spacing-xs);
+  text-align: center;
+  transition: all 0.2s;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.footer-link:hover {
+  color: var(--color-accent-primary);
+  transform: translateY(-1px);
 }
 
 .share-btn {
