@@ -17,7 +17,12 @@
       <!-- Slides -->
       <div v-else class="story-slides-container">
         <!-- Close Button -->
-        <button class="close-button" @click.stop="handleClose" aria-label="Close">
+        <button 
+          class="close-button" 
+          :class="{ 'ui-hidden': isHolding }"
+          @click.stop="handleClose" 
+          aria-label="Close"
+        >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -33,9 +38,12 @@
           @touchstart="handleTouchStart"
           @touchmove="handleTouchMove"
           @touchend="handleTouchEnd"
+          @mousedown="handleMouseDown"
+          @mouseup="handleMouseUp"
+          @mouseleave="handleMouseUp"
         >
           <!-- Progress Indicator (Inside card) -->
-          <div class="progress-indicator">
+          <div class="progress-indicator" :class="{ 'ui-hidden': isHolding }">
             <div 
               v-for="index in totalSlides" 
               :key="index"
@@ -187,7 +195,12 @@
           </TransitionGroup>
 
           <!-- Pause/Play Button (Inside wrapper) -->
-          <button class="control-button pause-button" @click.stop="togglePause" :aria-label="isPaused ? 'Play' : 'Pause'">
+          <button 
+            class="control-button pause-button" 
+            :class="{ 'ui-hidden': isHolding }"
+            @click.stop="togglePause" 
+            :aria-label="isPaused ? 'Play' : 'Pause'"
+          >
             <svg v-if="isPaused" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none">
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
@@ -228,6 +241,8 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import StoryLoader from './StoryLoader.vue'
+
+const isHolding = ref(false)
 import { getCompleteAthleteData } from '@/services/athleteDetailsService'
 import { trackAthleteView } from '@/services/viewTrackingService'
 import { processAthleteData } from '@/utils/storyGenerator'
@@ -582,12 +597,50 @@ function handleTouchStart(event: TouchEvent) {
   // Start long press timer (pause after 200ms hold)
   longPressTimer = setTimeout(() => {
     wasHolding = true
+    isHolding.value = true
     touchHandled = true // Mark as handled to prevent click event
     if (!isPaused.value) {
       isPaused.value = true
       stopAutoplay()
     }
   }, 200)
+}
+
+function handleMouseDown(event: MouseEvent) {
+  // Only handle left click
+  if (event.button !== 0) return
+  
+  const target = event.target as HTMLElement
+  if (target.closest('button') || target.closest('.interactive')) {
+    return
+  }
+
+  touchStartTime = Date.now()
+  wasHolding = false
+  
+  longPressTimer = setTimeout(() => {
+    wasHolding = true
+    isHolding.value = true
+    if (!isPaused.value) {
+      isPaused.value = true
+      stopAutoplay()
+    }
+  }, 200)
+}
+
+function handleMouseUp() {
+  if (longPressTimer) {
+    clearTimeout(longPressTimer)
+    longPressTimer = null
+  }
+  
+  if (isHolding.value) {
+    isHolding.value = false
+    if (isPaused.value) {
+      isPaused.value = false
+      startAutoplay()
+    }
+  }
 }
 
 function handleTouchMove(event: TouchEvent) {
@@ -603,6 +656,7 @@ function handleTouchMove(event: TouchEvent) {
   if (deltaX > 10 || deltaY > 10) {
     clearTimeout(longPressTimer)
     longPressTimer = null
+    isHolding.value = false
   }
 }
 
@@ -612,6 +666,7 @@ function handleTouchEnd(event: TouchEvent) {
     clearTimeout(longPressTimer)
     longPressTimer = null
   }
+  isHolding.value = false
 
   // Ignore if tapping a button or interactive element
   const target = event.target as HTMLElement
@@ -798,6 +853,17 @@ onUnmounted(() => {
   cursor: pointer;
   transition: all var(--transition-base);
   z-index: 10001;
+}
+
+.close-button,
+.progress-indicator,
+.pause-button {
+  transition: opacity 0.3s ease, transform 0.2s ease, background 0.2s ease !important;
+}
+
+.ui-hidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 .close-button {
