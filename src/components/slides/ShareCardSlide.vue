@@ -544,29 +544,43 @@ async function handleShare(event?: any) {
     console.log('Canvas captured, blob size:', blob.size)
 
     // Check if it's mobile and supports sharing
-    if (navigator.share && navigator.canShare) {
-      console.log('Native share supported, preparing file...')
+    if (navigator.share) {
       const file = new File([blob], 'track-wrapped-2025.png', { type: 'image/png' })
-      
-      if (navigator.canShare({ files: [file] })) {
+      const shareData = {
+        files: [file],
+        title: 'Track Wrapped 2025',
+        text: 'Check out my season stats!'
+      }
+
+      // Check if sharing files is supported
+      let canShare = true
+      if (navigator.canShare) {
+        try {
+          canShare = navigator.canShare(shareData)
+        } catch (e) {
+          canShare = false
+        }
+      }
+
+      if (canShare) {
         try {
           console.log('Sharing file via navigator.share...')
-          await navigator.share({
-            files: [file],
-            title: 'My Track Wrapped 2025',
-            text: 'Check out my season stats on Track Wrapped!'
-          })
+          await navigator.share(shareData)
           console.log('Share successful')
           return
-        } catch (shareError) {
+        } catch (shareError: any) {
           console.error('navigator.share failed:', shareError)
-          // Continue to download fallback
+          // If user cancelled, don't download
+          if (shareError.name === 'AbortError') {
+            return
+          }
+          // Otherwise continue to download fallback
         }
       } else {
-        console.warn('navigator.canShare returned false for the generated file')
+        console.warn('navigator.canShare returned false or failed')
       }
     } else {
-      console.log('Native share not supported or navigator.share missing')
+      console.log('Native share not supported')
     }
 
     // Fallback for desktop or if sharing fails: Download
@@ -575,13 +589,13 @@ async function handleShare(event?: any) {
     const link = document.createElement('a')
     link.download = 'track-wrapped-2025.png'
     link.href = dataUrl
-    document.body.appendChild(link) // Required for some mobile browsers
+    document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
     console.log('Download triggered')
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error during share/capture:', error)
-    alert('Sorry, there was an error generating your share card. Please try again.')
+    alert(`Error: ${error.message || 'Unknown error'}`)
   } finally {
     isSharing.value = false
   }
