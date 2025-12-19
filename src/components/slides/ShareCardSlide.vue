@@ -457,7 +457,7 @@ async function handleShare(event?: any) {
   isSharing.value = true
 
   // Small delay to let the UI update (show "Generating...")
-  await new Promise(resolve => setTimeout(resolve, 500))
+  await new Promise(resolve => setTimeout(resolve, 100))
 
   // Wait for all images to be loaded
   const images = shareCardRef.value.querySelectorAll('img')
@@ -552,32 +552,18 @@ async function handleShare(event?: any) {
         text: 'Check out my season stats!'
       }
 
-      // Check if sharing files is supported
-      let canShare = true
-      if (navigator.canShare) {
-        try {
-          canShare = navigator.canShare(shareData)
-        } catch (e) {
-          canShare = false
-        }
-      }
-
-      if (canShare) {
-        try {
-          console.log('Sharing file via navigator.share...')
-          await navigator.share(shareData)
-          console.log('Share successful')
+      try {
+        console.log('Sharing file via navigator.share...')
+        await navigator.share(shareData)
+        console.log('Share successful')
+        return
+      } catch (shareError: any) {
+        console.error('navigator.share failed:', shareError)
+        // If user cancelled, don't download
+        if (shareError.name === 'AbortError') {
           return
-        } catch (shareError: any) {
-          console.error('navigator.share failed:', shareError)
-          // If user cancelled, don't download
-          if (shareError.name === 'AbortError') {
-            return
-          }
-          // Otherwise continue to download fallback
         }
-      } else {
-        console.warn('navigator.canShare returned false or failed')
+        // Otherwise continue to download fallback
       }
     } else {
       console.log('Native share not supported')
@@ -595,7 +581,6 @@ async function handleShare(event?: any) {
     console.log('Download triggered')
   } catch (error: any) {
     console.error('Error during share/capture:', error)
-    alert(`Error: ${error.message || 'Unknown error'}`)
   } finally {
     isSharing.value = false
   }

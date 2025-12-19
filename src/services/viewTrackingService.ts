@@ -30,6 +30,15 @@ export async function trackAthleteView(athleteId: number | null): Promise<ViewTr
     return null
   }
 
+  // Check if we've already tracked this athlete in this session/browser
+  const storageKey = `tracked_athlete_${athleteId}`
+  const alreadyTracked = localStorage.getItem(storageKey)
+  
+  if (alreadyTracked) {
+    console.log(`Athlete ${athleteId} already tracked in this browser. Skipping API call.`)
+    return null
+  }
+
   try {
     const response = await fetch('/api/view', {
       method: 'POST',
@@ -49,6 +58,10 @@ export async function trackAthleteView(athleteId: number | null): Promise<ViewTr
 
     const data: ViewTrackingResponse = await response.json()
     console.log(`Tracked view for athlete ${athleteId}. Total views: ${data.views}`)
+    
+    // Mark as tracked
+    localStorage.setItem(storageKey, 'true')
+    
     return data
   } catch (error) {
     console.error('Error tracking athlete view:', error)
