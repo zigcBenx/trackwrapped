@@ -1035,3 +1035,2618 @@ Response:
     "eventId": 10229612
   }
 ]
+
+
+
+
+/competitions/<competition_id>/results?eventId=<eventId>
+Response:
+{
+  "events": [
+    {
+      "eventName": null,
+      "category": "OW",
+      "eventId": 10229612,
+      "sex": "M",
+      "disciplineCode": "400H",
+      "discipline": "400 Metres Hurdles",
+      "isTechnical": false,
+      "races": [
+        {
+          "date": "2025-09-19T00:00:00.000Z",
+          "day": 7,
+          "race": "Final",
+          "raceId": 10,
+          "raceNumber": 0,
+          "results": [
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-19T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 1,
+              "mark": "46.52",
+              "wind": null,
+              "performanceValue": 46520,
+              "country": "USA",
+              "athletes": [
+                {
+                  "id": 14574865,
+                  "firstname": "Rai",
+                  "lastname": "Benjamin",
+                  "birthdate": "1997-07-27T00:00:00.000Z",
+                  "country": "USA",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-19T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 2,
+              "mark": "46.84",
+              "wind": null,
+              "performanceValue": 46840,
+              "country": "BRA",
+              "athletes": [
+                {
+                  "id": 14755064,
+                  "firstname": "Alison DOS",
+                  "lastname": "Santos",
+                  "birthdate": "2000-06-03T00:00:00.000Z",
+                  "country": "BRA",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-19T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 3,
+              "mark": "47.06",
+              "wind": null,
+              "performanceValue": 47060,
+              "country": "QAT",
+              "athletes": [
+                {
+                  "id": 14752208,
+                  "firstname": "Abderrahman",
+                  "lastname": "Samba",
+                  "birthdate": "1995-09-05T00:00:00.000Z",
+                  "country": "QAT",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-19T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 4,
+              "mark": "47.11",
+              "wind": null,
+              "performanceValue": 47110,
+              "country": "NGR",
+              "athletes": [
+                {
+                  "id": 14960533,
+                  "firstname": "Ezekiel",
+                  "lastname": "Nathaniel",
+                  "birthdate": "2003-06-20T00:00:00.000Z",
+                  "country": "NGR",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-19T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 5,
+              "mark": "47.58",
+              "wind": null,
+              "performanceValue": 47580,
+              "country": "NOR",
+              "athletes": [
+                {
+                  "id": 14479487,
+                  "firstname": "Karsten",
+                  "lastname": "Warholm",
+                  "birthdate": "1996-02-28T00:00:00.000Z",
+                  "country": "NOR",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-19T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 6,
+              "mark": "47.98",
+              "wind": null,
+              "performanceValue": 47980,
+              "country": "GER",
+              "athletes": [
+                {
+                  "id": 14679384,
+                  "firstname": "Emil",
+                  "lastname": "Agyekum",
+                  "birthdate": "1999-05-22T00:00:00.000Z",
+                  "country": "GER",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-19T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 7,
+              "mark": "48.20",
+              "wind": null,
+              "performanceValue": 48200,
+              "country": "USA",
+              "athletes": [
+                {
+                  "id": 14865900,
+                  "firstname": "Caleb",
+                  "lastname": "Dean",
+                  "birthdate": "2001-06-20T00:00:00.000Z",
+                  "country": "USA",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-19T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 8,
+              "mark": "49.82",
+              "wind": null,
+              "performanceValue": 49820,
+              "country": "QAT",
+              "athletes": [
+                {
+                  "id": 14973411,
+                  "firstname": "Ismail Doudai",
+                  "lastname": "Abakar",
+                  "birthdate": "2004-01-01T00:00:00.000Z",
+                  "country": "QAT",
+                  "sex": "M"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2025-09-17T00:00:00.000Z",
+          "day": 5,
+          "race": "Semifinal - Heat",
+          "raceId": 13,
+          "raceNumber": 1,
+          "results": [
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 1,
+              "mark": "47.63",
+              "wind": null,
+              "performanceValue": 47630,
+              "country": "QAT",
+              "athletes": [
+                {
+                  "id": 14752208,
+                  "firstname": "Abderrahman",
+                  "lastname": "Samba",
+                  "birthdate": "1995-09-05T00:00:00.000Z",
+                  "country": "QAT",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 2,
+              "mark": "47.72",
+              "wind": null,
+              "performanceValue": 47720,
+              "country": "NOR",
+              "athletes": [
+                {
+                  "id": 14479487,
+                  "firstname": "Karsten",
+                  "lastname": "Warholm",
+                  "birthdate": "1996-02-28T00:00:00.000Z",
+                  "country": "NOR",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 3,
+              "mark": "47.83",
+              "wind": null,
+              "performanceValue": 47830,
+              "country": "GER",
+              "athletes": [
+                {
+                  "id": 14679384,
+                  "firstname": "Emil",
+                  "lastname": "Agyekum",
+                  "birthdate": "1999-05-22T00:00:00.000Z",
+                  "country": "GER",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 4,
+              "mark": "48.21",
+              "wind": null,
+              "performanceValue": 48210,
+              "country": "GBR",
+              "athletes": [
+                {
+                  "id": 14769293,
+                  "firstname": "Tyri",
+                  "lastname": "Donovan",
+                  "birthdate": "1998-10-20T00:00:00.000Z",
+                  "country": "GBR",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 5,
+              "mark": "48.51",
+              "wind": null,
+              "performanceValue": 48510,
+              "country": "SLO",
+              "athletes": [
+                {
+                  "id": 14874438,
+                  "firstname": "Matic Ian",
+                  "lastname": "Guček",
+                  "birthdate": "2003-09-20T00:00:00.000Z",
+                  "country": "SLO",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 6,
+              "mark": "49.01",
+              "wind": null,
+              "performanceValue": 49010,
+              "country": "BRA",
+              "athletes": [
+                {
+                  "id": 14768511,
+                  "firstname": "Francisco Guilherme DOS REIS",
+                  "lastname": "Viana",
+                  "birthdate": "1999-12-14T00:00:00.000Z",
+                  "country": "BRA",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 0,
+              "mark": "",
+              "wind": null,
+              "performanceValue": null,
+              "country": "USA",
+              "athletes": [
+                {
+                  "id": 14969871,
+                  "firstname": "Chris",
+                  "lastname": "Robinson",
+                  "birthdate": "2001-02-19T00:00:00.000Z",
+                  "country": "USA",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 0,
+              "mark": "",
+              "wind": null,
+              "performanceValue": null,
+              "country": "BOT",
+              "athletes": [
+                {
+                  "id": 14754324,
+                  "firstname": "Kemorena",
+                  "lastname": "Tisang",
+                  "birthdate": "1995-04-25T00:00:00.000Z",
+                  "country": "BOT",
+                  "sex": "M"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2025-09-17T00:00:00.000Z",
+          "day": 5,
+          "race": "Semifinal - Heat",
+          "raceId": 13,
+          "raceNumber": 2,
+          "results": [
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 1,
+              "mark": "47.47",
+              "wind": null,
+              "performanceValue": 47470,
+              "country": "NGR",
+              "athletes": [
+                {
+                  "id": 14960533,
+                  "firstname": "Ezekiel",
+                  "lastname": "Nathaniel",
+                  "birthdate": "2003-06-20T00:00:00.000Z",
+                  "country": "NGR",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 2,
+              "mark": "47.61",
+              "wind": null,
+              "performanceValue": 47610,
+              "country": "QAT",
+              "athletes": [
+                {
+                  "id": 14973411,
+                  "firstname": "Ismail Doudai",
+                  "lastname": "Abakar",
+                  "birthdate": "2004-01-01T00:00:00.000Z",
+                  "country": "QAT",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 3,
+              "mark": "47.85",
+              "wind": null,
+              "performanceValue": 47850,
+              "country": "USA",
+              "athletes": [
+                {
+                  "id": 14865900,
+                  "firstname": "Caleb",
+                  "lastname": "Dean",
+                  "birthdate": "2001-06-20T00:00:00.000Z",
+                  "country": "USA",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 4,
+              "mark": "48.01",
+              "wind": null,
+              "performanceValue": 48010,
+              "country": "JAM",
+              "athletes": [
+                {
+                  "id": 14744387,
+                  "firstname": "Malik",
+                  "lastname": "James-King",
+                  "birthdate": "1999-06-28T00:00:00.000Z",
+                  "country": "JAM",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 5,
+              "mark": "48.16",
+              "wind": null,
+              "performanceValue": 48160,
+              "country": "BRA",
+              "athletes": [
+                {
+                  "id": 14918836,
+                  "firstname": "Matheus",
+                  "lastname": "Lima",
+                  "birthdate": "2003-06-01T00:00:00.000Z",
+                  "country": "BRA",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 6,
+              "mark": "48.65",
+              "wind": null,
+              "performanceValue": 48650,
+              "country": "KEN",
+              "athletes": [
+                {
+                  "id": 14802612,
+                  "firstname": "Wiseman Were",
+                  "lastname": "Mukhobe",
+                  "birthdate": "1997-10-13T00:00:00.000Z",
+                  "country": "KEN",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 7,
+              "mark": "48.81",
+              "wind": null,
+              "performanceValue": 48810,
+              "country": "SWE",
+              "athletes": [
+                {
+                  "id": 14882511,
+                  "firstname": "Oskar",
+                  "lastname": "Edlund",
+                  "birthdate": "2002-11-16T00:00:00.000Z",
+                  "country": "SWE",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 8,
+              "mark": "49.41",
+              "wind": null,
+              "performanceValue": 49410,
+              "country": "ESP",
+              "athletes": [
+                {
+                  "id": 14757952,
+                  "firstname": "Jesús David",
+                  "lastname": "Delgado",
+                  "birthdate": "1999-06-17T00:00:00.000Z",
+                  "country": "ESP",
+                  "sex": "M"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2025-09-17T00:00:00.000Z",
+          "day": 5,
+          "race": "Semifinal - Heat",
+          "raceId": 13,
+          "raceNumber": 3,
+          "results": [
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 1,
+              "mark": "47.95",
+              "wind": null,
+              "performanceValue": 47950,
+              "country": "USA",
+              "athletes": [
+                {
+                  "id": 14574865,
+                  "firstname": "Rai",
+                  "lastname": "Benjamin",
+                  "birthdate": "1997-07-27T00:00:00.000Z",
+                  "country": "USA",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 2,
+              "mark": "48.16",
+              "wind": null,
+              "performanceValue": 48160,
+              "country": "BRA",
+              "athletes": [
+                {
+                  "id": 14755064,
+                  "firstname": "Alison DOS",
+                  "lastname": "Santos",
+                  "birthdate": "2000-06-03T00:00:00.000Z",
+                  "country": "BRA",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 3,
+              "mark": "48.29",
+              "wind": null,
+              "performanceValue": 48290,
+              "country": "QAT",
+              "athletes": [
+                {
+                  "id": 14827001,
+                  "firstname": "Bassem",
+                  "lastname": "Hemeida",
+                  "birthdate": "2000-03-28T00:00:00.000Z",
+                  "country": "QAT",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 4,
+              "mark": "48.37",
+              "wind": null,
+              "performanceValue": 48370,
+              "country": "JAM",
+              "athletes": [
+                {
+                  "id": 14931525,
+                  "firstname": "Roshawn",
+                  "lastname": "Clarke",
+                  "birthdate": "2004-07-01T00:00:00.000Z",
+                  "country": "JAM",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 5,
+              "mark": "49.10",
+              "wind": null,
+              "performanceValue": 49100,
+              "country": "TUR",
+              "athletes": [
+                {
+                  "id": 14797505,
+                  "firstname": "Berke",
+                  "lastname": "Akçam",
+                  "birthdate": "2002-04-10T00:00:00.000Z",
+                  "country": "TUR",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 6,
+              "mark": "49.49",
+              "wind": null,
+              "performanceValue": 49490,
+              "country": "GBR",
+              "athletes": [
+                {
+                  "id": 14720465,
+                  "firstname": "Alastair",
+                  "lastname": "Chalmers",
+                  "birthdate": "2000-03-31T00:00:00.000Z",
+                  "country": "GBR",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 7,
+              "mark": "49.58",
+              "wind": null,
+              "performanceValue": 49580,
+              "country": "CRC",
+              "athletes": [
+                {
+                  "id": 14414628,
+                  "firstname": "Gerald",
+                  "lastname": "Drummond",
+                  "birthdate": "1994-09-05T00:00:00.000Z",
+                  "country": "CRC",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-17T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 8,
+              "mark": "49.61",
+              "wind": null,
+              "performanceValue": 49610,
+              "country": "BOT",
+              "athletes": [
+                {
+                  "id": 14824532,
+                  "firstname": "Victor",
+                  "lastname": "Ntweng",
+                  "birthdate": "1995-12-01T00:00:00.000Z",
+                  "country": "BOT",
+                  "sex": "M"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2025-09-15T00:00:00.000Z",
+          "day": 3,
+          "race": "Round 1 - Heat",
+          "raceId": 11,
+          "raceNumber": 1,
+          "results": [
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 1,
+              "mark": "48.03",
+              "wind": null,
+              "performanceValue": 48030,
+              "country": "QAT",
+              "athletes": [
+                {
+                  "id": 14752208,
+                  "firstname": "Abderrahman",
+                  "lastname": "Samba",
+                  "birthdate": "1995-09-05T00:00:00.000Z",
+                  "country": "QAT",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 2,
+              "mark": "48.26",
+              "wind": null,
+              "performanceValue": 48260,
+              "country": "GBR",
+              "athletes": [
+                {
+                  "id": 14769293,
+                  "firstname": "Tyri",
+                  "lastname": "Donovan",
+                  "birthdate": "1998-10-20T00:00:00.000Z",
+                  "country": "GBR",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 3,
+              "mark": "48.27",
+              "wind": null,
+              "performanceValue": 48270,
+              "country": "USA",
+              "athletes": [
+                {
+                  "id": 14969871,
+                  "firstname": "Chris",
+                  "lastname": "Robinson",
+                  "birthdate": "2001-02-19T00:00:00.000Z",
+                  "country": "USA",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 4,
+              "mark": "48.27",
+              "wind": null,
+              "performanceValue": 48270,
+              "country": "JAM",
+              "athletes": [
+                {
+                  "id": 14744387,
+                  "firstname": "Malik",
+                  "lastname": "James-King",
+                  "birthdate": "1999-06-28T00:00:00.000Z",
+                  "country": "JAM",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 5,
+              "mark": "48.27",
+              "wind": null,
+              "performanceValue": 48270,
+              "country": "KEN",
+              "athletes": [
+                {
+                  "id": 14802612,
+                  "firstname": "Wiseman Were",
+                  "lastname": "Mukhobe",
+                  "birthdate": "1997-10-13T00:00:00.000Z",
+                  "country": "KEN",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 6,
+              "mark": "48.52",
+              "wind": null,
+              "performanceValue": 48520,
+              "country": "SWE",
+              "athletes": [
+                {
+                  "id": 14882511,
+                  "firstname": "Oskar",
+                  "lastname": "Edlund",
+                  "birthdate": "2002-11-16T00:00:00.000Z",
+                  "country": "SWE",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 7,
+              "mark": "48.98",
+              "wind": null,
+              "performanceValue": 48980,
+              "country": "ESP",
+              "athletes": [
+                {
+                  "id": 14757952,
+                  "firstname": "Jesús David",
+                  "lastname": "Delgado",
+                  "birthdate": "1999-06-17T00:00:00.000Z",
+                  "country": "ESP",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 8,
+              "mark": "49.73",
+              "wind": null,
+              "performanceValue": 49730,
+              "country": "JPN",
+              "athletes": [
+                {
+                  "id": 14998155,
+                  "firstname": "Shunta",
+                  "lastname": "Inoue",
+                  "birthdate": "2002-07-04T00:00:00.000Z",
+                  "country": "JPN",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 9,
+              "mark": "52.76",
+              "wind": null,
+              "performanceValue": 52760,
+              "country": "MAC",
+              "athletes": [
+                {
+                  "id": 15052186,
+                  "firstname": "Chi Chong",
+                  "lastname": "Cheong",
+                  "birthdate": "2004-10-06T00:00:00.000Z",
+                  "country": "MAC",
+                  "sex": "M"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2025-09-15T00:00:00.000Z",
+          "day": 3,
+          "race": "Round 1 - Heat",
+          "raceId": 11,
+          "raceNumber": 2,
+          "results": [
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 1,
+              "mark": "48.43",
+              "wind": null,
+              "performanceValue": 48430,
+              "country": "QAT",
+              "athletes": [
+                {
+                  "id": 14827001,
+                  "firstname": "Bassem",
+                  "lastname": "Hemeida",
+                  "birthdate": "2000-03-28T00:00:00.000Z",
+                  "country": "QAT",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 2,
+              "mark": "48.48",
+              "wind": null,
+              "performanceValue": 48480,
+              "country": "BRA",
+              "athletes": [
+                {
+                  "id": 14755064,
+                  "firstname": "Alison DOS",
+                  "lastname": "Santos",
+                  "birthdate": "2000-06-03T00:00:00.000Z",
+                  "country": "BRA",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 3,
+              "mark": "48.81",
+              "wind": null,
+              "performanceValue": 48810,
+              "country": "GER",
+              "athletes": [
+                {
+                  "id": 14984693,
+                  "firstname": "Owe",
+                  "lastname": "Fischer-Breiholz",
+                  "birthdate": "2004-05-05T00:00:00.000Z",
+                  "country": "GER",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 4,
+              "mark": "48.92",
+              "wind": null,
+              "performanceValue": 48920,
+              "country": "SLO",
+              "athletes": [
+                {
+                  "id": 14874438,
+                  "firstname": "Matic Ian",
+                  "lastname": "Guček",
+                  "birthdate": "2003-09-20T00:00:00.000Z",
+                  "country": "SLO",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 5,
+              "mark": "49.89",
+              "wind": null,
+              "performanceValue": 49890,
+              "country": "IVB",
+              "athletes": [
+                {
+                  "id": 14532760,
+                  "firstname": "Kyron",
+                  "lastname": "Mcmaster",
+                  "birthdate": "1997-01-03T00:00:00.000Z",
+                  "country": "IVB",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 6,
+              "mark": "50.08",
+              "wind": null,
+              "performanceValue": 50080,
+              "country": "JPN",
+              "athletes": [
+                {
+                  "id": 14956478,
+                  "firstname": "Daiki",
+                  "lastname": "Ogawa",
+                  "birthdate": "2003-04-17T00:00:00.000Z",
+                  "country": "JPN",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 7,
+              "mark": "50.20",
+              "wind": null,
+              "performanceValue": 50200,
+              "country": "LBN",
+              "athletes": [
+                {
+                  "id": 14980995,
+                  "firstname": "Marc Anthony",
+                  "lastname": "Ibrahim",
+                  "birthdate": "2002-12-05T00:00:00.000Z",
+                  "country": "LBN",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 8,
+              "mark": "53.26",
+              "wind": null,
+              "performanceValue": 53260,
+              "country": "SKN",
+              "athletes": [
+                {
+                  "id": 15026292,
+                  "firstname": "Akanye",
+                  "lastname": "Francis",
+                  "birthdate": "2008-01-15T00:00:00.000Z",
+                  "country": "SKN",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 0,
+              "mark": "",
+              "wind": null,
+              "performanceValue": null,
+              "country": "ITA",
+              "athletes": [
+                {
+                  "id": 14699358,
+                  "firstname": "Alessandro",
+                  "lastname": "Sibilio",
+                  "birthdate": "1999-04-27T00:00:00.000Z",
+                  "country": "ITA",
+                  "sex": "M"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2025-09-15T00:00:00.000Z",
+          "day": 3,
+          "race": "Round 1 - Heat",
+          "raceId": 11,
+          "raceNumber": 3,
+          "results": [
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 1,
+              "mark": "48.15",
+              "wind": null,
+              "performanceValue": 48150,
+              "country": "BRA",
+              "athletes": [
+                {
+                  "id": 14918836,
+                  "firstname": "Matheus",
+                  "lastname": "Lima",
+                  "birthdate": "2003-06-01T00:00:00.000Z",
+                  "country": "BRA",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 2,
+              "mark": "48.34",
+              "wind": null,
+              "performanceValue": 48340,
+              "country": "QAT",
+              "athletes": [
+                {
+                  "id": 14973411,
+                  "firstname": "Ismail Doudai",
+                  "lastname": "Abakar",
+                  "birthdate": "2004-01-01T00:00:00.000Z",
+                  "country": "QAT",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 3,
+              "mark": "48.56",
+              "wind": null,
+              "performanceValue": 48560,
+              "country": "NOR",
+              "athletes": [
+                {
+                  "id": 14479487,
+                  "firstname": "Karsten",
+                  "lastname": "Warholm",
+                  "birthdate": "1996-02-28T00:00:00.000Z",
+                  "country": "NOR",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 4,
+              "mark": "48.68",
+              "wind": null,
+              "performanceValue": 48680,
+              "country": "TUR",
+              "athletes": [
+                {
+                  "id": 14797505,
+                  "firstname": "Berke",
+                  "lastname": "Akçam",
+                  "birthdate": "2002-04-10T00:00:00.000Z",
+                  "country": "TUR",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 5,
+              "mark": "48.72",
+              "wind": null,
+              "performanceValue": 48720,
+              "country": "BOT",
+              "athletes": [
+                {
+                  "id": 14754324,
+                  "firstname": "Kemorena",
+                  "lastname": "Tisang",
+                  "birthdate": "1995-04-25T00:00:00.000Z",
+                  "country": "BOT",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 6,
+              "mark": "49.41",
+              "wind": null,
+              "performanceValue": 49410,
+              "country": "GER",
+              "athletes": [
+                {
+                  "id": 14536209,
+                  "firstname": "Joshua",
+                  "lastname": "Abuaku",
+                  "birthdate": "1996-07-07T00:00:00.000Z",
+                  "country": "GER",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 7,
+              "mark": "49.74",
+              "wind": null,
+              "performanceValue": 49740,
+              "country": "SWE",
+              "athletes": [
+                {
+                  "id": 14713427,
+                  "firstname": "Carl",
+                  "lastname": "Bengtström",
+                  "birthdate": "2000-01-13T00:00:00.000Z",
+                  "country": "SWE",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 8,
+              "mark": "49.91",
+              "wind": null,
+              "performanceValue": 49910,
+              "country": "JAM",
+              "athletes": [
+                {
+                  "id": 14836145,
+                  "firstname": "Assinie",
+                  "lastname": "Wilson",
+                  "birthdate": "2002-04-10T00:00:00.000Z",
+                  "country": "JAM",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 9,
+              "mark": "50.17",
+              "wind": null,
+              "performanceValue": 50170,
+              "country": "SGP",
+              "athletes": [
+                {
+                  "id": 14594892,
+                  "firstname": "Jun Jie Calvin",
+                  "lastname": "Quek",
+                  "birthdate": "1996-02-26T00:00:00.000Z",
+                  "country": "SGP",
+                  "sex": "M"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2025-09-15T00:00:00.000Z",
+          "day": 3,
+          "race": "Round 1 - Heat",
+          "raceId": 11,
+          "raceNumber": 4,
+          "results": [
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 1,
+              "mark": "48.15",
+              "wind": null,
+              "performanceValue": 48150,
+              "country": "USA",
+              "athletes": [
+                {
+                  "id": 14574865,
+                  "firstname": "Rai",
+                  "lastname": "Benjamin",
+                  "birthdate": "1997-07-27T00:00:00.000Z",
+                  "country": "USA",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 2,
+              "mark": "48.33",
+              "wind": null,
+              "performanceValue": 48330,
+              "country": "GER",
+              "athletes": [
+                {
+                  "id": 14679384,
+                  "firstname": "Emil",
+                  "lastname": "Agyekum",
+                  "birthdate": "1999-05-22T00:00:00.000Z",
+                  "country": "GER",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 3,
+              "mark": "48.54",
+              "wind": null,
+              "performanceValue": 48540,
+              "country": "BOT",
+              "athletes": [
+                {
+                  "id": 14824532,
+                  "firstname": "Victor",
+                  "lastname": "Ntweng",
+                  "birthdate": "1995-12-01T00:00:00.000Z",
+                  "country": "BOT",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 4,
+              "mark": "48.81",
+              "wind": null,
+              "performanceValue": 48810,
+              "country": "CRC",
+              "athletes": [
+                {
+                  "id": 14414628,
+                  "firstname": "Gerald",
+                  "lastname": "Drummond",
+                  "birthdate": "1994-09-05T00:00:00.000Z",
+                  "country": "CRC",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 5,
+              "mark": "48.83",
+              "wind": null,
+              "performanceValue": 48830,
+              "country": "JAM",
+              "athletes": [
+                {
+                  "id": 14931525,
+                  "firstname": "Roshawn",
+                  "lastname": "Clarke",
+                  "birthdate": "2004-07-01T00:00:00.000Z",
+                  "country": "JAM",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 6,
+              "mark": "49.02",
+              "wind": null,
+              "performanceValue": 49020,
+              "country": "CZE",
+              "athletes": [
+                {
+                  "id": 14589388,
+                  "firstname": "Vít",
+                  "lastname": "Müller",
+                  "birthdate": "1996-08-31T00:00:00.000Z",
+                  "country": "CZE",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 7,
+              "mark": "49.20",
+              "wind": null,
+              "performanceValue": 49200,
+              "country": "GBR",
+              "athletes": [
+                {
+                  "id": 14759096,
+                  "firstname": "Seamus",
+                  "lastname": "Derbyshire",
+                  "birthdate": "2000-01-27T00:00:00.000Z",
+                  "country": "GBR",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 8,
+              "mark": "49.32",
+              "wind": null,
+              "performanceValue": 49320,
+              "country": "DMA",
+              "athletes": [
+                {
+                  "id": 14893596,
+                  "firstname": "Dennick",
+                  "lastname": "Luke",
+                  "birthdate": "2001-01-28T00:00:00.000Z",
+                  "country": "DMA",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 9,
+              "mark": "49.53",
+              "wind": null,
+              "performanceValue": 49530,
+              "country": "SUI",
+              "athletes": [
+                {
+                  "id": 14683945,
+                  "firstname": "Julien",
+                  "lastname": "Bonvin",
+                  "birthdate": "1999-01-10T00:00:00.000Z",
+                  "country": "SUI",
+                  "sex": "M"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2025-09-15T00:00:00.000Z",
+          "day": 3,
+          "race": "Round 1 - Heat",
+          "raceId": 11,
+          "raceNumber": 5,
+          "results": [
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 1,
+              "mark": "48.37",
+              "wind": null,
+              "performanceValue": 48370,
+              "country": "NGR",
+              "athletes": [
+                {
+                  "id": 14960533,
+                  "firstname": "Ezekiel",
+                  "lastname": "Nathaniel",
+                  "birthdate": "2003-06-20T00:00:00.000Z",
+                  "country": "NGR",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 2,
+              "mark": "48.67",
+              "wind": null,
+              "performanceValue": 48670,
+              "country": "USA",
+              "athletes": [
+                {
+                  "id": 14865900,
+                  "firstname": "Caleb",
+                  "lastname": "Dean",
+                  "birthdate": "2001-06-20T00:00:00.000Z",
+                  "country": "USA",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 3,
+              "mark": "48.69",
+              "wind": null,
+              "performanceValue": 48690,
+              "country": "BRA",
+              "athletes": [
+                {
+                  "id": 14768511,
+                  "firstname": "Francisco Guilherme DOS REIS",
+                  "lastname": "Viana",
+                  "birthdate": "1999-12-14T00:00:00.000Z",
+                  "country": "BRA",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 4,
+              "mark": "48.86",
+              "wind": null,
+              "performanceValue": 48860,
+              "country": "GBR",
+              "athletes": [
+                {
+                  "id": 14720465,
+                  "firstname": "Alastair",
+                  "lastname": "Chalmers",
+                  "birthdate": "2000-03-31T00:00:00.000Z",
+                  "country": "GBR",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 5,
+              "mark": "49.50",
+              "wind": null,
+              "performanceValue": 49500,
+              "country": "RSA",
+              "athletes": [
+                {
+                  "id": 14830123,
+                  "firstname": "Sabelo",
+                  "lastname": "Dhlamini",
+                  "birthdate": "1995-01-17T00:00:00.000Z",
+                  "country": "RSA",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 6,
+              "mark": "49.66",
+              "wind": null,
+              "performanceValue": 49660,
+              "country": "TUR",
+              "athletes": [
+                {
+                  "id": 14928872,
+                  "firstname": "İsmail",
+                  "lastname": "Nezir",
+                  "birthdate": "2003-01-22T00:00:00.000Z",
+                  "country": "TUR",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 7,
+              "mark": "49.91",
+              "wind": null,
+              "performanceValue": 49910,
+              "country": "SVK",
+              "athletes": [
+                {
+                  "id": 14723633,
+                  "firstname": "Patrik",
+                  "lastname": "Dömötör",
+                  "birthdate": "2000-12-13T00:00:00.000Z",
+                  "country": "SVK",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 8,
+              "mark": "51.80",
+              "wind": null,
+              "performanceValue": 51800,
+              "country": "JPN",
+              "athletes": [
+                {
+                  "id": 14900979,
+                  "firstname": "Ken",
+                  "lastname": "Toyoda",
+                  "birthdate": "2002-10-15T00:00:00.000Z",
+                  "country": "JPN",
+                  "sex": "M"
+                }
+              ]
+            },
+            {
+              "location": {
+                "stadium": "National Stadium",
+                "city": "Tokyo",
+                "country": "JPN",
+                "indoor": false
+              },
+              "disciplineCode": "400H",
+              "discipline": "400 Metres Hurdles",
+              "date": "2025-09-15T00:00:00.000Z",
+              "isTechnical": false,
+              "place": 9,
+              "mark": "52.47",
+              "wind": null,
+              "performanceValue": 52470,
+              "country": "BAN",
+              "athletes": [
+                {
+                  "id": 15067465,
+                  "firstname": "Najimul Hossain",
+                  "lastname": "Roni",
+                  "birthdate": "1998-10-12T00:00:00.000Z",
+                  "country": "BAN",
+                  "sex": "M"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "options": {
+    "days": [
+      {
+        "date": "2025-09-13T00:00:00.000Z",
+        "day": 1
+      },
+      {
+        "date": "2025-09-14T00:00:00.000Z",
+        "day": 2
+      },
+      {
+        "date": "2025-09-15T00:00:00.000Z",
+        "day": 3
+      },
+      {
+        "date": "2025-09-16T00:00:00.000Z",
+        "day": 4
+      },
+      {
+        "date": "2025-09-17T00:00:00.000Z",
+        "day": 5
+      },
+      {
+        "date": "2025-09-18T00:00:00.000Z",
+        "day": 6
+      },
+      {
+        "date": "2025-09-19T00:00:00.000Z",
+        "day": 7
+      },
+      {
+        "date": "2025-09-20T00:00:00.000Z",
+        "day": 8
+      },
+      {
+        "date": "2025-09-21T00:00:00.000Z",
+        "day": 9
+      }
+    ],
+    "events": [
+      {
+        "id": 10229509,
+        "name": "100 Metres",
+        "disciplineCode": "100",
+        "combined": false,
+        "discipline": "100 Metres",
+        "sex": "W"
+      },
+      {
+        "id": 10229510,
+        "name": "200 Metres",
+        "disciplineCode": "200",
+        "combined": false,
+        "discipline": "200 Metres",
+        "sex": "W"
+      },
+      {
+        "id": 10229511,
+        "name": "400 Metres",
+        "disciplineCode": "400",
+        "combined": false,
+        "discipline": "400 Metres",
+        "sex": "W"
+      },
+      {
+        "id": 10229512,
+        "name": "800 Metres",
+        "disciplineCode": "800",
+        "combined": false,
+        "discipline": "800 Metres",
+        "sex": "W"
+      },
+      {
+        "id": 10229513,
+        "name": "1500 Metres",
+        "disciplineCode": "1500",
+        "combined": false,
+        "discipline": "1500 Metres",
+        "sex": "W"
+      },
+      {
+        "id": 10229514,
+        "name": "5000 Metres",
+        "disciplineCode": "5000",
+        "combined": false,
+        "discipline": "5000 Metres",
+        "sex": "W"
+      },
+      {
+        "id": 10229521,
+        "name": "10,000 Metres",
+        "disciplineCode": "10K",
+        "combined": false,
+        "discipline": "10,000 Metres",
+        "sex": "W"
+      },
+      {
+        "id": 10229522,
+        "name": "100 Metres Hurdles",
+        "disciplineCode": "100H",
+        "combined": false,
+        "discipline": "100 Metres Hurdles",
+        "sex": "W"
+      },
+      {
+        "id": 10229523,
+        "name": "400 Metres Hurdles",
+        "disciplineCode": "400H",
+        "combined": false,
+        "discipline": "400 Metres Hurdles",
+        "sex": "W"
+      },
+      {
+        "id": 10229524,
+        "name": "3000 Metres Steeplechase",
+        "disciplineCode": "3KSC",
+        "combined": false,
+        "discipline": "3000 Metres Steeplechase",
+        "sex": "W"
+      },
+      {
+        "id": 10229526,
+        "name": "High Jump",
+        "disciplineCode": "HJ",
+        "combined": false,
+        "discipline": "High Jump",
+        "sex": "W"
+      },
+      {
+        "id": 10229527,
+        "name": "Pole Vault",
+        "disciplineCode": "PV",
+        "combined": false,
+        "discipline": "Pole Vault",
+        "sex": "W"
+      },
+      {
+        "id": 10229528,
+        "name": "Long Jump",
+        "disciplineCode": "LJ",
+        "combined": false,
+        "discipline": "Long Jump",
+        "sex": "W"
+      },
+      {
+        "id": 10229529,
+        "name": "Triple Jump",
+        "disciplineCode": "TJ",
+        "combined": false,
+        "discipline": "Triple Jump",
+        "sex": "W"
+      },
+      {
+        "id": 10229530,
+        "name": "Shot Put",
+        "disciplineCode": "SP",
+        "combined": false,
+        "discipline": "Shot Put",
+        "sex": "W"
+      },
+      {
+        "id": 10229531,
+        "name": "Discus Throw",
+        "disciplineCode": "DT",
+        "combined": false,
+        "discipline": "Discus Throw",
+        "sex": "W"
+      },
+      {
+        "id": 10229532,
+        "name": "Hammer Throw",
+        "disciplineCode": "HT",
+        "combined": false,
+        "discipline": "Hammer Throw",
+        "sex": "W"
+      },
+      {
+        "id": 10229533,
+        "name": "Javelin Throw",
+        "disciplineCode": "JT",
+        "combined": false,
+        "discipline": "Javelin Throw",
+        "sex": "W"
+      },
+      {
+        "id": 10229534,
+        "name": "Marathon",
+        "disciplineCode": "MAR",
+        "combined": false,
+        "discipline": "Marathon",
+        "sex": "W"
+      },
+      {
+        "id": 10229535,
+        "name": "20 Kilometres Race Walk",
+        "disciplineCode": "20KR",
+        "combined": false,
+        "discipline": "20 Kilometres Race Walk",
+        "sex": "W"
+      },
+      {
+        "id": 10229989,
+        "name": "35 Kilometres Race Walk",
+        "disciplineCode": "35KR",
+        "combined": false,
+        "discipline": "35 Kilometres Race Walk",
+        "sex": "W"
+      },
+      {
+        "id": 10229536,
+        "name": "Heptathlon",
+        "disciplineCode": "HEP",
+        "combined": true,
+        "discipline": "Heptathlon",
+        "sex": "W"
+      },
+      {
+        "id": 204594,
+        "name": "4x100 Metres Relay",
+        "disciplineCode": "4X1",
+        "combined": false,
+        "discipline": "4x100 Metres Relay",
+        "sex": "W"
+      },
+      {
+        "id": 204596,
+        "name": "4x400 Metres Relay",
+        "disciplineCode": "4X4",
+        "combined": false,
+        "discipline": "4x400 Metres Relay",
+        "sex": "W"
+      },
+      {
+        "id": 10229630,
+        "name": "100 Metres",
+        "disciplineCode": "100",
+        "combined": false,
+        "discipline": "100 Metres",
+        "sex": "M"
+      },
+      {
+        "id": 10229605,
+        "name": "200 Metres",
+        "disciplineCode": "200",
+        "combined": false,
+        "discipline": "200 Metres",
+        "sex": "M"
+      },
+      {
+        "id": 10229631,
+        "name": "400 Metres",
+        "disciplineCode": "400",
+        "combined": false,
+        "discipline": "400 Metres",
+        "sex": "M"
+      },
+      {
+        "id": 10229501,
+        "name": "800 Metres",
+        "disciplineCode": "800",
+        "combined": false,
+        "discipline": "800 Metres",
+        "sex": "M"
+      },
+      {
+        "id": 10229502,
+        "name": "1500 Metres",
+        "disciplineCode": "1500",
+        "combined": false,
+        "discipline": "1500 Metres",
+        "sex": "M"
+      },
+      {
+        "id": 10229609,
+        "name": "5000 Metres",
+        "disciplineCode": "5000",
+        "combined": false,
+        "discipline": "5000 Metres",
+        "sex": "M"
+      },
+      {
+        "id": 10229610,
+        "name": "10,000 Metres",
+        "disciplineCode": "10K",
+        "combined": false,
+        "discipline": "10,000 Metres",
+        "sex": "M"
+      },
+      {
+        "id": 10229611,
+        "name": "110 Metres Hurdles",
+        "disciplineCode": "110H",
+        "combined": false,
+        "discipline": "110 Metres Hurdles",
+        "sex": "M"
+      },
+      {
+        "id": 10229612,
+        "name": "400 Metres Hurdles",
+        "disciplineCode": "400H",
+        "combined": false,
+        "discipline": "400 Metres Hurdles",
+        "sex": "M"
+      },
+      {
+        "id": 10229614,
+        "name": "3000 Metres Steeplechase",
+        "disciplineCode": "3KSC",
+        "combined": false,
+        "discipline": "3000 Metres Steeplechase",
+        "sex": "M"
+      },
+      {
+        "id": 10229615,
+        "name": "High Jump",
+        "disciplineCode": "HJ",
+        "combined": false,
+        "discipline": "High Jump",
+        "sex": "M"
+      },
+      {
+        "id": 10229616,
+        "name": "Pole Vault",
+        "disciplineCode": "PV",
+        "combined": false,
+        "discipline": "Pole Vault",
+        "sex": "M"
+      },
+      {
+        "id": 10229617,
+        "name": "Long Jump",
+        "disciplineCode": "LJ",
+        "combined": false,
+        "discipline": "Long Jump",
+        "sex": "M"
+      },
+      {
+        "id": 10229618,
+        "name": "Triple Jump",
+        "disciplineCode": "TJ",
+        "combined": false,
+        "discipline": "Triple Jump",
+        "sex": "M"
+      },
+      {
+        "id": 10229619,
+        "name": "Shot Put",
+        "disciplineCode": "SP",
+        "combined": false,
+        "discipline": "Shot Put",
+        "sex": "M"
+      },
+      {
+        "id": 10229620,
+        "name": "Discus Throw",
+        "disciplineCode": "DT",
+        "combined": false,
+        "discipline": "Discus Throw",
+        "sex": "M"
+      },
+      {
+        "id": 10229621,
+        "name": "Hammer Throw",
+        "disciplineCode": "HT",
+        "combined": false,
+        "discipline": "Hammer Throw",
+        "sex": "M"
+      },
+      {
+        "id": 10229636,
+        "name": "Javelin Throw",
+        "disciplineCode": "JT",
+        "combined": false,
+        "discipline": "Javelin Throw",
+        "sex": "M"
+      },
+      {
+        "id": 10229634,
+        "name": "Marathon",
+        "disciplineCode": "MAR",
+        "combined": false,
+        "discipline": "Marathon",
+        "sex": "M"
+      },
+      {
+        "id": 10229508,
+        "name": "20 Kilometres Race Walk",
+        "disciplineCode": "20KR",
+        "combined": false,
+        "discipline": "20 Kilometres Race Walk",
+        "sex": "M"
+      },
+      {
+        "id": 10229627,
+        "name": "35 Kilometres Race Walk",
+        "disciplineCode": "35KR",
+        "combined": false,
+        "discipline": "35 Kilometres Race Walk",
+        "sex": "M"
+      },
+      {
+        "id": 10229629,
+        "name": "Decathlon",
+        "disciplineCode": "DEC",
+        "combined": true,
+        "discipline": "Decathlon",
+        "sex": "M"
+      },
+      {
+        "id": 204593,
+        "name": "4x100 Metres Relay",
+        "disciplineCode": "4X1",
+        "combined": false,
+        "discipline": "4x100 Metres Relay",
+        "sex": "M"
+      },
+      {
+        "id": 204595,
+        "name": "4x400 Metres Relay",
+        "disciplineCode": "4X4",
+        "combined": false,
+        "discipline": "4x400 Metres Relay",
+        "sex": "M"
+      },
+      {
+        "id": 10229988,
+        "name": "4x400 Metres Relay",
+        "disciplineCode": "4X4",
+        "combined": false,
+        "discipline": "4x400 Metres Relay",
+        "sex": "X"
+      }
+    ]
+  }
+}

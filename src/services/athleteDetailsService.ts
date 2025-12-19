@@ -55,12 +55,24 @@ export async function getCompleteAthleteData(athleteId: number, scope: 'season' 
     if (filteredResults.length === 0) filteredResults = allResults
   }
 
+  // Deduplicate results to avoid redundant API calls and overcounting
+  // Multiple results can be from one competition (e.g. Heats, Semis, Final)
+  // but we want to avoid exact duplicates of the same race.
+  const uniqueFilteredResults = filteredResults.filter((result, index, self) =>
+    index === self.findIndex((r) => (
+      r.competitionId === result.competitionId &&
+      r.race === result.race &&
+      r.mark === result.mark &&
+      r.date === result.date
+    ))
+  )
+
   // Fetch competition details for rival analysis
   // Limit to recent competitions to avoid too many API calls
   // For season scope, we use all results (usually < 20)
   // For lifetime, we still limit to recent 20 for performance, or maybe 30 for premium feel
   const limit = scope === 'lifetime' ? 30 : 50
-  const recentResults = filteredResults.slice(0, limit)
+  const recentResults = uniqueFilteredResults.slice(0, limit)
   
   const resultsWithCompetitors = await Promise.all(
     recentResults.map(async (result) => {
@@ -88,19 +100,43 @@ export async function getCompleteAthleteData(athleteId: number, scope: 'season' 
           if (event.races && event.races.length > 0) {
             // Find the specific race where our athlete competed
             // We match by checking if the athleteId is in the results of that race
-            const ourRace = event.races.find((race: any) => 
-              race.results && race.results.some((r: any) => 
+            // AND we try to match the race type (e.g. "Round 1", "Semifinal")
+            const ourRace = event.races.find((race: any) => {
+              // 1. Must contain the athlete
+              const hasAthlete = race.results && race.results.some((r: any) => 
                 r.athletes && r.athletes.some((a: any) => a.id === athleteId)
               )
-            )
+              if (!hasAthlete) return false
+              
+              // 2. Try to match the race type if available
+              // result.race might be "Round 1" and race.race might be "Round 1 - Heat 2"
+              if (result.race && race.race) {
+                const resultRaceLower = result.race.toLowerCase()
+                const raceRaceLower = race.race.toLowerCase()
+                
+                // Check for common race type matches
+                const isMatch = raceRaceLower.includes(resultRaceLower) || 
+                               resultRaceLower.includes(raceRaceLower)
+                
+                return isMatch
+              }
+              
+              return true
+            })
 
             if (ourRace && ourRace.results) {
               competitors = ourRace.results
+              console.log(`Matched race for ${result.competition}: "${result.race}" -> "${ourRace.race}"`)
             } else {
-              // Fallback: if we can't find the specific race, 
-              // check if there's only one race (e.g. a Final)
-              if (event.races.length === 1 && event.races[0].results) {
-                competitors = event.races[0].results
+              // Fallback: if we can't find the specific race with name match, 
+              // just find the first one that contains the athlete
+              const fallbackRace = event.races.find((race: any) => 
+                race.results && race.results.some((r: any) => 
+                  r.athletes && r.athletes.some((a: any) => a.id === athleteId)
+                )
+              )
+              if (fallbackRace && fallbackRace.results) {
+                competitors = fallbackRace.results
               }
             }
           }

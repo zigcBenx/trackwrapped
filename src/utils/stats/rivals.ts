@@ -18,9 +18,10 @@ export function analyzeRivals(
   lastName: string
 ): RivalAnalysis {
   // Deduplicate results first to prevent triple-counting if data is messy
+  // We keep different races within the same competition (e.g. Heats vs Final)
   const uniqueResults = results.filter((result, index, self) =>
     index === self.findIndex((r) => (
-      r.competition === result.competition &&
+      r.competitionId === result.competitionId &&
       r.race === result.race &&
       r.date === result.date &&
       r.mark === result.mark
@@ -45,13 +46,14 @@ export function analyzeRivals(
     // Analyze each competitor
     result.competitors.forEach((competitor: import('@/types/athleteDetails').Competitor) => {
       // Skip ourselves
-      if (competitor.firstname === firstName && competitor.lastname === lastName) return
+      if (competitor.id === (results[0] as any).athleteId || 
+          (competitor.firstname === firstName && competitor.lastname === lastName)) return
 
-      const competitorKey = `${competitor.firstname} ${competitor.lastname}`
+      const competitorKey = String(competitor.id)
       
       if (!competitorMap.has(competitorKey)) {
         competitorMap.set(competitorKey, {
-          name: competitorKey,
+          name: `${competitor.firstname} ${competitor.lastname}`,
           meetings: 0,
           losses: 0,
           meetingNames: []
@@ -84,7 +86,7 @@ export function analyzeRivals(
 
   // Find top rivals (people we competed against most)
   const topRivalsRaw = competitors
-    .filter(c => c.meetings >= 2)  // At least 2 meetings
+    .filter(c => c.meetings >= 1)  // At least 1 meeting
     .sort((a, b) => b.meetings - a.meetings)
     .slice(0, 3)
 
