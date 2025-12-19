@@ -549,14 +549,19 @@ async function handleShare(event?: any) {
       const file = new File([blob], 'track-wrapped-2025.png', { type: 'image/png' })
       
       if (navigator.canShare({ files: [file] })) {
-        console.log('Sharing file via navigator.share...')
-        await navigator.share({
-          files: [file],
-          title: 'My Track Wrapped 2025',
-          text: 'Check out my season stats on Track Wrapped!'
-        })
-        console.log('Share successful')
-        return
+        try {
+          console.log('Sharing file via navigator.share...')
+          await navigator.share({
+            files: [file],
+            title: 'My Track Wrapped 2025',
+            text: 'Check out my season stats on Track Wrapped!'
+          })
+          console.log('Share successful')
+          return
+        } catch (shareError) {
+          console.error('navigator.share failed:', shareError)
+          // Continue to download fallback
+        }
       } else {
         console.warn('navigator.canShare returned false for the generated file')
       }
@@ -570,10 +575,13 @@ async function handleShare(event?: any) {
     const link = document.createElement('a')
     link.download = 'track-wrapped-2025.png'
     link.href = dataUrl
+    document.body.appendChild(link) // Required for some mobile browsers
     link.click()
+    document.body.removeChild(link)
     console.log('Download triggered')
   } catch (error) {
     console.error('Error during share/capture:', error)
+    alert('Sorry, there was an error generating your share card. Please try again.')
   } finally {
     isSharing.value = false
   }
@@ -1032,11 +1040,11 @@ function stopCarousel() {
 .capture-link {
   display: none; /* Hidden on screen */
   font-family: var(--font-family-primary);
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: var(--color-accent-primary);
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-align: center;
   width: 100%;
   margin-top: var(--spacing-sm);
