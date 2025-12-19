@@ -31,6 +31,7 @@
                   :src="profileImage" 
                   alt="Profile" 
                   class="avatar-img"
+                  crossorigin="anonymous"
                   @error="handleImageError"
                 />
                 <span v-else>{{ initials }}</span>
@@ -252,8 +253,8 @@ const imageError = ref(false)
 
 const profileImage = computed(() => {
   if (!props.athleteId) return null
-  // Using high-res image if available, or standard
-  return `https://media.aws.iaaf.org/athletes/${props.athleteId}.jpg`
+  const originalUrl = `https://media.aws.iaaf.org/athletes/${props.athleteId}.jpg`
+  return `/api/proxy-image?url=${encodeURIComponent(originalUrl)}`
 })
 
 function handleImageError() {
@@ -1039,14 +1040,15 @@ function stopCarousel() {
 .capture-link {
   display: none; /* Hidden on screen */
   font-family: var(--font-family-primary);
-  font-size: 0.8rem;
+  font-size: 0.65rem;
   font-weight: 700;
   color: var(--color-accent-primary);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   text-align: center;
   width: 100%;
   margin-top: var(--spacing-sm);
+  padding-bottom: 8px;
 }
 
 .sharing-loader {
