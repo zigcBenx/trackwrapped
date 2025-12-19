@@ -999,8 +999,6 @@ function stopCarousel() {
   grid-column: span 3;
   position: relative;
   z-index: 100; /* Extremely high z-index */
-  margin-top: auto;
-  padding-top: var(--spacing-sm);
   pointer-events: auto;
   display: flex;
   flex-direction: column;
