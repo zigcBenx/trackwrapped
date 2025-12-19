@@ -31,6 +31,7 @@
                   :src="profileImage" 
                   alt="Profile" 
                   class="avatar-img"
+                  crossorigin="anonymous"
                   @error="handleImageError"
                 />
                 <span v-else>{{ initials }}</span>
@@ -144,7 +145,7 @@
               >
                 Screenshot & Share!
               </button>
-              <div class="capture-link">track-wrapped.com</div>
+              <div class="capture-link">trackwrapped.vercel.app</div>
             </div>
           </div>
 
@@ -457,12 +458,24 @@ async function handleShare(event?: any) {
   isSharing.value = true
 
   // Small delay to let the UI update (show "Generating...")
-  await new Promise(resolve => setTimeout(resolve, 100))
+  await new Promise(resolve => setTimeout(resolve, 500))
+
+  // Wait for all images to be loaded
+  const images = shareCardRef.value.querySelectorAll('img')
+  const imagePromises = Array.from(images).map(img => {
+    if (img.complete) return Promise.resolve()
+    return new Promise(resolve => {
+      img.onload = resolve
+      img.onerror = resolve
+    })
+  })
+  await Promise.all(imagePromises)
 
   try {
     console.log('Capturing canvas...')
     const canvas = await html2canvas(shareCardRef.value, {
       useCORS: true,
+      allowTaint: false, // Ensure we don't taint the canvas
       scale: 2, // Higher quality
       backgroundColor: '#000000',
       logging: false,
