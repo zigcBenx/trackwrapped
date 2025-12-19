@@ -93,7 +93,7 @@ withDefaults(defineProps<Props>(), {
   width: 100%;
   max-width: 100%; /* Allow full width */
   text-align: center;
-  z-index: 2;
+  z-index: 10;
   position: relative;
 }
 
@@ -108,8 +108,9 @@ withDefaults(defineProps<Props>(), {
   font-weight: 600;
   color: rgba(255, 255, 255, 0.3);
   letter-spacing: 2px;
-  z-index: 3;
+  z-index: 1;
   text-transform: uppercase;
+  pointer-events: none;
 }
 
 @media (max-width: 768px) {

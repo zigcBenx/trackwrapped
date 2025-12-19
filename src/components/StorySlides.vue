@@ -542,7 +542,9 @@ function handleSlideTap(event: MouseEvent) {
 
   // Ignore if clicking a button or interactive element
   const target = event.target as HTMLElement
-  if (target.closest('button') || target.closest('.interactive')) return
+  if (target.closest('button') || target.closest('.interactive')) {
+    return
+  }
 
   const wrapper = event.currentTarget as HTMLElement
   const rect = wrapper.getBoundingClientRect()
@@ -563,9 +565,10 @@ function handleClose() {
 
 // Touch handling for mobile (Instagram-style)
 function handleTouchStart(event: TouchEvent) {
-  // Ignore if touching a button
   const target = event.target as HTMLElement
-  if (target.closest('button') || target.closest('.interactive')) return
+  if (target.closest('button') || target.closest('.interactive')) {
+    return
+  }
 
   const touch = event.touches[0]
   if (!touch) return
@@ -608,6 +611,12 @@ function handleTouchEnd(event: TouchEvent) {
   if (longPressTimer) {
     clearTimeout(longPressTimer)
     longPressTimer = null
+  }
+
+  // Ignore if tapping a button or interactive element
+  const target = event.target as HTMLElement
+  if (target.closest('button') || target.closest('.interactive')) {
+    return
   }
 
   const touch = event.changedTouches[0]

@@ -3,7 +3,7 @@
     background="#000000"
     type="share-card"
   >
-    <div class="share-card-container" @click="handleTap" @touchend.stop="handleTap">
+    <div class="share-card-container" ref="shareCardRef" @click="handleTap" @touchend.stop="handleTap">
       <!-- Background Image Layer -->
       <div class="background-layer">
         <div class="bg-pattern">
@@ -133,9 +133,15 @@
             </div>
             <!-- Footer CTA -->
             <div class="share-footer">
-              <div class="share-btn">
+              <button 
+                class="share-btn interactive" 
+                @click.stop="handleShare" 
+                @touchstart.stop="handleShare"
+                @touchend.stop
+                @mousedown.stop="handleShare"
+              >
                 Screenshot & Share!
-              </div>
+              </button>
             </div>
           </div>
 
@@ -188,6 +194,7 @@ import { computed, ref, onMounted, onUnmounted } from 'vue'
 import SlideWrapper from './SlideWrapper.vue'
 import { getCountryFlag } from '@/utils/countryFlags'
 import { getDisciplineEmoji } from '@/utils/disciplineEmojis'
+import html2canvas from 'html2canvas'
 
 interface Props {
   firstName: string
@@ -431,11 +438,79 @@ function fitText() {
   if (lastNameRef.value) adjustElement(lastNameRef.value, 4.5)
 }
 
+const shareCardRef = ref<HTMLElement | null>(null)
+
+async function handleShare(event?: any) {
+  console.log('!!! handleShare TRIGGERED !!!', event?.type)
+  if (event && event.stopPropagation) {
+    event.stopPropagation()
+  }
+
+  if (!shareCardRef.value) {
+    console.error('shareCardRef is null, cannot capture')
+    return
+  }
+
+  try {
+    console.log('Capturing canvas...')
+    const canvas = await html2canvas(shareCardRef.value, {
+      useCORS: true,
+      scale: 2, // Higher quality
+      backgroundColor: '#000000',
+      logging: false,
+      onclone: (clonedDoc) => {
+        // Ensure the cloned element is visible for capture
+        const el = clonedDoc.querySelector('.share-card-container') as HTMLElement
+        if (el) {
+          el.style.transform = 'none'
+        }
+      }
+    })
+
+    const dataUrl = canvas.toDataURL('image/png')
+    console.log('Canvas captured, dataUrl length:', dataUrl.length)
+
+    // Check if it's mobile and supports sharing
+    if (navigator.share && navigator.canShare) {
+      console.log('Native share supported, preparing file...')
+      const response = await fetch(dataUrl)
+      const blob = await response.blob()
+      const file = new File([blob], 'track-wrapped-2025.png', { type: 'image/png' })
+      
+      if (navigator.canShare({ files: [file] })) {
+        console.log('Sharing file via navigator.share...')
+        await navigator.share({
+          files: [file],
+          title: 'My Track Wrapped 2025',
+          text: 'Check out my season stats on Track Wrapped!'
+        })
+        console.log('Share successful')
+        return
+      } else {
+        console.warn('navigator.canShare returned false for the generated file')
+      }
+    } else {
+      console.log('Native share not supported or navigator.share missing')
+    }
+
+    // Fallback for desktop or if sharing fails: Download
+    console.log('Triggering download fallback...')
+    const link = document.createElement('a')
+    link.download = 'track-wrapped-2025.png'
+    link.href = dataUrl
+    link.click()
+    console.log('Download triggered')
+  } catch (error) {
+    console.error('Error during share/capture:', error)
+  }
+}
+
 function handleTap(event: Event) {
   // Placeholder
 }
 
 onMounted(() => {
+  console.log('ShareCardSlide mounted. shareCardRef:', shareCardRef.value)
   // Run fit text after a short delay to ensure fonts are loaded/layout is stable
   setTimeout(fitText, 100)
   window.addEventListener('resize', fitText)
@@ -498,6 +573,7 @@ function stopCarousel() {
   width: 100%;
   height: 100%;
   z-index: 1;
+  pointer-events: none;
 }
 
 .bg-image {
@@ -542,13 +618,14 @@ function stopCarousel() {
 /* Content Layer */
 .content-layer {
   position: relative;
-  z-index: 2;
+  z-index: 50; /* Much higher z-index */
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* Changed from space-between */
   padding: var(--spacing-lg);
   box-sizing: border-box;
+  pointer-events: auto; /* Ensure events are captured */
 }
 
 .brand-header {
@@ -580,9 +657,12 @@ function stopCarousel() {
 .main-content {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
-  margin-top: auto; /* Push to bottom if space permits, but don't force header off */
-  padding-bottom: var(--spacing-xl);
+  gap: var(--spacing-sm);
+  margin-top: auto;
+  padding-bottom: var(--spacing-md);
+  flex-grow: 1;
+  justify-content: flex-end;
+  pointer-events: auto;
 }
 
 .identity-section {
@@ -834,26 +914,38 @@ function stopCarousel() {
 .share-footer {
   grid-column: span 3;
   position: relative;
-  cursor: pointer;
-  text-align: center;
+  z-index: 100; /* Extremely high z-index */
+  margin-top: auto;
+  padding-top: var(--spacing-sm);
+  pointer-events: auto;
 }
 
 .share-btn {
-  background: white;
+  background: var(--color-accent-primary);
   color: black;
-  padding: 5px 24px;
-  font-size: 1.2rem;
+  padding: 12px 24px;
+  font-size: 1.1rem;
   font-weight: 800;
-  display: block; /* Changed from inline-block */
-  width: 100%; /* Full width */
+  display: block;
+  width: 100%;
   text-align: center;
   clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: all 0.2s;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  pointer-events: auto !important;
+  cursor: pointer;
+}
+
+.share-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(204, 255, 0, 0.4);
 }
 
 .share-btn:active {
-  transform: scale(0.95);
+  transform: scale(0.98);
 }
 
 .sub-stats {
@@ -962,7 +1054,7 @@ function stopCarousel() {
     90deg,
     var(--color-accent-secondary) 0%,
     var(--color-accent-secondary) 40%,
-    color-mix(in srgb, var(--color-accent-secondary), white 40%) 50%,
+    #FF6699 50%,
     var(--color-accent-secondary) 60%,
     var(--color-accent-secondary) 100%
   );
@@ -1249,6 +1341,28 @@ function stopCarousel() {
   .stat-value.highlight { font-size: 3.5rem; }
   .stat-value { font-size: 1.5rem; }
   .power-value-glitch { font-size: 2rem; }
+  .share-btn { padding: 8px 16px; font-size: 1rem; }
+}
+
+@media (max-height: 750px) {
+  .identity-header { margin-top: 80px; }
+  .avatar-circle { width: 60px; height: 60px; }
+  .last-name { font-size: 3.5rem; }
+  .flex-badges-row { margin-bottom: 4px; }
+  .stat-box.hero { padding-bottom: var(--spacing-sm); }
+  .sub-stats { margin-top: 12px; }
+}
+
+@media (max-height: 650px) {
+  .identity-header { margin-top: 40px; }
+  .avatar-circle { display: none; }
+  .first-name { font-size: 2rem; }
+  .last-name { font-size: 2.5rem; }
+  .flex-badges-row { display: none; }
+  .stat-box.hero { padding-bottom: 4px; }
+  .sub-stats { margin-top: 4px; }
+  .power-badge { padding: 4px 8px; }
+  .power-value-glitch { font-size: 1.2rem; }
 }
 
 </style>
