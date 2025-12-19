@@ -31,7 +31,6 @@
                   :src="profileImage" 
                   alt="Profile" 
                   class="avatar-img"
-                  crossorigin="anonymous"
                   @error="handleImageError"
                 />
                 <span v-else>{{ initials }}</span>
@@ -1466,10 +1465,10 @@ function stopCarousel() {
 
 @media (max-height: 650px) {
   .identity-header { margin-top: 40px; }
-  .avatar-circle { display: none; }
+  .avatar-circle { width: 40px; height: 40px; }
   .first-name { font-size: 2rem; }
   .last-name { font-size: 2.5rem; }
-  .flex-badges-row { display: none; }
+  .flex-badges-row { margin-bottom: 0; transform: scale(0.8); }
   .stat-box.hero { padding-bottom: 4px; }
   .sub-stats { margin-top: 4px; }
   .power-badge { padding: 4px 8px; }
