@@ -148,7 +148,6 @@ function getInitials(first: string, last: string) {
 
 <style scoped>
 .leaderboard {
-  margin-top: var(--spacing-xl);
   padding: var(--spacing-md);
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);

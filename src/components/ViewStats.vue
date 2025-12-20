@@ -57,6 +57,7 @@ onMounted(() => {
   color: rgba(255, 255, 255, 0.4);
   animation: fadeIn 0.6s ease-out 0.2s backwards;
   flex-wrap: wrap;
+  margin-bottom: var(--spacing-xl);
 }
 
 .stat-number {
