@@ -2,24 +2,27 @@
   "14186000": {
     "id": "14186000",
     "name": "Christophe Lemaitre",
+    "homeCountry": "FRA",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:28.623Z"
+    "lastUpdated": "2025-12-20T15:42:14.251Z"
   },
   "14190301": {
     "id": "14190301",
     "name": "Phil Norman",
+    "homeCountry": "GBR",
     "countries": [
       "GBR"
     ],
     "countryCount": 1,
     "totalCompetitions": 5,
-    "lastUpdated": "2025-12-20T12:14:44.095Z"
+    "lastUpdated": "2025-12-20T15:42:41.408Z"
   },
   "14201842": {
     "id": "14201842",
     "name": "Yohan Blake",
+    "homeCountry": "JAM",
     "countries": [
       "JAM",
       "NED",
@@ -27,19 +30,21 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 10,
-    "lastUpdated": "2025-12-20T12:14:27.561Z"
+    "lastUpdated": "2025-12-20T15:42:23.100Z"
   },
   "14201847": {
     "id": "14201847",
     "name": "Usain Bolt",
+    "homeCountry": "JAM",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:44.938Z"
+    "lastUpdated": "2025-12-20T15:42:43.629Z"
   },
   "14208194": {
     "id": "14208194",
     "name": "Eliud Kipchoge",
+    "homeCountry": "KEN",
     "countries": [
       "AUS",
       "GBR",
@@ -47,43 +52,48 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 3,
-    "lastUpdated": "2025-12-20T12:14:26.114Z"
+    "lastUpdated": "2025-12-20T15:42:11.222Z"
   },
   "14225074": {
     "id": "14225074",
     "name": "Rok Kocjančič",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:45.275Z"
+    "lastUpdated": "2025-12-20T15:42:44.014Z"
   },
   "14229382": {
     "id": "14229382",
     "name": "Mustafa Günes",
+    "homeCountry": "TUR",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:37.885Z"
+    "lastUpdated": "2025-12-20T15:42:29.628Z"
   },
   "14230326": {
     "id": "14230326",
     "name": "Dmytro Myshka",
+    "homeCountry": "UKR",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:43.979Z"
+    "lastUpdated": "2025-12-20T15:42:41.368Z"
   },
   "14263090": {
     "id": "14263090",
     "name": "Adéla Hedvicaková",
+    "homeCountry": "CZE",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:45.711Z"
+    "lastUpdated": "2025-12-20T15:42:43.983Z"
   },
   "14285680": {
     "id": "14285680",
     "name": "Shelly-Ann Fraser-Pryce",
+    "homeCountry": "JAM",
     "countries": [
       "BEL",
       "CHN",
@@ -94,19 +104,39 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 13,
-    "lastUpdated": "2025-12-20T12:14:45.888Z"
+    "lastUpdated": "2025-12-20T15:42:44.307Z"
   },
   "14292726": {
     "id": "14292726",
     "name": "Sølvi Meinseth",
+    "homeCountry": "NOR",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:28.463Z"
+    "lastUpdated": "2025-12-20T15:42:14.121Z"
+  },
+  "14300094": {
+    "id": "14300094",
+    "name": "Janja Budna",
+    "homeCountry": "SLO",
+    "countries": [],
+    "countryCount": 0,
+    "totalCompetitions": 0,
+    "lastUpdated": "2025-12-20T15:42:54.898Z"
+  },
+  "14300224": {
+    "id": "14300224",
+    "name": "Saša Prokofjev",
+    "homeCountry": "SLO",
+    "countries": [],
+    "countryCount": 0,
+    "totalCompetitions": 0,
+    "lastUpdated": "2025-12-20T15:42:54.762Z"
   },
   "14300261": {
     "id": "14300261",
     "name": "Tina Šutej",
+    "homeCountry": "SLO",
     "countries": [
       "BEL",
       "CHN",
@@ -127,43 +157,48 @@
     ],
     "countryCount": 16,
     "totalCompetitions": 28,
-    "lastUpdated": "2025-12-20T12:14:33.731Z"
+    "lastUpdated": "2025-12-20T15:42:21.772Z"
   },
   "14302517": {
     "id": "14302517",
     "name": "Lisa Wallgren",
+    "homeCountry": "SWE",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:44.454Z"
+    "lastUpdated": "2025-12-20T15:42:41.166Z"
   },
   "14310739": {
     "id": "14310739",
     "name": "Lana Garner",
+    "homeCountry": "USA",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:48.480Z"
+    "lastUpdated": "2025-12-20T15:42:51.284Z"
   },
   "14322763": {
     "id": "14322763",
     "name": "Sharika Thompson",
+    "homeCountry": "USA",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:44.849Z"
+    "lastUpdated": "2025-12-20T15:42:41.963Z"
   },
   "14363333": {
     "id": "14363333",
     "name": "Petra Koren",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:44.024Z"
+    "lastUpdated": "2025-12-20T15:42:40.551Z"
   },
   "14375002": {
     "id": "14375002",
     "name": "Žan Rudolf",
+    "homeCountry": "SLO",
     "countries": [
       "GER",
       "ITA",
@@ -173,35 +208,48 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 5,
-    "lastUpdated": "2025-12-20T12:14:44.927Z"
+    "lastUpdated": "2025-12-20T15:42:43.523Z"
   },
   "14376748": {
     "id": "14376748",
     "name": "Seulki An",
+    "homeCountry": "KOR",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:36.790Z"
+    "lastUpdated": "2025-12-20T15:42:27.370Z"
   },
   "14380609": {
     "id": "14380609",
     "name": "Saša Babšek",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:38.793Z"
+    "lastUpdated": "2025-12-20T15:42:32.565Z"
   },
   "14381037": {
     "id": "14381037",
     "name": "Patrik Filip",
+    "homeCountry": "CZE",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:29.896Z"
+    "lastUpdated": "2025-12-20T15:42:17.087Z"
+  },
+  "14405259": {
+    "id": "14405259",
+    "name": "Peter Hribaršek",
+    "homeCountry": "SLO",
+    "countries": [],
+    "countryCount": 0,
+    "totalCompetitions": 0,
+    "lastUpdated": "2025-12-20T15:42:52.823Z"
   },
   "14420076": {
     "id": "14420076",
     "name": "Julian Weber",
+    "homeCountry": "GER",
     "countries": [
       "BEL",
       "ESP",
@@ -214,38 +262,42 @@
     ],
     "countryCount": 8,
     "totalCompetitions": 12,
-    "lastUpdated": "2025-12-20T12:14:46.339Z"
+    "lastUpdated": "2025-12-20T15:42:46.492Z"
   },
   "14420489": {
     "id": "14420489",
     "name": "Primož Kobe",
+    "homeCountry": "SLO",
     "countries": [
       "SLO",
       "USA"
     ],
     "countryCount": 2,
     "totalCompetitions": 6,
-    "lastUpdated": "2025-12-20T12:14:48.962Z"
+    "lastUpdated": "2025-12-20T15:42:52.053Z"
   },
   "14421076": {
     "id": "14421076",
     "name": "Evghen Glusco",
+    "homeCountry": "MDA",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:40.128Z"
+    "lastUpdated": "2025-12-20T15:42:33.689Z"
   },
   "14424280": {
     "id": "14424280",
     "name": "Mehmet Bozgo",
+    "homeCountry": "ALB",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:42.256Z"
+    "lastUpdated": "2025-12-20T15:42:37.379Z"
   },
   "14425883": {
     "id": "14425883",
     "name": "Maja Pogorevc",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "GRE",
@@ -254,11 +306,12 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 21,
-    "lastUpdated": "2025-12-20T12:14:33.868Z"
+    "lastUpdated": "2025-12-20T15:42:23.918Z"
   },
   "14427350": {
     "id": "14427350",
     "name": "Liemarvin Bonevacia",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "CHN",
@@ -272,11 +325,12 @@
     ],
     "countryCount": 9,
     "totalCompetitions": 15,
-    "lastUpdated": "2025-12-20T12:14:38.346Z"
+    "lastUpdated": "2025-12-20T15:42:30.949Z"
   },
   "14436521": {
     "id": "14436521",
     "name": "Veronika Domjan",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "CYP",
@@ -286,11 +340,12 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 14,
-    "lastUpdated": "2025-12-20T12:14:45.785Z"
+    "lastUpdated": "2025-12-20T15:42:46.820Z"
   },
   "14450088": {
     "id": "14450088",
     "name": "Gina Lückenkemper",
+    "homeCountry": "GER",
     "countries": [
       "GER",
       "JPN",
@@ -302,11 +357,12 @@
     ],
     "countryCount": 7,
     "totalCompetitions": 28,
-    "lastUpdated": "2025-12-20T12:14:41.924Z"
+    "lastUpdated": "2025-12-20T15:42:36.520Z"
   },
   "14451249": {
     "id": "14451249",
     "name": "Nadine Visser",
+    "homeCountry": "NED",
     "countries": [
       "CHN",
       "ESP",
@@ -325,11 +381,12 @@
     ],
     "countryCount": 14,
     "totalCompetitions": 38,
-    "lastUpdated": "2025-12-20T12:14:35.028Z"
+    "lastUpdated": "2025-12-20T15:42:25.890Z"
   },
   "14455084": {
     "id": "14455084",
     "name": "Olimpia Barbosa",
+    "homeCountry": "POR",
     "countries": [
       "ESP",
       "EST",
@@ -339,11 +396,12 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 17,
-    "lastUpdated": "2025-12-20T12:14:48.528Z"
+    "lastUpdated": "2025-12-20T15:42:51.419Z"
   },
   "14455361": {
     "id": "14455361",
     "name": "Nicola Olyslagers",
+    "homeCountry": "AUS",
     "countries": [
       "AUS",
       "CHN",
@@ -357,22 +415,24 @@
     ],
     "countryCount": 9,
     "totalCompetitions": 13,
-    "lastUpdated": "2025-12-20T12:14:26.850Z"
+    "lastUpdated": "2025-12-20T15:42:12.314Z"
   },
   "14469467": {
     "id": "14469467",
     "name": "Tadej Enci",
+    "homeCountry": "SLO",
     "countries": [
       "JPN",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 14,
-    "lastUpdated": "2025-12-20T12:14:43.396Z"
+    "lastUpdated": "2025-12-20T15:42:40.552Z"
   },
   "14474496": {
     "id": "14474496",
     "name": "Neja Filipič",
+    "homeCountry": "SLO",
     "countries": [
       "BEL",
       "CHN",
@@ -390,11 +450,12 @@
     ],
     "countryCount": 13,
     "totalCompetitions": 20,
-    "lastUpdated": "2025-12-20T12:14:44.861Z"
+    "lastUpdated": "2025-12-20T15:42:42.125Z"
   },
   "14474566": {
     "id": "14474566",
     "name": "Ben Broeders",
+    "homeCountry": "BEL",
     "countries": [
       "BEL",
       "CHN",
@@ -414,11 +475,12 @@
     ],
     "countryCount": 15,
     "totalCompetitions": 29,
-    "lastUpdated": "2025-12-20T12:14:35.055Z"
+    "lastUpdated": "2025-12-20T15:42:25.539Z"
   },
   "14476658": {
     "id": "14476658",
     "name": "Yekaterina Sariyeva",
+    "homeCountry": "AZE",
     "countries": [
       "AZE",
       "FIN",
@@ -432,11 +494,12 @@
     ],
     "countryCount": 9,
     "totalCompetitions": 15,
-    "lastUpdated": "2025-12-20T12:14:36.428Z"
+    "lastUpdated": "2025-12-20T15:42:27.484Z"
   },
   "14479487": {
     "id": "14479487",
     "name": "Karsten Warholm",
+    "homeCountry": "NOR",
     "countries": [
       "CHN",
       "JPN",
@@ -447,11 +510,12 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 9,
-    "lastUpdated": "2025-12-20T12:14:32.831Z"
+    "lastUpdated": "2025-12-20T15:42:22.066Z"
   },
   "14479753": {
     "id": "14479753",
     "name": "Maja Bedrač",
+    "homeCountry": "SLO",
     "countries": [
       "AUT",
       "CRO",
@@ -464,11 +528,12 @@
     ],
     "countryCount": 8,
     "totalCompetitions": 15,
-    "lastUpdated": "2025-12-20T12:14:27.449Z"
+    "lastUpdated": "2025-12-20T15:42:13.068Z"
   },
   "14480568": {
     "id": "14480568",
     "name": "Milan Trajkovic",
+    "homeCountry": "CYP",
     "countries": [
       "CYP",
       "FRA",
@@ -479,19 +544,21 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 12,
-    "lastUpdated": "2025-12-20T12:14:32.093Z"
+    "lastUpdated": "2025-12-20T15:42:20.840Z"
   },
   "14485240": {
     "id": "14485240",
     "name": "Veronika Šádková",
+    "homeCountry": "CZE",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:41.858Z"
+    "lastUpdated": "2025-12-20T15:42:36.526Z"
   },
   "14487463": {
     "id": "14487463",
     "name": "Ajla Del Ponte",
+    "homeCountry": "SUI",
     "countries": [
       "BEL",
       "CZE",
@@ -502,11 +569,12 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 20,
-    "lastUpdated": "2025-12-20T12:14:40.693Z"
+    "lastUpdated": "2025-12-20T15:42:34.529Z"
   },
   "14499691": {
     "id": "14499691",
     "name": "Zoe Hobbs",
+    "homeCountry": "NZL",
     "countries": [
       "AUS",
       "CHN",
@@ -525,46 +593,51 @@
     ],
     "countryCount": 14,
     "totalCompetitions": 32,
-    "lastUpdated": "2025-12-20T12:14:41.907Z"
+    "lastUpdated": "2025-12-20T15:42:36.529Z"
   },
   "14508391": {
     "id": "14508391",
     "name": "Aneja Simončič",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:25.808Z"
+    "lastUpdated": "2025-12-20T15:42:11.391Z"
   },
   "14508404": {
     "id": "14508404",
     "name": "Nina Kolenc",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:35.988Z"
+    "lastUpdated": "2025-12-20T15:42:26.319Z"
   },
   "14512422": {
     "id": "14512422",
     "name": "Eva Lajhar",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:45.339Z"
+    "lastUpdated": "2025-12-20T15:42:43.470Z"
   },
   "14528967": {
     "id": "14528967",
     "name": "Brina Mljač",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 5,
-    "lastUpdated": "2025-12-20T12:14:31.571Z"
+    "lastUpdated": "2025-12-20T15:42:19.571Z"
   },
   "14536762": {
     "id": "14536762",
     "name": "Noah Lyles",
+    "homeCountry": "USA",
     "countries": [
       "GBR",
       "JPN",
@@ -575,21 +648,32 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 21,
-    "lastUpdated": "2025-12-20T12:14:30.035Z"
+    "lastUpdated": "2025-12-20T15:42:17.565Z"
   },
   "14546281": {
     "id": "14546281",
     "name": "Agata Zupin",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 5,
-    "lastUpdated": "2025-12-20T12:14:33.861Z"
+    "lastUpdated": "2025-12-20T15:42:23.905Z"
+  },
+  "14556307": {
+    "id": "14556307",
+    "name": "Alex Welsch",
+    "homeCountry": "USA",
+    "countries": [],
+    "countryCount": 0,
+    "totalCompetitions": 0,
+    "lastUpdated": "2025-12-20T15:42:54.781Z"
   },
   "14560483": {
     "id": "14560483",
     "name": "Lieke Klaver",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "CZE",
@@ -607,11 +691,12 @@
     ],
     "countryCount": 13,
     "totalCompetitions": 32,
-    "lastUpdated": "2025-12-20T12:14:46.328Z"
+    "lastUpdated": "2025-12-20T15:42:45.558Z"
   },
   "14561420": {
     "id": "14561420",
     "name": "Eveline Saalberg",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "CZE",
@@ -626,11 +711,12 @@
     ],
     "countryCount": 10,
     "totalCompetitions": 29,
-    "lastUpdated": "2025-12-20T12:14:37.360Z"
+    "lastUpdated": "2025-12-20T15:42:29.224Z"
   },
   "14564609": {
     "id": "14564609",
     "name": "Nick Smidt",
+    "homeCountry": "NED",
     "countries": [
       "CHN",
       "FRA",
@@ -643,11 +729,12 @@
     ],
     "countryCount": 8,
     "totalCompetitions": 15,
-    "lastUpdated": "2025-12-20T12:14:42.858Z"
+    "lastUpdated": "2025-12-20T15:42:39.937Z"
   },
   "14567432": {
     "id": "14567432",
     "name": "Leonardo Fabbri",
+    "homeCountry": "ITA",
     "countries": [
       "BOT",
       "CHN",
@@ -667,30 +754,33 @@
     ],
     "countryCount": 15,
     "totalCompetitions": 30,
-    "lastUpdated": "2025-12-20T12:14:27.558Z"
+    "lastUpdated": "2025-12-20T15:42:22.970Z"
   },
   "14568859": {
     "id": "14568859",
     "name": "Tomaž Rakuš",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:44.863Z"
+    "lastUpdated": "2025-12-20T15:42:43.293Z"
   },
   "14570018": {
     "id": "14570018",
     "name": "Even Meinseth",
+    "homeCountry": "NOR",
     "countries": [
       "FIN",
       "NOR"
     ],
     "countryCount": 2,
     "totalCompetitions": 11,
-    "lastUpdated": "2025-12-20T12:14:28.580Z"
+    "lastUpdated": "2025-12-20T15:42:14.239Z"
   },
   "14574865": {
     "id": "14574865",
     "name": "Rai Benjamin",
+    "homeCountry": "USA",
     "countries": [
       "FRA",
       "JPN",
@@ -700,11 +790,12 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 11,
-    "lastUpdated": "2025-12-20T12:14:39.928Z"
+    "lastUpdated": "2025-12-20T15:42:33.784Z"
   },
   "14576779": {
     "id": "14576779",
     "name": "Laura Štefanac",
+    "homeCountry": "CRO",
     "countries": [
       "CRO",
       "JPN",
@@ -712,19 +803,21 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 14,
-    "lastUpdated": "2025-12-20T12:14:32.684Z"
+    "lastUpdated": "2025-12-20T15:42:21.840Z"
   },
   "14589381": {
     "id": "14589381",
     "name": "Eva Pepelnak",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:33.236Z"
+    "lastUpdated": "2025-12-20T15:42:22.102Z"
   },
   "14589388": {
     "id": "14589388",
     "name": "Vít Müller",
+    "homeCountry": "CZE",
     "countries": [
       "CZE",
       "ESP",
@@ -737,11 +830,12 @@
     ],
     "countryCount": 8,
     "totalCompetitions": 18,
-    "lastUpdated": "2025-12-20T12:14:28.549Z"
+    "lastUpdated": "2025-12-20T15:42:13.658Z"
   },
   "14590100": {
     "id": "14590100",
     "name": "Ertan Özkan",
+    "homeCountry": "TUR",
     "countries": [
       "BUL",
       "CHN",
@@ -757,29 +851,32 @@
     ],
     "countryCount": 11,
     "totalCompetitions": 31,
-    "lastUpdated": "2025-12-20T12:14:38.280Z"
+    "lastUpdated": "2025-12-20T15:42:31.174Z"
   },
   "14590104": {
     "id": "14590104",
     "name": "Harun Akin",
+    "homeCountry": "TUR",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:38.407Z"
+    "lastUpdated": "2025-12-20T15:42:29.698Z"
   },
   "14590107": {
     "id": "14590107",
     "name": "Necati Er",
+    "homeCountry": "TUR",
     "countries": [
       "TUR"
     ],
     "countryCount": 1,
     "totalCompetitions": 3,
-    "lastUpdated": "2025-12-20T12:14:32.132Z"
+    "lastUpdated": "2025-12-20T15:42:20.180Z"
   },
   "14591210": {
     "id": "14591210",
     "name": "Grant Fisher",
+    "homeCountry": "USA",
     "countries": [
       "JAM",
       "JPN",
@@ -788,11 +885,12 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 15,
-    "lastUpdated": "2025-12-20T12:14:26.736Z"
+    "lastUpdated": "2025-12-20T15:42:12.218Z"
   },
   "14594240": {
     "id": "14594240",
     "name": "Nika Glojnarič",
+    "homeCountry": "SLO",
     "countries": [
       "AUT",
       "BEL",
@@ -811,11 +909,32 @@
     ],
     "countryCount": 14,
     "totalCompetitions": 49,
-    "lastUpdated": "2025-12-20T12:14:30.490Z"
+    "lastUpdated": "2025-12-20T15:42:22.869Z"
+  },
+  "14602980": {
+    "id": "14602980",
+    "name": "Milica Emini",
+    "homeCountry": "SRB",
+    "countries": [
+      "AUT",
+      "BEL",
+      "CRO",
+      "EST",
+      "FIN",
+      "FRA",
+      "GRE",
+      "ITA",
+      "SLO",
+      "SRB"
+    ],
+    "countryCount": 10,
+    "totalCompetitions": 29,
+    "lastUpdated": "2025-12-20T15:42:53.401Z"
   },
   "14605811": {
     "id": "14605811",
     "name": "Klara Lukan",
+    "homeCountry": "SLO",
     "countries": [
       "AUT",
       "BEL",
@@ -829,11 +948,12 @@
     ],
     "countryCount": 9,
     "totalCompetitions": 19,
-    "lastUpdated": "2025-12-20T12:14:36.011Z"
+    "lastUpdated": "2025-12-20T15:42:26.314Z"
   },
   "14613113": {
     "id": "14613113",
     "name": "Barbara Štuhec",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "GER",
@@ -841,11 +961,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 11,
-    "lastUpdated": "2025-12-20T12:14:35.562Z"
+    "lastUpdated": "2025-12-20T15:42:35.070Z"
   },
   "14614922": {
     "id": "14614922",
     "name": "Alperen Acet",
+    "homeCountry": "TUR",
     "countries": [
       "CZE",
       "GER",
@@ -856,11 +977,12 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 8,
-    "lastUpdated": "2025-12-20T12:14:38.307Z"
+    "lastUpdated": "2025-12-20T15:42:31.154Z"
   },
   "14620995": {
     "id": "14620995",
     "name": "Abdurrahman Gediklioğlu",
+    "homeCountry": "TUR",
     "countries": [
       "ESP",
       "GRE",
@@ -868,11 +990,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 12,
-    "lastUpdated": "2025-12-20T12:14:32.083Z"
+    "lastUpdated": "2025-12-20T15:42:20.782Z"
   },
   "14623790": {
     "id": "14623790",
     "name": "Anja Lukić",
+    "homeCountry": "SRB",
     "countries": [
       "CHN",
       "CRO",
@@ -885,11 +1008,12 @@
     ],
     "countryCount": 8,
     "totalCompetitions": 17,
-    "lastUpdated": "2025-12-20T12:14:47.999Z"
+    "lastUpdated": "2025-12-20T15:42:49.566Z"
   },
   "14624749": {
     "id": "14624749",
     "name": "Sydney Mclaughlin-Levrone",
+    "homeCountry": "USA",
     "countries": [
       "JAM",
       "JPN",
@@ -897,27 +1021,30 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 13,
-    "lastUpdated": "2025-12-20T12:14:42.320Z"
+    "lastUpdated": "2025-12-20T15:42:38.012Z"
   },
   "14628349": {
     "id": "14628349",
     "name": "Marek Korba",
+    "homeCountry": "SVK",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:46.289Z"
+    "lastUpdated": "2025-12-20T15:42:44.820Z"
   },
   "14629248": {
     "id": "14629248",
     "name": "Amandine Evard",
+    "homeCountry": "SUI",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:46.686Z"
+    "lastUpdated": "2025-12-20T15:42:47.717Z"
   },
   "14646195": {
     "id": "14646195",
     "name": "Rok Ferlan",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "GRE",
@@ -929,11 +1056,12 @@
     ],
     "countryCount": 7,
     "totalCompetitions": 24,
-    "lastUpdated": "2025-12-20T12:14:32.732Z"
+    "lastUpdated": "2025-12-20T15:42:20.717Z"
   },
   "14652141": {
     "id": "14652141",
     "name": "Mathias Hove Johansen",
+    "homeCountry": "NOR",
     "countries": [
       "FIN",
       "GER",
@@ -943,11 +1071,12 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 37,
-    "lastUpdated": "2025-12-20T12:14:26.117Z"
+    "lastUpdated": "2025-12-20T15:42:11.148Z"
   },
   "14653717": {
     "id": "14653717",
     "name": "Jakob Ingebrigtsen",
+    "homeCountry": "NOR",
     "countries": [
       "CHN",
       "FRA",
@@ -956,19 +1085,21 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 11,
-    "lastUpdated": "2025-12-20T12:14:26.859Z"
+    "lastUpdated": "2025-12-20T15:42:11.931Z"
   },
   "14666855": {
     "id": "14666855",
     "name": "Žan Viher",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:26.735Z"
+    "lastUpdated": "2025-12-20T15:42:12.034Z"
   },
   "14666860": {
     "id": "14666860",
     "name": "Kristjan Čeh",
+    "homeCountry": "SLO",
     "countries": [
       "BEL",
       "CRO",
@@ -986,19 +1117,21 @@
     ],
     "countryCount": 13,
     "totalCompetitions": 22,
-    "lastUpdated": "2025-12-20T12:14:29.191Z"
+    "lastUpdated": "2025-12-20T15:42:15.148Z"
   },
   "14668253": {
     "id": "14668253",
     "name": "Jun Tan",
+    "homeCountry": "CHN",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:25.951Z"
+    "lastUpdated": "2025-12-20T15:42:10.796Z"
   },
   "14669734": {
     "id": "14669734",
     "name": "Miltiadis Tentoglou",
+    "homeCountry": "GRE",
     "countries": [
       "CHN",
       "CYP",
@@ -1016,19 +1149,21 @@
     ],
     "countryCount": 13,
     "totalCompetitions": 18,
-    "lastUpdated": "2025-12-20T12:14:28.051Z"
+    "lastUpdated": "2025-12-20T15:42:12.900Z"
   },
   "14672242": {
     "id": "14672242",
     "name": "Seyma Ocak",
+    "homeCountry": "TUR",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:31.137Z"
+    "lastUpdated": "2025-12-20T15:42:18.126Z"
   },
   "14672243": {
     "id": "14672243",
     "name": "Buse Savaşkan",
+    "homeCountry": "TUR",
     "countries": [
       "CZE",
       "FRA",
@@ -1041,22 +1176,24 @@
     ],
     "countryCount": 8,
     "totalCompetitions": 11,
-    "lastUpdated": "2025-12-20T12:14:38.342Z"
+    "lastUpdated": "2025-12-20T15:42:31.113Z"
   },
   "14677868": {
     "id": "14677868",
     "name": "Dries Van Nieuwenhove",
+    "homeCountry": "BEL",
     "countries": [
       "BEL",
       "NED"
     ],
     "countryCount": 2,
     "totalCompetitions": 17,
-    "lastUpdated": "2025-12-20T12:14:43.398Z"
+    "lastUpdated": "2025-12-20T15:42:40.553Z"
   },
   "14679502": {
     "id": "14679502",
     "name": "Armand Duplantis",
+    "homeCountry": "SWE",
     "countries": [
       "CHN",
       "CZE",
@@ -1073,19 +1210,21 @@
     ],
     "countryCount": 12,
     "totalCompetitions": 17,
-    "lastUpdated": "2025-12-20T12:14:32.707Z"
+    "lastUpdated": "2025-12-20T15:42:20.865Z"
   },
   "14680550": {
     "id": "14680550",
     "name": "Lara Bricelj",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:35.049Z"
+    "lastUpdated": "2025-12-20T15:42:25.279Z"
   },
   "14683634": {
     "id": "14683634",
     "name": "Árpád Bánóczy",
+    "homeCountry": "HUN",
     "countries": [
       "CZE",
       "FIN",
@@ -1094,11 +1233,12 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 10,
-    "lastUpdated": "2025-12-20T12:14:48.483Z"
+    "lastUpdated": "2025-12-20T15:42:51.424Z"
   },
   "14683861": {
     "id": "14683861",
     "name": "Kayhan Özer",
+    "homeCountry": "TUR",
     "countries": [
       "CZE",
       "FRA",
@@ -1111,11 +1251,12 @@
     ],
     "countryCount": 8,
     "totalCompetitions": 25,
-    "lastUpdated": "2025-12-20T12:14:39.467Z"
+    "lastUpdated": "2025-12-20T15:42:35.085Z"
   },
   "14683945": {
     "id": "14683945",
     "name": "Julien Bonvin",
+    "homeCountry": "SUI",
     "countries": [
       "BEL",
       "ESP",
@@ -1126,11 +1267,12 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 21,
-    "lastUpdated": "2025-12-20T12:14:39.992Z"
+    "lastUpdated": "2025-12-20T15:42:34.444Z"
   },
   "14702213": {
     "id": "14702213",
     "name": "Filip Jakob Demšar",
+    "homeCountry": "SLO",
     "countries": [
       "BEL",
       "CHN",
@@ -1148,11 +1290,12 @@
     ],
     "countryCount": 13,
     "totalCompetitions": 29,
-    "lastUpdated": "2025-12-20T12:14:30.022Z"
+    "lastUpdated": "2025-12-20T15:42:17.314Z"
   },
   "14702214": {
     "id": "14702214",
     "name": "Lovro Mesec Košir",
+    "homeCountry": "SLO",
     "countries": [
       "GRE",
       "SLO",
@@ -1160,19 +1303,21 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 16,
-    "lastUpdated": "2025-12-20T12:14:30.535Z"
+    "lastUpdated": "2025-12-20T15:42:18.130Z"
   },
   "14702221": {
     "id": "14702221",
     "name": "Živa Bračič",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:36.360Z"
+    "lastUpdated": "2025-12-20T15:42:27.350Z"
   },
   "14703041": {
     "id": "14703041",
     "name": "Jan Kokalj",
+    "homeCountry": "SLO",
     "countries": [
       "AUT",
       "CRO",
@@ -1182,11 +1327,12 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 15,
-    "lastUpdated": "2025-12-20T12:14:33.856Z"
+    "lastUpdated": "2025-12-20T15:42:23.799Z"
   },
   "14704467": {
     "id": "14704467",
     "name": "Klaudia Kazimierska",
+    "homeCountry": "POL",
     "countries": [
       "ESP",
       "JPN",
@@ -1195,11 +1341,28 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 18,
-    "lastUpdated": "2025-12-20T12:14:37.347Z"
+    "lastUpdated": "2025-12-20T15:42:28.862Z"
+  },
+  "14706018": {
+    "id": "14706018",
+    "name": "Klemen Vilhar",
+    "homeCountry": "SLO",
+    "countries": [
+      "AUT",
+      "GER",
+      "GRE",
+      "ITA",
+      "POR",
+      "SLO"
+    ],
+    "countryCount": 6,
+    "totalCompetitions": 14,
+    "lastUpdated": "2025-12-20T15:42:52.776Z"
   },
   "14706194": {
     "id": "14706194",
     "name": "Elvis Afrifa",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "CHN",
@@ -1215,11 +1378,12 @@
     ],
     "countryCount": 11,
     "totalCompetitions": 43,
-    "lastUpdated": "2025-12-20T12:14:25.926Z"
+    "lastUpdated": "2025-12-20T15:42:10.942Z"
   },
   "14707010": {
     "id": "14707010",
     "name": "Femke Bol",
+    "homeCountry": "NED",
     "countries": [
       "CZE",
       "ESP",
@@ -1235,11 +1399,12 @@
     ],
     "countryCount": 11,
     "totalCompetitions": 19,
-    "lastUpdated": "2025-12-20T12:14:40.681Z"
+    "lastUpdated": "2025-12-20T15:42:34.516Z"
   },
   "14707142": {
     "id": "14707142",
     "name": "Dino Subašič",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "FRA",
@@ -1250,11 +1415,12 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 19,
-    "lastUpdated": "2025-12-20T12:14:42.799Z"
+    "lastUpdated": "2025-12-20T15:42:50.343Z"
   },
   "14709423": {
     "id": "14709423",
     "name": "Ramsey Angela",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "GBR",
@@ -1266,22 +1432,24 @@
     ],
     "countryCount": 7,
     "totalCompetitions": 20,
-    "lastUpdated": "2025-12-20T12:14:32.016Z"
+    "lastUpdated": "2025-12-20T15:42:20.128Z"
   },
   "14709591": {
     "id": "14709591",
     "name": "Attila Perge",
+    "homeCountry": "HUN",
     "countries": [
       "HUN",
       "SVK"
     ],
     "countryCount": 2,
     "totalCompetitions": 8,
-    "lastUpdated": "2025-12-20T12:14:48.001Z"
+    "lastUpdated": "2025-12-20T15:42:50.161Z"
   },
   "14712930": {
     "id": "14712930",
     "name": "Attila Molnár",
+    "homeCountry": "HUN",
     "countries": [
       "CHN",
       "CZE",
@@ -1295,21 +1463,23 @@
     ],
     "countryCount": 9,
     "totalCompetitions": 19,
-    "lastUpdated": "2025-12-20T12:14:29.915Z"
+    "lastUpdated": "2025-12-20T15:42:15.381Z"
   },
   "14714521": {
     "id": "14714521",
     "name": "Yassine Bih",
+    "homeCountry": "MAR",
     "countries": [
       "ESP"
     ],
     "countryCount": 1,
     "totalCompetitions": 3,
-    "lastUpdated": "2025-12-20T12:14:43.449Z"
+    "lastUpdated": "2025-12-20T15:42:40.685Z"
   },
   "14715977": {
     "id": "14715977",
     "name": "Dimitrios Tsitsos",
+    "homeCountry": "GRE",
     "countries": [
       "ESP",
       "GRE",
@@ -1317,11 +1487,30 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 9,
-    "lastUpdated": "2025-12-20T12:14:26.732Z"
+    "lastUpdated": "2025-12-20T15:42:11.898Z"
+  },
+  "14717805": {
+    "id": "14717805",
+    "name": "Gustav Lundholm Nielsen",
+    "homeCountry": "DEN",
+    "countries": [
+      "BEL",
+      "DEN",
+      "FIN",
+      "FRA",
+      "GER",
+      "ITA",
+      "NOR",
+      "SLO"
+    ],
+    "countryCount": 8,
+    "totalCompetitions": 20,
+    "lastUpdated": "2025-12-20T15:42:52.862Z"
   },
   "14723633": {
     "id": "14723633",
     "name": "Patrik Dömötör",
+    "homeCountry": "SVK",
     "countries": [
       "CHN",
       "CZE",
@@ -1337,29 +1526,32 @@
     ],
     "countryCount": 11,
     "totalCompetitions": 31,
-    "lastUpdated": "2025-12-20T12:14:29.208Z"
+    "lastUpdated": "2025-12-20T15:42:15.359Z"
   },
   "14735293": {
     "id": "14735293",
     "name": "Hüseyin Ocak",
+    "homeCountry": "TUR",
     "countries": [
       "TUR"
     ],
     "countryCount": 1,
     "totalCompetitions": 5,
-    "lastUpdated": "2025-12-20T12:14:26.734Z"
+    "lastUpdated": "2025-12-20T15:42:12.233Z"
   },
   "14735295": {
     "id": "14735295",
     "name": "Emre Derya",
+    "homeCountry": "TUR",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:39.492Z"
+    "lastUpdated": "2025-12-20T15:42:33.717Z"
   },
   "14735372": {
     "id": "14735372",
     "name": "Simay Özçiftçi",
+    "homeCountry": "TUR",
     "countries": [
       "GER",
       "KAZ",
@@ -1372,11 +1564,12 @@
     ],
     "countryCount": 8,
     "totalCompetitions": 34,
-    "lastUpdated": "2025-12-20T12:14:37.321Z"
+    "lastUpdated": "2025-12-20T15:42:29.054Z"
   },
   "14735409": {
     "id": "14735409",
     "name": "Sezgin Ataç",
+    "homeCountry": "TUR",
     "countries": [
       "BEL",
       "KOR",
@@ -1385,11 +1578,12 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 5,
-    "lastUpdated": "2025-12-20T12:14:47.968Z"
+    "lastUpdated": "2025-12-20T15:42:49.466Z"
   },
   "14735410": {
     "id": "14735410",
     "name": "Ömer Amaçtan",
+    "homeCountry": "TUR",
     "countries": [
       "BEL",
       "GER",
@@ -1398,22 +1592,24 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 6,
-    "lastUpdated": "2025-12-20T12:14:48.017Z"
+    "lastUpdated": "2025-12-20T15:42:50.780Z"
   },
   "14735696": {
     "id": "14735696",
     "name": "Andrea Švecová",
+    "homeCountry": "SVK",
     "countries": [
       "CZE",
       "SVK"
     ],
     "countryCount": 2,
     "totalCompetitions": 25,
-    "lastUpdated": "2025-12-20T12:14:27.948Z"
+    "lastUpdated": "2025-12-20T15:42:13.663Z"
   },
   "14737427": {
     "id": "14737427",
     "name": "Ersu Şaşma",
+    "homeCountry": "TUR",
     "countries": [
       "CHN",
       "FRA",
@@ -1430,11 +1626,12 @@
     ],
     "countryCount": 12,
     "totalCompetitions": 20,
-    "lastUpdated": "2025-12-20T12:14:42.826Z"
+    "lastUpdated": "2025-12-20T15:42:39.324Z"
   },
   "14738009": {
     "id": "14738009",
     "name": "Kishane Thompson",
+    "homeCountry": "JAM",
     "countries": [
       "CHN",
       "GBR",
@@ -1447,11 +1644,12 @@
     ],
     "countryCount": 8,
     "totalCompetitions": 16,
-    "lastUpdated": "2025-12-20T12:14:27.552Z"
+    "lastUpdated": "2025-12-20T15:42:12.784Z"
   },
   "14738788": {
     "id": "14738788",
     "name": "Rani Rosius",
+    "homeCountry": "BEL",
     "countries": [
       "BEL",
       "CHN",
@@ -1466,11 +1664,21 @@
     ],
     "countryCount": 10,
     "totalCompetitions": 32,
-    "lastUpdated": "2025-12-20T12:14:41.735Z"
+    "lastUpdated": "2025-12-20T15:42:36.970Z"
+  },
+  "14739941": {
+    "id": "14739941",
+    "name": "Lea Galet",
+    "homeCountry": "FRA",
+    "countries": [],
+    "countryCount": 0,
+    "totalCompetitions": 0,
+    "lastUpdated": "2025-12-20T15:42:53.390Z"
   },
   "14740057": {
     "id": "14740057",
     "name": "Ramazan Baştuğ",
+    "homeCountry": "TUR",
     "countries": [
       "BEL",
       "GER",
@@ -1480,11 +1688,12 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 13,
-    "lastUpdated": "2025-12-20T12:14:48.004Z"
+    "lastUpdated": "2025-12-20T15:42:50.503Z"
   },
   "14742772": {
     "id": "14742772",
     "name": "Ricky Petrucciani",
+    "homeCountry": "SUI",
     "countries": [
       "BEL",
       "CHN",
@@ -1498,19 +1707,34 @@
     ],
     "countryCount": 9,
     "totalCompetitions": 23,
-    "lastUpdated": "2025-12-20T12:14:37.765Z"
+    "lastUpdated": "2025-12-20T15:42:29.987Z"
+  },
+  "14752366": {
+    "id": "14752366",
+    "name": "Kevin Viezee",
+    "homeCountry": "NED",
+    "countries": [
+      "BEL",
+      "FRA",
+      "NED"
+    ],
+    "countryCount": 3,
+    "totalCompetitions": 21,
+    "lastUpdated": "2025-12-20T15:42:54.213Z"
   },
   "14752880": {
     "id": "14752880",
     "name": "Domen Orož",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:45.258Z"
+    "lastUpdated": "2025-12-20T15:42:44.342Z"
   },
   "14753645": {
     "id": "14753645",
     "name": "Sarah Peerik",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "NED",
@@ -1518,37 +1742,57 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 10,
-    "lastUpdated": "2025-12-20T12:14:42.302Z"
+    "lastUpdated": "2025-12-20T15:42:37.433Z"
+  },
+  "14755058": {
+    "id": "14755058",
+    "name": "José Fernando Ferreira",
+    "homeCountry": "BRA",
+    "countries": [
+      "ARG",
+      "AUT",
+      "BOL",
+      "BRA",
+      "CHN",
+      "JPN"
+    ],
+    "countryCount": 6,
+    "totalCompetitions": 72,
+    "lastUpdated": "2025-12-20T15:42:54.933Z"
   },
   "14755619": {
     "id": "14755619",
     "name": "Jakob Murovec",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:44.440Z"
+    "lastUpdated": "2025-12-20T15:42:41.953Z"
   },
   "14755622": {
     "id": "14755622",
     "name": "Gal Kumar",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:32.641Z"
+    "lastUpdated": "2025-12-20T15:42:21.800Z"
   },
   "14756911": {
     "id": "14756911",
     "name": "Kristóf Szele",
+    "homeCountry": "HUN",
     "countries": [
       "HUN"
     ],
     "countryCount": 1,
     "totalCompetitions": 5,
-    "lastUpdated": "2025-12-20T12:14:48.509Z"
+    "lastUpdated": "2025-12-20T15:42:51.348Z"
   },
   "14756997": {
     "id": "14756997",
     "name": "Melissa Jefferson-Wooden",
+    "homeCountry": "USA",
     "countries": [
       "BEL",
       "JAM",
@@ -1558,11 +1802,12 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 22,
-    "lastUpdated": "2025-12-20T12:14:48.472Z"
+    "lastUpdated": "2025-12-20T15:42:51.201Z"
   },
   "14757878": {
     "id": "14757878",
     "name": "Gedly Tugi",
+    "homeCountry": "EST",
     "countries": [
       "CRO",
       "CYP",
@@ -1574,11 +1819,12 @@
     ],
     "countryCount": 7,
     "totalCompetitions": 10,
-    "lastUpdated": "2025-12-20T12:14:48.059Z"
+    "lastUpdated": "2025-12-20T15:42:49.541Z"
   },
   "14759087": {
     "id": "14759087",
     "name": "Jasmine Clark",
+    "homeCountry": "GBR",
     "countries": [
       "FRA",
       "GBR",
@@ -1586,11 +1832,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 22,
-    "lastUpdated": "2025-12-20T12:14:36.762Z"
+    "lastUpdated": "2025-12-20T15:42:28.024Z"
   },
   "14759097": {
     "id": "14759097",
     "name": "Joshua Faulds",
+    "homeCountry": "GBR",
     "countries": [
       "BEL",
       "BRA",
@@ -1604,21 +1851,23 @@
     ],
     "countryCount": 9,
     "totalCompetitions": 19,
-    "lastUpdated": "2025-12-20T12:14:36.423Z"
+    "lastUpdated": "2025-12-20T15:42:26.339Z"
   },
   "14759529": {
     "id": "14759529",
     "name": "Žiga Benko",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 4,
-    "lastUpdated": "2025-12-20T12:14:32.694Z"
+    "lastUpdated": "2025-12-20T15:42:12.860Z"
   },
   "14763209": {
     "id": "14763209",
     "name": "Şilan Ayyildiz",
+    "homeCountry": "TUR",
     "countries": [
       "JPN",
       "SLO",
@@ -1627,11 +1876,12 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 26,
-    "lastUpdated": "2025-12-20T12:14:36.863Z"
+    "lastUpdated": "2025-12-20T15:42:28.147Z"
   },
   "14769293": {
     "id": "14769293",
     "name": "Tyri Donovan",
+    "homeCountry": "GBR",
     "countries": [
       "BEL",
       "FRA",
@@ -1642,11 +1892,12 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 14,
-    "lastUpdated": "2025-12-20T12:14:36.398Z"
+    "lastUpdated": "2025-12-20T15:42:27.512Z"
   },
   "14773229": {
     "id": "14773229",
     "name": "Ilyas Çanakçi",
+    "homeCountry": "TUR",
     "countries": [
       "GER",
       "GRE",
@@ -1657,11 +1908,12 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 25,
-    "lastUpdated": "2025-12-20T12:14:38.860Z"
+    "lastUpdated": "2025-12-20T15:42:32.272Z"
   },
   "14775299": {
     "id": "14775299",
     "name": "Tan Černigoj",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "SLO",
@@ -1669,11 +1921,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 13,
-    "lastUpdated": "2025-12-20T12:14:25.916Z"
+    "lastUpdated": "2025-12-20T15:42:10.912Z"
   },
   "14778459": {
     "id": "14778459",
     "name": "Torrie Lewis",
+    "homeCountry": "AUS",
     "countries": [
       "AUS",
       "BEL",
@@ -1693,11 +1946,12 @@
     ],
     "countryCount": 15,
     "totalCompetitions": 38,
-    "lastUpdated": "2025-12-20T12:14:30.488Z"
+    "lastUpdated": "2025-12-20T15:42:18.330Z"
   },
   "14778583": {
     "id": "14778583",
     "name": "Bor Kolar Bačnik",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "SLO",
@@ -1705,21 +1959,23 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 6,
-    "lastUpdated": "2025-12-20T12:14:37.862Z"
+    "lastUpdated": "2025-12-20T15:42:28.835Z"
   },
   "14778585": {
     "id": "14778585",
     "name": "Hana Urankar",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 9,
-    "lastUpdated": "2025-12-20T12:14:27.346Z"
+    "lastUpdated": "2025-12-20T15:42:12.946Z"
   },
   "14779913": {
     "id": "14779913",
     "name": "Matevž Šuštaršič",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "POL",
@@ -1728,11 +1984,12 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 21,
-    "lastUpdated": "2025-12-20T12:14:33.311Z"
+    "lastUpdated": "2025-12-20T15:42:23.310Z"
   },
   "14781078": {
     "id": "14781078",
     "name": "Mehmet Çelik",
+    "homeCountry": "TUR",
     "countries": [
       "BEL",
       "CZE",
@@ -1745,32 +2002,35 @@
     ],
     "countryCount": 8,
     "totalCompetitions": 25,
-    "lastUpdated": "2025-12-20T12:14:42.398Z"
+    "lastUpdated": "2025-12-20T15:42:38.821Z"
   },
   "14783527": {
     "id": "14783527",
     "name": "Soban Mortaza Inayat",
+    "homeCountry": "NOR",
     "countries": [
       "NOR"
     ],
     "countryCount": 1,
     "totalCompetitions": 8,
-    "lastUpdated": "2025-12-20T12:14:27.979Z"
+    "lastUpdated": "2025-12-20T15:42:13.713Z"
   },
   "14794121": {
     "id": "14794121",
     "name": "Bořek Pešta",
+    "homeCountry": "CZE",
     "countries": [
       "CZE",
       "SVK"
     ],
     "countryCount": 2,
     "totalCompetitions": 12,
-    "lastUpdated": "2025-12-20T12:14:30.007Z"
+    "lastUpdated": "2025-12-20T15:42:16.652Z"
   },
   "14794967": {
     "id": "14794967",
     "name": "Lionel Spitz",
+    "homeCountry": "SUI",
     "countries": [
       "CHN",
       "ESP",
@@ -1781,11 +2041,12 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 14,
-    "lastUpdated": "2025-12-20T12:14:45.325Z"
+    "lastUpdated": "2025-12-20T15:42:44.080Z"
   },
   "14796663": {
     "id": "14796663",
     "name": "Anže Durjava",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "GRE",
@@ -1795,19 +2056,34 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 13,
-    "lastUpdated": "2025-12-20T12:14:31.601Z"
+    "lastUpdated": "2025-12-20T15:42:20.213Z"
   },
   "14796664": {
     "id": "14796664",
     "name": "Jan Skalar",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:41.876Z"
+    "lastUpdated": "2025-12-20T15:42:36.328Z"
+  },
+  "14796665": {
+    "id": "14796665",
+    "name": "Maša Dvoršak",
+    "homeCountry": "SLO",
+    "countries": [
+      "AUT",
+      "CRO",
+      "SLO"
+    ],
+    "countryCount": 3,
+    "totalCompetitions": 11,
+    "lastUpdated": "2025-12-20T15:42:54.229Z"
   },
   "14797505": {
     "id": "14797505",
     "name": "Berke Akçam",
+    "homeCountry": "TUR",
     "countries": [
       "CHN",
       "GER",
@@ -1822,11 +2098,12 @@
     ],
     "countryCount": 10,
     "totalCompetitions": 31,
-    "lastUpdated": "2025-12-20T12:14:43.934Z"
+    "lastUpdated": "2025-12-20T15:42:50.423Z"
   },
   "14800434": {
     "id": "14800434",
     "name": "Sigurd Tveit",
+    "homeCountry": "NOR",
     "countries": [
       "FIN",
       "GER",
@@ -1836,32 +2113,35 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 20,
-    "lastUpdated": "2025-12-20T12:14:27.930Z"
+    "lastUpdated": "2025-12-20T15:42:13.535Z"
   },
   "14801162": {
     "id": "14801162",
     "name": "Tjaša Maradin",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 8,
-    "lastUpdated": "2025-12-20T12:14:47.235Z"
+    "lastUpdated": "2025-12-20T15:42:48.334Z"
   },
   "14801670": {
     "id": "14801670",
     "name": "Marko Pepelnak",
+    "homeCountry": "SLO",
     "countries": [
       "GRE",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 11,
-    "lastUpdated": "2025-12-20T12:14:32.673Z"
+    "lastUpdated": "2025-12-20T15:42:22.374Z"
   },
   "14803112": {
     "id": "14803112",
     "name": "Kubilay Ençü",
+    "homeCountry": "TUR",
     "countries": [
       "GER",
       "SLO",
@@ -1869,22 +2149,24 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 23,
-    "lastUpdated": "2025-12-20T12:14:36.414Z"
+    "lastUpdated": "2025-12-20T15:42:27.367Z"
   },
   "14804410": {
     "id": "14804410",
     "name": "Neža Dolenc",
+    "homeCountry": "SLO",
     "countries": [
       "NOR",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 8,
-    "lastUpdated": "2025-12-20T12:14:36.007Z"
+    "lastUpdated": "2025-12-20T15:42:35.779Z"
   },
   "14804440": {
     "id": "14804440",
     "name": "Sandro Jeršin Tomassini",
+    "homeCountry": "SLO",
     "countries": [
       "GRE",
       "ITA",
@@ -1893,11 +2175,12 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 12,
-    "lastUpdated": "2025-12-20T12:14:34.244Z"
+    "lastUpdated": "2025-12-20T15:42:24.623Z"
   },
   "14804824": {
     "id": "14804824",
     "name": "Britt De Blaauw",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "CHN",
@@ -1909,33 +2192,36 @@
     ],
     "countryCount": 7,
     "totalCompetitions": 41,
-    "lastUpdated": "2025-12-20T12:14:25.908Z"
+    "lastUpdated": "2025-12-20T15:42:10.860Z"
   },
   "14805187": {
     "id": "14805187",
     "name": "Hakan Dalbal",
+    "homeCountry": "GBR",
     "countries": [
       "BEL",
       "GBR"
     ],
     "countryCount": 2,
     "totalCompetitions": 13,
-    "lastUpdated": "2025-12-20T12:14:37.262Z"
+    "lastUpdated": "2025-12-20T15:42:28.953Z"
   },
   "14807170": {
     "id": "14807170",
     "name": "Fyodor Ivanov",
+    "homeCountry": "RUS",
     "countries": [
       "BLR",
       "RUS"
     ],
     "countryCount": 2,
     "totalCompetitions": 19,
-    "lastUpdated": "2025-12-20T12:14:46.349Z"
+    "lastUpdated": "2025-12-20T15:42:47.416Z"
   },
   "14810170": {
     "id": "14810170",
     "name": "Izabela Eržen",
+    "homeCountry": "SLO",
     "countries": [
       "BEL",
       "NED",
@@ -1943,11 +2229,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 18,
-    "lastUpdated": "2025-12-20T12:14:46.765Z"
+    "lastUpdated": "2025-12-20T15:42:47.635Z"
   },
   "14810456": {
     "id": "14810456",
     "name": "Filip Dominković",
+    "homeCountry": "SLO",
     "countries": [
       "CYP",
       "CZE",
@@ -1957,21 +2244,32 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 8,
-    "lastUpdated": "2025-12-20T12:14:32.703Z"
+    "lastUpdated": "2025-12-20T15:42:21.826Z"
+  },
+  "14811748": {
+    "id": "14811748",
+    "name": "Nika Dobovšek",
+    "homeCountry": "SLO",
+    "countries": [],
+    "countryCount": 0,
+    "totalCompetitions": 0,
+    "lastUpdated": "2025-12-20T15:42:54.830Z"
   },
   "14812534": {
     "id": "14812534",
     "name": "František Doubek",
+    "homeCountry": "CZE",
     "countries": [
       "CZE"
     ],
     "countryCount": 1,
     "totalCompetitions": 13,
-    "lastUpdated": "2025-12-20T12:14:30.547Z"
+    "lastUpdated": "2025-12-20T15:42:18.361Z"
   },
   "14812536": {
     "id": "14812536",
     "name": "Jan Emberšič",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "CYP",
@@ -1981,11 +2279,12 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 16,
-    "lastUpdated": "2025-12-20T12:14:31.133Z"
+    "lastUpdated": "2025-12-20T15:42:19.370Z"
   },
   "14812677": {
     "id": "14812677",
     "name": "Gabriella Taylor",
+    "homeCountry": "AUS",
     "countries": [
       "AUS",
       "FRA",
@@ -1995,48 +2294,66 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 34,
-    "lastUpdated": "2025-12-20T12:14:41.339Z"
+    "lastUpdated": "2025-12-20T15:42:35.885Z"
+  },
+  "14813680": {
+    "id": "14813680",
+    "name": "Guadalupe Torrez",
+    "homeCountry": "BOL",
+    "countries": [
+      "BOL",
+      "CHN",
+      "PER"
+    ],
+    "countryCount": 3,
+    "totalCompetitions": 25,
+    "lastUpdated": "2025-12-20T15:42:54.172Z"
   },
   "14824695": {
     "id": "14824695",
     "name": "Manca Remškar",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:47.940Z"
+    "lastUpdated": "2025-12-20T15:42:49.670Z"
   },
   "14825439": {
     "id": "14825439",
     "name": "Ömer Faruk Çanakçi",
+    "homeCountry": "TUR",
     "countries": [
       "TUR"
     ],
     "countryCount": 1,
     "totalCompetitions": 14,
-    "lastUpdated": "2025-12-20T12:14:37.355Z"
+    "lastUpdated": "2025-12-20T15:42:28.754Z"
   },
   "14825961": {
     "id": "14825961",
     "name": "Matevž Sušec",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:47.225Z"
+    "lastUpdated": "2025-12-20T15:42:48.352Z"
   },
   "14828042": {
     "id": "14828042",
     "name": "Berk Sansoy",
+    "homeCountry": "TUR",
     "countries": [
       "GRE",
       "TUR"
     ],
     "countryCount": 2,
     "totalCompetitions": 9,
-    "lastUpdated": "2025-12-20T12:14:45.300Z"
+    "lastUpdated": "2025-12-20T15:42:43.353Z"
   },
   "14828208": {
     "id": "14828208",
     "name": "Hayrettin Yildiz",
+    "homeCountry": "TUR",
     "countries": [
       "CZE",
       "GER",
@@ -2046,11 +2363,12 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 7,
-    "lastUpdated": "2025-12-20T12:14:38.837Z"
+    "lastUpdated": "2025-12-20T15:42:30.909Z"
   },
   "14830537": {
     "id": "14830537",
     "name": "Artur Felfner",
+    "homeCountry": "UKR",
     "countries": [
       "ESP",
       "JPN",
@@ -2060,11 +2378,12 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 8,
-    "lastUpdated": "2025-12-20T12:14:38.986Z"
+    "lastUpdated": "2025-12-20T15:42:30.953Z"
   },
   "14833321": {
     "id": "14833321",
     "name": "Eugene Omalla",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "CHN",
@@ -2077,11 +2396,12 @@
     ],
     "countryCount": 8,
     "totalCompetitions": 26,
-    "lastUpdated": "2025-12-20T12:14:34.991Z"
+    "lastUpdated": "2025-12-20T15:42:25.362Z"
   },
   "14842772": {
     "id": "14842772",
     "name": "Urša Matotek",
+    "homeCountry": "SLO",
     "countries": [
       "GER",
       "GRE",
@@ -2089,21 +2409,23 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 12,
-    "lastUpdated": "2025-12-20T12:14:34.232Z"
+    "lastUpdated": "2025-12-20T15:42:24.518Z"
   },
   "14842777": {
     "id": "14842777",
     "name": "Lara Bezgovšek",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 1,
-    "lastUpdated": "2025-12-20T12:14:26.842Z"
+    "lastUpdated": "2025-12-20T15:42:11.896Z"
   },
   "14844692": {
     "id": "14844692",
     "name": "Ajda Kaučič",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "GRE",
@@ -2113,11 +2435,12 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 29,
-    "lastUpdated": "2025-12-20T12:14:33.814Z"
+    "lastUpdated": "2025-12-20T15:42:23.854Z"
   },
   "14844798": {
     "id": "14844798",
     "name": "Giovanni Frattini",
+    "homeCountry": "ITA",
     "countries": [
       "CYP",
       "FIN",
@@ -2127,41 +2450,45 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 14,
-    "lastUpdated": "2025-12-20T12:14:43.373Z"
+    "lastUpdated": "2025-12-20T15:42:39.637Z"
   },
   "14846849": {
     "id": "14846849",
     "name": "Yagiz Canli",
+    "homeCountry": "TUR",
     "countries": [
       "GER",
       "TUR"
     ],
     "countryCount": 2,
     "totalCompetitions": 17,
-    "lastUpdated": "2025-12-20T12:14:36.826Z"
+    "lastUpdated": "2025-12-20T15:42:27.378Z"
   },
   "14846850": {
     "id": "14846850",
     "name": "Oğuz Uyar",
+    "homeCountry": "TUR",
     "countries": [
       "TUR",
       "USA"
     ],
     "countryCount": 2,
     "totalCompetitions": 34,
-    "lastUpdated": "2025-12-20T12:14:39.463Z"
+    "lastUpdated": "2025-12-20T15:42:32.266Z"
   },
   "14848293": {
     "id": "14848293",
     "name": "Paolo Puppo",
+    "homeCountry": "ITA",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:34.242Z"
+    "lastUpdated": "2025-12-20T15:42:24.558Z"
   },
   "14849786": {
     "id": "14849786",
     "name": "Delia Farajpour",
+    "homeCountry": "SVK",
     "countries": [
       "AUT",
       "BEL",
@@ -2173,11 +2500,12 @@
     ],
     "countryCount": 7,
     "totalCompetitions": 45,
-    "lastUpdated": "2025-12-20T12:14:41.332Z"
+    "lastUpdated": "2025-12-20T15:42:35.874Z"
   },
   "14853060": {
     "id": "14853060",
     "name": "Sandrina Sprengel",
+    "homeCountry": "GER",
     "countries": [
       "GER",
       "JPN",
@@ -2185,19 +2513,21 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 35,
-    "lastUpdated": "2025-12-20T12:14:28.524Z"
+    "lastUpdated": "2025-12-20T15:42:14.615Z"
   },
   "14853440": {
     "id": "14853440",
     "name": "Lisa Wållgren",
+    "homeCountry": "SWE",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:44.435Z"
+    "lastUpdated": "2025-12-20T15:42:41.368Z"
   },
   "14855056": {
     "id": "14855056",
     "name": "Vid Botolin",
+    "homeCountry": "SLO",
     "countries": [
       "BEL",
       "CRO",
@@ -2209,11 +2539,12 @@
     ],
     "countryCount": 7,
     "totalCompetitions": 17,
-    "lastUpdated": "2025-12-20T12:14:40.697Z"
+    "lastUpdated": "2025-12-20T15:42:35.225Z"
   },
   "14855954": {
     "id": "14855954",
     "name": "Tereza Čorejová",
+    "homeCountry": "SVK",
     "countries": [
       "AUT",
       "CZE",
@@ -2223,11 +2554,12 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 39,
-    "lastUpdated": "2025-12-20T12:14:41.315Z"
+    "lastUpdated": "2025-12-20T15:42:35.067Z"
   },
   "14857218": {
     "id": "14857218",
     "name": "Karolína Maňasová",
+    "homeCountry": "CZE",
     "countries": [
       "AUT",
       "CZE",
@@ -2239,11 +2571,23 @@
     ],
     "countryCount": 7,
     "totalCompetitions": 25,
-    "lastUpdated": "2025-12-20T12:14:44.463Z"
+    "lastUpdated": "2025-12-20T15:42:42.389Z"
+  },
+  "14859302": {
+    "id": "14859302",
+    "name": "Joep Welsch",
+    "homeCountry": "NED",
+    "countries": [
+      "NED"
+    ],
+    "countryCount": 1,
+    "totalCompetitions": 4,
+    "lastUpdated": "2025-12-20T15:42:54.766Z"
   },
   "14859860": {
     "id": "14859860",
     "name": "Andrej Skočir",
+    "homeCountry": "SLO",
     "countries": [
       "GRE",
       "NOR",
@@ -2252,11 +2596,12 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 33,
-    "lastUpdated": "2025-12-20T12:14:32.186Z"
+    "lastUpdated": "2025-12-20T15:42:20.962Z"
   },
   "14859872": {
     "id": "14859872",
     "name": "Jakob Urbanč",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "CYP",
@@ -2265,11 +2610,26 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 10,
-    "lastUpdated": "2025-12-20T12:14:38.335Z"
+    "lastUpdated": "2025-12-20T15:42:29.849Z"
+  },
+  "14859876": {
+    "id": "14859876",
+    "name": "Lea Haler",
+    "homeCountry": "SLO",
+    "countries": [
+      "BEL",
+      "CRO",
+      "GER",
+      "SLO"
+    ],
+    "countryCount": 4,
+    "totalCompetitions": 22,
+    "lastUpdated": "2025-12-20T15:42:53.403Z"
   },
   "14860328": {
     "id": "14860328",
     "name": "Ali Eren Ünlü",
+    "homeCountry": "TUR",
     "countries": [
       "NOR",
       "TUR",
@@ -2277,43 +2637,67 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 6,
-    "lastUpdated": "2025-12-20T12:14:34.933Z"
+    "lastUpdated": "2025-12-20T15:42:25.430Z"
   },
   "14861874": {
     "id": "14861874",
     "name": "Karl Wållgren",
+    "homeCountry": "SWE",
     "countries": [
       "ESP",
       "SWE"
     ],
     "countryCount": 2,
     "totalCompetitions": 9,
-    "lastUpdated": "2025-12-20T12:14:44.486Z"
+    "lastUpdated": "2025-12-20T15:42:41.959Z"
   },
   "14862474": {
     "id": "14862474",
     "name": "Gaj Černigoj",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 3,
-    "lastUpdated": "2025-12-20T12:14:33.733Z"
+    "lastUpdated": "2025-12-20T15:42:24.046Z"
   },
   "14867798": {
     "id": "14867798",
     "name": "Tyrel Prenz",
+    "homeCountry": "GER",
     "countries": [
       "GER",
       "NOR"
     ],
     "countryCount": 2,
     "totalCompetitions": 11,
-    "lastUpdated": "2025-12-20T12:14:27.447Z"
+    "lastUpdated": "2025-12-20T15:42:12.757Z"
+  },
+  "14868541": {
+    "id": "14868541",
+    "name": "Klaus Grünbart",
+    "homeCountry": "AUT",
+    "countries": [
+      "AUT",
+      "BEL",
+      "CZE",
+      "GER",
+      "HUN",
+      "ITA",
+      "KAZ",
+      "SLO",
+      "SRB",
+      "SUI"
+    ],
+    "countryCount": 10,
+    "totalCompetitions": 36,
+    "lastUpdated": "2025-12-20T15:42:52.828Z"
   },
   "14869313": {
     "id": "14869313",
     "name": "Jeff Tesselaar",
+    "homeCountry": "NED",
     "countries": [
       "AUT",
       "BEL",
@@ -2322,11 +2706,12 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 60,
-    "lastUpdated": "2025-12-20T12:14:36.439Z"
+    "lastUpdated": "2025-12-20T15:42:26.644Z"
   },
   "14874428": {
     "id": "14874428",
     "name": "Jernej Gumilar",
+    "homeCountry": "SLO",
     "countries": [
       "GRE",
       "NOR",
@@ -2335,21 +2720,23 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 28,
-    "lastUpdated": "2025-12-20T12:14:39.446Z"
+    "lastUpdated": "2025-12-20T15:42:33.181Z"
   },
   "14874431": {
     "id": "14874431",
     "name": "Ana Rus",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 1,
-    "lastUpdated": "2025-12-20T12:14:47.275Z"
+    "lastUpdated": "2025-12-20T15:42:49.547Z"
   },
   "14874438": {
     "id": "14874438",
     "name": "Matic Ian Guček",
+    "homeCountry": "SLO",
     "countries": [
       "JPN",
       "NOR",
@@ -2360,11 +2747,12 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 10,
-    "lastUpdated": "2025-12-20T12:14:33.295Z"
+    "lastUpdated": "2025-12-20T15:42:20.973Z"
   },
   "14874457": {
     "id": "14874457",
     "name": "Viktória Strýčková",
+    "homeCountry": "SVK",
     "countries": [
       "BEL",
       "CZE",
@@ -2375,11 +2763,12 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 29,
-    "lastUpdated": "2025-12-20T12:14:46.307Z"
+    "lastUpdated": "2025-12-20T15:42:45.142Z"
   },
   "14874649": {
     "id": "14874649",
     "name": "Calab Law",
+    "homeCountry": "AUS",
     "countries": [
       "AUS",
       "CZE",
@@ -2390,11 +2779,12 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 29,
-    "lastUpdated": "2025-12-20T12:14:35.042Z"
+    "lastUpdated": "2025-12-20T15:42:25.227Z"
   },
   "14874911": {
     "id": "14874911",
     "name": "Lucija Potnik",
+    "homeCountry": "SLO",
     "countries": [
       "CHN",
       "CRO",
@@ -2405,11 +2795,12 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 34,
-    "lastUpdated": "2025-12-20T12:14:33.251Z"
+    "lastUpdated": "2025-12-20T15:42:22.924Z"
   },
   "14875882": {
     "id": "14875882",
     "name": "Petja Klojčnik",
+    "homeCountry": "SLO",
     "countries": [
       "BEL",
       "ESP",
@@ -2422,11 +2813,12 @@
     ],
     "countryCount": 8,
     "totalCompetitions": 18,
-    "lastUpdated": "2025-12-20T12:14:33.212Z"
+    "lastUpdated": "2025-12-20T15:42:22.035Z"
   },
   "14878135": {
     "id": "14878135",
     "name": "Isaya Klein Ikkink",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "CHN",
@@ -2439,22 +2831,24 @@
     ],
     "countryCount": 8,
     "totalCompetitions": 21,
-    "lastUpdated": "2025-12-20T12:14:45.810Z"
+    "lastUpdated": "2025-12-20T15:42:44.959Z"
   },
   "14878540": {
     "id": "14878540",
     "name": "Jaka Hace",
+    "homeCountry": "SLO",
     "countries": [
       "GRE",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 30,
-    "lastUpdated": "2025-12-20T12:14:39.934Z"
+    "lastUpdated": "2025-12-20T15:42:34.353Z"
   },
   "14878541": {
     "id": "14878541",
     "name": "Maj Janža",
+    "homeCountry": "SLO",
     "countries": [
       "GER",
       "NOR",
@@ -2463,22 +2857,24 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 27,
-    "lastUpdated": "2025-12-20T12:14:38.816Z"
+    "lastUpdated": "2025-12-20T15:42:32.264Z"
   },
   "14878542": {
     "id": "14878542",
     "name": "Jan Duhovnik",
+    "homeCountry": "SLO",
     "countries": [
       "NOR",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 39,
-    "lastUpdated": "2025-12-20T12:14:37.792Z"
+    "lastUpdated": "2025-12-20T15:42:28.908Z"
   },
   "14878561": {
     "id": "14878561",
     "name": "Veronika Sadek",
+    "homeCountry": "SLO",
     "countries": [
       "AUT",
       "BEL",
@@ -2490,21 +2886,23 @@
     ],
     "countryCount": 7,
     "totalCompetitions": 10,
-    "lastUpdated": "2025-12-20T12:14:41.915Z"
+    "lastUpdated": "2025-12-20T15:42:36.384Z"
   },
   "14878868": {
     "id": "14878868",
     "name": "David Bix",
+    "homeCountry": "CZE",
     "countries": [
       "CZE"
     ],
     "countryCount": 1,
     "totalCompetitions": 12,
-    "lastUpdated": "2025-12-20T12:14:31.150Z"
+    "lastUpdated": "2025-12-20T15:42:18.842Z"
   },
   "14881323": {
     "id": "14881323",
     "name": "Anej Čurin Prapotnik",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "GBR",
@@ -2515,11 +2913,12 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 27,
-    "lastUpdated": "2025-12-20T12:14:31.549Z"
+    "lastUpdated": "2025-12-20T15:42:19.569Z"
   },
   "14882867": {
     "id": "14882867",
     "name": "Sila Bayir",
+    "homeCountry": "TUR",
     "countries": [
       "GRE",
       "NOR",
@@ -2528,11 +2927,25 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 8,
-    "lastUpdated": "2025-12-20T12:14:37.729Z"
+    "lastUpdated": "2025-12-20T15:42:29.649Z"
+  },
+  "14884760": {
+    "id": "14884760",
+    "name": "Mark Daniel Fandly",
+    "homeCountry": "ROU",
+    "countries": [
+      "BEL",
+      "HUN",
+      "ROU"
+    ],
+    "countryCount": 3,
+    "totalCompetitions": 13,
+    "lastUpdated": "2025-12-20T15:42:54.248Z"
   },
   "14897447": {
     "id": "14897447",
     "name": "Jake Minshull",
+    "homeCountry": "GBR",
     "countries": [
       "BEL",
       "CZE",
@@ -2543,11 +2956,12 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 17,
-    "lastUpdated": "2025-12-20T12:14:29.203Z"
+    "lastUpdated": "2025-12-20T15:42:15.116Z"
   },
   "14899437": {
     "id": "14899437",
     "name": "Katjuša Jordan Nadižar",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "ITA",
@@ -2558,19 +2972,21 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 23,
-    "lastUpdated": "2025-12-20T12:14:48.493Z"
+    "lastUpdated": "2025-12-20T15:42:51.391Z"
   },
   "14899441": {
     "id": "14899441",
     "name": "Lucija Srebot",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:31.129Z"
+    "lastUpdated": "2025-12-20T15:42:18.024Z"
   },
   "14900564": {
     "id": "14900564",
     "name": "Jesse Van Heijningen",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "GER",
@@ -2578,38 +2994,42 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 32,
-    "lastUpdated": "2025-12-20T12:14:39.942Z"
+    "lastUpdated": "2025-12-20T15:42:34.514Z"
   },
   "14902486": {
     "id": "14902486",
     "name": "Max Van Der Lugt",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "NED"
     ],
     "countryCount": 2,
     "totalCompetitions": 11,
-    "lastUpdated": "2025-12-20T12:14:30.533Z"
+    "lastUpdated": "2025-12-20T15:42:17.215Z"
   },
   "14902994": {
     "id": "14902994",
     "name": "Sila Ata",
+    "homeCountry": "TUR",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:37.726Z"
+    "lastUpdated": "2025-12-20T15:42:30.443Z"
   },
   "14903002": {
     "id": "14903002",
     "name": "Hasan Can",
+    "homeCountry": "TUR",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:33.819Z"
+    "lastUpdated": "2025-12-20T15:42:23.780Z"
   },
   "14903132": {
     "id": "14903132",
     "name": "Daan Kneppers",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "NED",
@@ -2618,11 +3038,12 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 20,
-    "lastUpdated": "2025-12-20T12:14:29.146Z"
+    "lastUpdated": "2025-12-20T15:42:15.229Z"
   },
   "14903814": {
     "id": "14903814",
     "name": "Stefano Grendene",
+    "homeCountry": "ITA",
     "countries": [
       "ITA",
       "SUI",
@@ -2630,22 +3051,24 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 13,
-    "lastUpdated": "2025-12-20T12:14:29.073Z"
+    "lastUpdated": "2025-12-20T15:42:15.130Z"
   },
   "14904437": {
     "id": "14904437",
     "name": "Samo Bergant",
+    "homeCountry": "SLO",
     "countries": [
       "SLO",
       "SUI"
     ],
     "countryCount": 2,
     "totalCompetitions": 19,
-    "lastUpdated": "2025-12-20T12:14:43.974Z"
+    "lastUpdated": "2025-12-20T15:42:40.670Z"
   },
   "14905336": {
     "id": "14905336",
     "name": "Lurdes Gloria Manuel",
+    "homeCountry": "CZE",
     "countries": [
       "BEL",
       "CZE",
@@ -2654,11 +3077,12 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 9,
-    "lastUpdated": "2025-12-20T12:14:45.683Z"
+    "lastUpdated": "2025-12-20T15:42:44.310Z"
   },
   "14905414": {
     "id": "14905414",
     "name": "Javid Mammadov",
+    "homeCountry": "AZE",
     "countries": [
       "AZE",
       "KSA",
@@ -2666,11 +3090,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 5,
-    "lastUpdated": "2025-12-20T12:14:35.991Z"
+    "lastUpdated": "2025-12-20T15:42:26.310Z"
   },
   "14905834": {
     "id": "14905834",
     "name": "Cole Hocker",
+    "homeCountry": "USA",
     "countries": [
       "JAM",
       "JPN",
@@ -2679,11 +3104,12 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 17,
-    "lastUpdated": "2025-12-20T12:14:26.735Z"
+    "lastUpdated": "2025-12-20T15:42:11.969Z"
   },
   "14907658": {
     "id": "14907658",
     "name": "Andreas Ofstad Kulseng",
+    "homeCountry": "NOR",
     "countries": [
       "BEL",
       "FIN",
@@ -2693,11 +3119,12 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 21,
-    "lastUpdated": "2025-12-20T12:14:28.040Z"
+    "lastUpdated": "2025-12-20T15:42:13.681Z"
   },
   "14908547": {
     "id": "14908547",
     "name": "Thierry Cajeux",
+    "homeCountry": "SUI",
     "countries": [
       "FRA",
       "NOR",
@@ -2705,11 +3132,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 18,
-    "lastUpdated": "2025-12-20T12:14:40.663Z"
+    "lastUpdated": "2025-12-20T15:42:35.142Z"
   },
   "14908730": {
     "id": "14908730",
     "name": "Hana Grobovšek",
+    "homeCountry": "SLO",
     "countries": [
       "BEL",
       "FRA",
@@ -2722,22 +3150,24 @@
     ],
     "countryCount": 8,
     "totalCompetitions": 20,
-    "lastUpdated": "2025-12-20T12:14:42.924Z"
+    "lastUpdated": "2025-12-20T15:42:39.762Z"
   },
   "14909690": {
     "id": "14909690",
     "name": "Nikola Kostić",
+    "homeCountry": "SRB",
     "countries": [
       "ITA",
       "SRB"
     ],
     "countryCount": 2,
     "totalCompetitions": 9,
-    "lastUpdated": "2025-12-20T12:14:29.172Z"
+    "lastUpdated": "2025-12-20T15:42:14.420Z"
   },
   "14909837": {
     "id": "14909837",
     "name": "Vasileios Myrianthopoulos",
+    "homeCountry": "GRE",
     "countries": [
       "BUL",
       "ESP",
@@ -2748,31 +3178,34 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 30,
-    "lastUpdated": "2025-12-20T12:14:41.904Z"
+    "lastUpdated": "2025-12-20T15:42:35.845Z"
   },
   "14910399": {
     "id": "14910399",
     "name": "Batuhan Arda Erol",
+    "homeCountry": "TUR",
     "countries": [
       "TUR"
     ],
     "countryCount": 1,
     "totalCompetitions": 28,
-    "lastUpdated": "2025-12-20T12:14:32.037Z"
+    "lastUpdated": "2025-12-20T15:42:20.869Z"
   },
   "14910516": {
     "id": "14910516",
     "name": "Urban Velepec",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 12,
-    "lastUpdated": "2025-12-20T12:14:38.796Z"
+    "lastUpdated": "2025-12-20T15:42:32.261Z"
   },
   "14910859": {
     "id": "14910859",
     "name": "Toluwabori Akinola",
+    "homeCountry": "IRL",
     "countries": [
       "BEL",
       "GBR",
@@ -2784,11 +3217,12 @@
     ],
     "countryCount": 7,
     "totalCompetitions": 38,
-    "lastUpdated": "2025-12-20T12:14:29.898Z"
+    "lastUpdated": "2025-12-20T15:42:17.090Z"
   },
   "14911428": {
     "id": "14911428",
     "name": "Ivan Galuşco",
+    "homeCountry": "MDA",
     "countries": [
       "GRE",
       "MDA",
@@ -2796,19 +3230,36 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 8,
-    "lastUpdated": "2025-12-20T12:14:40.911Z"
+    "lastUpdated": "2025-12-20T15:42:34.614Z"
+  },
+  "14911435": {
+    "id": "14911435",
+    "name": "Diogo Barrigana",
+    "homeCountry": "POR",
+    "countries": [
+      "AUT",
+      "BEL",
+      "ESP",
+      "NOR",
+      "POR"
+    ],
+    "countryCount": 5,
+    "totalCompetitions": 24,
+    "lastUpdated": "2025-12-20T15:42:53.576Z"
   },
   "14911505": {
     "id": "14911505",
     "name": "Sydney Mclaughlin",
+    "homeCountry": "USA",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:42.393Z"
+    "lastUpdated": "2025-12-20T15:42:36.502Z"
   },
   "14911546": {
     "id": "14911546",
     "name": "Anže Svit Požgaj",
+    "homeCountry": "SLO",
     "countries": [
       "BEL",
       "CRO",
@@ -2820,37 +3271,41 @@
     ],
     "countryCount": 7,
     "totalCompetitions": 19,
-    "lastUpdated": "2025-12-20T12:14:34.556Z"
+    "lastUpdated": "2025-12-20T15:42:24.766Z"
   },
   "14911623": {
     "id": "14911623",
     "name": "Erika Kunej",
+    "homeCountry": "CAN",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:43.914Z"
+    "lastUpdated": "2025-12-20T15:42:41.167Z"
   },
   "14914664": {
     "id": "14914664",
     "name": "Jeremy Zammit",
+    "homeCountry": "MLT",
     "countries": [
       "USA"
     ],
     "countryCount": 1,
     "totalCompetitions": 1,
-    "lastUpdated": "2025-12-20T12:14:45.379Z"
+    "lastUpdated": "2025-12-20T15:42:43.432Z"
   },
   "14914885": {
     "id": "14914885",
     "name": "Fatma Damla Altun",
+    "homeCountry": "TUR",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:42.832Z"
+    "lastUpdated": "2025-12-20T15:42:37.402Z"
   },
   "14915048": {
     "id": "14915048",
     "name": "Enzo Diessl",
+    "homeCountry": "AUT",
     "countries": [
       "AUT",
       "CRO",
@@ -2863,11 +3318,12 @@
     ],
     "countryCount": 8,
     "totalCompetitions": 23,
-    "lastUpdated": "2025-12-20T12:29:51.100Z"
+    "lastUpdated": "2025-12-20T15:42:52.879Z"
   },
   "14916626": {
     "id": "14916626",
     "name": "Uršula Černelč",
+    "homeCountry": "SLO",
     "countries": [
       "GRE",
       "NOR",
@@ -2875,19 +3331,21 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 18,
-    "lastUpdated": "2025-12-20T12:14:47.233Z"
+    "lastUpdated": "2025-12-20T15:42:48.240Z"
   },
   "14923501": {
     "id": "14923501",
     "name": "David Miles",
+    "homeCountry": "USA",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:34.221Z"
+    "lastUpdated": "2025-12-20T15:42:24.645Z"
   },
   "14923722": {
     "id": "14923722",
     "name": "Jermaine Kleine",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "FRA",
@@ -2895,11 +3353,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 7,
-    "lastUpdated": "2025-12-20T12:14:35.990Z"
+    "lastUpdated": "2025-12-20T15:42:26.326Z"
   },
   "14923921": {
     "id": "14923921",
     "name": "Lana Andolšek",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "GRE",
@@ -2909,21 +3368,23 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 30,
-    "lastUpdated": "2025-12-20T12:14:48.496Z"
+    "lastUpdated": "2025-12-20T15:42:51.214Z"
   },
   "14923939": {
     "id": "14923939",
     "name": "Naida Nišič",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 10,
-    "lastUpdated": "2025-12-20T12:14:38.834Z"
+    "lastUpdated": "2025-12-20T15:42:32.069Z"
   },
   "14924344": {
     "id": "14924344",
     "name": "Bree Rizzo",
+    "homeCountry": "AUS",
     "countries": [
       "AUS",
       "CHN",
@@ -2937,11 +3398,12 @@
     ],
     "countryCount": 9,
     "totalCompetitions": 23,
-    "lastUpdated": "2025-12-20T12:14:41.910Z"
+    "lastUpdated": "2025-12-20T15:42:35.887Z"
   },
   "14924533": {
     "id": "14924533",
     "name": "Sila Koloğlu",
+    "homeCountry": "TUR",
     "countries": [
       "GER",
       "GRE",
@@ -2955,11 +3417,12 @@
     ],
     "countryCount": 9,
     "totalCompetitions": 40,
-    "lastUpdated": "2025-12-20T12:14:39.925Z"
+    "lastUpdated": "2025-12-20T15:42:34.524Z"
   },
   "14928872": {
     "id": "14928872",
     "name": "İsmail Nezir",
+    "homeCountry": "TUR",
     "countries": [
       "ESP",
       "GER",
@@ -2972,11 +3435,12 @@
     ],
     "countryCount": 8,
     "totalCompetitions": 29,
-    "lastUpdated": "2025-12-20T12:14:31.140Z"
+    "lastUpdated": "2025-12-20T15:42:19.580Z"
   },
   "14929162": {
     "id": "14929162",
     "name": "Mimoun Abdoul Wahab",
+    "homeCountry": "BEL",
     "countries": [
       "AUT",
       "BEL",
@@ -2988,11 +3452,12 @@
     ],
     "countryCount": 7,
     "totalCompetitions": 28,
-    "lastUpdated": "2025-12-20T12:14:31.131Z"
+    "lastUpdated": "2025-12-20T15:42:19.358Z"
   },
   "14931578": {
     "id": "14931578",
     "name": "Klemen Modrijančič",
+    "homeCountry": "SLO",
     "countries": [
       "GRE",
       "NOR",
@@ -3000,11 +3465,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 12,
-    "lastUpdated": "2025-12-20T12:14:29.181Z"
+    "lastUpdated": "2025-12-20T15:42:15.194Z"
   },
   "14932901": {
     "id": "14932901",
     "name": "Milan Mesie",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "GER",
@@ -3012,30 +3478,33 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 36,
-    "lastUpdated": "2025-12-20T12:14:40.632Z"
+    "lastUpdated": "2025-12-20T15:42:34.476Z"
   },
   "14933975": {
     "id": "14933975",
     "name": "Brooke Urban",
+    "homeCountry": "USA",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:41.364Z"
+    "lastUpdated": "2025-12-20T15:42:35.829Z"
   },
   "14942670": {
     "id": "14942670",
     "name": "Kris Oosterveld",
+    "homeCountry": "NED",
     "countries": [
       "FRA",
       "NED"
     ],
     "countryCount": 2,
     "totalCompetitions": 25,
-    "lastUpdated": "2025-12-20T12:14:36.016Z"
+    "lastUpdated": "2025-12-20T15:42:26.845Z"
   },
   "14943108": {
     "id": "14943108",
     "name": "Karolina Zbičajnik",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "GRE",
@@ -3046,11 +3515,12 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 23,
-    "lastUpdated": "2025-12-20T12:14:33.263Z"
+    "lastUpdated": "2025-12-20T15:42:23.212Z"
   },
   "14943800": {
     "id": "14943800",
     "name": "Jurij Beber",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "GER",
@@ -3059,22 +3529,24 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 33,
-    "lastUpdated": "2025-12-20T12:14:39.409Z"
+    "lastUpdated": "2025-12-20T15:42:32.263Z"
   },
   "14943806": {
     "id": "14943806",
     "name": "Mia Pirnat Kopač",
+    "homeCountry": "SLO",
     "countries": [
       "NOR",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 9,
-    "lastUpdated": "2025-12-20T12:14:47.314Z"
+    "lastUpdated": "2025-12-20T15:42:49.506Z"
   },
   "14944393": {
     "id": "14944393",
     "name": "Lukas Krappe",
+    "homeCountry": "GER",
     "countries": [
       "BEL",
       "CHN",
@@ -3084,11 +3556,26 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 29,
-    "lastUpdated": "2025-12-20T12:14:28.596Z"
+    "lastUpdated": "2025-12-20T15:42:14.187Z"
+  },
+  "14944442": {
+    "id": "14944442",
+    "name": "Ema Vehovar",
+    "homeCountry": "SLO",
+    "countries": [
+      "BUL",
+      "FIN",
+      "ROU",
+      "SLO"
+    ],
+    "countryCount": 4,
+    "totalCompetitions": 27,
+    "lastUpdated": "2025-12-20T15:42:55.387Z"
   },
   "14944443": {
     "id": "14944443",
     "name": "Urška Ogrizek",
+    "homeCountry": "SLO",
     "countries": [
       "BUL",
       "SLO",
@@ -3096,11 +3583,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 8,
-    "lastUpdated": "2025-12-20T12:14:43.390Z"
+    "lastUpdated": "2025-12-20T15:42:39.308Z"
   },
   "14944448": {
     "id": "14944448",
     "name": "Tia Tanja Živko",
+    "homeCountry": "SLO",
     "countries": [
       "FIN",
       "GER",
@@ -3109,11 +3597,12 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 11,
-    "lastUpdated": "2025-12-20T12:14:42.303Z"
+    "lastUpdated": "2025-12-20T15:42:36.560Z"
   },
   "14944449": {
     "id": "14944449",
     "name": "Ela Velepec",
+    "homeCountry": "SLO",
     "countries": [
       "GER",
       "NOR",
@@ -3122,11 +3611,12 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 18,
-    "lastUpdated": "2025-12-20T12:14:41.265Z"
+    "lastUpdated": "2025-12-20T15:42:35.028Z"
   },
   "14945080": {
     "id": "14945080",
     "name": "Maksymilian Szwed",
+    "homeCountry": "POL",
     "countries": [
       "CHN",
       "CZE",
@@ -3140,51 +3630,56 @@
     ],
     "countryCount": 9,
     "totalCompetitions": 30,
-    "lastUpdated": "2025-12-20T12:14:39.448Z"
+    "lastUpdated": "2025-12-20T15:42:33.738Z"
   },
   "14945592": {
     "id": "14945592",
     "name": "Žana Sovdat",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 5,
-    "lastUpdated": "2025-12-20T12:14:34.183Z"
+    "lastUpdated": "2025-12-20T15:42:24.484Z"
   },
   "14949400": {
     "id": "14949400",
     "name": "Jakub Ďurdina",
+    "homeCountry": "SVK",
     "countries": [
       "CZE"
     ],
     "countryCount": 1,
     "totalCompetitions": 4,
-    "lastUpdated": "2025-12-20T12:14:43.937Z"
+    "lastUpdated": "2025-12-20T15:42:41.168Z"
   },
   "14952031": {
     "id": "14952031",
     "name": "Martin Medvešek",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 11,
-    "lastUpdated": "2025-12-20T12:14:33.243Z"
+    "lastUpdated": "2025-12-20T15:42:22.780Z"
   },
   "14952032": {
     "id": "14952032",
     "name": "Matjaž Brežnjak",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 13,
-    "lastUpdated": "2025-12-20T12:14:43.380Z"
+    "lastUpdated": "2025-12-20T15:42:40.560Z"
   },
   "14952695": {
     "id": "14952695",
     "name": "Endrick Moreno",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "GBR",
@@ -3194,21 +3689,23 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 33,
-    "lastUpdated": "2025-12-20T12:14:42.839Z"
+    "lastUpdated": "2025-12-20T15:42:37.594Z"
   },
   "14952754": {
     "id": "14952754",
     "name": "Mikuláš Dreisig",
+    "homeCountry": "CZE",
     "countries": [
       "CZE"
     ],
     "countryCount": 1,
     "totalCompetitions": 12,
-    "lastUpdated": "2025-12-20T12:14:31.000Z"
+    "lastUpdated": "2025-12-20T15:42:19.395Z"
   },
   "14955060": {
     "id": "14955060",
     "name": "Klara Janža",
+    "homeCountry": "SLO",
     "countries": [
       "AUT",
       "BUL",
@@ -3219,19 +3716,21 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 44,
-    "lastUpdated": "2025-12-20T12:14:36.852Z"
+    "lastUpdated": "2025-12-20T15:42:28.314Z"
   },
   "14955067": {
     "id": "14955067",
     "name": "Val Velkavrh",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:47.995Z"
+    "lastUpdated": "2025-12-20T15:42:49.672Z"
   },
   "14955068": {
     "id": "14955068",
     "name": "Hana Sekne",
+    "homeCountry": "SLO",
     "countries": [
       "BUL",
       "FIN",
@@ -3239,11 +3738,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 33,
-    "lastUpdated": "2025-12-20T12:14:40.878Z"
+    "lastUpdated": "2025-12-20T15:42:34.503Z"
   },
   "14955069": {
     "id": "14955069",
     "name": "Taja Pučko",
+    "homeCountry": "SLO",
     "countries": [
       "ROU",
       "SLO",
@@ -3251,44 +3751,48 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 14,
-    "lastUpdated": "2025-12-20T12:14:36.824Z"
+    "lastUpdated": "2025-12-20T15:42:28.013Z"
   },
   "14961939": {
     "id": "14961939",
     "name": "Steven Sabino",
+    "homeCountry": "MOZ",
     "countries": [
       "MOZ",
       "RSA"
     ],
     "countryCount": 2,
     "totalCompetitions": 16,
-    "lastUpdated": "2025-12-20T12:14:45.316Z"
+    "lastUpdated": "2025-12-20T15:42:43.351Z"
   },
   "14970096": {
     "id": "14970096",
     "name": "Jan Radakovič",
+    "homeCountry": "SLO",
     "countries": [
       "FIN",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 36,
-    "lastUpdated": "2025-12-20T12:14:46.696Z"
+    "lastUpdated": "2025-12-20T15:42:50.260Z"
   },
   "14970761": {
     "id": "14970761",
     "name": "Daša Kernel",
+    "homeCountry": "SLO",
     "countries": [
       "BUL",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 15,
-    "lastUpdated": "2025-12-20T12:14:39.935Z"
+    "lastUpdated": "2025-12-20T15:42:33.691Z"
   },
   "14970762": {
     "id": "14970762",
     "name": "Žiga Jan",
+    "homeCountry": "SLO",
     "countries": [
       "ITA",
       "SLO",
@@ -3296,11 +3800,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 9,
-    "lastUpdated": "2025-12-20T12:14:46.847Z"
+    "lastUpdated": "2025-12-20T15:42:48.949Z"
   },
   "14972950": {
     "id": "14972950",
     "name": "Andraž Rajher",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "FIN",
@@ -3309,11 +3814,12 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 25,
-    "lastUpdated": "2025-12-20T12:14:30.527Z"
+    "lastUpdated": "2025-12-20T15:42:18.844Z"
   },
   "14974339": {
     "id": "14974339",
     "name": "Žan Ogrinc",
+    "homeCountry": "SLO",
     "countries": [
       "BUL",
       "CRO",
@@ -3324,31 +3830,34 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 20,
-    "lastUpdated": "2025-12-20T12:14:31.155Z"
+    "lastUpdated": "2025-12-20T15:42:19.376Z"
   },
   "14974340": {
     "id": "14974340",
     "name": "Maj Cizera Turk",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 7,
-    "lastUpdated": "2025-12-20T12:14:46.324Z"
+    "lastUpdated": "2025-12-20T15:42:47.318Z"
   },
   "14974346": {
     "id": "14974346",
     "name": "Maša Fink",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 5,
-    "lastUpdated": "2025-12-20T12:14:41.327Z"
+    "lastUpdated": "2025-12-20T15:42:35.616Z"
   },
   "14975151": {
     "id": "14975151",
     "name": "Deniz Kaan Kartal",
+    "homeCountry": "TUR",
     "countries": [
       "GRE",
       "NOR",
@@ -3357,11 +3866,12 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 40,
-    "lastUpdated": "2025-12-20T12:14:30.617Z"
+    "lastUpdated": "2025-12-20T15:42:17.117Z"
   },
   "14975159": {
     "id": "14975159",
     "name": "Mustafa Çinpolat",
+    "homeCountry": "TUR",
     "countries": [
       "GRE",
       "NOR",
@@ -3369,49 +3879,54 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 25,
-    "lastUpdated": "2025-12-20T12:14:31.463Z"
+    "lastUpdated": "2025-12-20T15:42:20.073Z"
   },
   "14980043": {
     "id": "14980043",
     "name": "Tom Teršek",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:45.308Z"
+    "lastUpdated": "2025-12-20T15:42:43.625Z"
   },
   "14980044": {
     "id": "14980044",
     "name": "Eva Vignjević",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 11,
-    "lastUpdated": "2025-12-20T12:14:38.289Z"
+    "lastUpdated": "2025-12-20T15:42:31.706Z"
   },
   "14981584": {
     "id": "14981584",
     "name": "Amandine Vouilloz",
+    "homeCountry": "SUI",
     "countries": [
       "SUI"
     ],
     "countryCount": 1,
     "totalCompetitions": 3,
-    "lastUpdated": "2025-12-20T12:14:41.712Z"
+    "lastUpdated": "2025-12-20T15:42:36.499Z"
   },
   "14982630": {
     "id": "14982630",
     "name": "Matej Kukl",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 4,
-    "lastUpdated": "2025-12-20T12:14:45.278Z"
+    "lastUpdated": "2025-12-20T15:42:43.504Z"
   },
   "14983057": {
     "id": "14983057",
     "name": "Mihajlo Katanić",
+    "homeCountry": "SRB",
     "countries": [
       "BEL",
       "NOR",
@@ -3421,11 +3936,12 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 26,
-    "lastUpdated": "2025-12-20T12:14:41.748Z"
+    "lastUpdated": "2025-12-20T15:42:36.470Z"
   },
   "14983817": {
     "id": "14983817",
     "name": "Ahmet Civci",
+    "homeCountry": "TUR",
     "countries": [
       "ESP",
       "NOR",
@@ -3433,29 +3949,32 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 13,
-    "lastUpdated": "2025-12-20T12:14:27.550Z"
+    "lastUpdated": "2025-12-20T15:42:12.814Z"
   },
   "14984105": {
     "id": "14984105",
     "name": "Lara Krivec",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:47.206Z"
+    "lastUpdated": "2025-12-20T15:42:48.438Z"
   },
   "14985491": {
     "id": "14985491",
     "name": "Brina Cerlini",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 1,
-    "lastUpdated": "2025-12-20T12:14:47.543Z"
+    "lastUpdated": "2025-12-20T15:42:48.547Z"
   },
   "14985575": {
     "id": "14985575",
     "name": "Mitja Zubin",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "GRE",
@@ -3464,22 +3983,24 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 12,
-    "lastUpdated": "2025-12-20T12:14:29.871Z"
+    "lastUpdated": "2025-12-20T15:42:17.565Z"
   },
   "14985579": {
     "id": "14985579",
     "name": "Filip Oiclj",
+    "homeCountry": "SLO",
     "countries": [
       "NOR",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 19,
-    "lastUpdated": "2025-12-20T12:14:34.243Z"
+    "lastUpdated": "2025-12-20T15:42:24.557Z"
   },
   "14985950": {
     "id": "14985950",
     "name": "Pika Bikar Kern",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "FIN",
@@ -3487,11 +4008,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 31,
-    "lastUpdated": "2025-12-20T12:14:39.470Z"
+    "lastUpdated": "2025-12-20T15:42:33.924Z"
   },
   "14986579": {
     "id": "14986579",
     "name": "Toma Batistić",
+    "homeCountry": "CRO",
     "countries": [
       "BUL",
       "CRO",
@@ -3501,11 +4023,23 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 35,
-    "lastUpdated": "2025-12-20T12:14:28.018Z"
+    "lastUpdated": "2025-12-20T15:42:13.598Z"
+  },
+  "14986800": {
+    "id": "14986800",
+    "name": "Filip Bizjak",
+    "homeCountry": "SLO",
+    "countries": [
+      "SLO"
+    ],
+    "countryCount": 1,
+    "totalCompetitions": 1,
+    "lastUpdated": "2025-12-20T15:42:52.784Z"
   },
   "14987765": {
     "id": "14987765",
     "name": "Meret Stückelberger",
+    "homeCountry": "SUI",
     "countries": [
       "FIN",
       "GER",
@@ -3513,11 +4047,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 14,
-    "lastUpdated": "2025-12-20T12:14:38.265Z"
+    "lastUpdated": "2025-12-20T15:42:30.317Z"
   },
   "14988018": {
     "id": "14988018",
     "name": "Jak Rovan",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "GRE",
@@ -3529,11 +4064,12 @@
     ],
     "countryCount": 7,
     "totalCompetitions": 18,
-    "lastUpdated": "2025-12-20T12:14:48.507Z"
+    "lastUpdated": "2025-12-20T15:42:51.303Z"
   },
   "14988460": {
     "id": "14988460",
     "name": "Lies Kneppers",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "FIN",
@@ -3541,11 +4077,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 24,
-    "lastUpdated": "2025-12-20T12:14:30.013Z"
+    "lastUpdated": "2025-12-20T15:42:17.356Z"
   },
   "14988474": {
     "id": "14988474",
     "name": "Jonas Phijffers",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "CHN",
@@ -3558,19 +4095,21 @@
     ],
     "countryCount": 8,
     "totalCompetitions": 29,
-    "lastUpdated": "2025-12-20T12:14:25.939Z"
+    "lastUpdated": "2025-12-20T15:42:10.922Z"
   },
   "14993188": {
     "id": "14993188",
     "name": "Max Van Marle",
+    "homeCountry": "NED",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:42.830Z"
+    "lastUpdated": "2025-12-20T15:42:39.380Z"
   },
   "14994188": {
     "id": "14994188",
     "name": "Tara Vučković",
+    "homeCountry": "SRB",
     "countries": [
       "AUT",
       "BUL",
@@ -3583,11 +4122,12 @@
     ],
     "countryCount": 8,
     "totalCompetitions": 29,
-    "lastUpdated": "2025-12-20T12:14:31.553Z"
+    "lastUpdated": "2025-12-20T15:42:20.064Z"
   },
   "14995146": {
     "id": "14995146",
     "name": "Eren Keser",
+    "homeCountry": "TUR",
     "countries": [
       "FIN",
       "GRE",
@@ -3596,21 +4136,23 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 29,
-    "lastUpdated": "2025-12-20T12:14:31.561Z"
+    "lastUpdated": "2025-12-20T15:42:20.060Z"
   },
   "14995152": {
     "id": "14995152",
     "name": "Muhammet Arif Çenesi̇z\t",
+    "homeCountry": "TUR",
     "countries": [
       "TUR"
     ],
     "countryCount": 1,
     "totalCompetitions": 3,
-    "lastUpdated": "2025-12-20T12:14:42.840Z"
+    "lastUpdated": "2025-12-20T15:42:39.684Z"
   },
   "14996611": {
     "id": "14996611",
     "name": "Jan Výška",
+    "homeCountry": "CZE",
     "countries": [
       "CZE",
       "ESP",
@@ -3619,41 +4161,45 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 17,
-    "lastUpdated": "2025-12-20T12:14:26.733Z"
+    "lastUpdated": "2025-12-20T15:42:11.803Z"
   },
   "14999114": {
     "id": "14999114",
     "name": "Aljaž Škrinjar",
+    "homeCountry": "SLO",
     "countries": [
       "ROU",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 7,
-    "lastUpdated": "2025-12-20T12:14:28.065Z"
+    "lastUpdated": "2025-12-20T15:42:13.555Z"
   },
   "14999115": {
     "id": "14999115",
     "name": "Žiga Božič",
+    "homeCountry": "SLO",
     "countries": [
       "BUL",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 5,
-    "lastUpdated": "2025-12-20T12:14:40.676Z"
+    "lastUpdated": "2025-12-20T15:42:35.629Z"
   },
   "15004711": {
     "id": "15004711",
     "name": "Žan Ritlop",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:42.307Z"
+    "lastUpdated": "2025-12-20T15:42:37.480Z"
   },
   "15004725": {
     "id": "15004725",
     "name": "Oriana Lovrec",
+    "homeCountry": "SLO",
     "countries": [
       "ITA",
       "MKD",
@@ -3661,11 +4207,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 25,
-    "lastUpdated": "2025-12-20T12:14:39.400Z"
+    "lastUpdated": "2025-12-20T15:42:33.760Z"
   },
   "15006779": {
     "id": "15006779",
     "name": "Gout Gout",
+    "homeCountry": "AUS",
     "countries": [
       "AUS",
       "CZE",
@@ -3674,11 +4221,12 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 17,
-    "lastUpdated": "2025-12-20T12:14:44.466Z"
+    "lastUpdated": "2025-12-20T15:42:50.205Z"
   },
   "15011351": {
     "id": "15011351",
     "name": "Staš Tin Lorbar",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "ITA",
@@ -3686,11 +4234,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 32,
-    "lastUpdated": "2025-12-20T12:14:40.661Z"
+    "lastUpdated": "2025-12-20T15:42:35.789Z"
   },
   "15011353": {
     "id": "15011353",
     "name": "Lina Hribar",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "GBR",
@@ -3701,21 +4250,23 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 37,
-    "lastUpdated": "2025-12-20T12:14:27.554Z"
+    "lastUpdated": "2025-12-20T15:42:12.842Z"
   },
   "15011452": {
     "id": "15011452",
     "name": "Hunter O-Brien",
+    "homeCountry": "USA",
     "countries": [
       "USA"
     ],
     "countryCount": 1,
     "totalCompetitions": 6,
-    "lastUpdated": "2025-12-20T12:14:44.828Z"
+    "lastUpdated": "2025-12-20T15:42:43.402Z"
   },
   "15011684": {
     "id": "15011684",
     "name": "Šimon Ceplý",
+    "homeCountry": "CZE",
     "countries": [
       "AUT",
       "CZE",
@@ -3725,21 +4276,23 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 20,
-    "lastUpdated": "2025-12-20T12:14:31.926Z"
+    "lastUpdated": "2025-12-20T15:42:21.309Z"
   },
   "15013942": {
     "id": "15013942",
     "name": "Živa Pfeifer",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 2,
-    "lastUpdated": "2025-12-20T12:14:48.908Z"
+    "lastUpdated": "2025-12-20T15:42:55.796Z"
   },
   "15013943": {
     "id": "15013943",
     "name": "Ana Vita Verneker",
+    "homeCountry": "SLO",
     "countries": [
       "BUL",
       "CRO",
@@ -3753,57 +4306,63 @@
     ],
     "countryCount": 9,
     "totalCompetitions": 25,
-    "lastUpdated": "2025-12-20T12:14:33.229Z"
+    "lastUpdated": "2025-12-20T15:42:23.218Z"
   },
   "15014685": {
     "id": "15014685",
     "name": "Inja Rampre",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:48.916Z"
+    "lastUpdated": "2025-12-20T15:42:51.912Z"
   },
   "15015941": {
     "id": "15015941",
     "name": "Tyler Sheedy",
+    "homeCountry": "USA",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:28.555Z"
+    "lastUpdated": "2025-12-20T15:42:14.288Z"
   },
   "15016137": {
     "id": "15016137",
     "name": "Blaž Jurgec",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 5,
-    "lastUpdated": "2025-12-20T12:14:43.523Z"
+    "lastUpdated": "2025-12-20T15:42:39.532Z"
   },
   "15016138": {
     "id": "15016138",
     "name": "Žiga Žnidaršič Pušnik",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 6,
-    "lastUpdated": "2025-12-20T12:14:46.694Z"
+    "lastUpdated": "2025-12-20T15:42:47.616Z"
   },
   "15017319": {
     "id": "15017319",
     "name": "Neja Ambrož",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 9,
-    "lastUpdated": "2025-12-20T12:14:33.836Z"
+    "lastUpdated": "2025-12-20T15:42:23.823Z"
   },
   "15017423": {
     "id": "15017423",
     "name": "Abigail Noruwa",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "FIN",
@@ -3812,43 +4371,47 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 25,
-    "lastUpdated": "2025-12-20T12:14:31.970Z"
+    "lastUpdated": "2025-12-20T15:42:20.133Z"
   },
   "15028849": {
     "id": "15028849",
     "name": "Nika Dovžan Karahodžić",
+    "homeCountry": "SLO",
     "countries": [
       "ITA",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 18,
-    "lastUpdated": "2025-12-20T12:14:39.349Z"
+    "lastUpdated": "2025-12-20T15:42:35.026Z"
   },
   "15029077": {
     "id": "15029077",
     "name": "Alex Melchior",
+    "homeCountry": "ITA",
     "countries": [
       "ITA"
     ],
     "countryCount": 1,
     "totalCompetitions": 8,
-    "lastUpdated": "2025-12-20T12:14:49.007Z"
+    "lastUpdated": "2025-12-20T15:42:51.876Z"
   },
   "15030689": {
     "id": "15030689",
     "name": "Tereza Poláková",
+    "homeCountry": "SVK",
     "countries": [
       "CZE",
       "SVK"
     ],
     "countryCount": 2,
     "totalCompetitions": 30,
-    "lastUpdated": "2025-12-20T12:14:41.283Z"
+    "lastUpdated": "2025-12-20T15:42:35.938Z"
   },
   "15032335": {
     "id": "15032335",
     "name": "Ema Pika Raj",
+    "homeCountry": "SLO",
     "countries": [
       "BUL",
       "CRO",
@@ -3859,65 +4422,84 @@
     ],
     "countryCount": 6,
     "totalCompetitions": 20,
-    "lastUpdated": "2025-12-20T12:14:35.978Z"
+    "lastUpdated": "2025-12-20T15:42:26.353Z"
   },
   "15033272": {
     "id": "15033272",
     "name": "Pia Mesec",
+    "homeCountry": "SLO",
     "countries": [
       "ITA",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 8,
-    "lastUpdated": "2025-12-20T12:14:44.788Z"
+    "lastUpdated": "2025-12-20T15:42:41.988Z"
+  },
+  "15034219": {
+    "id": "15034219",
+    "name": "Lyla Belshaw",
+    "homeCountry": "GBR",
+    "countries": [
+      "FIN",
+      "GBR",
+      "SUI"
+    ],
+    "countryCount": 3,
+    "totalCompetitions": 7,
+    "lastUpdated": "2025-12-20T15:42:54.181Z"
   },
   "15035794": {
     "id": "15035794",
     "name": "Michal Rada",
+    "homeCountry": "CZE",
     "countries": [
       "CZE",
       "FIN"
     ],
     "countryCount": 2,
     "totalCompetitions": 16,
-    "lastUpdated": "2025-12-20T12:14:33.848Z"
+    "lastUpdated": "2025-12-20T15:42:23.926Z"
   },
   "15037158": {
     "id": "15037158",
     "name": "Katja Tomšič",
+    "homeCountry": "SLO",
     "countries": [
       "ITA",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 34,
-    "lastUpdated": "2025-12-20T12:14:31.559Z"
+    "lastUpdated": "2025-12-20T15:42:19.355Z"
   },
   "15037280": {
     "id": "15037280",
     "name": " Basil Rock",
+    "homeCountry": "GBR",
     "countries": [
       "BEL",
       "GBR"
     ],
     "countryCount": 2,
     "totalCompetitions": 8,
-    "lastUpdated": "2025-12-20T12:14:30.519Z"
+    "lastUpdated": "2025-12-20T15:42:18.128Z"
   },
   "15037301": {
     "id": "15037301",
     "name": "Ali̇şan Alphan",
+    "homeCountry": "TUR",
     "countries": [
       "TUR"
     ],
     "countryCount": 1,
     "totalCompetitions": 11,
-    "lastUpdated": "2025-12-20T12:14:36.815Z"
+    "lastUpdated": "2025-12-20T15:42:27.979Z"
   },
   "15037302": {
     "id": "15037302",
     "name": "Uğur Kemal Deri̇n",
+    "homeCountry": "TUR",
     "countries": [
       "ESP",
       "FRA",
@@ -3926,11 +4508,12 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 13,
-    "lastUpdated": "2025-12-20T12:14:34.233Z"
+    "lastUpdated": "2025-12-20T15:42:24.536Z"
   },
   "15037304": {
     "id": "15037304",
     "name": "Anja Maraž",
+    "homeCountry": "SLO",
     "countries": [
       "BUL",
       "FIN",
@@ -3939,31 +4522,34 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 15,
-    "lastUpdated": "2025-12-20T12:14:46.727Z"
+    "lastUpdated": "2025-12-20T15:42:48.539Z"
   },
   "15038672": {
     "id": "15038672",
     "name": "Ana Čurin Prapotnik",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 5,
-    "lastUpdated": "2025-12-20T12:14:27.444Z"
+    "lastUpdated": "2025-12-20T15:42:12.879Z"
   },
   "15038812": {
     "id": "15038812",
     "name": "Louna Veuthey",
+    "homeCountry": "SUI",
     "countries": [
       "SUI"
     ],
     "countryCount": 1,
     "totalCompetitions": 15,
-    "lastUpdated": "2025-12-20T12:14:37.740Z"
+    "lastUpdated": "2025-12-20T15:42:29.711Z"
   },
   "15039334": {
     "id": "15039334",
     "name": "Neja Mantelj",
+    "homeCountry": "SLO",
     "countries": [
       "ITA",
       "MKD",
@@ -3971,11 +4557,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 45,
-    "lastUpdated": "2025-12-20T12:14:38.824Z"
+    "lastUpdated": "2025-12-20T15:42:32.564Z"
   },
   "15039349": {
     "id": "15039349",
     "name": "Lenart Rener",
+    "homeCountry": "SLO",
     "countries": [
       "BUL",
       "CRO",
@@ -3985,32 +4572,47 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 22,
-    "lastUpdated": "2025-12-20T12:14:44.843Z"
+    "lastUpdated": "2025-12-20T15:42:42.059Z"
   },
   "15039686": {
     "id": "15039686",
     "name": "Neja Kimperk",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 9,
-    "lastUpdated": "2025-12-20T12:14:26.731Z"
+    "lastUpdated": "2025-12-20T15:42:12.202Z"
+  },
+  "15039687": {
+    "id": "15039687",
+    "name": "Neja Babič",
+    "homeCountry": "SLO",
+    "countries": [
+      "CRO",
+      "SLO"
+    ],
+    "countryCount": 2,
+    "totalCompetitions": 5,
+    "lastUpdated": "2025-12-20T15:42:53.752Z"
   },
   "15039753": {
     "id": "15039753",
     "name": "Dušan Đurđanović",
+    "homeCountry": "SRB",
     "countries": [
       "SLO",
       "SRB"
     ],
     "countryCount": 2,
     "totalCompetitions": 15,
-    "lastUpdated": "2025-12-20T12:14:29.179Z"
+    "lastUpdated": "2025-12-20T15:42:15.250Z"
   },
   "15041299": {
     "id": "15041299",
     "name": "Filip Cmok",
+    "homeCountry": "SLO",
     "countries": [
       "POR",
       "SLO",
@@ -4018,11 +4620,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 13,
-    "lastUpdated": "2025-12-20T12:14:32.662Z"
+    "lastUpdated": "2025-12-20T15:42:21.896Z"
   },
   "15043502": {
     "id": "15043502",
     "name": "Muhammed Ağgün",
+    "homeCountry": "TUR",
     "countries": [
       "BUL",
       "ESP",
@@ -4031,53 +4634,58 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 18,
-    "lastUpdated": "2025-12-20T12:14:37.245Z"
+    "lastUpdated": "2025-12-20T15:42:28.036Z"
   },
   "15043612": {
     "id": "15043612",
     "name": "Vasilina Strelkova",
+    "homeCountry": "RUS",
     "countries": [
       "RUS"
     ],
     "countryCount": 1,
     "totalCompetitions": 10,
-    "lastUpdated": "2025-12-20T12:14:44.463Z"
+    "lastUpdated": "2025-12-20T15:42:41.234Z"
   },
   "15044358": {
     "id": "15044358",
     "name": "Matic Kraševec",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 3,
-    "lastUpdated": "2025-12-20T12:14:39.911Z"
+    "lastUpdated": "2025-12-20T15:42:33.694Z"
   },
   "15044892": {
     "id": "15044892",
     "name": "Yunus Ege Altinay",
+    "homeCountry": "TUR",
     "countries": [
       "TUR",
       "USA"
     ],
     "countryCount": 2,
     "totalCompetitions": 14,
-    "lastUpdated": "2025-12-20T12:14:33.800Z"
+    "lastUpdated": "2025-12-20T15:42:23.782Z"
   },
   "15046500": {
     "id": "15046500",
     "name": "Pia Cvar",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 30,
-    "lastUpdated": "2025-12-20T12:14:44.486Z"
+    "lastUpdated": "2025-12-20T15:42:50.099Z"
   },
   "15046501": {
     "id": "15046501",
     "name": "Nina Radišek",
+    "homeCountry": "SLO",
     "countries": [
       "AUT",
       "CRO",
@@ -4085,31 +4693,50 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 28,
-    "lastUpdated": "2025-12-20T12:14:32.698Z"
+    "lastUpdated": "2025-12-20T15:42:20.739Z"
+  },
+  "15046924": {
+    "id": "15046924",
+    "name": "Tjaž Djaip",
+    "homeCountry": "SLO",
+    "countries": [
+      "AUT",
+      "FIN",
+      "GER",
+      "ROU",
+      "SLO",
+      "SRB"
+    ],
+    "countryCount": 6,
+    "totalCompetitions": 15,
+    "lastUpdated": "2025-12-20T15:42:53.387Z"
   },
   "15046932": {
     "id": "15046932",
     "name": "Gal Sagmeister",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 9,
-    "lastUpdated": "2025-12-20T12:14:37.264Z"
+    "lastUpdated": "2025-12-20T15:42:28.761Z"
   },
   "15047060": {
     "id": "15047060",
     "name": "Timotej Bergant",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 9,
-    "lastUpdated": "2025-12-20T12:14:28.447Z"
+    "lastUpdated": "2025-12-20T15:42:14.191Z"
   },
   "15047094": {
     "id": "15047094",
     "name": "Matic Tršelič Buble",
+    "homeCountry": "SLO",
     "countries": [
       "AUT",
       "BUL",
@@ -4121,11 +4748,12 @@
     ],
     "countryCount": 7,
     "totalCompetitions": 18,
-    "lastUpdated": "2025-12-20T12:14:38.224Z"
+    "lastUpdated": "2025-12-20T15:42:31.222Z"
   },
   "15047233": {
     "id": "15047233",
     "name": "Jaka Svenšek",
+    "homeCountry": "SLO",
     "countries": [
       "AUT",
       "BUL",
@@ -4135,61 +4763,89 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 37,
-    "lastUpdated": "2025-12-20T12:14:45.803Z"
+    "lastUpdated": "2025-12-20T15:42:47.415Z"
+  },
+  "15059096": {
+    "id": "15059096",
+    "name": "Andrej Mirković",
+    "homeCountry": "SLO",
+    "countries": [
+      "SLO"
+    ],
+    "countryCount": 1,
+    "totalCompetitions": 5,
+    "lastUpdated": "2025-12-20T15:42:54.705Z"
   },
   "15059102": {
     "id": "15059102",
     "name": "Luka Nograšek",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:47.158Z"
+    "lastUpdated": "2025-12-20T15:42:49.464Z"
   },
   "15059108": {
     "id": "15059108",
     "name": "Filip Martin Fleisinger",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 17,
-    "lastUpdated": "2025-12-20T12:14:36.862Z"
+    "lastUpdated": "2025-12-20T15:42:27.976Z"
   },
   "15059114": {
     "id": "15059114",
     "name": "Andraž Petrovič",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 23,
-    "lastUpdated": "2025-12-20T12:14:31.551Z"
+    "lastUpdated": "2025-12-20T15:42:20.232Z"
   },
   "15059138": {
     "id": "15059138",
     "name": "Daša Lenko",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 4,
-    "lastUpdated": "2025-12-20T12:14:42.812Z"
+    "lastUpdated": "2025-12-20T15:42:39.300Z"
   },
   "15059150": {
     "id": "15059150",
     "name": "Sara Vodušek",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 15,
-    "lastUpdated": "2025-12-20T12:14:42.273Z"
+    "lastUpdated": "2025-12-20T15:42:37.380Z"
+  },
+  "15059152": {
+    "id": "15059152",
+    "name": "Vid Černec",
+    "homeCountry": "SLO",
+    "countries": [
+      "SLO"
+    ],
+    "countryCount": 1,
+    "totalCompetitions": 6,
+    "lastUpdated": "2025-12-20T15:42:54.218Z"
   },
   "15059154": {
     "id": "15059154",
     "name": "Zarja Žižek",
+    "homeCountry": "SLO",
     "countries": [
       "MKD",
       "SLO",
@@ -4197,43 +4853,47 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 25,
-    "lastUpdated": "2025-12-20T12:14:43.376Z"
+    "lastUpdated": "2025-12-20T15:42:40.550Z"
   },
   "15059155": {
     "id": "15059155",
     "name": "Petra Počivavšek",
+    "homeCountry": "SLO",
     "countries": [
       "FIN",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 20,
-    "lastUpdated": "2025-12-20T12:14:43.365Z"
+    "lastUpdated": "2025-12-20T15:42:40.373Z"
   },
   "15061220": {
     "id": "15061220",
     "name": "Matic Modrijančič",
+    "homeCountry": "SLO",
     "countries": [
       "ITA",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 38,
-    "lastUpdated": "2025-12-20T12:14:38.805Z"
+    "lastUpdated": "2025-12-20T15:42:31.414Z"
   },
   "15061232": {
     "id": "15061232",
     "name": "Izak Ziliani",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 18,
-    "lastUpdated": "2025-12-20T12:14:33.299Z"
+    "lastUpdated": "2025-12-20T15:42:21.815Z"
   },
   "15061294": {
     "id": "15061294",
     "name": "Živa Remic",
+    "homeCountry": "SLO",
     "countries": [
       "FIN",
       "MKD",
@@ -4241,11 +4901,23 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 9,
-    "lastUpdated": "2025-12-20T12:14:33.214Z"
+    "lastUpdated": "2025-12-20T15:42:22.860Z"
+  },
+  "15061296": {
+    "id": "15061296",
+    "name": "Samaja Djedović",
+    "homeCountry": "SLO",
+    "countries": [
+      "SLO"
+    ],
+    "countryCount": 1,
+    "totalCompetitions": 8,
+    "lastUpdated": "2025-12-20T15:42:53.317Z"
   },
   "15061302": {
     "id": "15061302",
     "name": "Iva Škrabar Dizdarević",
+    "homeCountry": "SLO",
     "countries": [
       "ITA",
       "MKD",
@@ -4254,11 +4926,25 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 26,
-    "lastUpdated": "2025-12-20T12:14:44.919Z"
+    "lastUpdated": "2025-12-20T15:42:41.957Z"
+  },
+  "15061304": {
+    "id": "15061304",
+    "name": "Živa Križ",
+    "homeCountry": "SLO",
+    "countries": [
+      "CRO",
+      "MKD",
+      "SLO"
+    ],
+    "countryCount": 3,
+    "totalCompetitions": 13,
+    "lastUpdated": "2025-12-20T15:42:52.804Z"
   },
   "15061650": {
     "id": "15061650",
     "name": "Anže Verbovšek",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "GER",
@@ -4266,31 +4952,34 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 17,
-    "lastUpdated": "2025-12-20T12:14:27.343Z"
+    "lastUpdated": "2025-12-20T15:42:12.798Z"
   },
   "15061653": {
     "id": "15061653",
     "name": "Manca Mladkovič",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 20,
-    "lastUpdated": "2025-12-20T12:14:48.441Z"
+    "lastUpdated": "2025-12-20T15:42:50.261Z"
   },
   "15064675": {
     "id": "15064675",
     "name": "Alex Van Der Voort",
+    "homeCountry": "NED",
     "countries": [
       "NED"
     ],
     "countryCount": 1,
     "totalCompetitions": 6,
-    "lastUpdated": "2025-12-20T12:14:35.964Z"
+    "lastUpdated": "2025-12-20T15:42:25.516Z"
   },
   "15064707": {
     "id": "15064707",
     "name": "Oskar Petak",
+    "homeCountry": "SLO",
     "countries": [
       "ITA",
       "SLO",
@@ -4298,43 +4987,63 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 15,
-    "lastUpdated": "2025-12-20T12:14:31.002Z"
+    "lastUpdated": "2025-12-20T15:42:19.354Z"
   },
   "15067503": {
     "id": "15067503",
     "name": "Emi̇r Yağiz Salci",
+    "homeCountry": "TUR",
     "countries": [
       "TUR"
     ],
     "countryCount": 1,
     "totalCompetitions": 10,
-    "lastUpdated": "2025-12-20T12:14:42.305Z"
+    "lastUpdated": "2025-12-20T15:42:37.404Z"
+  },
+  "15068514": {
+    "id": "15068514",
+    "name": "Benjamin Lakošeljac",
+    "homeCountry": "SLO",
+    "countries": [
+      "BUL",
+      "CRO",
+      "FIN",
+      "ITA",
+      "ROU",
+      "SLO"
+    ],
+    "countryCount": 6,
+    "totalCompetitions": 13,
+    "lastUpdated": "2025-12-20T15:42:52.988Z"
   },
   "15070611": {
     "id": "15070611",
     "name": "Filippo Rizzi",
+    "homeCountry": "ITA",
     "countries": [
       "FIN",
       "ITA"
     ],
     "countryCount": 2,
     "totalCompetitions": 18,
-    "lastUpdated": "2025-12-20T12:14:48.870Z"
+    "lastUpdated": "2025-12-20T15:42:52.060Z"
   },
   "15071358": {
     "id": "15071358",
     "name": "Eleanor Musil",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "NED"
     ],
     "countryCount": 2,
     "totalCompetitions": 22,
-    "lastUpdated": "2025-12-20T12:14:37.367Z"
+    "lastUpdated": "2025-12-20T15:42:29.018Z"
   },
   "15079241": {
     "id": "15079241",
     "name": "Emi̇n Berke Murathan",
+    "homeCountry": "TUR",
     "countries": [
       "BEL",
       "FRA",
@@ -4343,11 +5052,12 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 9,
-    "lastUpdated": "2025-12-20T12:14:42.347Z"
+    "lastUpdated": "2025-12-20T15:42:37.413Z"
   },
   "15090612": {
     "id": "15090612",
     "name": "Filip Koležnik",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "ITA",
@@ -4355,11 +5065,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 27,
-    "lastUpdated": "2025-12-20T12:14:42.825Z"
+    "lastUpdated": "2025-12-20T15:42:39.398Z"
   },
   "15093391": {
     "id": "15093391",
     "name": "Rok Sajovic",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "ITA",
@@ -4367,31 +5078,34 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 10,
-    "lastUpdated": "2025-12-20T12:14:47.258Z"
+    "lastUpdated": "2025-12-20T15:42:48.178Z"
   },
   "15095633": {
     "id": "15095633",
     "name": "Arafat Karaman",
+    "homeCountry": "TUR",
     "countries": [
       "TUR"
     ],
     "countryCount": 1,
     "totalCompetitions": 4,
-    "lastUpdated": "2025-12-20T12:14:34.241Z"
+    "lastUpdated": "2025-12-20T15:42:24.433Z"
   },
   "15095636": {
     "id": "15095636",
     "name": "Baturalp Bostan",
+    "homeCountry": "TUR",
     "countries": [
       "TUR"
     ],
     "countryCount": 1,
     "totalCompetitions": 6,
-    "lastUpdated": "2025-12-20T12:14:29.460Z"
+    "lastUpdated": "2025-12-20T15:42:15.125Z"
   },
   "15095649": {
     "id": "15095649",
     "name": "Hasan Can Akdemir",
+    "homeCountry": "TUR",
     "countries": [
       "FIN",
       "ROU",
@@ -4399,31 +5113,34 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 12,
-    "lastUpdated": "2025-12-20T12:14:36.415Z"
+    "lastUpdated": "2025-12-20T15:42:27.261Z"
   },
   "15099768": {
     "id": "15099768",
     "name": "Ferhat Alparslan",
+    "homeCountry": "TUR",
     "countries": [
       "TUR"
     ],
     "countryCount": 1,
     "totalCompetitions": 6,
-    "lastUpdated": "2025-12-20T12:14:36.405Z"
+    "lastUpdated": "2025-12-20T15:42:27.388Z"
   },
   "15102602": {
     "id": "15102602",
     "name": "Adéla Hadvičáková",
+    "homeCountry": "CZE",
     "countries": [
       "CZE"
     ],
     "countryCount": 1,
     "totalCompetitions": 12,
-    "lastUpdated": "2025-12-20T12:14:45.786Z"
+    "lastUpdated": "2025-12-20T15:42:44.029Z"
   },
   "15104350": {
     "id": "15104350",
     "name": "Matjaž Girandon",
+    "homeCountry": "SLO",
     "countries": [
       "BUL",
       "ITA",
@@ -4432,82 +5149,103 @@
     ],
     "countryCount": 4,
     "totalCompetitions": 16,
-    "lastUpdated": "2025-12-20T12:14:37.241Z"
+    "lastUpdated": "2025-12-20T15:42:28.786Z"
   },
   "15111699": {
     "id": "15111699",
     "name": "Tevž Stamenković",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 2,
-    "lastUpdated": "2025-12-20T12:14:46.766Z"
+    "lastUpdated": "2025-12-20T15:42:47.317Z"
   },
   "15113916": {
     "id": "15113916",
     "name": "Thais Da Silva",
+    "homeCountry": "BRA",
     "countries": [
       "BRA"
     ],
     "countryCount": 1,
     "totalCompetitions": 14,
-    "lastUpdated": "2025-12-20T12:14:35.018Z"
+    "lastUpdated": "2025-12-20T15:42:25.132Z"
   },
   "15119366": {
     "id": "15119366",
     "name": "Evan Horgan",
+    "homeCountry": "USA",
     "countries": [
       "USA"
     ],
     "countryCount": 1,
     "totalCompetitions": 13,
-    "lastUpdated": "2025-12-20T12:14:25.805Z"
+    "lastUpdated": "2025-12-20T15:42:10.921Z"
   },
   "15122844": {
     "id": "15122844",
     "name": "Patrick Novak",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 11,
-    "lastUpdated": "2025-12-20T12:14:47.900Z"
+    "lastUpdated": "2025-12-20T15:42:49.668Z"
+  },
+  "15122846": {
+    "id": "15122846",
+    "name": "Julija Predanič",
+    "homeCountry": "SLO",
+    "countries": [
+      "HUN",
+      "SLO",
+      "SVK"
+    ],
+    "countryCount": 3,
+    "totalCompetitions": 24,
+    "lastUpdated": "2025-12-20T15:42:54.893Z"
   },
   "15123139": {
     "id": "15123139",
     "name": "Alisa Kotelevska",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 7,
-    "lastUpdated": "2025-12-20T12:14:43.846Z"
+    "lastUpdated": "2025-12-20T15:42:40.651Z"
   },
   "15123141": {
     "id": "15123141",
     "name": "Anja Misajlovski",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 12,
-    "lastUpdated": "2025-12-20T12:14:35.985Z"
+    "lastUpdated": "2025-12-20T15:42:26.277Z"
   },
   "15123147": {
     "id": "15123147",
     "name": "Manca Blatnik",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 9,
-    "lastUpdated": "2025-12-20T12:14:43.885Z"
+    "lastUpdated": "2025-12-20T15:42:41.213Z"
   },
   "15124381": {
     "id": "15124381",
     "name": "Gaja Kovačec",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "MKD",
@@ -4515,21 +5253,23 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 16,
-    "lastUpdated": "2025-12-20T12:14:28.091Z"
+    "lastUpdated": "2025-12-20T15:42:13.446Z"
   },
   "15126416": {
     "id": "15126416",
     "name": "Tisa Božič",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 17,
-    "lastUpdated": "2025-12-20T12:14:41.316Z"
+    "lastUpdated": "2025-12-20T15:42:50.186Z"
   },
   "15126419": {
     "id": "15126419",
     "name": "Nika Jordan Cujnik",
+    "homeCountry": "SLO",
     "countries": [
       "ITA",
       "ROU",
@@ -4537,51 +5277,56 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 13,
-    "lastUpdated": "2025-12-20T12:14:39.931Z"
+    "lastUpdated": "2025-12-20T15:42:33.689Z"
   },
   "15126424": {
     "id": "15126424",
     "name": "Niki Mlekuž Kamarić",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:44.782Z"
+    "lastUpdated": "2025-12-20T15:42:42.915Z"
   },
   "15126425": {
     "id": "15126425",
     "name": "Nela Rozman",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 13,
-    "lastUpdated": "2025-12-20T12:14:46.293Z"
+    "lastUpdated": "2025-12-20T15:42:47.317Z"
   },
   "15126427": {
     "id": "15126427",
     "name": "Iva Pori",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 16,
-    "lastUpdated": "2025-12-20T12:14:47.936Z"
+    "lastUpdated": "2025-12-20T15:42:49.478Z"
   },
   "15126436": {
     "id": "15126436",
     "name": "Luna Kupljenik",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 18,
-    "lastUpdated": "2025-12-20T12:14:25.806Z"
+    "lastUpdated": "2025-12-20T15:42:10.730Z"
   },
   "15126437": {
     "id": "15126437",
     "name": "Lara Balažic",
+    "homeCountry": "SLO",
     "countries": [
       "BUL",
       "FIN",
@@ -4593,22 +5338,24 @@
     ],
     "countryCount": 7,
     "totalCompetitions": 22,
-    "lastUpdated": "2025-12-20T12:14:47.317Z"
+    "lastUpdated": "2025-12-20T15:42:48.538Z"
   },
   "15150000": {
     "id": "15150000",
     "name": "Gaja Rutar",
+    "homeCountry": "SLO",
     "countries": [
       "HUN",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 11,
-    "lastUpdated": "2025-12-20T12:14:46.739Z"
+    "lastUpdated": "2025-12-20T15:42:47.316Z"
   },
   "15150005": {
     "id": "15150005",
     "name": "Luka Zarnik",
+    "homeCountry": "SLO",
     "countries": [
       "ITA",
       "MKD",
@@ -4616,64 +5363,81 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 9,
-    "lastUpdated": "2025-12-20T12:14:31.023Z"
+    "lastUpdated": "2025-12-20T15:42:19.353Z"
   },
   "15153081": {
     "id": "15153081",
     "name": "Zoja Planinc",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 14,
-    "lastUpdated": "2025-12-20T12:14:29.895Z"
+    "lastUpdated": "2025-12-20T15:42:17.131Z"
   },
   "15153084": {
     "id": "15153084",
     "name": "Jakob Šramel",
+    "homeCountry": "SLO",
     "countries": [
       "ITA",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 24,
-    "lastUpdated": "2025-12-20T12:14:41.285Z"
+    "lastUpdated": "2025-12-20T15:42:34.949Z"
   },
   "15153085": {
     "id": "15153085",
     "name": "Uma Grešovnik",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 4,
-    "lastUpdated": "2025-12-20T12:14:48.894Z"
+    "lastUpdated": "2025-12-20T15:42:52.097Z"
   },
   "15153086": {
     "id": "15153086",
     "name": "Kiara Blatnik",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 12,
-    "lastUpdated": "2025-12-20T12:14:45.280Z"
+    "lastUpdated": "2025-12-20T15:42:44.060Z"
   },
   "15153090": {
     "id": "15153090",
     "name": "Ajda Budna",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 7,
-    "lastUpdated": "2025-12-20T12:14:32.039Z"
+    "lastUpdated": "2025-12-20T15:42:22.811Z"
+  },
+  "15153109": {
+    "id": "15153109",
+    "name": "Anže Zidanšek",
+    "homeCountry": "SLO",
+    "countries": [
+      "SLO"
+    ],
+    "countryCount": 1,
+    "totalCompetitions": 4,
+    "lastUpdated": "2025-12-20T15:42:54.765Z"
   },
   "15153115": {
     "id": "15153115",
     "name": "Dmytro Drebot",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "HUN",
@@ -4681,21 +5445,45 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 10,
-    "lastUpdated": "2025-12-20T12:14:43.869Z"
+    "lastUpdated": "2025-12-20T15:42:41.167Z"
+  },
+  "15154546": {
+    "id": "15154546",
+    "name": "Sandra Šućur",
+    "homeCountry": "SLO",
+    "countries": [
+      "SLO"
+    ],
+    "countryCount": 1,
+    "totalCompetitions": 20,
+    "lastUpdated": "2025-12-20T15:42:54.121Z"
   },
   "15154955": {
     "id": "15154955",
     "name": "Joep Kneppers",
+    "homeCountry": "NED",
     "countries": [
       "NED"
     ],
     "countryCount": 1,
     "totalCompetitions": 12,
-    "lastUpdated": "2025-12-20T12:14:34.928Z"
+    "lastUpdated": "2025-12-20T15:42:25.149Z"
+  },
+  "15155150": {
+    "id": "15155150",
+    "name": "Roksana Gałka",
+    "homeCountry": "POL",
+    "countries": [
+      "POL"
+    ],
+    "countryCount": 1,
+    "totalCompetitions": 16,
+    "lastUpdated": "2025-12-20T15:42:52.809Z"
   },
   "15155329": {
     "id": "15155329",
     "name": "Živa Pelc",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "SLO",
@@ -4703,21 +5491,23 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 20,
-    "lastUpdated": "2025-12-20T12:14:34.962Z"
+    "lastUpdated": "2025-12-20T15:42:25.193Z"
   },
   "15155332": {
     "id": "15155332",
     "name": "Brina Vogrin Cingesar",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 3,
-    "lastUpdated": "2025-12-20T12:14:28.710Z"
+    "lastUpdated": "2025-12-20T15:42:14.240Z"
   },
   "15155341": {
     "id": "15155341",
     "name": "Lenart Mihalič",
+    "homeCountry": "SLO",
     "countries": [
       "ITA",
       "MKD",
@@ -4727,31 +5517,34 @@
     ],
     "countryCount": 5,
     "totalCompetitions": 16,
-    "lastUpdated": "2025-12-20T12:14:35.948Z"
+    "lastUpdated": "2025-12-20T15:42:26.526Z"
   },
   "15156583": {
     "id": "15156583",
     "name": "Miha Brajkovič",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 30,
-    "lastUpdated": "2025-12-20T12:14:32.003Z"
+    "lastUpdated": "2025-12-20T15:42:20.662Z"
   },
   "15157147": {
     "id": "15157147",
     "name": "Matthieu Afognon",
+    "homeCountry": "NED",
     "countries": [
       "NED"
     ],
     "countryCount": 1,
     "totalCompetitions": 12,
-    "lastUpdated": "2025-12-20T12:14:36.804Z"
+    "lastUpdated": "2025-12-20T15:42:28.052Z"
   },
   "15157150": {
     "id": "15157150",
     "name": "Yassine Boauziz",
+    "homeCountry": "NED",
     "countries": [
       "BEL",
       "GER",
@@ -4759,163 +5552,234 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 16,
-    "lastUpdated": "2025-12-20T12:14:43.341Z"
+    "lastUpdated": "2025-12-20T15:42:40.652Z"
   },
   "15157186": {
     "id": "15157186",
     "name": "Aymane Kwyasse",
+    "homeCountry": "NED",
     "countries": [
       "NED"
     ],
     "countryCount": 1,
     "totalCompetitions": 13,
-    "lastUpdated": "2025-12-20T12:14:46.711Z"
+    "lastUpdated": "2025-12-20T15:42:48.439Z"
+  },
+  "15157816": {
+    "id": "15157816",
+    "name": "Inna Jusufagić",
+    "homeCountry": "SLO",
+    "countries": [
+      "SLO"
+    ],
+    "countryCount": 1,
+    "totalCompetitions": 3,
+    "lastUpdated": "2025-12-20T15:42:52.814Z"
   },
   "15158247": {
     "id": "15158247",
     "name": "Lukas Oberscheider",
+    "homeCountry": "AUT",
     "countries": [
       "AUT"
     ],
     "countryCount": 1,
     "totalCompetitions": 1,
-    "lastUpdated": "2025-12-20T12:14:30.462Z"
+    "lastUpdated": "2025-12-20T15:42:18.024Z"
   },
   "15159157": {
     "id": "15159157",
     "name": "Luka Jankovič",
+    "homeCountry": "SLO",
     "countries": [],
     "countryCount": 0,
     "totalCompetitions": 0,
-    "lastUpdated": "2025-12-20T12:14:27.983Z"
+    "lastUpdated": "2025-12-20T15:42:13.458Z"
   },
   "15159159": {
     "id": "15159159",
     "name": "Nina Grašič",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 19,
-    "lastUpdated": "2025-12-20T12:14:38.299Z"
+    "lastUpdated": "2025-12-20T15:42:30.875Z"
   },
   "15159849": {
     "id": "15159849",
     "name": "Amélie Saillen",
+    "homeCountry": "SUI",
     "countries": [
       "SUI"
     ],
     "countryCount": 1,
     "totalCompetitions": 6,
-    "lastUpdated": "2025-12-20T12:14:48.883Z"
+    "lastUpdated": "2025-12-20T15:42:51.295Z"
   },
   "15168191": {
     "id": "15168191",
     "name": "Ajda Kragelj",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 5,
-    "lastUpdated": "2025-12-20T12:14:31.466Z"
+    "lastUpdated": "2025-12-20T15:42:20.088Z"
   },
   "15168210": {
     "id": "15168210",
     "name": "Julija Kunej",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 3,
-    "lastUpdated": "2025-12-20T12:14:31.495Z"
+    "lastUpdated": "2025-12-20T15:42:20.093Z"
   },
   "15168211": {
     "id": "15168211",
     "name": "Neca Brenkuš",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 13,
-    "lastUpdated": "2025-12-20T12:14:41.268Z"
+    "lastUpdated": "2025-12-20T15:42:34.995Z"
+  },
+  "15170196": {
+    "id": "15170196",
+    "name": "Ömer Talyak",
+    "homeCountry": "TUR",
+    "countries": [
+      "TUR"
+    ],
+    "countryCount": 1,
+    "totalCompetitions": 4,
+    "lastUpdated": "2025-12-20T15:42:53.414Z"
   },
   "15172151": {
     "id": "15172151",
     "name": "İsmai̇l Efe Durmuş",
+    "homeCountry": "TUR",
     "countries": [
       "TUR"
     ],
     "countryCount": 1,
     "totalCompetitions": 12,
-    "lastUpdated": "2025-12-20T12:14:37.240Z"
+    "lastUpdated": "2025-12-20T15:42:27.972Z"
+  },
+  "15177378": {
+    "id": "15177378",
+    "name": "Miran Tanze",
+    "homeCountry": "SLO",
+    "countries": [
+      "SLO"
+    ],
+    "countryCount": 1,
+    "totalCompetitions": 15,
+    "lastUpdated": "2025-12-20T15:42:55.705Z"
   },
   "15178602": {
     "id": "15178602",
     "name": "Ivan Schollmayer",
+    "homeCountry": "SLO",
     "countries": [
       "ITA",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 7,
-    "lastUpdated": "2025-12-20T12:14:34.364Z"
+    "lastUpdated": "2025-12-20T15:42:24.425Z"
+  },
+  "15178611": {
+    "id": "15178611",
+    "name": "Naja Mevlja",
+    "homeCountry": "SLO",
+    "countries": [
+      "SLO"
+    ],
+    "countryCount": 1,
+    "totalCompetitions": 4,
+    "lastUpdated": "2025-12-20T15:42:55.576Z"
   },
   "15178612": {
     "id": "15178612",
     "name": "Maša Weber",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 10,
-    "lastUpdated": "2025-12-20T12:14:46.248Z"
+    "lastUpdated": "2025-12-20T15:42:44.750Z"
   },
   "15193564": {
     "id": "15193564",
     "name": "Liam Bassin",
+    "homeCountry": "SLO",
     "countries": [
       "CRO",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 7,
-    "lastUpdated": "2025-12-20T12:14:44.458Z"
+    "lastUpdated": "2025-12-20T15:42:42.610Z"
   },
   "15194120": {
     "id": "15194120",
     "name": "Jan Ranzinger",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 4,
-    "lastUpdated": "2025-12-20T12:29:50.898Z"
+    "lastUpdated": "2025-12-20T15:42:51.836Z"
   },
   "15196778": {
     "id": "15196778",
     "name": "Luka Sagaj",
+    "homeCountry": "SLO",
     "countries": [
       "HUN",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 6,
-    "lastUpdated": "2025-12-20T12:19:41.008Z"
+    "lastUpdated": "2025-12-20T15:42:51.845Z"
   },
   "15196783": {
     "id": "15196783",
     "name": "Neja Jančič",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 6,
-    "lastUpdated": "2025-12-20T12:14:28.092Z"
+    "lastUpdated": "2025-12-20T15:42:13.490Z"
+  },
+  "15196788": {
+    "id": "15196788",
+    "name": "Lana Pajer",
+    "homeCountry": "SLO",
+    "countries": [
+      "SLO"
+    ],
+    "countryCount": 1,
+    "totalCompetitions": 7,
+    "lastUpdated": "2025-12-20T15:42:54.315Z"
   },
   "15196795": {
     "id": "15196795",
     "name": "Katarina Eržen",
+    "homeCountry": "SLO",
     "countries": [
       "HUN",
       "SLO",
@@ -4923,11 +5787,12 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 19,
-    "lastUpdated": "2025-12-20T12:14:29.054Z"
+    "lastUpdated": "2025-12-20T15:42:23.778Z"
   },
   "15196798": {
     "id": "15196798",
     "name": "Matic Krašovec",
+    "homeCountry": "SLO",
     "countries": [
       "ITA",
       "MKD",
@@ -4935,73 +5800,80 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 13,
-    "lastUpdated": "2025-12-20T12:14:39.890Z"
+    "lastUpdated": "2025-12-20T15:42:34.361Z"
   },
   "15196799": {
     "id": "15196799",
     "name": "Miha Tomše",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 6,
-    "lastUpdated": "2025-12-20T12:14:48.880Z"
+    "lastUpdated": "2025-12-20T15:42:51.841Z"
   },
   "15196801": {
     "id": "15196801",
     "name": "Nej Kavs",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 7,
-    "lastUpdated": "2025-12-20T12:14:40.460Z"
+    "lastUpdated": "2025-12-20T15:42:35.061Z"
   },
   "15202885": {
     "id": "15202885",
     "name": "Maxim Jůza",
+    "homeCountry": "CZE",
     "countries": [
       "CZE",
       "HUN"
     ],
     "countryCount": 2,
     "totalCompetitions": 5,
-    "lastUpdated": "2025-12-20T12:14:45.684Z"
+    "lastUpdated": "2025-12-20T15:42:43.964Z"
   },
   "15209654": {
     "id": "15209654",
     "name": "Matej Berce",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 10,
-    "lastUpdated": "2025-12-20T12:14:38.721Z"
+    "lastUpdated": "2025-12-20T15:42:32.461Z"
   },
   "15209672": {
     "id": "15209672",
     "name": "Gaja Gerčar",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 4,
-    "lastUpdated": "2025-12-20T12:14:46.245Z"
+    "lastUpdated": "2025-12-20T15:42:44.843Z"
   },
   "15211327": {
     "id": "15211327",
     "name": "Jasmine Majcen Clarke",
+    "homeCountry": "SLO",
     "countries": [
       "HUN",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 16,
-    "lastUpdated": "2025-12-20T12:14:36.361Z"
+    "lastUpdated": "2025-12-20T15:42:27.559Z"
   },
   "15212650": {
     "id": "15212650",
     "name": "Ana Laura Domingues",
+    "homeCountry": "BRA",
     "countries": [
       "BRA",
       "PAR",
@@ -5009,179 +5881,229 @@
     ],
     "countryCount": 3,
     "totalCompetitions": 8,
-    "lastUpdated": "2025-12-20T12:14:30.459Z"
+    "lastUpdated": "2025-12-20T15:42:18.023Z"
+  },
+  "15232350": {
+    "id": "15232350",
+    "name": "Tara Šestak",
+    "homeCountry": "SLO",
+    "countries": [
+      "SLO"
+    ],
+    "countryCount": 1,
+    "totalCompetitions": 4,
+    "lastUpdated": "2025-12-20T15:42:54.829Z"
   },
   "15232418": {
     "id": "15232418",
     "name": "Ike Umunna",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 11,
-    "lastUpdated": "2025-12-20T12:14:48.847Z"
+    "lastUpdated": "2025-12-20T15:42:52.299Z"
   },
   "15232419": {
     "id": "15232419",
     "name": "Nace Ortar",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 7,
-    "lastUpdated": "2025-12-20T12:14:48.408Z"
+    "lastUpdated": "2025-12-20T15:42:51.177Z"
   },
   "15232424": {
     "id": "15232424",
     "name": "Viktor Krapež",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 8,
-    "lastUpdated": "2025-12-20T12:14:46.199Z"
+    "lastUpdated": "2025-12-20T15:42:44.849Z"
   },
   "15232427": {
     "id": "15232427",
     "name": "Pia Stožir",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 1,
-    "lastUpdated": "2025-12-20T12:14:28.558Z"
+    "lastUpdated": "2025-12-20T15:42:14.184Z"
   },
   "15232430": {
     "id": "15232430",
     "name": "Lana Leben",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 3,
-    "lastUpdated": "2025-12-20T12:14:37.746Z"
+    "lastUpdated": "2025-12-20T15:42:54.097Z"
   },
   "15235866": {
     "id": "15235866",
     "name": "Grega Božič",
+    "homeCountry": "SLO",
     "countries": [
       "HUN",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 8,
-    "lastUpdated": "2025-12-20T12:19:40.989Z"
+    "lastUpdated": "2025-12-20T15:42:53.377Z"
   },
   "15235867": {
     "id": "15235867",
     "name": "Aljaž Vebarič",
+    "homeCountry": "SLO",
     "countries": [
       "HUN",
       "SLO"
     ],
     "countryCount": 2,
     "totalCompetitions": 9,
-    "lastUpdated": "2025-12-20T12:14:48.871Z"
+    "lastUpdated": "2025-12-20T15:42:51.839Z"
   },
   "15236158": {
     "id": "15236158",
     "name": "Karolína Bicanová",
+    "homeCountry": "CZE",
     "countries": [
       "CZE",
       "HUN"
     ],
     "countryCount": 2,
     "totalCompetitions": 6,
-    "lastUpdated": "2025-12-20T12:14:45.755Z"
+    "lastUpdated": "2025-12-20T15:42:43.983Z"
   },
   "15237018": {
     "id": "15237018",
     "name": "Jernej Potnik",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 3,
-    "lastUpdated": "2025-12-20T12:14:37.868Z"
+    "lastUpdated": "2025-12-20T15:42:29.645Z"
   },
   "15237437": {
     "id": "15237437",
     "name": "Rut Wållgren",
+    "homeCountry": "SWE",
     "countries": [
       "SWE"
     ],
     "countryCount": 1,
     "totalCompetitions": 3,
-    "lastUpdated": "2025-12-20T12:14:44.383Z"
+    "lastUpdated": "2025-12-20T15:42:41.167Z"
   },
   "15238108": {
     "id": "15238108",
     "name": "Taja Kravanja",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 2,
-    "lastUpdated": "2025-12-20T12:14:36.423Z"
+    "lastUpdated": "2025-12-20T15:42:27.297Z"
   },
   "15238113": {
     "id": "15238113",
     "name": "Jerica Strel",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 1,
-    "lastUpdated": "2025-12-20T12:14:36.771Z"
+    "lastUpdated": "2025-12-20T15:42:27.903Z"
   },
   "15238115": {
     "id": "15238115",
     "name": "Lana Sefić",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 2,
-    "lastUpdated": "2025-12-20T12:14:39.388Z"
+    "lastUpdated": "2025-12-20T15:42:33.711Z"
   },
   "15238116": {
     "id": "15238116",
     "name": "Julija Černota",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 2,
-    "lastUpdated": "2025-12-20T12:14:37.724Z"
+    "lastUpdated": "2025-12-20T15:42:30.144Z"
   },
   "15241760": {
     "id": "15241760",
     "name": "Maks Von Zupanič",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 1,
-    "lastUpdated": "2025-12-20T12:14:46.652Z"
+    "lastUpdated": "2025-12-20T15:42:47.316Z"
   },
-  "15241772": {
-    "id": "15241772",
-    "name": "Patrik Flis",
+  "15241762": {
+    "id": "15241762",
+    "name": "Staš Korenič Jamnikar",
+    "homeCountry": "SLO",
     "countries": [
       "SLO"
     ],
     "countryCount": 1,
     "totalCompetitions": 2,
-    "lastUpdated": "2025-12-20T12:14:29.858Z"
+    "lastUpdated": "2025-12-20T15:42:53.348Z"
+  },
+  "15241772": {
+    "id": "15241772",
+    "name": "Patrik Flis",
+    "homeCountry": "SLO",
+    "countries": [
+      "SLO"
+    ],
+    "countryCount": 1,
+    "totalCompetitions": 2,
+    "lastUpdated": "2025-12-20T15:42:17.103Z"
   },
   "15255212": {
     "id": "15255212",
     "name": "Christian Manuel",
+    "homeCountry": "CZE",
     "countries": [
       "CZE"
     ],
     "countryCount": 1,
     "totalCompetitions": 2,
-    "lastUpdated": "2025-12-20T12:14:45.706Z"
+    "lastUpdated": "2025-12-20T15:42:44.711Z"
+  },
+  "15268400": {
+    "id": "15268400",
+    "name": "Nuri̇ Mohamed Ali",
+    "homeCountry": "TUR",
+    "countries": [
+      "TUR"
+    ],
+    "countryCount": 1,
+    "totalCompetitions": 2,
+    "lastUpdated": "2025-12-20T15:42:54.077Z"
   }
 }

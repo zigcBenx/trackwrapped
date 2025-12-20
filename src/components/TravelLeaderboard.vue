@@ -2,6 +2,7 @@
   <div class="leaderboard travel-leaderboard">
     <div class="title-container">
       <h2 class="leaderboard-title animate-glitch">🌍 GLOBAL TAKEOVER</h2>
+      <p class="leaderboard-description">Most traveled athletes of 2025.</p>
       <div class="title-underline"></div>
     </div>
     
@@ -42,6 +43,7 @@
         <div class="athlete-info">
           <div class="athlete-name-row">
             <span class="athlete-name">{{ athlete.name }}</span>
+            <span class="country-flag" v-if="athlete.homeCountry">{{ getCountryFlag(athlete.homeCountry) }}</span>
           </div>
           <div class="athlete-stats">
             <span class="stat-value">{{ athlete.countryCount }}</span>
@@ -63,10 +65,12 @@
 <script setup lang="ts">
 import { ref, onMounted, reactive } from 'vue'
 import type { Athlete } from '@/types/athlete'
+import { getCountryFlag } from '@/utils/countryFlags'
 
 interface TraveledAthlete {
   id: string
   name: string
+  homeCountry: string
   countries: string[]
   countryCount: number
   totalCompetitions: number
@@ -168,13 +172,13 @@ function getInitials(name: string) {
 
 .leaderboard-title {
   font-family: var(--font-family-heading);
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin: 0;
+  font-size: clamp(1.5rem, 6vw, 2.5rem);
   color: white;
-  letter-spacing: 1px;
+  margin: 0;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  transform: skew(-5deg);
+  font-style: italic;
+  font-weight: 900;
   text-shadow: 2px 2px 0px var(--color-accent-tertiary);
 }
 
@@ -183,6 +187,23 @@ function getInitials(name: string) {
     font-size: 3rem;
     letter-spacing: 2px;
     text-shadow: 3px 3px 0px var(--color-accent-tertiary);
+  }
+}
+
+.leaderboard-description {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 4px 0 0 0;
+  font-family: var(--font-family-base);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  .leaderboard-description {
+    font-size: 1rem;
+    margin-top: 8px;
   }
 }
 
@@ -326,12 +347,12 @@ function getInitials(name: string) {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   background: rgba(255, 255, 255, 0.1);
   font-family: var(--font-family-heading);
-  font-weight: 700;
-  font-size: 1.1rem;
+  font-weight: 800;
+  font-size: 1.2rem;
   color: white;
   flex-shrink: 0;
 }
@@ -435,21 +456,30 @@ function getInitials(name: string) {
   }
 }
 
+.athlete-name-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  min-width: 0; /* Critical for flex child truncation */
+}
+
 .athlete-name {
   font-family: var(--font-family-heading);
-  font-size: 1.3rem;
+  font-size: clamp(0.9rem, 3vw, 1.1rem); /* Smaller default for mobile */
   color: white;
   font-weight: 700;
   text-transform: uppercase;
-  line-height: 1;
+  line-height: 1.1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
 }
 
 @media (min-width: 768px) {
   .athlete-name {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
   }
 }
 

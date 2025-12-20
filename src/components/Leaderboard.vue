@@ -2,6 +2,7 @@
   <div class="leaderboard">
     <div class="title-container">
       <h2 class="leaderboard-title animate-glitch">🏆 MOST VIEWED</h2>
+      <p class="leaderboard-description">Trending athletes in the spotlight.</p>
       <div class="title-underline"></div>
     </div>
     
@@ -185,13 +186,13 @@ function getInitials(first: string, last: string) {
 
 .leaderboard-title {
   font-family: var(--font-family-heading);
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin: 0;
+  font-size: clamp(1.5rem, 6vw, 2.5rem);
   color: white;
-  letter-spacing: 1px;
+  margin: 0;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  transform: skew(-5deg);
+  font-style: italic;
+  font-weight: 900;
   text-shadow: 2px 2px 0px var(--color-accent-secondary);
 }
 
@@ -200,6 +201,23 @@ function getInitials(first: string, last: string) {
     font-size: 3rem;
     letter-spacing: 2px;
     text-shadow: 3px 3px 0px var(--color-accent-secondary);
+  }
+}
+
+.leaderboard-description {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 4px 0 0 0;
+  font-family: var(--font-family-base);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  .leaderboard-description {
+    font-size: 1rem;
+    margin-top: 8px;
   }
 }
 
@@ -343,12 +361,12 @@ function getInitials(first: string, last: string) {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   background: rgba(255, 255, 255, 0.1);
   font-family: var(--font-family-heading);
-  font-weight: 700;
-  font-size: 1.1rem;
+  font-weight: 800;
+  font-size: 1.2rem;
   color: white;
   flex-shrink: 0;
 }
@@ -453,21 +471,30 @@ function getInitials(first: string, last: string) {
   }
 }
 
+.athlete-name-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  min-width: 0; /* Critical for flex child truncation */
+}
+
 .athlete-name {
   font-family: var(--font-family-heading);
-  font-size: 1.3rem;
+  font-size: clamp(0.9rem, 3vw, 1.1rem); /* Synced with Travel */
   color: white;
   font-weight: 700;
   text-transform: uppercase;
-  line-height: 1;
+  line-height: 1.1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
 }
 
 @media (min-width: 768px) {
   .athlete-name {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
   }
 }
 
@@ -498,7 +525,7 @@ function getInitials(first: string, last: string) {
   font-family: var(--font-family-heading);
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--color-accent-secondary);
+  color: var(--color-accent-tertiary); /* Changed to Cyan to match Travel */
 }
 
 @media (min-width: 768px) {
@@ -508,7 +535,7 @@ function getInitials(first: string, last: string) {
 }
 
 .view-label {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 800;
   color: rgba(255, 255, 255, 0.4);
   letter-spacing: 0.5px;

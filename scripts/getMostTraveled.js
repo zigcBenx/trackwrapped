@@ -78,6 +78,7 @@ async function getAthleteData(athleteId) {
     const athleteData = {
       id: athleteId,
       name: `${details.firstname} ${details.lastname}`,
+      homeCountry: details.country || details.nationality || '',
       countries: Array.from(countries).sort(),
       countryCount: countries.size,
       totalCompetitions: seasonCompetitions,
