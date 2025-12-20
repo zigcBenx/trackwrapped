@@ -191,12 +191,19 @@
         </div>
       </Transition>
     </div>
+
+    <EmailCollectionModal 
+      :is-open="isEmailModalOpen" 
+      :athlete-id="athleteId?.toString() || null"
+      @close="closeEmailModal" 
+    />
   </SlideWrapper>
 </template>
 
 <script setup lang="ts">
 import { computed, ref, onMounted, onUnmounted } from 'vue'
 import SlideWrapper from './SlideWrapper.vue'
+import EmailCollectionModal from '../EmailCollectionModal.vue'
 import { getCountryFlag } from '@/utils/countryFlags'
 import { getDisciplineEmoji } from '@/utils/disciplineEmojis'
 import html2canvas from 'html2canvas'
@@ -225,6 +232,9 @@ const props = defineProps<Props>()
 
 const showTooltip = ref(false)
 const activeBadgeIndex = ref<number | null>(null)
+const isEmailModalOpen = ref(false)
+
+let emailModalTimer: any = null
 
 function toggleTooltip(e: Event) {
   e.stopPropagation()
@@ -601,11 +611,22 @@ onMounted(() => {
   
   // Start carousel
   startCarousel()
+  
+  // Show email modal 3 seconds after slide loads
+  emailModalTimer = setTimeout(() => {
+    isEmailModalOpen.value = true
+  }, 3000)
 })
 
 onUnmounted(() => {
   stopCarousel()
+  window.removeEventListener('resize', fitText)
+  clearTimeout(emailModalTimer)
 })
+
+function closeEmailModal() {
+  isEmailModalOpen.value = false
+}
 
 // Carousel Logic
 const carouselIndex = ref(0)

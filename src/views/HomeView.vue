@@ -1,15 +1,28 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import SearchInput from '../components/SearchInput.vue'
 import ViewStats from '../components/ViewStats.vue'
 import Leaderboard from '../components/Leaderboard.vue'
+import SeasonTrackingCTA from '../components/SeasonTrackingCTA.vue'
+import EmailCollectionModal from '../components/EmailCollectionModal.vue'
 import type { Athlete } from '../types/athlete'
 
 const emit = defineEmits<{
   athleteSelect: [athlete: Athlete | { id: number; firstname: string; lastname: string }]
 }>()
 
+const isEmailModalOpen = ref(false)
+
 function handleAthleteSelect(athlete: Athlete | { id: number; firstname: string; lastname: string }) {
   emit('athleteSelect', athlete)
+}
+
+function openEmailModal() {
+  isEmailModalOpen.value = true
+}
+
+function closeEmailModal() {
+  isEmailModalOpen.value = false
 }
 </script>
 
@@ -27,7 +40,14 @@ function handleAthleteSelect(athlete: Athlete | { id: number; firstname: string;
 
     <ViewStats />
 
+    <SeasonTrackingCTA @click="openEmailModal" />
+
     <Leaderboard @athlete-select="handleAthleteSelect" />
+
+    <EmailCollectionModal 
+      :is-open="isEmailModalOpen" 
+      @close="closeEmailModal" 
+    />
   </div>
 </template>
 

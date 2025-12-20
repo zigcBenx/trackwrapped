@@ -26,12 +26,18 @@
         <div class="stat-subtext">Share your story!</div>
       </div>
     </div>
+
+    <EmailCollectionModal 
+      :is-open="isEmailModalOpen" 
+      @close="closeEmailModal" 
+    />
   </SlideWrapper>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import SlideWrapper from './SlideWrapper.vue'
+import EmailCollectionModal from '../EmailCollectionModal.vue'
 import { getFinaleSequence } from '@/utils/jokeGenerator'
 import type { ProcessedAthleteStats } from '@/types/athleteDetails'
 
@@ -44,8 +50,10 @@ const props = defineProps<Props>()
 const phase = ref<'buildup' | 'reveal'>('buildup')
 const currentLineIndex = ref(-1)
 const sequence = getFinaleSequence(props.stats)
+const isEmailModalOpen = ref(false)
 
 let sequenceTimer: any = null
+let emailModalTimer: any = null
 
 function startSequence() {
   phase.value = 'buildup'
@@ -58,6 +66,10 @@ function startSequence() {
     } else {
       sequenceTimer = setTimeout(() => {
         phase.value = 'reveal'
+        // Show email modal 3 seconds after reveal
+        emailModalTimer = setTimeout(() => {
+          isEmailModalOpen.value = true
+        }, 3000)
       }, 2000)
     }
   }
@@ -68,12 +80,22 @@ function startSequence() {
 function handleTap() {
   if (phase.value === 'buildup') {
     clearTimeout(sequenceTimer)
+    clearTimeout(emailModalTimer)
     phase.value = 'reveal'
   }
 }
 
+function closeEmailModal() {
+  isEmailModalOpen.value = false
+}
+
 onMounted(() => {
   startSequence()
+})
+
+onUnmounted(() => {
+  clearTimeout(sequenceTimer)
+  clearTimeout(emailModalTimer)
 })
 </script>
 
