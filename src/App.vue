@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import SearchInput from './components/SearchInput.vue'
-import ViewStats from './components/ViewStats.vue'
-import Leaderboard from './components/Leaderboard.vue'
+import { RouterView, RouterLink } from 'vue-router'
 import StorySlides from './components/StorySlides.vue'
 import type { Athlete } from './types/athlete'
 
@@ -28,21 +26,16 @@ function handleStoryClose() {
     <div class="slanted-bg"></div>
     <div class="vignette-overlay"></div>
 
+    <nav class="app-nav">
+      <div class="nav-container">
+        <RouterLink to="/" class="nav-link" active-class="active">HOME</RouterLink>
+        <RouterLink to="/leaderboards" class="nav-link" active-class="active">LEADERBOARDS</RouterLink>
+      </div>
+    </nav>
+
     <main class="main-content">
       <div class="container">
-        <header class="app-header">
-          <div class="title-wrapper">
-            <h1 class="app-title">TRACK WRAPPED</h1>
-            <div class="year-badge animate-glitch">2025</div>
-          </div>
-          <p class="app-subtitle">YOUR SEASON. YOUR STORY. <span class="highlight">UNLEASHED.</span></p>
-        </header>
-
-        <SearchInput @athlete-select="handleAthleteSelect" />
-
-        <ViewStats />
-
-        <Leaderboard @athlete-select="handleAthleteSelect" />
+        <RouterView @athlete-select="handleAthleteSelect" />
       </div>
     </main>
 
@@ -67,6 +60,55 @@ function handleStoryClose() {
   z-index: 1;
   background-color: var(--color-bg-primary);
   overflow-x: hidden;
+}
+
+.app-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: var(--spacing-md) 0;
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-2xl);
+}
+
+.nav-link {
+  font-family: var(--font-family-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.nav-link.active {
+  color: var(--color-accent-primary);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-accent-primary);
+  box-shadow: 0 0 10px var(--color-accent-primary);
 }
 
 /* Slanted Background Pattern */
