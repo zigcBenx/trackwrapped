@@ -1,27 +1,27 @@
 <template>
-  <div class="leaderboard">
+  <div class="leaderboard travel-leaderboard">
     <div class="title-container">
-      <h2 class="leaderboard-title animate-glitch">🏆 MOST VIEWED</h2>
+      <h2 class="leaderboard-title animate-glitch">🌍 GLOBAL TAKEOVER</h2>
       <div class="title-underline"></div>
     </div>
     
     <div v-if="isLoading" class="leaderboard-loading">
       <div class="scanner"></div>
-      LOADING DATA...
+      SCANNING PASSPORTS...
     </div>
     
-    <div v-else-if="athleteDetails.length === 0" class="leaderboard-empty">
-      NO VIEWS YET. BE THE FIRST TO EXPLORE!
+    <div v-else-if="athletes.length === 0" class="leaderboard-empty">
+      NO TRAVEL DATA AVAILABLE.
     </div>
     
     <div v-else class="leaderboard-list">
       <button
-        v-for="(athlete, index) in athleteDetails"
-        :key="athlete.athleteId"
+        v-for="(athlete, index) in athletes"
+        :key="athlete.id"
         class="leaderboard-item"
         :class="[
           { 'top-1': index === 0, 'top-2': index === 1, 'top-3': index === 2 },
-          index % 2 === 0 ? 'race-in-left' : 'race-in-right'
+          index % 2 === 0 ? 'race-in-right' : 'race-in-left'
         ]"
         :style="{ animationDelay: `${index * 100}ms` }"
         @click="handleAthleteClick(athlete)"
@@ -30,23 +30,28 @@
           <div class="rank-badge">{{ index + 1 }}</div>
           <div class="athlete-avatar">
             <img 
-              v-if="getProfileImage(athlete.athleteId) && !imageErrors[athlete.athleteId]" 
-              :src="getProfileImage(athlete.athleteId) || undefined" 
-              :alt="athlete.firstname"
+              v-if="getProfileImage(athlete.id) && !imageErrors[athlete.id]" 
+              :src="getProfileImage(athlete.id) || undefined" 
+              :alt="athlete.name"
               class="avatar-img"
-              @error="handleImageError(athlete.athleteId)"
+              @error="handleImageError(athlete.id)"
             />
-            <span v-else class="avatar-initials">{{ getInitials(athlete.firstname, athlete.lastname) }}</span>
+            <span v-else class="avatar-initials">{{ getInitials(athlete.name) }}</span>
           </div>
         </div>
         <div class="athlete-info">
           <div class="athlete-name-row">
-            <span class="athlete-name">{{ athlete.firstname }} {{ athlete.lastname }}</span>
-            <span class="country-flag" v-if="athlete.countryFlag">{{ athlete.countryFlag }}</span>
+            <span class="athlete-name">{{ athlete.name }}</span>
           </div>
-          <div class="athlete-views">
-            <span class="view-count">{{ athlete.views }}</span>
-            <span class="view-label">VIEWS</span>
+          <div class="athlete-stats">
+            <span class="stat-value">{{ athlete.countryCount }}</span>
+            <span class="stat-label">COUNTRIES</span>
+            <span class="separator">/</span>
+            <span class="stat-value">{{ athlete.totalCompetitions }}</span>
+            <span class="stat-label">COMPS</span>
+          </div>
+          <div class="countries-preview">
+            {{ athlete.countries.slice(0, 5).join(', ') }}{{ athlete.countries.length > 5 ? '...' : '' }}
           </div>
         </div>
         <div class="item-glitch"></div>
@@ -57,18 +62,17 @@
 
 <script setup lang="ts">
 import { ref, onMounted, reactive } from 'vue'
-import { getTopAthletes } from '@/services/viewTrackingService'
-import { getCountryFlag } from '@/utils/countryFlags'
-import type { TopAthlete } from '@/services/viewTrackingService'
+import type { Athlete } from '@/types/athlete'
 
-interface AthleteWithDetails extends TopAthlete {
-  firstname: string
-  lastname: string
-  country: string
-  countryFlag: string
+interface TraveledAthlete {
+  id: string
+  name: string
+  countries: string[]
+  countryCount: number
+  totalCompetitions: number
 }
 
-const athleteDetails = ref<AthleteWithDetails[]>([])
+const athletes = ref<TraveledAthlete[]>([])
 const isLoading = ref(true)
 const imageErrors = reactive<Record<string, boolean>>({})
 
@@ -79,75 +83,54 @@ const emit = defineEmits<{
 onMounted(async () => {
   isLoading.value = true
   try {
-    const topAthletes = await getTopAthletes()
-    
-    // Limit to top 5
-    const top5 = topAthletes.slice(0, 5)
-    
-    // Fetch details for each athlete
-    const details = await Promise.all(
-      top5.map(async (athlete) => {
-        try {
-          const response = await fetch(
-            `https://worldathletics.nimarion.de/athletes/${athlete.athleteId}`
-          )
-          const data = await response.json()
-          const athleteData = data || {}
-          return {
-            ...athlete,
-            firstname: athleteData.firstname || athleteData.firstnameName || athleteData.name || 'Unknown',
-            lastname: athleteData.lastname || athleteData.surname || athleteData.familyName || 'Athlete',
-            country: athleteData.country || athleteData.nationality || '',
-            countryFlag: getCountryFlag(athleteData.country || athleteData.nationality || '')
-          }
-        } catch (error) {
-          console.error(`Failed to fetch details for athlete ${athlete.athleteId}:`, error)
-        }
-        
-        return {
-          ...athlete,
-          firstname: 'Unknown',
-          lastname: 'Athlete',
-          country: '',
-          countryFlag: ''
-        }
-      })
-    )
-    
-    athleteDetails.value = details
+    // Fetch from the generated JSON file
+    const response = await fetch('/data/travel_stats_2025.json')
+    if (response.ok) {
+      const data = await response.json()
+      // The data is an object where keys are athlete IDs
+      const athleteList = Object.values(data) as TraveledAthlete[]
+      // Sort by country count
+      athletes.value = athleteList
+        .sort((a, b) => b.countryCount - a.countryCount)
+        .slice(0, 5)
+    }
   } catch (error) {
-    console.error('Error loading leaderboard:', error)
+    console.error('Error loading travel leaderboard:', error)
   } finally {
     isLoading.value = false
   }
 })
 
-function handleAthleteClick(athlete: AthleteWithDetails) {
+function handleAthleteClick(athlete: TraveledAthlete) {
+  const [firstname, ...lastnameParts] = athlete.name.split(' ')
   emit('athleteSelect', {
-    id: Number((athlete as any).athleteId),
-    firstname: athlete.firstname,
-    lastname: athlete.lastname
+    id: Number(athlete.id),
+    firstname: firstname || '',
+    lastname: lastnameParts.join(' ')
   })
 }
 
-function getProfileImage(athleteId: number | string) {
+function getProfileImage(athleteId: string | number) {
   if (!athleteId) return null
   const originalUrl = `https://media.aws.iaaf.org/athletes/${athleteId}.jpg`
   return `/api/proxy-image?url=${encodeURIComponent(originalUrl)}`
 }
 
-function handleImageError(athleteId: number | string) {
+function handleImageError(athleteId: string | number) {
   imageErrors[athleteId] = true
 }
 
-function getInitials(first: string, last: string) {
-  return ((first?.charAt(0) || '') + (last?.charAt(0) || '')).toUpperCase()
+function getInitials(name: string) {
+  const parts = name.split(' ')
+  if (parts.length >= 2 && parts[0] && parts[parts.length - 1]) {
+    return (parts[0].charAt(0) + parts[parts.length - 1]!.charAt(0)).toUpperCase()
+  }
+  return (name || '').substring(0, 2).toUpperCase()
 }
 </script>
 
 <style scoped>
 .leaderboard {
-  margin-top: var(--spacing-xl);
   padding: var(--spacing-md);
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -168,8 +151,8 @@ function getInitials(first: string, last: string) {
   left: 0;
   width: 100%;
   height: 4px;
-  background: var(--color-accent-secondary);
-  box-shadow: 0 0 15px var(--color-accent-secondary);
+  background: var(--color-accent-tertiary);
+  box-shadow: 0 0 15px var(--color-accent-tertiary);
 }
 
 .title-container {
@@ -192,14 +175,14 @@ function getInitials(first: string, last: string) {
   letter-spacing: 1px;
   text-transform: uppercase;
   transform: skew(-5deg);
-  text-shadow: 2px 2px 0px var(--color-accent-secondary);
+  text-shadow: 2px 2px 0px var(--color-accent-tertiary);
 }
 
 @media (min-width: 768px) {
   .leaderboard-title {
     font-size: 3rem;
     letter-spacing: 2px;
-    text-shadow: 3px 3px 0px var(--color-accent-secondary);
+    text-shadow: 3px 3px 0px var(--color-accent-tertiary);
   }
 }
 
@@ -244,8 +227,8 @@ function getInitials(first: string, last: string) {
   left: 0;
   width: 100%;
   height: 2px;
-  background: var(--color-accent-secondary);
-  box-shadow: 0 0 15px var(--color-accent-secondary);
+  background: var(--color-accent-tertiary);
+  box-shadow: 0 0 15px var(--color-accent-tertiary);
   animation: scan 2s linear infinite;
 }
 
@@ -297,15 +280,15 @@ function getInitials(first: string, last: string) {
 
 .leaderboard-item:hover {
   background: rgba(255, 255, 255, 0.08);
-  border-color: var(--color-accent-secondary);
+  border-color: var(--color-accent-tertiary);
   transform: skewX(-5deg) translateX(5px);
-  box-shadow: -5px 0 15px rgba(255, 0, 85, 0.2);
+  box-shadow: -5px 0 15px rgba(0, 240, 255, 0.2);
 }
 
 @media (min-width: 768px) {
   .leaderboard-item:hover {
     transform: skewX(-10deg) translateX(10px);
-    box-shadow: -10px 0 20px rgba(255, 0, 85, 0.2);
+    box-shadow: -10px 0 20px rgba(0, 240, 255, 0.2);
   }
 }
 
@@ -448,7 +431,6 @@ function getInitials(first: string, last: string) {
 
 @media (min-width: 768px) {
   .athlete-info {
-    gap: 4px;
     transform: skewX(10deg);
   }
 }
@@ -471,54 +453,62 @@ function getInitials(first: string, last: string) {
   }
 }
 
-.country-flag {
-  font-size: 1.1rem;
-  line-height: 1;
-}
-
-@media (min-width: 768px) {
-  .country-flag {
-    font-size: 1.5rem;
-  }
-}
-
-.athlete-views {
+.athlete-stats {
   display: flex;
   align-items: baseline;
   gap: 4px;
 }
 
 @media (min-width: 768px) {
-  .athlete-views {
+  .athlete-stats {
     gap: 6px;
   }
 }
 
-.view-count {
+.stat-value {
   font-family: var(--font-family-heading);
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--color-accent-secondary);
+  color: var(--color-accent-tertiary);
 }
 
 @media (min-width: 768px) {
-  .view-count {
+  .stat-value {
     font-size: 1.5rem;
   }
 }
 
-.view-label {
-  font-size: 0.65rem;
+.stat-label {
+  font-size: 0.6rem;
   font-weight: 800;
   color: rgba(255, 255, 255, 0.4);
   letter-spacing: 0.5px;
 }
 
 @media (min-width: 768px) {
-  .view-label {
-    font-size: 0.8rem;
+  .stat-label {
+    font-size: 0.7rem;
     letter-spacing: 1px;
   }
 }
-</style>
 
+.separator {
+  color: rgba(255, 255, 255, 0.2);
+  font-weight: 300;
+}
+
+.countries-preview {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-style: italic;
+}
+
+@media (min-width: 768px) {
+  .countries-preview {
+    font-size: 0.75rem;
+  }
+}
+</style>

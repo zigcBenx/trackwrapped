@@ -15,7 +15,8 @@
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix --cache",
     "format": "prettier --write --experimental-cli src/",
-    "get-athlete-views": "node scripts/getAthleteViews.js"
+    "get-athlete-views": "node scripts/getAthleteViews.js",
+    "get-most-traveled": "node scripts/getMostTraveled.js"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
