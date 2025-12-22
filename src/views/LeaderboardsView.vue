@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Leaderboard from '../components/Leaderboard.vue'
 import TravelLeaderboard from '../components/TravelLeaderboard.vue'
+import ConsistencyLeaderboard from '../components/ConsistencyLeaderboard.vue'
 import type { Athlete } from '../types/athlete'
 
 const emit = defineEmits<{
@@ -27,6 +28,8 @@ function handleAthleteSelect(athlete: Athlete | { id: number; firstname: string;
       <Leaderboard @athlete-select="handleAthleteSelect" />
       
       <TravelLeaderboard @athlete-select="handleAthleteSelect" />
+      
+      <ConsistencyLeaderboard @athlete-select="handleAthleteSelect" />
     </div>
   </div>
 </template>
@@ -57,7 +60,6 @@ function handleAthleteSelect(athlete: Athlete | { id: number; firstname: string;
 .page-header {
   text-align: center;
   margin-bottom: var(--spacing-3xl);
-  padding-top: var(--spacing-2xl);
   position: relative;
   z-index: 2;
 }

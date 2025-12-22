@@ -16,7 +16,8 @@
     "lint": "eslint . --fix --cache",
     "format": "prettier --write --experimental-cli src/",
     "get-athlete-views": "node scripts/getAthleteViews.js",
-    "get-most-traveled": "node scripts/getMostTraveled.js"
+    "get-most-traveled": "node scripts/getMostTraveled.js",
+    "get-most-consistent": "node scripts/getMostConsistent.js"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",

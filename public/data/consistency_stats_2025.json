@@ -1,0 +1,52 @@
+[
+  {
+    "id": "14533736",
+    "name": "Thomas Mardal",
+    "homeCountry": "NOR",
+    "seasonBest": 1178,
+    "averageScore": 1162,
+    "variance": 16,
+    "totalCompetitions": 12,
+    "lastUpdated": "2025-12-21T17:12:14.298Z"
+  },
+  {
+    "id": "14753645",
+    "name": "Sarah Peerik",
+    "homeCountry": "NED",
+    "seasonBest": 1047,
+    "averageScore": 1030,
+    "variance": 17,
+    "totalCompetitions": 9,
+    "lastUpdated": "2025-12-21T17:06:08.216Z"
+  },
+  {
+    "id": "15061294",
+    "name": "Živa Remic",
+    "homeCountry": "SLO",
+    "seasonBest": 1131,
+    "averageScore": 1112,
+    "variance": 19,
+    "totalCompetitions": 9,
+    "lastUpdated": "2025-12-21T17:03:56.017Z"
+  },
+  {
+    "id": "15061296",
+    "name": "Samaja Djedović",
+    "homeCountry": "SLO",
+    "seasonBest": 802,
+    "averageScore": 781,
+    "variance": 21,
+    "totalCompetitions": 8,
+    "lastUpdated": "2025-12-21T17:08:00.958Z"
+  },
+  {
+    "id": "15059794",
+    "name": "Džiugas Balčiūnas",
+    "homeCountry": "LTU",
+    "seasonBest": 847,
+    "averageScore": 826,
+    "variance": 21,
+    "totalCompetitions": 9,
+    "lastUpdated": "2025-12-21T17:08:56.766Z"
+  }
+]

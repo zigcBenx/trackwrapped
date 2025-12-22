@@ -17,7 +17,7 @@
     
     <!-- Branding footer -->
     <div class="slide-branding">
-      by trackwrapped.vercel.app
+      by trackwrapped.com
     </div>
   </div>
 </template>

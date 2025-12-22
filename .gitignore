@@ -38,4 +38,5 @@ __screenshots__/
 .env
 # Scripts & Data
 .athlete_travel_cache*
+.athlete_consistency_cache*
 *.csv

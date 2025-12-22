@@ -134,7 +134,7 @@
             </div>
             <!-- Footer CTA -->
             <div class="share-footer">
-              <p class="footer-link interactive" target="_blank">trackwrapped.vercel.app</p>
+              <p class="footer-link interactive" target="_blank">trackwrapped.com</p>
               <button 
                 class="share-btn interactive" 
                 :class="{ 'is-sharing': isSharing }"
@@ -146,7 +146,7 @@
               >
                 Screenshot & Share!
               </button>
-              <div class="capture-link">trackwrapped.vercel.app</div>
+              <div class="capture-link">trackwrapped.com</div>
             </div>
           </div>
 
