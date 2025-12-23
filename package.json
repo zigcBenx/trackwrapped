@@ -19,7 +19,8 @@
     "get-most-traveled": "node scripts/getMostTraveled.js",
     "get-most-consistent": "node scripts/getMostConsistent.js",
     "get-top-countries": "node scripts/getTopCountries.js",
-    "get-top-performers": "node scripts/getTopPerformers.js"
+    "get-top-performers": "node scripts/getTopPerformers.js",
+    "get-best-stadiums": "node scripts/getBestStadiums.js"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",

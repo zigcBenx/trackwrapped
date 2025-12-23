@@ -1,0 +1,42 @@
+[
+  {
+    "venue": "Zürich, SUI",
+    "city": "Zürich",
+    "country": "SUI",
+    "avgScore": 1198,
+    "resultCount": 26,
+    "lastUpdated": "2025-12-23T09:17:13.534Z"
+  },
+  {
+    "venue": "Chorzów, POL",
+    "city": "Chorzów",
+    "country": "POL",
+    "avgScore": 1192,
+    "resultCount": 30,
+    "lastUpdated": "2025-12-23T09:17:13.534Z"
+  },
+  {
+    "venue": "Eugene, USA",
+    "city": "Eugene",
+    "country": "USA",
+    "avgScore": 1171,
+    "resultCount": 63,
+    "lastUpdated": "2025-12-23T09:17:13.534Z"
+  },
+  {
+    "venue": "Guangzhou, CHN",
+    "city": "Guangzhou",
+    "country": "CHN",
+    "avgScore": 1169,
+    "resultCount": 31,
+    "lastUpdated": "2025-12-23T09:17:13.534Z"
+  },
+  {
+    "venue": "Boston, USA",
+    "city": "Boston",
+    "country": "USA",
+    "avgScore": 1160,
+    "resultCount": 26,
+    "lastUpdated": "2025-12-23T09:17:13.534Z"
+  }
+]

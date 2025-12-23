@@ -4,6 +4,7 @@ import TravelLeaderboard from '../components/TravelLeaderboard.vue'
 import ConsistencyLeaderboard from '../components/ConsistencyLeaderboard.vue'
 import CountryLeaderboard from '../components/CountryLeaderboard.vue'
 import PerformersLeaderboard from '../components/PerformersLeaderboard.vue'
+import StadiumLeaderboard from '../components/StadiumLeaderboard.vue'
 import type { Athlete } from '../types/athlete'
 
 const emit = defineEmits<{
@@ -36,6 +37,8 @@ function handleAthleteSelect(athlete: Athlete | { id: number; firstname: string;
       <CountryLeaderboard />
       
       <PerformersLeaderboard @athlete-select="handleAthleteSelect" />
+      
+      <StadiumLeaderboard />
     </div>
   </div>
 </template>
