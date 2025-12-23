@@ -40,3 +40,4 @@ __screenshots__/
 .athlete_travel_cache*
 .athlete_consistency_cache*
 *.csv
+.athlete_performers_cache_*.json

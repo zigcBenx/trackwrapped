@@ -2,6 +2,8 @@
 import Leaderboard from '../components/Leaderboard.vue'
 import TravelLeaderboard from '../components/TravelLeaderboard.vue'
 import ConsistencyLeaderboard from '../components/ConsistencyLeaderboard.vue'
+import CountryLeaderboard from '../components/CountryLeaderboard.vue'
+import PerformersLeaderboard from '../components/PerformersLeaderboard.vue'
 import type { Athlete } from '../types/athlete'
 
 const emit = defineEmits<{
@@ -30,6 +32,10 @@ function handleAthleteSelect(athlete: Athlete | { id: number; firstname: string;
       <TravelLeaderboard @athlete-select="handleAthleteSelect" />
       
       <ConsistencyLeaderboard @athlete-select="handleAthleteSelect" />
+      
+      <CountryLeaderboard />
+      
+      <PerformersLeaderboard @athlete-select="handleAthleteSelect" />
     </div>
   </div>
 </template>

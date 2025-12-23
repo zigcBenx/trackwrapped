@@ -17,7 +17,9 @@
     "format": "prettier --write --experimental-cli src/",
     "get-athlete-views": "node scripts/getAthleteViews.js",
     "get-most-traveled": "node scripts/getMostTraveled.js",
-    "get-most-consistent": "node scripts/getMostConsistent.js"
+    "get-most-consistent": "node scripts/getMostConsistent.js",
+    "get-top-countries": "node scripts/getTopCountries.js",
+    "get-top-performers": "node scripts/getTopPerformers.js"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",

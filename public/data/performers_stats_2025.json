@@ -1,0 +1,42 @@
+[
+  {
+    "id": "14679502",
+    "name": "Armand Duplantis",
+    "homeCountry": "SWE",
+    "seasonBest": 1350,
+    "discipline": "Pole Vault",
+    "lastUpdated": "2025-12-22T18:26:02.178Z"
+  },
+  {
+    "id": "14841124",
+    "name": "Mykolas Alekna",
+    "homeCountry": "LTU",
+    "seasonBest": 1347,
+    "discipline": "Discus Throw",
+    "lastUpdated": "2025-12-22T18:32:09.642Z"
+  },
+  {
+    "id": "14653717",
+    "name": "Jakob Ingebrigtsen",
+    "homeCountry": "NOR",
+    "seasonBest": 1330,
+    "discipline": "Mile",
+    "lastUpdated": "2025-12-22T18:26:11.803Z"
+  },
+  {
+    "id": "14591210",
+    "name": "Grant Fisher",
+    "homeCountry": "USA",
+    "seasonBest": 1324,
+    "discipline": "5000 Metres",
+    "lastUpdated": "2025-12-22T18:25:05.219Z"
+  },
+  {
+    "id": "14479487",
+    "name": "Karsten Warholm",
+    "homeCountry": "NOR",
+    "seasonBest": 1322,
+    "discipline": "400 Metres Hurdles",
+    "lastUpdated": "2025-12-22T18:26:19.894Z"
+  }
+]
